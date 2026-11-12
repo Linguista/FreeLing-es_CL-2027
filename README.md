@@ -51,9 +51,9 @@ This README describes grammatical categories in words. The data files use FreeLi
 
 ## License
 
-FreeLing es-CL 2027 is made from FreeLing 4.2's own data files, and is under FreeLing's license: the GNU Affero General Public License, version 3 or (at your option) any later version. The license is in `LICENSE`. FreeLing is by the TALP Research Center of the Universitat Politècnica de Catalunya.
+FreeLing es-CL 2027 is based on FreeLing 4.2's own data files, and is under the same license as FreeLing: the GNU Affero General Public License, version 3 or (at your option) any later version. The license is in `LICENSE`. FreeLing was created by the TALP Research Center of the Universitat Politècnica de Catalunya, without whom this software would not exist.
 
-In the release, the paths in this README and in the copies of the tools are those of the machine that built it, written in a public form (`/home/user/...`); every tool takes its paths as options.
+In this release, the paths in the README and in the copies of the tools are those of the machine that built it, written in a public form (`/home/user/...`); every tool takes its paths (which will be your actual paths) as options.
 
 ## 1. Contents
 
@@ -849,6 +849,7 @@ into the release.
   have the lemma nguillatún (the Chilean noun list gave guillatun; decided
   261112), corrected in the noun list itself (section 5) and in the
   dictionaries.
+  
 - 2027 (rebuilt 261112, freeling_escl_build.py 2.4.1): 56 unit names
   removed from `quantities.dat` (section 10): tr, mi, s, d, cd, cl, bu, pk,
   in and pt, and ft, gal, lb, oz, ac, yd and qt with their compound forms
@@ -857,12 +858,14 @@ into the release.
   `sources/escl-sources/` (freeling_escl_build.py 2.4.0); round 9 of the
   spelling review: nocaut, nocauts, apk, cpu, nguillatún, glug, tsunami and
   tsunamis.
+  
 - 2027 (rebuilt 261110, freeling_escl_build.py 2.3.0): decided 261110g.
   molina off the classifier's list of whole person names (`gazPER-c.dat`:
   4,439, seven places removed); in transcribed speech (`np-speech.dat`)
   Pinto at the start of a line is the surname only, while written texts
   (`np.dat`) keep the verb beside it at 30%. Place names in the COSCACH
   probe read as places: 99.6% with `np-speech.dat` (Molina 31 of 32).
+  
 - 2027 (rebuilt 261110, freeling_escl_build.py 2.2.0): the names (decided
   261110d, 261110e and 261110f, section 8). The classifier's lists replaced by
   Chilean ones: `cities.dat` (FreeLing's two city lists merged, 1,216 names
@@ -881,11 +884,13 @@ into the release.
   chanco and pirque places only. ses no longer read as sea. Place names in
   COSCACH read as places: 75.6% before, 99.5% after. Default dicc.src:
   796,408 forms.
+  
 - 2027 (rebuilt 261110, freeling_escl_build.py 2.1.0): a decided name that
   is also a common noun or a verb has no proper-noun reading (401 names);
   the verb forms decided one by one, with the Chilean imperatives hace,
   dice and pone, and llevamos; the decided names' probability lines from
   FreeLing's own Spanish lines. Default dicc.src: 796,409 forms.
+  
 - 2027 (261110, freeling_escl_build.py 2.0.0): two dictionaries, default
   (contemporary) and historical (CORHICACH); the spelling decisions of
   rounds 1 to 7 (decided words with paradigms, interjections, forms kept in
@@ -894,6 +899,7 @@ into the release.
   FreeLing's own source files; FreeLing's entries and remove files for both
   dictionaries; the tuteo-tagged dictionary zipped in its own folder.
   Default dicc.src: 796,382 forms.
+  
 - 2027 (rebuilt 261101, freeling_escl_build.py 1.1.0): the voseo forms of
   erar removed, with their variants and probability lines; np.dat added.
   dicc.src: 770,683 forms.
