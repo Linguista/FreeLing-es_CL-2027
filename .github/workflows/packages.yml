@@ -5,8 +5,10 @@ name: Build FreeLing es-CL packages
 # is linked against its own Boost and ICU. Each package is then installed in
 # a fresh container of the same distribution and checked
 # (packaging/test-freeling.sh); only checked packages are attached to a
-# release. The package release is the release's tag when it is a number
-# (1, 2, 3 ...), and otherwise the number of the run. Run by hand with
+# release. The package release is the release's tag, which must be a date,
+# YYMMDD, with an optional letter for a second release that day (261112,
+# 261112b); a run started by hand makes test packages, 0.<run number>, which
+# sort before every release. Run by hand with
 # "test only" set to the number of an earlier run, only the checks are run,
 # on that run's packages.
 
@@ -145,7 +147,14 @@ jobs:
           grep " $tarball\$" nfpm-checksums.txt | sha256sum -c
           tar xzf "$tarball" nfpm
           tag="${{ github.event.release.tag_name }}"
-          case "$tag" in ''|*[!0-9]*) rel="${{ github.run_number }}" ;; *) rel="$tag" ;; esac
+          if [ -z "$tag" ]; then
+            rel="0.${{ github.run_number }}"
+          elif printf '%s' "$tag" | grep -qE '^[0-9]{6}[a-z]?$'; then
+            rel="$tag"
+          else
+            echo "The release tag must be a date, YYMMDD, with an optional letter (261112, 261112b): $tag"
+            exit 1
+          fi
           EXTRA_DEPENDS="${{ matrix.extra }}" packaging/make-nfpm-config.py "$rel${{ matrix.suffix }}" > nfpm-run.yaml
           mkdir -p dist
           ./nfpm package --config nfpm-run.yaml --packager ${{ matrix.packager }} --target dist/
@@ -186,10 +195,9 @@ jobs:
       - name: Install git
         run: |
           if [ "${{ matrix.family }}" = dnf ]; then
-            dnf -y -q install git binutils glibc-langpack-en glibc-langpack-es
+            dnf -y -q install git binutils
           else
-            apt-get -qq update && DEBIAN_FRONTEND=noninteractive apt-get -y -qq install git binutils ca-certificates locales > /dev/null
-            for l in en_US es_ES; do localedef -i $l -f UTF-8 $l.UTF-8; done
+            apt-get -qq update && DEBIAN_FRONTEND=noninteractive apt-get -y -qq install git binutils ca-certificates > /dev/null
           fi
 
       - uses: actions/checkout@v5

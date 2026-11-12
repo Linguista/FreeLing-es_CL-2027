@@ -82,6 +82,12 @@ def main():
         "contents": contents,
         "scripts": {"postinstall": "./packaging/ldconfig.sh",
                     "postremove": "./packaging/ldconfig.sh"},
+        # Debian and Ubuntu: the locales package does not generate
+        # en_US.UTF-8 by itself, so the package does (Fedora's
+        # glibc-langpack-en carries it ready-made).
+        "overrides": {"deb": {"scripts": {
+            "postinstall": "./packaging/postinstall-deb.sh",
+            "postremove": "./packaging/ldconfig.sh"}}},
     }
     # nfpm reads YAML; JSON is YAML.
     json.dump(conf, sys.stdout, indent=1, ensure_ascii=False)
