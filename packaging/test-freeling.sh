@@ -29,7 +29,7 @@ done
 echo "ok    the 13 Chilean files are the release's"
 
 status=0
-out="$(echo "Vos tenís que venir a Arica." | "$prefix/bin/analyze" -f es-cl.cfg --outlv tagged --nonec --nosense 2>&1)" || status=$?
+out="$(echo "Vos tenís que venir a Arica." | "$prefix/bin/analyze" -f es-cl.cfg --outlv tagged --nonec --sense none 2>&1)" || status=$?
 echo "$out"
 [ "$status" -eq 0 ] || { echo "FAIL  analyze exited with $status"; exit 1; }
 echo "$out" | grep -q "^tenís tener VMIP2SV" || { echo "FAIL  tenís was not read as a voseo form of tener"; exit 1; }
