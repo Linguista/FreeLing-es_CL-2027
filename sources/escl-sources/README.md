@@ -28,10 +28,10 @@ was decided about it.
 | `interjections` | form, lemma, probability, multiword, interjection in FreeLing es-CL 2027 now, sheet | an interjection or discourse marker, with its lemma; RARE ones are seldom chosen; multiword ones go to the multiword list |
 | `interjection-removals` | form, why | an interjection reading removed |
 | `verb-form-readings` | form, lemma, entry, tags, alone, reading in words | the readings of a verb form the build could not tag by itself |
-| `fixed-name-classes` | name, class, source, ruling | a name that always has this class (place, person, organisation, other), or none: not fixed |
+| `fixed-name-classes` | name, class, source, ruling | a name that always has this class (place, person, organization, other), or none: not fixed |
 | `person-name-removals` | entry, list, ruling | an entry removed from FreeLing's list of whole person names |
 | `place-only-forms` | form, ruling | a form that is a place and nothing else |
-| `sentence-start-classes` | form, reading, keep own readings, share, files, ruling | the reading a capitalised form gets at the start of a sentence, for written texts, speech or both |
+| `sentence-start-classes` | form, reading, keep own readings, share, files, ruling | the reading a capitalized form gets at the start of a sentence, for written texts, speech or both |
 | `name-class-shares` | name, class, share, ruling | the classes a name may take, with their shares (percent) |
 
 The full meaning of each column, and what the build does with every row,

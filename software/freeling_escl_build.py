@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# VERSION 2.5.1
+# VERSION 2.6.0
 #
 # freeling_escl_build.py -- build FreeLing es-CL 2027, the Chilean Spanish
 # data for FreeLing 4.2, from FreeLing's own Spanish source files, the CSLD
@@ -13,7 +13,7 @@
 #   sha256 of FreeLing 4.2 (a changed file refuses the build):
 #       data/es/dictionary/header, data/es/dictionary/entries/MM.*
 #                                   the Spanish dictionary, built here
-#       data/es/np.dat              the name recogniser's rules
+#       data/es/np.dat              the name recognizer's rules
 #       data/es/quantities.dat      currencies and measures
 #       data/es/tagset.dat          the Spanish tagset (to check the Chilean
 #                                   one against)
@@ -65,7 +65,11 @@
 #   and classifier in ../patches/ (the patch, its README and the three
 #   changed source files), and
 #   /home/user/MyScripts/linguistics/explode-*-4-FreeLing.pl:
-#   all copied into the release's software/ folder; every escl-sources
+#   all copied into the release's software/ folder; the packaging of
+#   FreeLing 4.2 with this release for Fedora, Debian and Ubuntu, in
+#   ../packaging/ (the scripts and their READMEs into the release's
+#   packaging/ folder, packages.yml, the GitHub workflow that builds the
+#   packages, into .github/workflows/); every escl-sources
 #   file read, and escl-sources/README.md, are copied into its
 #   sources/escl-sources/ folder
 #
@@ -83,7 +87,7 @@
 # replaced by public ones, and no file of the release, data included, may
 # contain a private term of that file: one found, and nothing is written
 # (exit 1). The privacy file is private and is never copied into the
-# release. The release carries FreeLing's licence, the GNU Affero General
+# release. The release carries FreeLing's license, the GNU Affero General
 # Public License 3.0 (agpl-3.0.txt beside this script), as LICENSE.
 #
 # TWO DICTIONARIES ARE BUILT (decided 261109):
@@ -111,7 +115,7 @@
 #      (verb-form-readings), with the Chilean imperatives hace, dice, pone
 #   5  applies the interjection decisions: lemmas, removals, rare ones
 #   6  generates the spelling variants of every voseo form (CL.variants)
-#   7  adds the person, place and organisation lists (CL.names)
+#   7  adds the person, place and organization lists (CL.names)
 #   8  adds the non-standard forms kept in the text (CL.nonstandard) and the
 #      misspelt forms the text corrects, read as their corrections
 #      (CL.misspellings); withdraws the proper-noun reading of every decided
@@ -178,7 +182,7 @@ import unicodedata
 import zipfile
 from pathlib import Path
 
-VERSION = "2.5.1"
+VERSION = "2.6.0"
 RELEASE = "FreeLing es-CL 2027"
 
 SOURCE_TREE = Path("/home/user/build/FreeLing-4.2")
@@ -268,6 +272,18 @@ SOFTWARE_HERE = ["freeling_escl_build.py", "freeling_escl_build_README.md",
                  "freeling_escl_sources_move_README.md", README_NAME]
 # The change to FreeLing's name recognizer (decided 261110d), in
 # ../patches/ beside this script's folder, copied into software/patches/.
+# The packaging of FreeLing 4.2 with this release for Fedora, Debian and
+# Ubuntu (decided 261112), in ../packaging/ beside this script's folder:
+# copied into the release's packaging/ folder, and the GitHub workflow that
+# builds the packages into .github/workflows/ (the release is the GitHub
+# repository).
+PACKAGING_FILES = ["patch-freeling.sh", "patch-freeling_README.md",
+                   "build-freeling.sh", "build-freeling_README.md",
+                   "test-freeling.sh", "test-freeling_README.md",
+                   "make-nfpm-config.py", "make-nfpm-config_README.md",
+                   "postinstall-deb.sh", "postinstall-deb_README.md",
+                   "ldconfig.sh", "ldconfig_README.md"]
+PACKAGING_WORKFLOW = "packages.yml"
 PATCH_FILES = ["freeling-4.2-np-classes.patch",
                "freeling-4.2-np-classes_README.md", "np.cc", "np.h", "nec.cc"]
 EXPLODE_DIR = Path("/home/user/MyScripts/linguistics")
@@ -287,7 +303,7 @@ EXPLODE_FILES = ["explode-ADJECTIVES-4-FreeLing.pl",
 # searched for in any case.
 PRIVACY_NAME = "freeling-release-privacy.tsv"
 # FreeLing 4.2 is under the GNU Affero General Public License, version 3 or
-# later; the release, made from its files, is under the same licence
+# later; the release, made from its files, is under the same license
 # (decided 261112). The text, as the FSF publishes it, beside this script,
 # goes into the release as LICENSE.
 LICENSE_NAME = "agpl-3.0.txt"
@@ -396,7 +412,7 @@ FORMTAG_REMOVE = {"erai VMI-VSI VMI 1 VSI 1000": "ser over erar: erar's voseo "
 # them:
 #   a place (the user's Chilean toponyms): much higher than the ordinary
 #       readings
-#   a person, an organisation or another name: moderate
+#   a person, an organization or another name: moderate
 # The tagger divides each lexical probability by the tag's overall
 # frequency (FreeLing's hmm_tagger: P(w|t) = P(t|w) P(w) / P(t)), and a
 # proper noun is about 3 times rarer than a common noun in FreeLing's
@@ -406,7 +422,7 @@ PLACE_SHARE = 0.80
 NAME_SHARE = 0.30
 # THE EXEMPTION (decided 261110b): a decided name whose lowercase form is
 # also a common noun or a verb gets no proper-noun reading at all; FreeLing's
-# name recognizer tags it when it is capitalised. Only names whose ordinary
+# name recognizer tags it when it is capitalized. Only names whose ordinary
 # readings are of other classes (adjectives, adverbs ...) keep the
 # proper-noun reading and the shares above. In probabilitats.dat an
 # exempted name gets FreeLing's own Spanish line back, or no line when
@@ -424,13 +440,23 @@ COMMON_COUNT = 20
 # 1 in 100,000.
 RARE_TOTAL = 10000
 
-# The name recogniser: every single letter is never a name (decided 261101).
+# The name recognizer: every single letter is never a name (decided 261101).
 NP_LETTERS = list("abcdefghijklmn") + ["ñ"] + list("opqrstuvwxyz")
 
 # THE NAMES (decided 261110d). The classes of the decisions files, and the
 # tag each gives.
 NE_CLASS_TAG = {"place": "NP00G00", "person": "NP00SP0",
-                "organisation": "NP00O00", "other": "NP00V00"}
+                "organization": "NP00O00", "other": "NP00V00"}
+# Class names as the decision files may spell them (decided 261112: the
+# project writes American English; files written before keep the British
+# spelling, which is read as the American one).
+CLASS_SPELLING = {"organisation": "organization"}
+
+
+def ne_class(text: str) -> str:
+    """A class or reading of a decision file, lower case, American."""
+    t = text.strip().lower()
+    return CLASS_SPELLING.get(t, t)
 # The readings of sentence-start-classes: a class, or "name", a proper noun
 # whose class the classifier decides.
 START_TAG = dict(NE_CLASS_TAG, name="NP00000")
@@ -545,7 +571,7 @@ QUANTITY_COLLIDING = {
     "s": "the letter s or a false start (uno s ..., seis S), not the second",
     "d": "the letter d (sesenta D, tres D), not the day",
     "cd": "CD, the compact disc (los tres cd), not the candela",
-    "cl": "a false start (dos cl ... dos tipos), not the centilitre",
+    "cl": "a false start (dos cl ... dos tipos), not the centiliter",
     "bu": "a false start (uno bu ...), not the bushel",
     "pk": "the chat spelling of porque, not the peck",
     "in": "the English word in (2 in 1), not the inch",
@@ -777,7 +803,7 @@ TAG_SHAPE = re.compile(r"^[A-Z][A-Za-z0-9]*$")
 
 def tags_in(text: str, kind: str):
     """(tag, where) for every tag of a dictionary (dicc), probabilities
-    (prob), locutions (locu), name recogniser (np) or quantities (quant)
+    (prob), locutions (locu), name recognizer (np) or quantities (quant)
     file. A locution's $n:XX takes the category XX."""
     sec = None
     for line in text.splitlines():
@@ -920,7 +946,7 @@ DESCR = {
                          _P, _G, _N,
                          {k: "possessor " + v for k, v in _N.items()}]),
     "N": ("noun", [{"C": "common", "P": "proper"}, _G, _N,
-                   {"S": "person", "G": "place", "O": "organisation",
+                   {"S": "person", "G": "place", "O": "organization",
                     "V": "other name"}, {}, {"V": "evaluative"}]),
     "P": ("pronoun", [{"D": "demonstrative", "E": "exclamative",
                        "I": "indefinite", "P": "personal", "R": "relative",
@@ -996,7 +1022,7 @@ def read_gram(path: Path, problems, changes, name):
 
 def read_tsv(path: Path):
     """(header, rows) of a decisions file: UTF-8, tab-separated, one header
-    line, no quoting. Every cell is NFC-normalised."""
+    line, no quoting. Every cell is NFC-normalized."""
     text = path.read_text(encoding="utf-8")
     rows = list(csv.reader(io.StringIO(text), delimiter="\t",
                            quoting=csv.QUOTE_NONE))
@@ -1289,7 +1315,7 @@ def looks_plural(form: str, lemma: str) -> bool:
 def evaluative(form: str, lemma: str) -> str:
     """'S' for a superlative (-ísimo), 'V' for a diminutive or augmentative
     (-ito, -cito, -ico, -illo, -ucho, -ote, -azo, -ón) whose lemma is the
-    base word, '0' otherwise. A lexicalised diminutive whose lemma has the
+    base word, '0' otherwise. A lexicalized diminutive whose lemma has the
     suffix itself (burritos, lemma burrito) is not evaluative."""
     if form == lemma:
         return "0"
@@ -1348,6 +1374,7 @@ def adjective_gn(form: str, lemma: str, invariable: bool) -> str:
 CATEGORY = {
     "proper noun, person": ("NP", "NP00SP0"),
     "proper noun, place": ("NP", "NP00G00"),
+    "proper noun, organization or brand": ("NP", "NP00O00"),
     "proper noun, organisation or brand": ("NP", "NP00O00"),
     "proper noun, other": ("NP", "NP00V00"),
     "common noun, masculine": ("NC", "M"),
@@ -1731,7 +1758,7 @@ class Decisions:
                 if len(r) >= 4 and r[3].strip() == "all":
                     self.replacements[r[0]] = (r[1], r[2], round_of(p))
         # THE NAMES (decided 261110d).
-        # fixed-name-classes: name, class (place, person, organisation,
+        # fixed-name-classes: name, class (place, person, organization,
         # other, or none: not fixed), source, ruling. The key is the name
         # as the recognizer writes it: lower case, words joined by _.
         self.fixed_names = {}
@@ -1742,10 +1769,10 @@ class Decisions:
                 if len(r) < 2 or not r[0].strip():
                     continue
                 key = np_key(r[0])
-                cls = r[1].strip().lower()
+                cls = ne_class(r[1])
                 if cls != "none" and cls not in NE_CLASS_TAG:
                     problems.append("%s: %s: unknown class %r (place, "
-                                    "person, organisation, other or none)"
+                                    "person, organization, other or none)"
                                     % (p.name, r[0], r[1]))
                     continue
                 if key in here and here[key] != cls:
@@ -1769,7 +1796,7 @@ class Decisions:
                     continue
                 self.person_removals[np_key(r[0])] = p.name
         # sentence-start-classes: form, reading (name, place, person,
-        # organisation, other), keep own readings (yes; no; or word classes,
+        # organization, other), keep own readings (yes; no; or word classes,
         # such as verbs: only the readings of those classes stay), share
         # (the reading's percentage among the readings the word has at the
         # start of a sentence, when some of its own stay), files (written,
@@ -1787,14 +1814,14 @@ class Decisions:
                 if len(r) < 5 or not r[0].strip():
                     continue
                 form = nfc(r[0]).strip().lower()
-                reading, keep = r[1].strip().lower(), r[2].strip().lower()
+                reading, keep = ne_class(r[1]), r[2].strip().lower()
                 share, files = r[3].strip(), r[4].strip().lower()
                 bad = []
                 if " " in form or "_" in form:
                     bad.append("one word only")
                 if reading not in START_TAG:
                     bad.append("reading %r is not name, place, person, "
-                               "organisation or other" % r[1])
+                               "organization or other" % r[1])
                 only = ()
                 if keep not in ("yes", "no"):
                     names = [x.strip() for x in keep.split(",") if x.strip()]
@@ -1844,14 +1871,14 @@ class Decisions:
             for r in rows:
                 if len(r) < 3 or not r[0].strip():
                     continue
-                key, cls = np_key(r[0]), r[1].strip().lower()
+                key, cls = np_key(r[0]), ne_class(r[1])
                 try:
                     value = float(r[2])
                 except ValueError:
                     value = -1
                 if cls not in NE_CLASS_TAG or not 0 < value < 100:
                     problems.append("%s: %s: class %r, share %r: the class "
-                                    "must be place, person, organisation or "
+                                    "must be place, person, organization or "
                                     "other, the share between 0 and 100"
                                     % (p.name, r[0], r[1], r[2]))
                     continue
@@ -2327,7 +2354,7 @@ def process_probabilities(text: str, formtag_new, managed, changes,
 
 
 # --------------------------------------------------------------------------
-# The name recogniser and the quantities
+# The name recognizer and the quantities
 
 def process_np(text: str, changes, problems):
     """Adds every single letter to the Ignore section of np.dat, as "x 1"
@@ -2715,7 +2742,7 @@ It is rebuilt with every release by `freeling_escl_build.py`; the copy here
 always matches the release it came with.
 """
 
-# mm keeps the millimetre reading as by far the more probable one; mmm is a
+# mm keeps the millimeter reading as by far the more probable one; mmm is a
 # nearly impossible interjection reading (decided 261108; in COSCACH the
 # text itself becomes mmm).
 MM_RARE = {"mm"}
@@ -2779,6 +2806,9 @@ def main(argv=None):
     ap.add_argument("--patches", default=None, help="the folder of the "
                     "change to FreeLing's name recognizer (default: "
                     "../patches beside this script's folder)")
+    ap.add_argument("--packaging", default=None, help="the folder of the "
+                    "packaging for Fedora, Debian and Ubuntu (default: "
+                    "../packaging beside this script's folder)")
     ap.add_argument("--privacy", default=None, help="the privacy file "
                     "(default: %s in the folder above this script's)"
                     % PRIVACY_NAME)
@@ -2798,9 +2828,10 @@ def main(argv=None):
     st, bt, out = Path(a.source_tree), Path(a.build_tree), Path(a.out)
     readme = here / README_NAME
     patches = Path(a.patches) if a.patches else here.parent / "patches"
+    packaging = Path(a.packaging) if a.packaging else here.parent / "packaging"
     gazper_p = root / GAZPER_P_REL
     privacy = Path(a.privacy) if a.privacy else here.parent / PRIVACY_NAME
-    licence = here / LICENSE_NAME
+    license = here / LICENSE_NAME
 
     log("=" * 78)
     log("FREELING ES-CL BUILD  %s   (%s)%s" % (VERSION, RELEASE,
@@ -2814,14 +2845,16 @@ def main(argv=None):
     log("deployed es-cl data : %s" % bt)
     log("person-name parts   : %s" % gazper_p)
     log("name-class change   : %s" % patches)
+    log("packaging           : %s" % packaging)
     log("release folder      : %s" % out)
     log("privacy file        : %s" % privacy)
     software = [here / f for f in SOFTWARE_HERE] + \
         [Path(a.explode_dir) / f for f in EXPLODE_FILES]
     patch_files = [patches / f for f in PATCH_FILES]
-    needed = [st / r for r in FL42] + [
+    packaging_files = [packaging / f for f in PACKAGING_FILES + [PACKAGING_WORKFLOW]]
+    needed = [st / r for r in FL42] + packaging_files + [
         chilean_tagset, bt / "probabilitats.dat", bt / "locucions.dat",
-        readme, gazper_p, privacy, licence] + software + patch_files + \
+        readme, gazper_p, privacy, license] + software + patch_files + \
         [gram / f for _, f in LISTS + NAME_LISTS]
     missing = [str(p) for p in needed if not p.is_file()]
     if not ddir.is_dir():
@@ -2838,9 +2871,9 @@ def main(argv=None):
     except (ValueError, UnicodeDecodeError) as exc:
         log("REFUSED: %s" % exc)
         return 2
-    if sha(licence.read_bytes()) != LICENSE_SHA:
+    if sha(license.read_bytes()) != LICENSE_SHA:
         log("REFUSED: %s is not the text of the GNU AGPL 3.0 (sha256 %s, "
-            "expected %s)" % (licence, sha(licence.read_bytes()), LICENSE_SHA))
+            "expected %s)" % (license, sha(license.read_bytes()), LICENSE_SHA))
         return 2
     link_problems = check_links(ddir, linked)
     if link_problems:
@@ -2943,7 +2976,7 @@ def main(argv=None):
         for f, l, g in lists[name]:
             if f != f.lower() and any(t[0] in CLOSED
                                       for _, t in es.get(f.lower(), [])):
-                changes.append((name, "removed", "capitalised form whose "
+                changes.append((name, "removed", "capitalized form whose "
                                 "lowercase is a function word (u, the "
                                 "conjunction): FreeLing would give the "
                                 "function word these readings", f, l, g, ""))
@@ -3143,7 +3176,7 @@ def main(argv=None):
             if bases:
                 dlog.append((addf, form, "%s, verb" % lk, "left to FreeLing",
                              "attached pronouns: FreeLing's affix rules "
-                             "analyse it from %s" % bases[0]))
+                             "analyze it from %s" % bases[0]))
                 continue
             tags, how = models.regular_tags(lk, form)
             if tags:
@@ -3173,9 +3206,9 @@ def main(argv=None):
         dlog.append((dec.verb_forms_file, form, "%s, read as %s" % (
             lk, in_words([(lk, t) for t in tags])), "added", (
             "%s gets the reading%s" % (entry, ", nearly impossible on its own "
-                                       "(FreeLing's affix rules analyse %s "
+                                       "(FreeLing's affix rules analyze %s "
                                        "from it)" % form if rare else
-                                       " (FreeLing's affix rules analyse %s "
+                                       " (FreeLing's affix rules analyze %s "
                                        "from it)" % form
                                        if entry != form else ""))))
 
@@ -3371,7 +3404,7 @@ def main(argv=None):
             if bases:
                 dlog.append((fn, form, "read as %s" % stdf,
                              "left to FreeLing", "attached pronouns: "
-                             "FreeLing's affix rules analyse it from %s"
+                             "FreeLing's affix rules analyze it from %s"
                              % bases[0]))
                 continue
             dlog.append((fn, form, "read as %s" % stdf, "not added",
@@ -3461,7 +3494,7 @@ def main(argv=None):
             exempted.append(f)
             dlog.append((addf, f, "proper noun", "exempted", (
                 "also %s: no proper-noun reading; FreeLing's name recognizer "
-                "tags it when capitalised (decided 261110b)"
+                "tags it when capitalized (decided 261110b)"
                 % in_words(ordinary[:3]))))
     ex_set = set(exempted)
     src["additions"] = [t for t in src["additions"]
@@ -3480,7 +3513,7 @@ def main(argv=None):
                          "decision", in_words([p for p in an if p[0] == lk])))
         elif bases:
             dlog.append((addf, form, "%s, verb" % lk, "left to FreeLing",
-                         "attached pronouns: FreeLing's affix rules analyse "
+                         "attached pronouns: FreeLing's affix rules analyze "
                          "it from %s" % bases[0]))
         else:
             dlog.append((addf, form, "%s, verb" % lk, "not added",
@@ -3668,7 +3701,7 @@ def main(argv=None):
         if zero_i:
             rule.append("RARE interjection: nearly impossible (decided "
                         "261108)" if f not in MM_RARE else
-                        "mm: millimetre by far the more probable, the "
+                        "mm: millimeter by far the more probable, the "
                         "interjection nearly impossible (decided 261108)")
         if rare_tags.get(f):
             rule.append("decided verb reading nearly impossible on its own "
@@ -3904,9 +3937,11 @@ def main(argv=None):
     # The files of the release that are copied as they are: their privacy
     # is checked here too, so a dry run shows it (the build report and the
     # data are checked when they are written).
-    copied = [("README.md", readme), ("LICENSE", licence)] + \
+    copied = [("README.md", readme), ("LICENSE", license)] + \
         [("software/" + s_.name, s_) for s_ in software] + \
         [("software/patches/" + s_.name, s_) for s_ in patch_files] + \
+        [("packaging/" + f, packaging / f) for f in PACKAGING_FILES] + \
+        [(".github/workflows/" + PACKAGING_WORKFLOW, packaging / PACKAGING_WORKFLOW)] + \
         [("sources/escl-sources/" + p.name, p)
          for p in sorted(dec.files, key=lambda p: p.name)]
     if (ddir / "README.md").is_file():
@@ -4070,7 +4105,8 @@ def main(argv=None):
     # release can be rebuilt from itself).
     for rel_, p in copied:
         put(rel_, p.read_bytes())
-        if rel_.startswith("software/") and p.suffix in (".py", ".pl"):
+        if rel_.startswith(("software/", "packaging/")) and \
+                p.suffix in (".py", ".pl", ".sh"):
             os.chmod(tmp / rel_, 0o755)
     if private:
         log("")

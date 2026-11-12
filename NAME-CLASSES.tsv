@@ -593,7 +593,7 @@ santiago	fixed class	place	NP00G00		np.dat, np-speech.dat	fixed-name-classes--26
 santo_domingo	fixed class	place	NP00G00		np.dat, np-speech.dat	fixed-name-classes--261110d.tsv (commune of Chile)	
 senegal	fixed class	place	NP00G00		np.dat, np-speech.dat	fixed-name-classes--261110d.tsv (country)	
 serbia	fixed class	place	NP00G00		np.dat, np-speech.dat	fixed-name-classes--261110d.tsv (country)	
-ses	fixed class	organisation	NP00O00		np.dat, np-speech.dat	fixed-name-classes--261110d.tsv (round 8 of the COSCACH spelling review)	
+ses	fixed class	organization	NP00O00		np.dat, np-speech.dat	fixed-name-classes--261110d.tsv (round 8 of the COSCACH spelling review)	
 seychelles	fixed class	place	NP00G00		np.dat, np-speech.dat	fixed-name-classes--261110d.tsv (country)	
 sierra_gorda	fixed class	place	NP00G00		np.dat, np-speech.dat	fixed-name-classes--261110d.tsv (commune of Chile)	
 sierra_leona	fixed class	place	NP00G00		np.dat, np-speech.dat	fixed-name-classes--261110d.tsv (country)	

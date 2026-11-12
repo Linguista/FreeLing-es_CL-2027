@@ -89,6 +89,8 @@ In the release, the paths in this README and in the copies of the tools are thos
 | `grammatical-lists/freeling-cl/CL.*.GRAM.txt` | the corrected grammatical lists, tab-separated, in the layout of the CSLD lists they replace |
 | `software/` | the tools that made this build, their READMEs, this README, and the six `explode-*-4-FreeLing.pl` scripts with `explode-VERBS-4-FreeLing_README.md` |
 | `sources/escl-sources/` | every decision file this build read, with its README: the release can be rebuilt from itself (section 6) |
+| `packaging/` | the packaging of FreeLing 4.2 with this release for Fedora 43 and 44, Debian 13 and Ubuntu 24.04 and 26.04: the scripts that patch, build, package and check it, each with its README (section "If you really want to try and build this rather than use a package...") |
+| `.github/workflows/packages.yml` | the GitHub workflow that builds the packages on each distribution, installs each on a fresh one, checks it, and attaches it to a release tagged with a date (YYMMDD, an optional letter for a second release that day) |
 | `software/patches/` | the change to FreeLing's name recognizer and classifier: `freeling-4.2-np-classes.patch`, its README, and the three source files it changes, as changed (section 8.5) |
 
 The entries files:
@@ -836,6 +838,7 @@ into the release.
 
 ## 16. Changelog
 
+- 2027 (rebuilt 261112, freeling_escl_build.py 2.6.0): packages of FreeLing 4.2 with this release for Fedora 43 and 44, Debian 13 and Ubuntu 24.04 and 26.04, built and checked by GitHub (`packaging/`, `.github/workflows/packages.yml`); how FreeLing 4.2 fails to build on each, and the fixes (the section "If you really want to try and build this rather than use a package..."); why this new version; American spelling throughout. The data are unchanged; one class in `NAME-CLASSES.tsv` reads `organization` for `organisation`.
 - 2027 (rebuilt 261112, freeling_escl_build.py 2.5.1): the release is
   public (decided 261112): no private path in any file (section 15), and
   FreeLing's license, the GNU AGPL 3.0, in `LICENSE`. The data are

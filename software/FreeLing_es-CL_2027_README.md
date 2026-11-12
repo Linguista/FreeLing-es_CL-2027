@@ -1,11 +1,10 @@
 # FreeLing es-CL 2027
 
-Chilean Spanish data for FreeLing 4.2: the dictionaries, probabilities,
-multiword expressions, tagset, name recognizer rules and currencies that
-FreeLing's Chilean variant (es-cl) uses; the word lists of FreeLing's name
-classifier, replaced by Chilean ones; and a change to FreeLing's name
-recognizer and classifier that makes every Chilean locality a place
-(section 8).
+This is the Chilean Spanish version of FreeLing 4.2: Chilean versions of the dictionaries, probabilities, multiword expressions, tagset, name recognizer rules, currencies and units, as well as a name recognizer and classifier that tags every Chilean locality as a place (section 8).
+
+Why this new version? The short of it is as follows: The 2016 version of FreeLing for Chilean Spanish was incorporated into the master version of FreeLing, but it excluded the custom tags for _voseo_ paradigm verbs ("V" in the last verb tag slot, which was unused except for marking gender in participles, which _voseo_ forms don't have). This made them indistinguishable from _tuteo_ forms, thereby closing a whole avenue of potential linguistic inquiry. Furthermore, since FreeLing rebuilds its dictionary and various other files from scratch each time you run it, it ended up clobbering a good deal of Chileanization work that I had done (that was on me, for not thoroughly understanding FreeLing's architecture). At the same time, nasty Spainisms crept in everywhere, from proper names to units, leading to many tagging errors. Finally, this new version gave me a chance to iterate it over the [COSCACH](https://corpora.pro) corpus several times and add many new lemmas that aren't in the 2016 version. So consider the 2016 version, which is the same as the one in FreeLing's Chilean Spanish version today, to be thoroughly deprecated. 
+
+## If you really want to try and build this rather than use a package...
 
 This folder is the release. It is rebuilt, never edited by hand:
 
@@ -21,25 +20,40 @@ configs that use it. All three are kept in
 /home/user/csld/software/10-Infrastructure/freeling/scripts/
 ```
 
-A copy of every tool that made this build is in `software/`. A previous
-build is moved, whole, to
-`/home/user/software/deprecated/FreeLing_es-CL_2027.DEPRECATED-YYMMDD[letter]`.
+A copy of every tool that made this build is in `software/`. A previous build is moved, whole, to `/home/user/software/deprecated/FreeLing_es-CL_2027.DEPRECATED-YYMMDD[letter]`.
 
-This README describes grammatical categories in words. The data files use
-FreeLing's tags, which FreeLing requires; `CHANGELOG.tsv` and `VARIANTS.tsv`
-give every tag in words beside it.
+### Building FreeLing 4.2 itself
+
+The name-class change (section 8.5) is a change to FreeLing's code, so using this release fully means building FreeLing 4.2 from its source, `FreeLing-src-4.2.tar.gz` from FreeLing's GitHub releases (sha256 `f96afbdb000d7375426644fb2f25baff9a63136dddce6551ea0fd20059bfce3b`). That source dates from 2020, and as published it no longer builds or installs on any current Linux distribution. The packages are built by `packaging/build-freeling.sh`, which applies every fix below (`packaging/patch-freeling.sh`), on each distribution in a container of its own (`.github/workflows/packages.yml`). On 261112 the build was tried on five distributions:
+
+| Distribution | GCC | Boost | ICU |
+|---|---|---|---|
+| Fedora 44 | 16.2.1 | 1.90.0 | 77.1 |
+| Fedora 43 | 15.3.1 | 1.83.0 | 77.1 |
+| Ubuntu 26.04 | 15.2.0 | 1.90.0 | 78.2 |
+| Debian 13 | 14.2.0 | 1.83.0 | 76.1 |
+| Ubuntu 24.04 | 13.3.0 | 1.83.0 | 74.2 |
+
+What fails, where, and the fix for each. The fixes are applied on every distribution, since none of them changes what FreeLing does on a system that did not need it.
+
+1. **CMake 4 refuses the bundled dynet** (CMake 4 and later; Fedora 44 has 4.3.0). `src/libdynet/CMakeLists.txt` declares `cmake_minimum_required(VERSION 2.8 FATAL_ERROR)`, and CMake 4 removed compatibility with versions below 3.5, so configuring stops. Fix: `-DCMAKE_POLICY_VERSION_MINIMUM=3.5`.
+2. **Errors inside templates that are never used** (GCC 14 and later). GCC now checks the body of a template even when nothing instantiates it. Two such bodies were always wrong: the bundled Eigen's `Transpositions.h`, line 387, calls `derived()` on a `Transpose`, which has no such member, and treeler's `scores.h`, line 96, assigns to `_s`, which is declared `const`. GCC 15 and 16 (Fedora 43 and 44, Ubuntu 26.04) report them under `-Wtemplate-body`, which `-Wno-template-body` silences. GCC 14 (Debian 13) has no such option and stops: "assignment of read-only member 'treeler::ConstantScores<X, R>::_s'". GCC 13 (Ubuntu 24.04) does not check. Fix: the flag, and both lines corrected in the source: Eigen's as Eigen 3.4.1 corrected it (`trt` instead of `trt.derived()`), and `_s` no longer `const` (only its constructor and `set_score` write it).
+3. **libfoma is K&R C** (GCC 15 and later, whose default is C23: Fedora 43 and 44, Ubuntu 26.04). In C23 an empty `()` in a declaration means no arguments, so `fsm_state_close` and its kin conflict with their own definitions: "conflicting types", "too many arguments to function". Fix: `-DCMAKE_C_FLAGS="-std=gnu17"`.
+4. **ICU's headers need C++17** (ICU 77 and later: Fedora 43 and 44, Ubuntu 26.04), and FreeLing's `CMakeLists.txt` sets C++11 with a plain `set(CMAKE_CXX_STANDARD 11)`, which overrides anything given on the command line: hundreds of errors such as "'enable_if_t' in namespace 'std' does not name a template type". Fix: that line edited to 17.
+5. **Math functions without `<cmath>`**. Older standard libraries brought `<cmath>` in through other headers; current ones do not, and which files fail depends on the version. `csr_kb.cc`, `relaxcor_fex_dep.cc`, `summarizer.cc` and `numbers_cs.cc` fail with GCC 16 ("'fabs' was not declared in this scope"); `smoothingLD.h` fails with GCC 13 (Ubuntu 24.04): "there are no arguments to 'log' that depend on a template parameter, so a declaration of 'log' must be available". Fix: `#include <cmath>` in all five.
+6. **The install builds two Catalan variants whose data is not in the source tarball** (everywhere). `CMakeLists.txt` lists `ca/balear` and `ca/valencia` among the variants, so `make install` stops after Spanish: "file .../data/ca/balear/dictionary/header not found". Fix: the variant list limited to `es/es-old`, `es/es-ar` and `es/es-cl`.
+7. **The install needs the en_US.UTF-8 locale** (every machine without it; the distributions' containers have only C.UTF-8). FreeLing's "default" locale is hard-coded as en_US.UTF-8 (`DEFAULT_LOCALE` in `src/libfreeling/util.cc`), and `make install` uses it to build the phonetic dictionaries: "Locale name 'en_US.UTF-8' is unknown or not installed", then "creating phonetic dictionary failed with error: 1". Fix: the locale generated before the install (`localedef -i en_US -f UTF-8 en_US.UTF-8`). FreeLing needs it at run time too, so the packages depend on `glibc-langpack-en` (Fedora) or `locales` (Debian, Ubuntu). On Debian and Ubuntu, `locales` does not generate en_US.UTF-8 by itself, so the package generates it when it is installed, if it is missing (on Ubuntu with `locale-gen en_US.UTF-8`, on Debian by enabling it in `/etc/locale.gen`), and leaves every other locale and setting alone.
+8. **A bug that aborts word-sense annotation** (wherever the standard library checks its assertions, as Fedora's does). `csr_kb.cc` reserves room in four vectors and then indexes them, although their size is still zero: "Assertion '__n < this->size()' failed", the first time UKB is used. Fix: `reserve` changed to `resize`.
+
+With these fixes FreeLing 4.2 builds, installs and passes the package checks on all five distributions. The packages are built with `-DCMAKE_BUILD_TYPE=Release` (optimized); a build configured without a build type gets no optimization at all.
+
+This README describes grammatical categories in words. The data files use FreeLing's tags, which FreeLing requires; `CHANGELOG.tsv` and `VARIANTS.tsv` give every tag in words beside it.
 
 ## License
 
-FreeLing es-CL 2027 is made from FreeLing 4.2's own data files, and is
-under FreeLing's license: the GNU Affero General Public License, version 3
-or (at your option) any later version. The license is in `LICENSE`.
-FreeLing is by the TALP Research Center of the Universitat Politècnica de
-Catalunya.
+FreeLing es-CL 2027 is made from FreeLing 4.2's own data files, and is under FreeLing's license: the GNU Affero General Public License, version 3 or (at your option) any later version. The license is in `LICENSE`. FreeLing is by the TALP Research Center of the Universitat Politècnica de Catalunya.
 
-In the release, the paths in this README and in the copies of the tools
-are those of the machine that built it, written in a public form
-(`/home/user/...`); every tool takes its paths as options.
+In the release, the paths in this README and in the copies of the tools are those of the machine that built it, written in a public form (`/home/user/...`); every tool takes its paths as options.
 
 ## 1. Contents
 
@@ -75,6 +89,8 @@ are those of the machine that built it, written in a public form
 | `grammatical-lists/freeling-cl/CL.*.GRAM.txt` | the corrected grammatical lists, tab-separated, in the layout of the CSLD lists they replace |
 | `software/` | the tools that made this build, their READMEs, this README, and the six `explode-*-4-FreeLing.pl` scripts with `explode-VERBS-4-FreeLing_README.md` |
 | `sources/escl-sources/` | every decision file this build read, with its README: the release can be rebuilt from itself (section 6) |
+| `packaging/` | the packaging of FreeLing 4.2 with this release for Fedora 43 and 44, Debian 13 and Ubuntu 24.04 and 26.04: the scripts that patch, build, package and check it, each with its README (section "If you really want to try and build this rather than use a package...") |
+| `.github/workflows/packages.yml` | the GitHub workflow that builds the packages on each distribution, installs each on a fresh one, checks it, and attaches it to a release tagged with a date (YYMMDD, an optional letter for a second release that day) |
 | `software/patches/` | the change to FreeLing's name recognizer and classifier: `freeling-4.2-np-classes.patch`, its README, and the three source files it changes, as changed (section 8.5) |
 
 The entries files:
@@ -104,7 +120,7 @@ for.
 
 | | Default `dicc.src` | Historical `historical/dicc.src` |
 |---|---|---|
-| for | every contemporary corpus: COSCACH, CODICACH | CORHICACH only |
+| for | contemporary corpora | historical corpora (referred to as CORHICACH for an upcoming corpus) |
 | vos | voseo only (pronoun, personal, 2nd person, common gender, singular, voseo) | voseo and polite (as for usted) |
 | -is forms with a voseo and a vosotros reading of the same verb and tense (salís, comís, vivís) | voseo only (497 forms) | both |
 | deis | vosotros only (the voseo form is deís) | vosotros only |
@@ -262,7 +278,7 @@ standard lemmas applied) and `verb-form-readings--*.tsv` (25 rows):
 
 ### 6.2. Interjections
 
-- 326 single-word interjections with their decided lemma (pu, lemma pus);
+- 326 single-word interjections with their decided lemma (e.g. _po_, lemma 'poh');
   an interjection reading with another lemma is replaced.
 - 103 multiword interjections in `locucions.dat`; ya po and ya poh are ya_poh
   (section 9).
@@ -271,11 +287,11 @@ standard lemmas applied) and `verb-form-readings--*.tsv` (25 rows):
   readings share at least 10,000, so FreeLing's smoothing leaves it about 1
   in 100,000; a multiword becomes ambiguous (A), so its words can stay
   apart. mm is treated the same way: millimeter by far the more probable
-  (in COSCACH the text itself becomes mmm).
+  (in COSCACH the text itself, always a hesitation marker, becomes mmm).
 - 235 removals (the Spanish interjections he, ha, fuera, hombre, vaya ...):
   their other readings stay. 53 Spanish forms that were only interjections
-  (agur, caray, olé, ...) are no longer in the dictionaries: FreeLing treats
-  them as unknown words.
+  (agur, caray, olé, ...) are no longer in the dictionaries: FreeLing will treat
+  them as unknown words if it somehow comes across them.
 
 ### 6.3. Forms kept in the text (CL.nonstandard)
 
@@ -346,11 +362,7 @@ block, sorted, at the end of the FormTagFreq section.
 
 ## 7. Spelling variants (CL.variants)
 
-Speakers do not know how voseo is written, so the lists overgenerate on
-purpose, and the release adds the common misspellings of every voseo form.
-A variant gets exactly the verb readings of its standard form, and not the
-vosotros reading of an -is form that also has a voseo reading of the same
-verb and tense.
+The Chilean voseo is almost exclusively spoken, so speakers rarely know how it's written (e.g. "estái" is more often seen as "estai", "estay" or even "estáy"). In order to handle this, the lists overgenerate on purpose, and this release adds the common misspellings of every voseo form. A variant gets exactly the verb readings of its standard form, and not the vosotros reading of an -is form that also has a voseo reading of the same verb and tense.
 
 | Rule | From | To | Example | New forms | Joined to an existing form |
 |---|---|---|---|---|---|
@@ -405,10 +417,10 @@ kind:
    (`common/nec/cities.dat`).
 
 Until 261110 the classifier read FreeLing's own lists: a world city list
-without most Chilean communes, and person lists that held España,
-Concepción, Lima and other places, and the Chilean surnames that are also
-communes (Castro, Molina, Pinto, Freire). On COSCACH, a quarter of the
-place names came out as persons or organizations (section 8.6).
+without most Chilean _comunas_, as well as **person** lists that held España,
+Lima and other places, and the Chilean surnames that are also
+communes (Castro, Molina, Pinto, Freire). In the COSCACH, a quarter of the
+place names came out as persons or organizations according to FreeLing (section 8.6).
 
 ### 8.2. The names in the dictionary (CL.names)
 
@@ -424,18 +436,11 @@ it when capitalized (decided 261101): 1,162 people, 988 places, 4
 organizations. Multiword places (agua_dulce) are not added.
 
 **Place only** (`place-only-forms--261110d.tsv`, `place-only-forms--261110e.tsv`):
-arica, barbados, chanco and pirque are places and nothing else (user,
-261110: always places, everywhere). Their readings as forms of a verb
-(aricar, barbar, chancar, pircar) are removed from the dictionaries (they
-came from FreeLing's Spanish dictionary), each gets the place reading, and
-any lemma preference (arica over aricar) or probability line of its own is
-dropped. They are then places at the start of a sentence too, in written
-texts and in speech.
+arica, barbados, chanco and pirque are places and nothing else. Their readings as forms of a verb (aricar, barbar, chancar, pircar, all unheard of in Chile) are removed from the dictionaries; each gets the place reading, and any lemma preference (arica over aricar) or probability line of its own is dropped. They are then places at the start of a sentence too, in written texts and in speech.
 
 ### 8.3. The classifier's lists, replaced by Chilean ones
 
-The release holds the classifier's lists under FreeLing's own names, and
-`freeling_escl_deploy.py --target system` installs them over FreeLing's:
+The release holds the classifier's lists under FreeLing's own names, and `freeling_escl_deploy.py --target system` installs them over FreeLing's:
 
 | File (as FreeLing names it) | FreeLing 4.2 | FreeLing es-CL 2027 |
 |---|---|---|
@@ -445,33 +450,11 @@ The release holds the classifier's lists under FreeLing's own names, and
 | `es/nerc/data/gazPER-p.dat` | person-name parts (1,012 lines) | the Chilean list of 291026, `linguistic-derived/people-names-list/gazPER-p.dat`: 3,018 |
 | `es/nerc/nec/nec-ab-poor1.dat` | the classifier's file: its model, word list and classes | FreeLing's, with the section `<ClassShares>` (section 8.4); only FreeLing with the change of section 8.5 reads it |
 
-FreeLing 4.2 ships `common/nec/cities-CL.dat`, its city list with 381
-Chilean communes, provinces and regions added, but nothing reads it: the
-classifier's feature file names `cities.dat` only. It is merged into
-`cities.dat`, and the deploy retires it, with FreeLing's own name parts
-`es/nerc/data/gazPER-p.dat.upstream` (kept there on 291026), into a
-`deprecated/` folder beside them, compressed and unreadable.
+FreeLing 4.2 ships `common/nec/cities-CL.dat`, its city list with 381 Chilean communes, provinces and regions added, but nothing reads it: the classifier's feature file names `cities.dat` only. It is merged into `cities.dat`, and the deploy retires it, with FreeLing's own name parts `es/nerc/data/gazPER-p.dat.upstream` (kept there on 291026), into a `deprecated/` folder beside them, compressed and unreadable.
 
-**The place names of the Chilean data** (3,465) are those of the Chilean
-place list (`CL.cities.GRAM.txt`), the Chilean places of `cities-CL.dat`,
-and every place reading of the default dictionary and of the multiword
-expressions. All of them go into `gazLOC-c.dat` and `cities.dat`, except a
-single word that is also an ordinary word of the dictionary (a common noun,
-a verb ...) and not a fixed place (section 8.4): such a word on a place list
-would make the classifier see a place wherever it is capitalized. So
-castro is added to `gazLOC-c.dat` (it is a fixed place) and navidad is not
-(it is on `cities.dat` only because FreeLing's `cities-CL.dat` has it). The
-fixed places that are not place names of the Chilean data (most countries,
-and Quito) are not added: their fixed class decides, and the classifier
-never sees them alone. Every addition and removal is a row of
-`CHANGELOG.tsv` (lists `cities`, `gazLOC-c`, `gazPER-c`).
+**The place names of the Chilean data** (3,465) are those of the Chilean place list (`CL.cities.GRAM.txt`), the Chilean places of `cities-CL.dat`, and every place reading of the default dictionary and of the multiword expressions. All of them go into `gazLOC-c.dat` and `cities.dat`, except a single word that is also an ordinary word of the dictionary (a common noun, a verb ...) and not a fixed place (section 8.4): such a word on a place list would make the classifier see a place wherever it is capitalized. So castro is added to `gazLOC-c.dat` (it is a fixed place) and navidad is not (it is on `cities.dat` only because FreeLing's `cities-CL.dat` has it). The fixed places that are not place names of the Chilean data (most countries, and Quito) are not added: their fixed class decides, and the classifier never sees them alone. Every addition and removal is a row of `CHANGELOG.tsv` (lists `cities`, `gazLOC-c`, `gazPER-c`).
 
-The classifier's other lists (organizations, other names, the place-name
-parts) and its model are FreeLing's: there is no Chilean version of them.
-FreeLing's own lists are kept whole, so a name decided not to be a place
-can still be on them: pinto is on FreeLing's `gazLOC-c.dat` and on its
-`cities-CL.dat`.
-The lists are features, not rules, so a list alone cannot fix a class; the
+The classifier's other lists (organizations, other names, the place-name parts) and its model are FreeLing's: there is no Chilean version of them (this may well change in the future, however). FreeLing's own lists are kept whole, so a name decided not to be a place can still be on them: pinto is on FreeLing's `gazLOC-c.dat` and on its `cities-CL.dat`. The lists are features, not rules, so a list alone cannot fix a class; the
 fixed classes (section 8.4) do.
 
 ### 8.4. The recognizer's rules and the classifier's shares
@@ -615,19 +598,7 @@ Talca"), section 8.6.
 
 ### 8.5. The change to FreeLing's code
 
-FreeLing 4.2 cannot fix a name's class, drops a place reading the
-dictionary gives a capitalized word inside a sentence, has no rule of its
-own for a word at the start of a sentence, and cannot weigh a name's
-classes. The change, `software/patches/freeling-4.2-np-classes.patch`
-(decided 261110d and 261110e), adds the four sections of section 8.4 to
-FreeLing's name recognizer (`src/libfreeling/np.cc` and
-`src/include/freeling/morfo/np.h`) and `<ClassShares>` to its classifier
-(`src/libfreeling/nec.cc`). A rule file without the recognizer's sections
-works exactly as before, and FreeLing without the change skips them; a
-classifier file with `<ClassShares>` stops FreeLing without the change.
-Its README, `software/patches/freeling-4.2-np-classes_README.md`, describes
-the change in the code, how to apply, build and install it, and how to
-check that the installed library has it:
+FreeLing 4.2 cannot fix a name's class, it drops a place reading to which the dictionary gives a capitalized word inside a sentence, it has no rule of its own for a word at the start of a sentence, and cannot weigh a name's classes. The change, `software/patches/freeling-4.2-np-classes.patch` (decided 261110d and 261110e), adds the four sections of section 8.4 to FreeLing's name recognizer (`src/libfreeling/np.cc` and `src/include/freeling/morfo/np.h`) and `<ClassShares>` to its classifier (`src/libfreeling/nec.cc`). A rule file without the recognizer's sections works exactly as before, and FreeLing without the change skips them; a classifier file with `<ClassShares>` stops FreeLing without the change. Its README, `software/patches/freeling-4.2-np-classes_README.md`, describes the change in the code, how to apply, build and install it, and how to check that the installed library has it:
 
 ```bash
 strings -e L /usr/local/lib/libfreeling.so | grep -c -x -E "DictionaryClasses|FixedClasses|ClassesAtSentenceStart|SentenceStartClasses|ClassShares|keep:"
@@ -867,6 +838,7 @@ into the release.
 
 ## 16. Changelog
 
+- 2027 (rebuilt 261112, freeling_escl_build.py 2.6.0): packages of FreeLing 4.2 with this release for Fedora 43 and 44, Debian 13 and Ubuntu 24.04 and 26.04, built and checked by GitHub (`packaging/`, `.github/workflows/packages.yml`); how FreeLing 4.2 fails to build on each, and the fixes (the section "If you really want to try and build this rather than use a package..."); why this new version; American spelling throughout. The data are unchanged; one class in `NAME-CLASSES.tsv` reads `organization` for `organisation`.
 - 2027 (rebuilt 261112, freeling_escl_build.py 2.5.1): the release is
   public (decided 261112): no private path in any file (section 15), and
   FreeLing's license, the GNU AGPL 3.0, in `LICENSE`. The data are

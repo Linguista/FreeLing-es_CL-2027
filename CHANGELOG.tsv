@@ -99442,10 +99442,10 @@ peoplenames	not added	not a single word	İskender	İskender	NP00SP0	noun, proper
 peoplenames	not added	not a single word	İsmail	İsmail	NP00SP0	noun, proper, person	
 peoplenames	not added	not a single word	İsmet	İsmet	NP00SP0	noun, proper, person	
 peoplenames	not added	not a single word	İzzet	İzzet	NP00SP0	noun, proper, person	
-orgnames	not added	the lowercase form is a word of the dictionary; left to the name recognizer	fox	fox	NPMSO00	noun, proper, masculine, singular, organisation	
-orgnames	not added	the lowercase form is a word of the dictionary; left to the name recognizer	gremialismo	gremialismo	NPMSO00	noun, proper, masculine, singular, organisation	
-orgnames	not added	the lowercase form is a word of the dictionary; left to the name recognizer	mercurio	mercurio	NPMSO00	noun, proper, masculine, singular, organisation	
-orgnames	not added	the lowercase form is a word of the dictionary; left to the name recognizer	udi	udi	NPFSO00	noun, proper, feminine, singular, organisation	
+orgnames	not added	the lowercase form is a word of the dictionary; left to the name recognizer	fox	fox	NPMSO00	noun, proper, masculine, singular, organization	
+orgnames	not added	the lowercase form is a word of the dictionary; left to the name recognizer	gremialismo	gremialismo	NPMSO00	noun, proper, masculine, singular, organization	
+orgnames	not added	the lowercase form is a word of the dictionary; left to the name recognizer	mercurio	mercurio	NPMSO00	noun, proper, masculine, singular, organization	
+orgnames	not added	the lowercase form is a word of the dictionary; left to the name recognizer	udi	udi	NPFSO00	noun, proper, feminine, singular, organization	
 cities	not added	the lowercase form is a word of the dictionary; left to the name recognizer	acampo	acampo	NP00G00	noun, proper, place	
 cities	not added	not a single word	addis_ababa	addis_ababa	NP00G00	noun, proper, place	
 cities	not added	the lowercase form is a word of the dictionary; left to the name recognizer	adelanto	adelanto	NP00G00	noun, proper, place	
@@ -101281,7 +101281,7 @@ quantities	removed	the possessive mi (uno de mi ..., dos mi ...), not the mile	m
 quantities	removed	the letter s or a false start (uno s ..., seis S), not the second	s	s			s s NCMP000 I
 quantities	removed	the letter d (sesenta D, tres D), not the day	d	d			d d NCMP000 I
 quantities	removed	CD, the compact disc (los tres cd), not the candela	cd	cd			cd cd NCMP000 I
-quantities	removed	a false start (dos cl ... dos tipos), not the centilitre	cl	cl			cl cl NCMP000 I
+quantities	removed	a false start (dos cl ... dos tipos), not the centiliter	cl	cl			cl cl NCMP000 I
 quantities	removed	a false start (uno bu ...), not the bushel	bu	bu			bu bu NCMP000 I
 quantities	removed	the chat spelling of porque, not the peck	pk	pk			pk pk NCMP000 I
 quantities	removed	the English word in (2 in 1), not the inch	in	in			in in NCFP000 I

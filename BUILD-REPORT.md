@@ -1,6 +1,6 @@
 # FreeLing es-CL 2027 -- build report
 
-Built by freeling_escl_build.py 2.5.1 on 261112.
+Built by freeling_escl_build.py 2.6.0 on 261112.
 
 | item | count |
 |---|---|
@@ -120,7 +120,7 @@ Built by freeling_escl_build.py 2.5.1 on 261112.
 - `/home/user/build/FreeLing-4.2/data/es/es-cl/locucions.dat` 73c1e1b9e2920232b9f903775365300f6a7a07c3038cb208efe810840bfb0a2a
 - `/home/user/csld/linguistic-derived/people-names-list/gazPER-p.dat` a71d55ddb8c134f260ac34f02691b514bbf34a0d8d5150be39267ce06c98b0f0
 - `/home/user/csld/software/10-Infrastructure/freeling/patches/freeling-4.2-np-classes.patch` 69542743afc056043aefa58483672a5f583b5df37346c8f7af109cb34ecc713d
-- `/home/user/csld/software/10-Infrastructure/freeling/patches/freeling-4.2-np-classes_README.md` c917a7099add5014d54eb2208f75b5064e3537b389e5d33251d0710bfc0b25ed
+- `/home/user/csld/software/10-Infrastructure/freeling/patches/freeling-4.2-np-classes_README.md` 2e6e51c0b07ea71476889b7096b459bc2c484cc9cd65275f0e46b39280c7d64f
 - `/home/user/csld/software/10-Infrastructure/freeling/patches/np.cc` 76d097ac967c502b181836e6e191b2332f87f53deb8de83d65abe4f9e42c4d0e
 - `/home/user/csld/software/10-Infrastructure/freeling/patches/np.h` 0f77cc4869a3fd0aee0db27157b606cd35f3d21a47f8a3688ac8be9722546eb4
 - `/home/user/csld/software/10-Infrastructure/freeling/patches/nec.cc` fc71feb87d40314cffa83b2677151104c6574848526ec04029b0142d5d568a4f

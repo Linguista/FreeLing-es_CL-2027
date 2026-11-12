@@ -1,6 +1,6 @@
 # freeling_escl_build_README.md
 
-Documents `freeling_escl_build.py` 2.5.1.
+Documents `freeling_escl_build.py` 2.6.0.
 
 Real file: `/home/user/csld/software/10-Infrastructure/freeling/scripts/freeling_escl_build.py`
 
@@ -48,6 +48,7 @@ FreeLing 4.2's sha256.
 | copies | into `software/patches/`: the change to FreeLing's name recognizer and classifier, from `/home/user/csld/software/10-Infrastructure/freeling/patches/` (`freeling-4.2-np-classes.patch`, its README, `np.cc`, `np.h`, `nec.cc`) |
 | reads | `/home/user/csld/software/10-Infrastructure/freeling/freeling-release-privacy.tsv` (the privacy file: private, never copied into the release; see "The release is public") |
 | copies | `agpl-3.0.txt`, next to this script (the GNU AGPL 3.0, checked by sha256), into the release as `LICENSE` |
+| copies | the packaging of FreeLing 4.2 with this release for Fedora, Debian and Ubuntu, from `/home/user/csld/software/10-Infrastructure/freeling/packaging/`: the six scripts and their READMEs into the release's `packaging/` folder, and `packages.yml`, the GitHub workflow that builds and checks the packages, into `.github/workflows/` (see "The packaging") |
 | writes | `/home/user/FreeLing_es-CL_2027/` |
 | moves | a previous build to `/home/user/software/deprecated/FreeLing_es-CL_2027.DEPRECATED-YYMMDD[letter]` |
 
@@ -68,6 +69,7 @@ freeling_escl_build.py
 | `--out` | `/home/user/FreeLing_es-CL_2027` |
 | `--explode-dir` | `/home/user/MyScripts/linguistics` |
 | `--patches` | `../patches` beside this script's folder: `/home/user/csld/software/10-Infrastructure/freeling/patches` |
+| `--packaging` | `../packaging` beside this script's folder: `/home/user/csld/software/10-Infrastructure/freeling/packaging` |
 | `--privacy` | `freeling-release-privacy.tsv` in the folder above this script's: `/home/user/csld/software/10-Infrastructure/freeling/freeling-release-privacy.tsv` |
 | `--dry-run` | build and check everything in memory, write nothing |
 
@@ -353,7 +355,25 @@ Software Foundation publishes it (sha256
 `0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0`, checked
 before anything else); it goes into the release as `LICENSE`.
 
+## The packaging (decided 261112)
+
+The release folder is the GitHub repository Linguista/FreeLing-es_CL-2027, and GitHub builds from it packages of FreeLing 4.2 with this release (`freeling-es-cl`) for Fedora 43 and 44, Debian 13 and Ubuntu 24.04 and 26.04, each built on its own distribution, installed on a fresh one and checked before it is attached to a release. The scripts that do it are kept in the project, in `software/10-Infrastructure/freeling/packaging/`, each with its README, and the build copies them into every release: the scripts into `packaging/`, the workflow `packages.yml` into `.github/workflows/`, where GitHub looks for it. So a rebuilt release folder is the complete repository.
+
+| File | What it does |
+|---|---|
+| `patch-freeling.sh` | applies to FreeLing 4.2's source every change it is built with |
+| `build-freeling.sh` | builds and installs FreeLing 4.2 with this release's data, and gathers what the package installs and needs |
+| `make-nfpm-config.py` | writes the package's configuration for nfpm |
+| `postinstall-deb.sh` | Debian and Ubuntu: refreshes the library cache and generates the en_US.UTF-8 locale if it is missing |
+| `ldconfig.sh` | refreshes the library cache (Fedora, and removal everywhere) |
+| `test-freeling.sh` | checks an installed package |
+| `packages.yml` | the GitHub workflow: on a release tagged with a date (YYMMDD, an optional letter for a second release that day), builds, checks and attaches the packages |
+
+A missing packaging file refuses the build, as any other input does.
+
 ## Tested
+
+261112, version 2.6.0, a full build on the test tree: the dictionaries, every data file and the corrected grammatical lists byte for byte as 2.5.0 built them; the packaging copied (scripts executable), the workflow in `.github/workflows/`, `SHA256SUMS` checked, no private line in the 73 copied files. The fixed class of SES, written `organisation` in its decision file, is read as organization and written so in `NAME-CLASSES.tsv`, the one change in the release's tables besides the American spelling of their notes.
 
 261112, version 2.5.1, dry runs on the test tree: with the lists as they
 were (three nguillatún lines with the lemma guillatun) the fix was made;
@@ -459,6 +479,7 @@ Linux (the FreeLing paths are Linux paths). Standard library only.
 
 ## Changelog
 
+- 2.6.0 (261112): the packaging of FreeLing 4.2 with the release for Fedora, Debian and Ubuntu (`../packaging/`, `--packaging`) is copied into every release, the scripts into `packaging/` and the GitHub workflow into `.github/workflows/`, so the release folder is the complete GitHub repository (see "The packaging"). The project writes American English (decided 261112): the decision files' class `organisation` is read as `organization` (`CLASS_SPELLING`), as is the category `proper noun, organisation or brand`, and the build's notes, messages and comments use American spelling. The data are unchanged.
 - 2.5.1 (261112): a list lemma fix (`LIST_LEMMA_FIXES`) that finds nothing
   to correct no longer refuses the build when the list already has the
   right lemma: the deployed Chilean lists are the build's own corrected
