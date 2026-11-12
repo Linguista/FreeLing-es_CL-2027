@@ -4,6 +4,8 @@ This is the Chilean Spanish version of FreeLing 4.2: Chilean versions of the dic
 
 Why this new version? The short of it is as follows: The 2016 version of FreeLing for Chilean Spanish was incorporated into the master version of FreeLing, but it excluded the custom tags for _voseo_ paradigm verbs ("V" in the last verb tag slot, which was unused except for marking gender in participles, which _voseo_ forms don't have). This made them indistinguishable from _tuteo_ forms, thereby closing a whole avenue of potential linguistic inquiry. Furthermore, since FreeLing rebuilds its dictionary and various other files from scratch each time you run it, it ended up clobbering a good deal of Chileanization work that I had done (that was on me, for not thoroughly understanding FreeLing's architecture). At the same time, nasty Spainisms crept in everywhere, from proper names to units, leading to many tagging errors. Finally, this new version gave me a chance to iterate it over the [COSCACH](https://corpora.pro) corpus several times and add many new lemmas that aren't in the 2016 version. So consider the 2016 version, which is the same as the one in FreeLing's Chilean Spanish version today, to be thoroughly deprecated. 
 
+## If you really want to try and build this rather than use a package...
+
 This folder is the release. It is rebuilt, never edited by hand:
 
 ```text
@@ -19,6 +21,31 @@ configs that use it. All three are kept in
 ```
 
 A copy of every tool that made this build is in `software/`. A previous build is moved, whole, to `/home/user/software/deprecated/FreeLing_es-CL_2027.DEPRECATED-YYMMDD[letter]`.
+
+### Building FreeLing 4.2 itself
+
+The name-class change (section 8.5) is a change to FreeLing's code, so using this release fully means building FreeLing 4.2 from its source, `FreeLing-src-4.2.tar.gz` from FreeLing's GitHub releases (sha256 `f96afbdb000d7375426644fb2f25baff9a63136dddce6551ea0fd20059bfce3b`). That source dates from 2020, and as published it no longer builds or installs on any current Linux distribution. The packages are built by `packaging/build-freeling.sh`, which applies every fix below (`packaging/patch-freeling.sh`), on each distribution in a container of its own (`.github/workflows/packages.yml`). On 261112 the build was tried on five distributions:
+
+| Distribution | GCC | Boost | ICU |
+|---|---|---|---|
+| Fedora 44 | 16.2.1 | 1.90.0 | 77.1 |
+| Fedora 43 | 15.3.1 | 1.83.0 | 77.1 |
+| Ubuntu 26.04 | 15.2.0 | 1.90.0 | 78.2 |
+| Debian 13 | 14.2.0 | 1.83.0 | 76.1 |
+| Ubuntu 24.04 | 13.3.0 | 1.83.0 | 74.2 |
+
+What fails, where, and the fix for each. The fixes are applied on every distribution, since none of them changes what FreeLing does on a system that did not need it.
+
+1. **CMake 4 refuses the bundled dynet** (CMake 4 and later; Fedora 44 has 4.3.0). `src/libdynet/CMakeLists.txt` declares `cmake_minimum_required(VERSION 2.8 FATAL_ERROR)`, and CMake 4 removed compatibility with versions below 3.5, so configuring stops. Fix: `-DCMAKE_POLICY_VERSION_MINIMUM=3.5`.
+2. **Errors inside templates that are never used** (GCC 14 and later). GCC now checks the body of a template even when nothing instantiates it. Two such bodies were always wrong: the bundled Eigen's `Transpositions.h`, line 387, calls `derived()` on a `Transpose`, which has no such member, and treeler's `scores.h`, line 96, assigns to `_s`, which is declared `const`. GCC 15 and 16 (Fedora 43 and 44, Ubuntu 26.04) report them under `-Wtemplate-body`, which `-Wno-template-body` silences. GCC 14 (Debian 13) has no such option and stops: "assignment of read-only member 'treeler::ConstantScores<X, R>::_s'". GCC 13 (Ubuntu 24.04) does not check. Fix: the flag, and both lines corrected in the source: Eigen's as Eigen 3.4.1 corrected it (`trt` instead of `trt.derived()`), and `_s` no longer `const` (only its constructor and `set_score` write it).
+3. **libfoma is K&R C** (GCC 15 and later, whose default is C23: Fedora 43 and 44, Ubuntu 26.04). In C23 an empty `()` in a declaration means no arguments, so `fsm_state_close` and its kin conflict with their own definitions: "conflicting types", "too many arguments to function". Fix: `-DCMAKE_C_FLAGS="-std=gnu17"`.
+4. **ICU's headers need C++17** (ICU 77 and later: Fedora 43 and 44, Ubuntu 26.04), and FreeLing's `CMakeLists.txt` sets C++11 with a plain `set(CMAKE_CXX_STANDARD 11)`, which overrides anything given on the command line: hundreds of errors such as "'enable_if_t' in namespace 'std' does not name a template type". Fix: that line edited to 17.
+5. **Math functions without `<cmath>`**. Older standard libraries brought `<cmath>` in through other headers; current ones do not, and which files fail depends on the version. `csr_kb.cc`, `relaxcor_fex_dep.cc`, `summarizer.cc` and `numbers_cs.cc` fail with GCC 16 ("'fabs' was not declared in this scope"); `smoothingLD.h` fails with GCC 13 (Ubuntu 24.04): "there are no arguments to 'log' that depend on a template parameter, so a declaration of 'log' must be available". Fix: `#include <cmath>` in all five.
+6. **The install builds two Catalan variants whose data is not in the source tarball** (everywhere). `CMakeLists.txt` lists `ca/balear` and `ca/valencia` among the variants, so `make install` stops after Spanish: "file .../data/ca/balear/dictionary/header not found". Fix: the variant list limited to `es/es-old`, `es/es-ar` and `es/es-cl`.
+7. **The install needs the en_US.UTF-8 locale** (every machine without it; the distributions' containers have only C.UTF-8). FreeLing's "default" locale is hard-coded as en_US.UTF-8 (`DEFAULT_LOCALE` in `src/libfreeling/util.cc`), and `make install` uses it to build the phonetic dictionaries: "Locale name 'en_US.UTF-8' is unknown or not installed", then "creating phonetic dictionary failed with error: 1". Fix: the locale generated before the install (`localedef -i en_US -f UTF-8 en_US.UTF-8`). FreeLing needs it at run time too, so the packages depend on `glibc-langpack-en` (Fedora) or `locales` (Debian, Ubuntu). On Debian and Ubuntu, `locales` does not generate en_US.UTF-8 by itself: a system without it needs `sudo localedef -i en_US -f UTF-8 en_US.UTF-8` once.
+8. **A bug that aborts word-sense annotation** (wherever the standard library checks its assertions, as Fedora's does). `csr_kb.cc` reserves room in four vectors and then indexes them, although their size is still zero: "Assertion '__n < this->size()' failed", the first time UKB is used. Fix: `reserve` changed to `resize`.
+
+With these fixes FreeLing 4.2 builds, installs and passes the package checks on all five distributions. The packages are built with `-DCMAKE_BUILD_TYPE=Release` (optimized); a build configured without a build type gets no optimization at all.
 
 This README describes grammatical categories in words. The data files use FreeLing's tags, which FreeLing requires; `CHANGELOG.tsv` and `VARIANTS.tsv` give every tag in words beside it.
 
