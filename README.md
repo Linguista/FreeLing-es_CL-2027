@@ -2,6 +2,8 @@
 
 This is the Chilean Spanish version of FreeLing 4.2: the dictionaries, probabilities, multiword expressions, tagset, name recognizer rules and currencies that FreeLing's Chilean variant (es-cl) uses; the word lists of FreeLing's name classifier, replaced by Chilean ones; and a change to FreeLing's name recognizer and classifier that makes every Chilean locality a place (section 8).
 
+Why this new version? The short of it is as follows: The 2016 version of FreeLing for Chilean Spanish was incorporated into the master version of FreeLing, but it excluded the custom tags for _voseo_ paradigm verbs ("V" in the last verb tag slot, which was unused except for marking gender in participles, which _voseo_ forms don't have). This made them indistinguishable from _tuteo_ forms, and thereby closing a whole avenue of potential linguistic inquiry. Furthermore, since FreeLing rebuilds its dictionary and various other files from scratch each time you run it, it ended up clobbering a good deal of Chileanization that I had done. At the same time, nasty Spainisms crept in everywhere, from proper names to units, leading to many tagging errors. Finally, this new version gave me a chance to iterate it over the [COSCACH](https://corpora.pro) corpus several times and add many new lemmas that aren't in the 2016 version. So consider that version, which is also the original FreeLing's Chilean Spanish version, to be thoroughly deprecated. 
+
 This folder is the release. It is rebuilt, never edited by hand:
 
 ```text
