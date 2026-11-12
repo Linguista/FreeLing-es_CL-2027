@@ -1,0 +1,13 @@
+form	replacement	how	corpora	COSCACH 040 tokens
+uste	usted	replace	all	5
+usté	usted	replace	all	0
+b ueno	bueno	join	all	0
+ueno	bueno	replace	all	1
+sñi	sí	replace	all	4
+queah	que ah	split	all	1
+quepoh	qué poh	split	all	1
+claropoh	claro poh	split	all	1
+mespoh	mes poh	split	all	1
+todopoh	todo poh	split	all	1
+trespoh	tres poh	split	all	1
+mm	mmm	replace	COSCACH only	0

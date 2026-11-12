@@ -1,0 +1,843 @@
+## This is the configuration file for 'basic' NE recognizer.
+## Configuration files for B-I-O NE recognizer can be 
+## found (if available) in nerc/nerc/ner-ab-*.dat
+<Type>
+basic
+</Type>
+
+## list of words that may be included in a Named Entity
+## e.g.  "Banco de España"  "Pedro Villacasas de la Morena"
+<FunctionWords>
+el
+la
+los
+las
+un
+una
+unos
+unas
+de
+del
+por
+para
+&
+d'
+</FunctionWords>
+## Punctuation mark tags after which a capitalized word
+## may be indicating just a sentence (or clause) beginning
+<SpecialPunct>
+Fpa
+Fca
+Fla
+Fp
+Fs
+Fd
+Fg
+Fe
+Fia
+Fit
+Faa
+Fat
+Fra
+Frc
+</SpecialPunct>
+## Tag to be assigned to detected NEs
+<NE_Tag>
+NP00000
+</NE_Tag>
+<TitleLimit>
+0
+</TitleLimit>
+<Affixes>
+don PRE
+doña PRE
+sr.  PRE
+sra. PRE
+sras. PRE
+sres. PRE
+srs.  PRE
+srta. PRE
+jr. SUF
+</Affixes>
+<Ignore>
+a 1
+b 1
+c 1
+d 1
+e 1
+f 1
+g 1
+h 1
+i 1
+j 1
+k 1
+l 1
+m 1
+n 1
+ñ 1
+o 1
+p 1
+q 1
+r 1
+s 1
+t 1
+u 1
+v 1
+w 1
+x 1
+y 1
+z 1
+</Ignore>
+<Names>
+amara
+asad
+blanca
+blanco
+bruce
+carmen
+china
+corriere
+giro
+herrera
+junta
+mayor
+miró
+parís
+pelé
+piqué
+riera
+rojo
+soler
+time
+times
+unió
+zapatero
+miren
+</Names>
+<SplitMultiwords>
+no
+</SplitMultiwords>
+
+## ----------------------------------------------------------------------
+## FreeLing es-CL 2027: the name classes (decided 261110d).
+## Read only by FreeLing 4.2 with the name-class change
+## (software/patches/freeling-4.2-np-classes.patch); FreeLing without it
+## skips these sections.
+## This file: transcribed speech (COSCACH), where a line is an utterance:
+## the fixed and dictionary classes apply at the start of a line too.
+##
+## DictionaryClasses: a one-word name whose dictionary entry has one of
+## these proper-noun tags keeps it, in this order, with the dictionary's
+## lemma; the classifier is not asked.
+<DictionaryClasses>
+NP00G00 NP00SP0 NP00O00 NP00V00
+</DictionaryClasses>
+## ClassesAtSentenceStart: yes, the classes also apply at the start of a
+## sentence (a line of transcribed speech); no, a word there that is also
+## a common noun or an adjective is left to FreeLing.
+<ClassesAtSentenceStart>
+yes
+</ClassesAtSentenceStart>
+## FixedClasses: form tag. The name, in lower case with its words joined
+## by _, always gets this tag, whatever the classifier would say.
+<FixedClasses>
+afganistán NP00G00
+aisén NP00G00
+albania NP00G00
+alemania NP00G00
+algarrobo NP00G00
+alhué NP00G00
+alto_biobío NP00G00
+alto_bío-bío NP00G00
+alto_bío_bío NP00G00
+alto_del_carmen NP00G00
+alto_de_el_carmen NP00G00
+alto_hospicio NP00G00
+américa NP00G00
+américa_central NP00G00
+américa_del_norte NP00G00
+américa_de_el_norte NP00G00
+américa_del_sur NP00G00
+américa_de_el_sur NP00G00
+américa_latina NP00G00
+ancud NP00G00
+andacollo NP00G00
+andorra NP00G00
+angol NP00G00
+angola NP00G00
+antigua_y_barbuda NP00G00
+antofa NP00G00
+antofagasta NP00G00
+antuco NP00G00
+antártica NP00G00
+antártica_chilena NP00G00
+antártida NP00G00
+arabia_saudita NP00G00
+arabia_saudí NP00G00
+arauco NP00G00
+argelia NP00G00
+argentina NP00G00
+arica NP00G00
+arica_y_parinacota NP00G00
+armenia NP00G00
+asia NP00G00
+atacama NP00G00
+australia NP00G00
+austria NP00G00
+aysén NP00G00
+azerbaiyán NP00G00
+bahamas NP00G00
+bangladés NP00G00
+barbados NP00G00
+baréin NP00G00
+belice NP00G00
+benín NP00G00
+bielorrusia NP00G00
+biobío NP00G00
+birmania NP00G00
+bogotá NP00G00
+bolivia NP00G00
+bosnia NP00G00
+botsuana NP00G00
+brasil NP00G00
+brasilia NP00G00
+brasília NP00G00
+brunéi NP00G00
+buenos_aires NP00G00
+buin NP00G00
+bulgaria NP00G00
+bulnes NP00G00
+burkina_faso NP00G00
+burundi NP00G00
+butalelbún NP00G00
+bután NP00G00
+bélgica NP00G00
+bío-bío NP00G00
+bío_bío NP00G00
+cabildo NP00G00
+cabo_de_hornos NP00G00
+cabo_verde NP00G00
+cabrero NP00G00
+cachapoal NP00G00
+calama NP00G00
+calbuco NP00G00
+caldera NP00G00
+calera_de_tango NP00G00
+calle_larga NP00G00
+camarones NP00G00
+camboya NP00G00
+camerún NP00G00
+camiña NP00G00
+canadá NP00G00
+canela NP00G00
+capitán_prat NP00G00
+caracas NP00G00
+carahue NP00G00
+cardenal_caro NP00G00
+cartagena NP00G00
+casablanca NP00G00
+castro NP00G00
+catar NP00G00
+catemu NP00G00
+cauquenes NP00G00
+cautín NP00G00
+cañete NP00G00
+centroamérica NP00G00
+cerrillos NP00G00
+cerro_navia NP00G00
+chacabuco NP00G00
+chad NP00G00
+chaitén NP00G00
+chanco NP00G00
+chañaral NP00G00
+cheng-tu NP00G00
+chequia NP00G00
+chiguayante NP00G00
+chile NP00G00
+chile_chico NP00G00
+chillán NP00G00
+chillán_viejo NP00G00
+chiloé NP00G00
+chimbarongo NP00G00
+china NP00G00
+chipre NP00G00
+choapa NP00G00
+cholchol NP00G00
+chonchi NP00G00
+chépica NP00G00
+cisnes NP00G00
+ciudad_de_guatemala NP00G00
+ciudad_de_méxico NP00G00
+ciudad_de_panamá NP00G00
+cobquecura NP00G00
+cochamó NP00G00
+cochrane NP00G00
+codegua NP00G00
+coelemu NP00G00
+coihaique NP00G00
+coihueco NP00G00
+coinco NP00G00
+colbún NP00G00
+colchagua NP00G00
+colchane NP00G00
+colina NP00G00
+collipulli NP00G00
+colombia NP00G00
+coltauco NP00G00
+combarbalá NP00G00
+comoras NP00G00
+conce NP00G00
+concepción NP00G00
+conchalí NP00G00
+concón NP00G00
+constitución NP00G00
+contulmo NP00G00
+copiapó NP00G00
+coquimbo NP00G00
+cordillera NP00G00
+corea NP00G00
+corea_del_norte NP00G00
+corea_de_el_norte NP00G00
+corea_del_sur NP00G00
+corea_de_el_sur NP00G00
+coronel NP00G00
+corral NP00G00
+costa_de_marfil NP00G00
+costa_rica NP00G00
+coyhaique NP00G00
+croacia NP00G00
+cuba NP00G00
+cunco NP00G00
+curacautín NP00G00
+curacaví NP00G00
+curaco_de_vélez NP00G00
+curanilahue NP00G00
+curarrehue NP00G00
+curepto NP00G00
+curicó NP00G00
+da_an NP00G00
+dalcahue NP00G00
+diego_de_almagro NP00G00
+dinamarca NP00G00
+dominica NP00G00
+doñihue NP00G00
+dr._house NP00SP0
+dr._simi NP00SP0
+ecuador NP00G00
+egipto NP00G00
+el_bosque NP00G00
+el_carmen NP00G00
+el_loa NP00G00
+el_monte NP00G00
+el_quisco NP00G00
+el_salvador NP00G00
+el_tabo NP00G00
+elqui NP00G00
+emiratos_árabes_unidos NP00G00
+empedrado NP00G00
+ercilla NP00G00
+eritrea NP00G00
+escocia NP00G00
+eslovaquia NP00G00
+eslovenia NP00G00
+españa NP00G00
+estación_central NP00G00
+estados_unidos NP00G00
+estonia NP00G00
+esuatini NP00G00
+etiopía NP00G00
+europa NP00G00
+filipinas NP00G00
+finlandia NP00G00
+fiyi NP00G00
+florida NP00G00
+francia NP00G00
+freire NP00G00
+freirina NP00G00
+fresia NP00G00
+frutillar NP00G00
+futaleufú NP00G00
+futrono NP00G00
+gabón NP00G00
+gales NP00G00
+galvarino NP00G00
+gambia NP00G00
+general_carrera NP00G00
+general_lagos NP00G00
+georgia NP00G00
+ghana NP00G00
+gorbea NP00G00
+granada NP00G00
+graneros NP00G00
+grecia NP00G00
+groenlandia NP00G00
+guaitecas NP00G00
+guatemala NP00G00
+guinea NP00G00
+guinea-bisáu NP00G00
+guinea_ecuatorial NP00G00
+guyana NP00G00
+habana NP00G00
+haití NP00G00
+han-kou NP00G00
+hijuelas NP00G00
+holanda NP00G00
+honduras NP00G00
+hong_kong NP00G00
+hualaihué NP00G00
+hualañé NP00G00
+hualpén NP00G00
+hualqui NP00G00
+huara NP00G00
+huasco NP00G00
+huechuraba NP00G00
+hungría NP00G00
+illapel NP00G00
+independencia NP00G00
+india NP00G00
+indonesia NP00G00
+inglaterra NP00G00
+iquique NP00G00
+irak NP00G00
+irlanda NP00G00
+irán NP00G00
+isla_de_maipo NP00G00
+isla_de_pascua NP00G00
+isla_juan_fernández NP00G00
+islandia NP00G00
+islas_salomón NP00G00
+italia NP00G00
+jamaica NP00G00
+japón NP00G00
+ji_an NP00G00
+jordania NP00G00
+juan_fernández NP00G00
+judejut NP00V00
+kazajistán NP00G00
+kenia NP00G00
+kirguistán NP00G00
+kiribati NP00G00
+kosovo NP00G00
+kuwait NP00G00
+la_araucanía NP00G00
+la_calera NP00G00
+la_cisterna NP00G00
+la_cruz NP00G00
+la_estrella NP00G00
+la_florida NP00G00
+la_granja NP00G00
+la_habana NP00G00
+la_higuera NP00G00
+la_ligua NP00G00
+la_paz NP00G00
+la_pintana NP00G00
+la_reina NP00G00
+la_serena NP00G00
+la_unión NP00G00
+lago_ranco NP00G00
+lago_verde NP00G00
+laguna_blanca NP00G00
+laja NP00G00
+lampa NP00G00
+lanco NP00G00
+laos NP00G00
+las_cabras NP00G00
+las_condes NP00G00
+latinoamérica NP00G00
+lautaro NP00G00
+lebu NP00G00
+lesoto NP00G00
+letonia NP00G00
+liberia NP00G00
+libia NP00G00
+licantén NP00G00
+liechtenstein NP00G00
+lima NP00G00
+limache NP00G00
+limarí NP00G00
+linares NP00G00
+lituania NP00G00
+litueche NP00G00
+llaillay NP00G00
+llanquihue NP00G00
+llay_llay NP00G00
+lo_barnechea NP00G00
+lo_espejo NP00G00
+lo_prado NP00G00
+lolol NP00G00
+loncoche NP00G00
+longaví NP00G00
+lonquimay NP00G00
+los_andes NP00G00
+los_lagos NP00G00
+los_muermos NP00G00
+los_ríos NP00G00
+los_sauces NP00G00
+los_vilos NP00G00
+los_álamos NP00G00
+los_ángeles NP00G00
+lota NP00G00
+lu_an NP00G00
+lumaco NP00G00
+luxemburgo NP00G00
+líbano NP00G00
+ma_anshan NP00G00
+macedonia NP00G00
+machalí NP00G00
+macul NP00G00
+madagascar NP00G00
+magallanes NP00G00
+maipo NP00G00
+maipú NP00G00
+malasia NP00G00
+malaui NP00G00
+maldivas NP00G00
+malleco NP00G00
+malloa NP00G00
+malta NP00G00
+malí NP00G00
+managua NP00G00
+marchihue NP00G00
+marga_marga NP00G00
+mariquina NP00G00
+marruecos NP00G00
+maría_elena NP00G00
+maría_pinto NP00G00
+maule NP00G00
+maullín NP00G00
+mauritania NP00G00
+mejillones NP00G00
+melipeuco NP00G00
+melipilla NP00G00
+micronesia NP00G00
+moldavia NP00G00
+mongolia NP00G00
+monte_patria NP00G00
+montenegro NP00G00
+montevideo NP00G00
+mostazal NP00G00
+mozambique NP00G00
+mulchén NP00G00
+máfil NP00G00
+méxico NP00G00
+mónaco NP00G00
+n_djamena NP00G00
+nacimiento NP00G00
+namibia NP00G00
+nancagua NP00G00
+natales NP00G00
+nauru NP00G00
+negrete NP00G00
+nepal NP00G00
+nicaragua NP00G00
+nigeria NP00G00
+ninhue NP00G00
+nogales NP00G00
+norteamérica NP00G00
+noruega NP00G00
+nueva_imperial NP00G00
+nueva_zelanda NP00G00
+níger NP00G00
+o'higgins NP00G00
+o_brien NP00G00
+o_neals NP00G00
+oceanía NP00G00
+ohiggins NP00G00
+olivar NP00G00
+ollagüe NP00G00
+olmué NP00G00
+omán NP00G00
+osorno NP00G00
+ovalle NP00G00
+padre_hurtado NP00G00
+padre_las_casas NP00G00
+paiguano NP00G00
+paihuano NP00G00
+paillaco NP00G00
+paine NP00G00
+pakistán NP00G00
+palaos NP00G00
+palena NP00G00
+palestina NP00G00
+palmilla NP00G00
+panamá NP00G00
+panguipulli NP00G00
+panquehue NP00G00
+papudo NP00G00
+papúa_nueva_guinea NP00G00
+paraguay NP00G00
+paredones NP00G00
+parinacota NP00G00
+parral NP00G00
+países_bajos NP00G00
+pedro_aguirre_cerda NP00G00
+pelarco NP00G00
+pelluhue NP00G00
+pemuco NP00G00
+pencahue NP00G00
+penco NP00G00
+peralillo NP00G00
+perquenco NP00G00
+perú NP00G00
+petorca NP00G00
+peumo NP00G00
+peñaflor NP00G00
+peñalolén NP00G00
+pica NP00G00
+pichidegua NP00G00
+pichilemu NP00G00
+pinto NP00SP0
+pirque NP00G00
+pitrufquén NP00G00
+placilla NP00G00
+polonia NP00G00
+portezuelo NP00G00
+portugal NP00G00
+porvenir NP00G00
+pozo_almonte NP00G00
+primavera NP00G00
+providencia NP00G00
+puchuncaví NP00G00
+pucón NP00G00
+pudahuel NP00G00
+puente_alto NP00G00
+puerto_montt NP00G00
+puerto_octay NP00G00
+puerto_príncipe NP00G00
+puerto_rico NP00G00
+puerto_varas NP00G00
+pumanque NP00G00
+punitaqui NP00G00
+punta_arenas NP00G00
+puqueldón NP00G00
+purranque NP00G00
+purén NP00G00
+putaendo NP00G00
+putre NP00G00
+puyehue NP00G00
+queilén NP00G00
+quellón NP00G00
+quemchi NP00G00
+quilaco NP00G00
+quilicura NP00G00
+quilleco NP00G00
+quillota NP00G00
+quillón NP00G00
+quilpué NP00G00
+quinchao NP00G00
+quinta_de_tilcoco NP00G00
+quinta_normal NP00G00
+quintero NP00G00
+quirihue NP00G00
+quito NP00G00
+rancagua NP00G00
+ranco NP00G00
+rauco NP00G00
+recoleta NP00G00
+región_de_aisén NP00G00
+región_de_aisén_del_general_carlos_ibáñez_del_campo NP00G00
+región_de_aisén_de_el_general_carlos_ibáñez_de_el_campo NP00G00
+región_de_aisén_del_gral._carlos_ibáñez_del_campo NP00G00
+región_de_aisén_de_el_gral._carlos_ibáñez_de_el_campo NP00G00
+región_de_antofagasta NP00G00
+región_de_arica_y_parinacota NP00G00
+región_de_atacama NP00G00
+región_de_coquimbo NP00G00
+región_de_la_araucanía NP00G00
+región_de_los_lagos NP00G00
+región_de_los_ríos NP00G00
+región_de_magallanes NP00G00
+región_de_magallanes_y_de_la_antártica_chilena NP00G00
+región_de_o'higgins NP00G00
+región_de_ohiggins NP00G00
+región_de_tarapacá NP00G00
+región_de_valparaíso NP00G00
+región_del_bio-bío NP00G00
+región_de_el_bio-bío NP00G00
+región_del_bio_bío NP00G00
+región_de_el_bio_bío NP00G00
+región_del_biobío NP00G00
+región_de_el_biobío NP00G00
+región_del_bío-bío NP00G00
+región_de_el_bío-bío NP00G00
+región_del_bío_bío NP00G00
+región_de_el_bío_bío NP00G00
+región_del_libertador_general_bernardo_o'higgins NP00G00
+región_de_el_libertador_general_bernardo_o'higgins NP00G00
+región_del_libertador_general_bernardo_ohiggins NP00G00
+región_de_el_libertador_general_bernardo_ohiggins NP00G00
+región_del_libertador_gral._bernardo_o'higgins NP00G00
+región_de_el_libertador_gral._bernardo_o'higgins NP00G00
+región_del_libertador_gral._bernardo_ohiggins NP00G00
+región_de_el_libertador_gral._bernardo_ohiggins NP00G00
+región_del_maule NP00G00
+región_de_el_maule NP00G00
+región_metropolitana NP00G00
+región_metropolitana_de_santiago NP00G00
+reino_unido NP00G00
+renaico NP00G00
+renca NP00G00
+rengo NP00G00
+república_checa NP00G00
+república_dominicana NP00G00
+requínoa NP00G00
+retiro NP00G00
+rinconada NP00G00
+romeral NP00G00
+ruanda NP00G00
+rumania NP00G00
+rumanía NP00G00
+rusia NP00G00
+ránquil NP00G00
+río_bueno NP00G00
+río_claro NP00G00
+río_hurtado NP00G00
+río_ibáñez NP00G00
+río_negro NP00G00
+río_verde NP00G00
+saavedra NP00G00
+sagrada_familia NP00G00
+salamanca NP00G00
+samoa NP00G00
+san_antonio NP00G00
+san_bernardo NP00G00
+san_carlos NP00G00
+san_clemente NP00G00
+san_esteban NP00G00
+san_fabián NP00G00
+san_felipe NP00G00
+san_felipe_de_aconcagua NP00G00
+san_fernando NP00G00
+san_gregorio NP00G00
+san_ignacio NP00G00
+san_javier NP00G00
+san_joaquín NP00G00
+san_josé_de_maipo NP00G00
+san_juan_de_la_costa NP00G00
+san_marino NP00G00
+san_miguel NP00G00
+san_nicolás NP00G00
+san_pablo NP00G00
+san_pedro NP00G00
+san_pedro_de_atacama NP00G00
+san_pedro_de_la_paz NP00G00
+san_rafael NP00G00
+san_ramón NP00G00
+san_rosendo NP00G00
+san_salvador NP00G00
+san_vicente NP00G00
+santa_barbara_d_oeste NP00G00
+santa_bárbara NP00G00
+santa_cruz NP00G00
+santa_juana NP00G00
+santa_maría NP00G00
+santiago NP00G00
+santo_domingo NP00G00
+senegal NP00G00
+serbia NP00G00
+ses NP00O00
+seychelles NP00G00
+sierra_gorda NP00G00
+sierra_leona NP00G00
+singapur NP00G00
+siria NP00G00
+somalia NP00G00
+sri_lanka NP00G00
+st_john_s NP00G00
+sudamérica NP00G00
+sudáfrica NP00G00
+sudán NP00G00
+suecia NP00G00
+suiza NP00G00
+suramérica NP00G00
+surinam NP00G00
+tai_an NP00G00
+tailandia NP00G00
+taiwán NP00G00
+talagante NP00G00
+talca NP00G00
+talcahuano NP00G00
+taltal NP00G00
+tamarugal NP00G00
+tanzania NP00G00
+tarapacá NP00G00
+tayikistán NP00G00
+tegucigalpa NP00G00
+temuco NP00G00
+teno NP00G00
+teodoro_schmidt NP00G00
+tien-ching NP00G00
+tierra_amarilla NP00G00
+tierra_del_fuego NP00G00
+tierra_de_el_fuego NP00G00
+tiltil NP00G00
+timaukel NP00G00
+timor_oriental NP00G00
+tirúa NP00G00
+tocopilla NP00G00
+togo NP00G00
+toltén NP00G00
+tomé NP00G00
+tonga NP00G00
+torres_del_paine NP00G00
+torres_de_el_paine NP00G00
+tortel NP00G00
+traiguén NP00G00
+treguaco NP00G00
+trinidad_y_tobago NP00G00
+tucapel NP00G00
+turkmenistán NP00G00
+turquía NP00G00
+tuvalu NP00G00
+túnez NP00G00
+ucrania NP00G00
+uganda NP00G00
+uruguay NP00G00
+uzbekistán NP00G00
+valdivia NP00G00
+vallenar NP00G00
+valparaíso NP00G00
+valpo NP00G00
+vanuatu NP00G00
+vaticano NP00G00
+venezuela NP00G00
+vichuquén NP00G00
+victoria NP00G00
+vicuña NP00G00
+vietnam NP00G00
+vilcún NP00G00
+villa_alegre NP00G00
+villa_alemana NP00G00
+villarrica NP00G00
+vitacura NP00G00
+viña_del_mar NP00G00
+viña_de_el_mar NP00G00
+wu-chang NP00G00
+xi_an NP00G00
+ya_an NP00G00
+yan_an NP00G00
+yemen NP00G00
+yerbas_buenas NP00G00
+yibuti NP00G00
+yumbel NP00G00
+yungay NP00G00
+zambia NP00G00
+zapallar NP00G00
+zimbabue NP00G00
+áfrica NP00G00
+ñiquén NP00G00
+ñuble NP00G00
+ñuñoa NP00G00
+última_esperanza NP00G00
+</FixedClasses>
+## SentenceStartClasses: form tag [keep[:prefix,...]]. At the start of a
+## sentence the one-word name gets this reading, whatever the rules above
+## say; with keep its own readings stay beside it and the tagger chooses
+## (the odds are in probabilitats.dat); with keep:V only those whose tags
+## begin with V (verbs) stay. NP00000: the classifier decides the class.
+<SentenceStartClasses>
+asunción NP00000
+molina NP00000
+pinto NP00SP0
+sucre NP00000
+</SentenceStartClasses>

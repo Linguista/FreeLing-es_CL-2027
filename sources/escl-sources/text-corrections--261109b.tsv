@@ -1,0 +1,17 @@
+form	correction	how	sheet	count
+zepellin	zeppelin	replace	Proper-Brands-Foreign	2
+fueza	fuerza	replace	Proper-Brands-Foreign	2
+costitución	constitución	replace	Proper-Brands-Foreign	2
+méxicano	mexicano	replace	Proper-Brands-Foreign	2
+santiagoviajavamos	santiago viajábamos	split	Proper-Brands-Foreign	1
+ventinueve	veintinueve	replace	Proper-Brands-Foreign	1
+melipillaun	melipilla un	split	Proper-Brands-Foreign	1
+alemánen	alemán en	split	Proper-Brands-Foreign	1
+tí	ti	replace	Proper-Brands-Foreign	1
+trogadero	trocadero	replace	Proper-Brands-Foreign	2
+trucadero	trocadero	replace	Proper-Brands-Foreign	2
+comestóloga	cosmetóloga	replace	Proper-Brands-Foreign	2
+queile	queilén	replace	Proper-Brands-Foreign	2
+epaña	españa	replace	Proper-Brands-Foreign	2
+celesiano	salesiano	replace	Proper-Brands-Foreign	3
+daen	daem	replace	Proper-Brands-Foreign	2

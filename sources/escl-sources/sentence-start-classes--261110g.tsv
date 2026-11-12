@@ -1,0 +1,3 @@
+form	reading	keep own readings	share	files	ruling
+pinto	person	verbs	30	written	user, 261110: at the start of a written sentence the surname or the verb pintar, the tagger chooses; the surname at 30%
+pinto	person	no		speech	user, 261110: a capitalised word at the start of a COSCACH line is a name (a speaker's pinto is written in lower case and stays the verb), so there Pinto is the surname only

@@ -1,0 +1,25 @@
+<TagSetFile>
+./tagset.dat
+</TagSetFile>
+<Multiwords>
+concha_de_su_madre concha_de_su_madre AQ0CN00 concha_de_su_madre NCCN000 concha_de_su_madre I concha_de_su_madre NCCS000 I
+concha_de_su_maire concha_de_su_madre I concha_de_su_madre AQ0CN00 concha_de_su_madre NCCS000 I
+concha_de_su_mare concha_de_su_madre I concha_de_su_madre AQ0CN00 concha_de_su_madre NCCS000 I
+concha_de_tu_madre concha_de_tu_madre I concha_de_tu_madre AQ0CN00 concha_de_tu_madre NCCS000 I
+concha_de_tu_maire concha_de_tu_madre I concha_de_tu_madre AQ0CN00 concha_de_tu_madre NCCS000 I
+concha_de_tu_mare concha_de_tu_madre I concha_de_tu_madre AQ0CN00 concha_de_tu_madre NCCS000 I
+conchas_de_sus_madres concha_de_su_madre I concha_de_su_madre AQ0CN00 concha_de_su_madre NCCS000 A
+conchas_de_sus_maires concha_de_su_madre I concha_de_su_madre AQ0CN00 concha_de_su_madre NCCS000 I
+conchas_de_sus_mares concha_de_su_madre I concha_de_su_madre AQ0CN00 concha_de_su_madre NCCS000 I
+conche_su_madre concha_de_su_madre I concha_de_su_madre AQ0CN00 concha_de_su_madre NCCS000 A
+conche_su_maire concha_de_su_madre I concha_de_su_madre AQ0CN00 concha_de_su_madre NCCS000 A
+conche_su_mare concha_de_su_madre I concha_de_su_madre AQ0CN00 concha_de_su_madre NCCS000 A
+conche_tu_madre concha_de_tu_madre I concha_de_tu_madre AQ0CN00 concha_de_tu_madre NCCS000 A
+conche_tu_maire concha_de_tu_madre I concha_de_tu_madre AQ0CN00 concha_de_tu_madre NCCS000 I
+conche_tu_mare concha_de_tu_madre I concha_de_tu_madre AQ0CN00 concha_de_tu_madre NCCS000 A
+concho_de_vino concho_de_vino AQ0CN00 concho_de_vino NCCN000 I
+con_tutti con_tutti RG I
+ya_<poh> ya_poh I I
+jeans_day jeans_day NCMS000 I
+jean_day jeans_day NCMS000 I
+</Multiwords>

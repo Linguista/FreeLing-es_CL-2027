@@ -1,0 +1,34 @@
+<Lexicon>
+nec-f34-poor1-5abs.lex
+</Lexicon>
+<Classifier>
+AdaBoost
+</Classifier>
+<RGF>
+nec-f34.rgf
+</RGF>
+<ModelFile>
+nec-f34-poor1-5abs.abm
+</ModelFile>
+<Classes>
+0 NP00SP0 1 NP00G00 2 NP00O00 3 NP00V00
+</Classes>
+<NE_Tag>
+NP00000
+</NE_Tag>
+
+## ----------------------------------------------------------------------
+## FreeLing es-CL 2027: the class shares (decided 261110e).
+## Read only by FreeLing 4.2 with the name-class change
+## (software/patches/freeling-4.2-np-classes.patch); FreeLing 4.2 without
+## it refuses this file.
+## ClassShares: form tag share [tag share ...]. The name takes one of these
+## classes: the classifier's weight for each plus half the log odds of its
+## share; the highest wins.
+<ClassShares>
+asunción NP00G00 0.8000 NP00SP0 0.2000
+molina NP00G00 0.7500 NP00SP0 0.2500
+san_josé NP00G00 0.8000 NP00SP0 0.2000
+san_juan NP00G00 0.8000 NP00SP0 0.2000
+sucre NP00G00 0.9500 NP00SP0 0.0500
+</ClassShares>

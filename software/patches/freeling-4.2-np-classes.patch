@@ -1,0 +1,389 @@
+FreeLing 4.2: name classes for the name recognizer (np) and classifier (nec)
+Part of FreeLing es-CL 2027 (261110). License: GNU AGPL v3 or later, as
+FreeLing itself.
+
+Adds four optional sections to the rule file of FreeLing's basic name
+recognizer (np.dat, read by src/libfreeling/np.cc):
+
+  <DictionaryClasses>       proper-noun tags, in order of preference: a
+                            one-word name whose dictionary entry has one of
+                            them keeps that class, with the dictionary's
+                            lemma, instead of becoming an unclassified
+                            name (NP00000) for the classifier
+  <FixedClasses>            "form tag" lines: the name (lower case, words
+                            joined by _) always takes this tag
+  <ClassesAtSentenceStart>  yes or no (default no): whether the two rules
+                            also apply to a one-word name at the start of a
+                            sentence that is also a common noun or an
+                            adjective; with yes, a fixed name there also
+                            becomes a name
+  <SentenceStartClasses>    "form tag [keep[:prefix,...]]" lines: at the
+                            start of a sentence the one-word name gets this
+                            reading, whatever the other rules say; with
+                            keep, its dictionary readings stay beside it and
+                            the tagger chooses; with keep:V (tag prefixes,
+                            separated by commas) only the readings whose
+                            tags begin so stay
+
+and one to the classifier's file (nec-ab-poor1.dat, read by
+src/libfreeling/nec.cc):
+
+  <ClassShares>             "form tag share [tag share ...]" lines: the name
+                            takes one of these classes, the classifier's
+                            weight for each plus half the log odds of its
+                            share
+
+A rule file without the np sections works exactly as before, and FreeLing
+without the change skips them. A classifier file with <ClassShares> needs
+the change: FreeLing 4.2 refuses an unknown section there. The classifier
+keeps FreeLing 4.2's size (its shares are kept outside the class), so
+programs that create one themselves (threaded_analyzer) keep working with
+this library; the recognizer, which grows, is only ever created inside the
+library.
+
+Apply in the FreeLing 4.2 source tree (the tag 4.2 of
+https://github.com/TALP-UPC/FreeLing):
+
+  patch -p1 < freeling-4.2-np-classes.patch
+
+Then build the library (configure the build folder and make the target
+freeling) and install it alone, with the header np.h. See
+freeling-4.2-np-classes_README.md.
+
+Files: src/include/freeling/morfo/np.h, src/libfreeling/nec.cc,
+src/libfreeling/np.cc
+
+--- a/src/include/freeling/morfo/np.h
++++ b/src/include/freeling/morfo/np.h
+@@ -32,6 +32,7 @@
+ #include <set>
+ #include <map>
+ #include <freeling/regexp.h>
++#include <vector>
+ 
+ #include "freeling/windll.h"
+ #include "freeling/morfo/language.h"
+@@ -66,6 +67,30 @@
+     freeling::regexp RE_NounAdj;
+     freeling::regexp RE_Closed;
+     freeling::regexp RE_DateNumPunct;
++    /// es-CL: proper-noun tags a one-word name takes from the dictionary,
++    /// in order of preference (section <DictionaryClasses> of np.dat)
++    std::vector<std::wstring> dict_classes;
++    /// es-CL: names whose class is fixed, lowercase, multiwords joined
++    /// with "_" (section <FixedClasses> of np.dat: form tag)
++    std::map<std::wstring,std::wstring> fixed_classes;
++    /// es-CL: whether the two rules above also apply to a one-word name at
++    /// the start of a sentence that is also an ordinary noun or adjective
++    /// (section <ClassesAtSentenceStart> of np.dat: yes or no; default no)
++    bool classes_at_start;
++    /// es-CL: the reading a one-word name gets at the start of a sentence:
++    /// the tag added, whether the word's dictionary readings stay beside
++    /// it, and, when only some of them stay, the tag prefixes of those
++    struct start_reading {
++      std::wstring tag;
++      bool keep;
++      std::vector<std::wstring> only;
++    };
++    /// es-CL: one-word names with their own reading at the start of a
++    /// sentence, which wins there over the rules above (section
++    /// <SentenceStartClasses> of np.dat: form tag [keep[:prefix,...]]);
++    /// with keep, the word's dictionary readings stay beside it (with
++    /// prefixes, only those whose tags begin so) and the tagger chooses
++    std::map<std::wstring,start_reading> start_classes;
+ 
+     int ComputeToken(int,sentence::iterator &, sentence &) const;
+     void ResetActions(ner_status *) const;
+--- a/src/libfreeling/nec.cc
++++ b/src/libfreeling/nec.cc
+@@ -28,6 +28,9 @@
+ 
+ #include <fstream>
+ #include <sstream>
++#include <cmath>
++#include <map>
++#include <mutex>
+ 
+ #include "freeling/morfo/configfile.h"
+ #include "freeling/morfo/nec.h"
+@@ -45,6 +48,17 @@
+ #define MOD_TRACENAME L"NEC"
+ #define MOD_TRACECODE NEC_TRACE
+ 
++  // es-CL: the class shares of section <ClassShares> of the classifier's
++  // file, one table per classifier object. They are kept here, outside
++  // class nec, so that the class keeps FreeLing 4.2's size: programs built
++  // against FreeLing 4.2's headers that create a classifier themselves
++  // (threaded_analyzer) keep working with this library.
++  // A table maps a name (lower case, words joined by _) to its classes,
++  // each with its share (0 < share < 1).
++  typedef std::map<std::wstring,std::map<std::wstring,double> > share_table;
++  static std::map<const void*,share_table> class_shares;
++  static std::mutex class_shares_mutex;
++
+   ///////////////////////////////////////////////////////////////
+   /// Create a named entity classification module, loading
+   /// appropriate files.
+@@ -57,7 +71,8 @@
+     wstring path=necFile.substr(0,necFile.find_last_of(L"/\\")+1);
+      
+     // read configuration file and store information   
+-    enum sections {LEXICON,RGF,CLASSIFIER,MODELFILE,CLASSES,NE_TAG};
++    enum sections {LEXICON,RGF,CLASSIFIER,MODELFILE,CLASSES,NE_TAG,CLASS_SHARES};
++    share_table shares;
+     config_file cfg;  
+     cfg.add_section(L"Lexicon",LEXICON);
+     cfg.add_section(L"RGF",RGF);
+@@ -65,6 +80,7 @@
+     cfg.add_section(L"ModelFile",MODELFILE);
+     cfg.add_section(L"Classes",CLASSES);
+     cfg.add_section(L"NE_Tag",NE_TAG);
++    cfg.add_section(L"ClassShares",CLASS_SHARES);
+ 
+     if (not cfg.open(necFile))
+       ERROR_CRASH(L"Error opening file "+necFile);
+@@ -115,6 +131,19 @@
+         break;
+       }
+ 
++      case CLASS_SHARES: {
++        // es-CL: "form tag share [tag share ...]": the name may only take
++        // these classes, and each share (0 < share < 1) is its prior
++        wstring form, tag, share;
++        sin>>form;
++        while (sin>>tag>>share) {
++          double s = util::wstring2double(share);
++          if (s>0 and s<1) shares[form][tag]=s;
++          else WARNING(L"Ignored share "+share+L" of "+tag+L" for "+form+L" in file "+necFile);
++        }
++        break;
++      }
++
+       default: break;
+       }
+     }
+@@ -136,6 +165,11 @@
+     else 
+       ERROR_CRASH (L"Unspecifed or invalid <Classifier> section in file "+modelFile);
+ 
++    if (not shares.empty()) {
++      std::lock_guard<std::mutex> lock(class_shares_mutex);
++      class_shares[this]=shares;
++    }
++
+     TRACE(2,L"analyzer succesfully created");
+   }
+ 
+@@ -145,6 +179,8 @@
+   nec::~nec(){
+     delete extractor;
+     delete classif;
++    std::lock_guard<std::mutex> lock(class_shares_mutex);
++    class_shares.erase(this);
+   }
+ 
+   /////////////////////////////////////////////////////////////////////////////
+@@ -161,6 +197,14 @@
+     // If no NEs in the sentence, let's avoid useless work. We are done.
+     if (not hasNE) return;
+     
++    // es-CL: this classifier's class shares, if any
++    const share_table *shares=NULL;
++    {
++      std::lock_guard<std::mutex> lock(class_shares_mutex);
++      std::map<const void*,share_table>::const_iterator cs=class_shares.find(this);
++      if (cs!=class_shares.end()) shares = &(cs->second);
++    }
++
+     // allocate prediction array 
+     double *pred = new double[classif->get_nlabels()];
+     
+@@ -203,6 +247,25 @@
+           // if no label has a positive prediction and <others> is defined, select <others> label.
+           wstring def = classif->default_class();
+           if (max<0 && def!=L"") tag = def;
++
++          // es-CL: a name with class shares takes one of its classes: the
++          // classifier's weight for each (a log-odds estimate) plus the log
++          // odds of its share, halved like the weights (AdaBoost's weights
++          // are half log-odds); the highest wins.
++          if (shares!=NULL) {
++            share_table::const_iterator sh=shares->find(w->get_lc_form());
++            if (sh!=shares->end()) {
++              bool found=false;
++              double best=0;
++              for (int j=0; j<classif->get_nlabels(); j++) {
++                std::map<wstring,double>::const_iterator s=sh->second.find(classif->get_label(j));
++                if (s==sh->second.end()) continue;
++                double v = pred[j] + 0.5*std::log(s->second/(1-s->second));
++                TRACE(3,L"   share of "+s->first+L": "+util::double2wstring(s->second)+L", weight with share "+util::double2wstring(v));
++                if (not found or v>best) { best=v; tag=s->first; found=true; }
++              }
++            }
++          }
+         
+           // tag NE appropriately: modify NP tag to be the right one... 
+           a->set_tag(tag);
+--- a/src/libfreeling/np.cc
++++ b/src/libfreeling/np.cc
+@@ -71,10 +71,11 @@
+   ///////////////////////////////////////////////////////////////
+ 
+   np::np(const std::wstring &npFile): ner_module(npFile), RE_NounAdj(RE_NA), 
+-                                      RE_Closed(RE_CLO), RE_DateNumPunct(RE_DNP) {
++                                      RE_Closed(RE_CLO), RE_DateNumPunct(RE_DNP),
++                                      classes_at_start(false) {
+ 
+     enum sections {NER_TYPE,FUNCTION,SPECIAL,NAMES,NE_IGNORE,
+-                   REX_NOUNADJ,REX_CLOSED,REX_DATNUMPUNT,AFFIXES};
++                   REX_NOUNADJ,REX_CLOSED,REX_DATNUMPUNT,AFFIXES,DICTCLASSES,FIXEDCLASSES,CLASSESATSTART,STARTCLASSES};
+     config_file cfg(true);
+     cfg.add_section(L"Type",NER_TYPE);
+     cfg.add_section(L"FunctionWords",FUNCTION);
+@@ -85,6 +86,10 @@
+     cfg.add_section(L"RE_Closed",REX_CLOSED);
+     cfg.add_section(L"RE_DateNumPunct",REX_DATNUMPUNT);
+     cfg.add_section(L"Affixes",AFFIXES);
++    cfg.add_section(L"DictionaryClasses",DICTCLASSES);
++    cfg.add_section(L"FixedClasses",FIXEDCLASSES);
++    cfg.add_section(L"ClassesAtSentenceStart",CLASSESATSTART);
++    cfg.add_section(L"SentenceStartClasses",STARTCLASSES);
+ 
+     if (not cfg.open(npFile))
+       ERROR_CRASH(L"Error opening file "+npFile);
+@@ -155,6 +160,50 @@
+         break;
+       }
+ 
++      case DICTCLASSES: { // es-CL: proper-noun tags kept from the dictionary, in order
++        wistringstream sin;
++        sin.str(line);
++        wstring tag;
++        while (sin>>tag) dict_classes.push_back(tag);
++        break;
++      }
++
++      case FIXEDCLASSES: { // es-CL: names whose class is fixed: form tag
++        wistringstream sin;
++        sin.str(line);
++        wstring form, tag;
++        sin>>form>>tag;
++        if (not form.empty() and not tag.empty()) fixed_classes[form]=tag;
++        break;
++      }
++
++      case CLASSESATSTART: { // es-CL: yes or no
++        classes_at_start = (util::lowercase(line)==L"yes");
++        break;
++      }
++
++      case STARTCLASSES: { // es-CL: form tag [keep[:prefix,...]]: the reading at sentence start
++        wistringstream sin;
++        sin.str(line);
++        wstring form, tag, keep;
++        sin>>form>>tag>>keep;
++        if (not form.empty() and not tag.empty()) {
++          const wstring keep_only=L"keep:";
++          start_reading sr;
++          sr.tag=tag;
++          wstring lk=util::lowercase(keep);
++          sr.keep=(lk==L"keep" or lk.compare(0,keep_only.size(),keep_only)==0);
++          if (lk.compare(0,keep_only.size(),keep_only)==0) {
++            wistringstream ps(keep.substr(keep_only.size()));
++            wstring p;
++            while (std::getline(ps,p,L','))
++              if (not p.empty()) sr.only.push_back(p);
++          }
++          start_classes[form]=sr;
++        }
++        break;
++      }
++
+       default: break;
+       }
+     }
+@@ -278,7 +327,9 @@
+           // not found in dictionary
+           token = TK_sUnkUpp;
+         }
+-        else if ( not j->find_tag_match(RE_Closed) and (j->find_tag_match(RE_NounAdj) or names.find(form)!=names.end() ) ) {
++        else if ( start_classes.find(form)!=start_classes.end() or
++                  (classes_at_start and fixed_classes.find(form)!=fixed_classes.end()) or
++                  (not j->find_tag_match(RE_Closed) and (j->find_tag_match(RE_NounAdj) or names.find(form)!=names.end() )) ) {
+           // found as noun with no closed category
+           // (prep, determiner, conjunction...) readings
+           token = TK_sNounUpp;
+@@ -344,6 +395,73 @@
+ 
+   void np::SetMultiwordAnalysis(sentence::iterator i, int fstate, const ner_status *st) const {
+ 
++    // es-CL: at the start of a sentence, a one-word name listed in
++    // <SentenceStartClasses> gets the reading given there, and nothing else
++    // applies: with "keep", its dictionary readings stay beside it and the
++    // tagger chooses (probabilitats.dat gives the odds); with "keep:V" (tag
++    // prefixes, separated by commas) only the readings whose tags begin so
++    // stay; without, they are dropped. The tag NP00000 leaves the class to
++    // the classifier.
++    if (st->initialNoun and i->get_n_words_mw()==1) {
++      std::map<wstring,start_reading>::const_iterator sc=start_classes.find(i->get_lc_form());
++      if (sc!=start_classes.end()) {
++        TRACE(3,L"   sentence-start reading "+sc->second.tag+L" for "+i->get_form());
++        if (sc->second.keep) {
++          i->copy_analysis(i->get_words_mw().front());
++          if (not sc->second.only.empty()) {
++            word::iterator a=i->begin();
++            while (a!=i->end()) {
++              bool take=false;
++              for (std::vector<wstring>::const_iterator p=sc->second.only.begin();
++                   p!=sc->second.only.end() and not take; ++p)
++                take=(a->get_tag().compare(0,p->size(),*p)==0);
++              if (take) ++a;
++              else a=i->erase(a);
++            }
++          }
++          i->set_analyzed_by(i->get_words_mw().front().get_analyzed_by());
++        }
++        i->add_analysis(analysis(sc->first,sc->second.tag));
++        i->set_analyzed_by(word::NER);
++        return;
++      }
++    }
++
++    // es-CL: the two rules below do not apply to a one-word name at the
++    // start of a sentence that is also an ordinary noun or adjective
++    // (FreeLing's own treatment is kept there) unless
++    // <ClassesAtSentenceStart> is yes.
++    bool apply_classes = classes_at_start or not (st->initialNoun and i->get_n_words_mw()==1);
++
++    // es-CL: a name whose class is fixed in <FixedClasses> takes it.
++    std::map<wstring,wstring>::const_iterator fc=fixed_classes.find(i->get_lc_form());
++    if (apply_classes and fc!=fixed_classes.end()) {
++      TRACE(3,L"   fixed class "+fc->second+L" for "+i->get_form());
++      i->add_analysis(analysis(fc->first,fc->second));
++      i->set_analyzed_by(word::NER);
++      i->lock_analysis();
++      return;
++    }
++
++    // es-CL: a one-word name the dictionary already knows as a proper noun
++    // of one of the classes in <DictionaryClasses> keeps that class (the
++    // first in the list that it has), with the dictionary's lemma; its other
++    // readings are dropped and the classifier does not see it.
++    if (apply_classes and not dict_classes.empty() and i->get_n_words_mw()==1) {
++      const word &w0 = i->get_words_mw().front();
++      for (std::vector<wstring>::const_iterator t=dict_classes.begin(); t!=dict_classes.end(); t++) {
++        for (word::const_iterator a=w0.begin(); a!=w0.end(); a++) {
++          if (a->get_tag()==*t) {
++            TRACE(3,L"   dictionary class "+(*t)+L" kept for "+w0.get_form());
++            i->add_analysis(analysis(a->get_lemma(),*t));
++            i->set_analyzed_by(word::NER);
++            i->lock_analysis();
++            return;
++          }
++        }
++      }
++    }
++
+     // Setting the analysis for the Named Entity. 
+     // The new MW is just created, so its list is empty.
+   

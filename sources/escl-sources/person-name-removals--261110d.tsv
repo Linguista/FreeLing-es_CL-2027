@@ -1,0 +1,7 @@
+entry	list	ruling
+españa	gazPER-c.dat	user, 261110: removed from FreeLing's whole-name person list: a country, and on that list it made the classifier read it as a person
+concepción	gazPER-c.dat	user, 261110: removed from FreeLing's whole-name person list: a commune of Chile, and on that list it made the classifier read it as a person
+la_reina	gazPER-c.dat	user, 261110: removed from FreeLing's whole-name person list: a commune of Chile, and on that list it made the classifier read it as a person
+maría_elena	gazPER-c.dat	user, 261110: removed from FreeLing's whole-name person list: a commune of Chile, and on that list it made the classifier read it as a person
+santa_bárbara	gazPER-c.dat	user, 261110: removed from FreeLing's whole-name person list: a commune of Chile, and on that list it made the classifier read it as a person
+lima	gazPER-c.dat	user, 261110: removed from FreeLing's whole-name person list: the capital of Peru, and on that list it made the classifier read it as a person
