@@ -28,8 +28,10 @@ done
 [ ! -e "$share/common/nec/cities-CL.dat" ] || { echo "FAIL  cities-CL.dat is still installed"; exit 1; }
 echo "ok    the 13 Chilean files are the release's"
 
-out="$(echo "Vos tenís que venir a Arica." | "$prefix/bin/analyze" -f es-cl.cfg --outlv tagged --nonec --nosense 2>&1)"
+status=0
+out="$(echo "Vos tenís que venir a Arica." | "$prefix/bin/analyze" -f es-cl.cfg --outlv tagged --nonec --nosense 2>&1)" || status=$?
 echo "$out"
+[ "$status" -eq 0 ] || { echo "FAIL  analyze exited with $status"; exit 1; }
 echo "$out" | grep -q "^tenís tener VMIP2SV" || { echo "FAIL  tenís was not read as a voseo form of tener"; exit 1; }
 echo "ok    FreeLing reads tenís as a voseo form of tener"
 echo "ALL CHECKS PASSED"
