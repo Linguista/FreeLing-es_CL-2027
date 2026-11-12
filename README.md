@@ -249,7 +249,7 @@ standard lemmas applied) and `verb-form-readings--*.tsv` (25 rows):
 
 ### 6.2. Interjections
 
-- 326 single-word interjections with their decided lemma (pu, lemma pus);
+- 326 single-word interjections with their decided lemma (e.g. _po_, lemma 'poh');
   an interjection reading with another lemma is replaced.
 - 103 multiword interjections in `locucions.dat`; ya po and ya poh are ya_poh
   (section 9).
@@ -258,11 +258,11 @@ standard lemmas applied) and `verb-form-readings--*.tsv` (25 rows):
   readings share at least 10,000, so FreeLing's smoothing leaves it about 1
   in 100,000; a multiword becomes ambiguous (A), so its words can stay
   apart. mm is treated the same way: millimetre by far the more probable
-  (in COSCACH the text itself becomes mmm).
+  (in COSCACH the text itself, always a hesitation marker, becomes mmm).
 - 235 removals (the Spanish interjections he, ha, fuera, hombre, vaya ...):
   their other readings stay. 53 Spanish forms that were only interjections
-  (agur, caray, olé, ...) are no longer in the dictionaries: FreeLing treats
-  them as unknown words.
+  (agur, caray, olé, ...) are no longer in the dictionaries: FreeLing will treat
+  them as unknown words if it somehow comes across them.
 
 ### 6.3. Forms kept in the text (CL.nonstandard)
 
@@ -333,11 +333,7 @@ block, sorted, at the end of the FormTagFreq section.
 
 ## 7. Spelling variants (CL.variants)
 
-Speakers do not know how voseo is written, so the lists overgenerate on
-purpose, and the release adds the common misspellings of every voseo form.
-A variant gets exactly the verb readings of its standard form, and not the
-vosotros reading of an -is form that also has a voseo reading of the same
-verb and tense.
+The Chilean voseo is almost exclusively spoken, so speakers rarely know how it's written (e.g. "estái" is more often seen as "estai", "estay" or even "estáy"). In order to handle this, the lists overgenerate on purpose, and this release adds the common misspellings of every voseo form. A variant gets exactly the verb readings of its standard form, and not the vosotros reading of an -is form that also has a voseo reading of the same verb and tense.
 
 | Rule | From | To | Example | New forms | Joined to an existing form |
 |---|---|---|---|---|---|
@@ -392,10 +388,10 @@ kind:
    (`common/nec/cities.dat`).
 
 Until 261110 the classifier read FreeLing's own lists: a world city list
-without most Chilean communes, and person lists that held España,
-Concepción, Lima and other places, and the Chilean surnames that are also
-communes (Castro, Molina, Pinto, Freire). On COSCACH, a quarter of the
-place names came out as persons or organisations (section 8.6).
+without most Chilean _comunas_, as well as **person** lists that held España,
+Lima and other places, and the Chilean surnames that are also
+communes (Castro, Molina, Pinto, Freire). In the COSCACH, a quarter of the
+place names came out as persons or organisations according to FreeLing (section 8.6).
 
 ### 8.2. The names in the dictionary (CL.names)
 
@@ -411,18 +407,11 @@ it when capitalised (decided 261101): 1,162 people, 988 places, 4
 organisations. Multiword places (agua_dulce) are not added.
 
 **Place only** (`place-only-forms--261110d.tsv`, `place-only-forms--261110e.tsv`):
-arica, barbados, chanco and pirque are places and nothing else (user,
-261110: always places, everywhere). Their readings as forms of a verb
-(aricar, barbar, chancar, pircar) are removed from the dictionaries (they
-came from FreeLing's Spanish dictionary), each gets the place reading, and
-any lemma preference (arica over aricar) or probability line of its own is
-dropped. They are then places at the start of a sentence too, in written
-texts and in speech.
+arica, barbados, chanco and pirque are places and nothing else. Their readings as forms of a verb (aricar, barbar, chancar, pircar, all unheard of in Chile) are removed from the dictionaries; each gets the place reading, and any lemma preference (arica over aricar) or probability line of its own is dropped. They are then places at the start of a sentence too, in written texts and in speech.
 
 ### 8.3. The classifier's lists, replaced by Chilean ones
 
-The release holds the classifier's lists under FreeLing's own names, and
-`freeling_escl_deploy.py --target system` installs them over FreeLing's:
+The release holds the classifier's lists under FreeLing's own names, and `freeling_escl_deploy.py --target system` installs them over FreeLing's:
 
 | File (as FreeLing names it) | FreeLing 4.2 | FreeLing es-CL 2027 |
 |---|---|---|
@@ -432,33 +421,11 @@ The release holds the classifier's lists under FreeLing's own names, and
 | `es/nerc/data/gazPER-p.dat` | person-name parts (1,012 lines) | the Chilean list of 291026, `linguistic-derived/people-names-list/gazPER-p.dat`: 3,018 |
 | `es/nerc/nec/nec-ab-poor1.dat` | the classifier's file: its model, word list and classes | FreeLing's, with the section `<ClassShares>` (section 8.4); only FreeLing with the change of section 8.5 reads it |
 
-FreeLing 4.2 ships `common/nec/cities-CL.dat`, its city list with 381
-Chilean communes, provinces and regions added, but nothing reads it: the
-classifier's feature file names `cities.dat` only. It is merged into
-`cities.dat`, and the deploy retires it, with FreeLing's own name parts
-`es/nerc/data/gazPER-p.dat.upstream` (kept there on 291026), into a
-`deprecated/` folder beside them, compressed and unreadable.
+FreeLing 4.2 ships `common/nec/cities-CL.dat`, its city list with 381 Chilean communes, provinces and regions added, but nothing reads it: the classifier's feature file names `cities.dat` only. It is merged into `cities.dat`, and the deploy retires it, with FreeLing's own name parts `es/nerc/data/gazPER-p.dat.upstream` (kept there on 291026), into a `deprecated/` folder beside them, compressed and unreadable.
 
-**The place names of the Chilean data** (3,465) are those of the Chilean
-place list (`CL.cities.GRAM.txt`), the Chilean places of `cities-CL.dat`,
-and every place reading of the default dictionary and of the multiword
-expressions. All of them go into `gazLOC-c.dat` and `cities.dat`, except a
-single word that is also an ordinary word of the dictionary (a common noun,
-a verb ...) and not a fixed place (section 8.4): such a word on a place list
-would make the classifier see a place wherever it is capitalised. So
-castro is added to `gazLOC-c.dat` (it is a fixed place) and navidad is not
-(it is on `cities.dat` only because FreeLing's `cities-CL.dat` has it). The
-fixed places that are not place names of the Chilean data (most countries,
-and Quito) are not added: their fixed class decides, and the classifier
-never sees them alone. Every addition and removal is a row of
-`CHANGELOG.tsv` (lists `cities`, `gazLOC-c`, `gazPER-c`).
+**The place names of the Chilean data** (3,465) are those of the Chilean place list (`CL.cities.GRAM.txt`), the Chilean places of `cities-CL.dat`, and every place reading of the default dictionary and of the multiword expressions. All of them go into `gazLOC-c.dat` and `cities.dat`, except a single word that is also an ordinary word of the dictionary (a common noun, a verb ...) and not a fixed place (section 8.4): such a word on a place list would make the classifier see a place wherever it is capitalised. So castro is added to `gazLOC-c.dat` (it is a fixed place) and navidad is not (it is on `cities.dat` only because FreeLing's `cities-CL.dat` has it). The fixed places that are not place names of the Chilean data (most countries, and Quito) are not added: their fixed class decides, and the classifier never sees them alone. Every addition and removal is a row of `CHANGELOG.tsv` (lists `cities`, `gazLOC-c`, `gazPER-c`).
 
-The classifier's other lists (organisations, other names, the place-name
-parts) and its model are FreeLing's: there is no Chilean version of them.
-FreeLing's own lists are kept whole, so a name decided not to be a place
-can still be on them: pinto is on FreeLing's `gazLOC-c.dat` and on its
-`cities-CL.dat`.
-The lists are features, not rules, so a list alone cannot fix a class; the
+The classifier's other lists (organisations, other names, the place-name parts) and its model are FreeLing's: there is no Chilean version of them (this may well change in the future, however). FreeLing's own lists are kept whole, so a name decided not to be a place can still be on them: pinto is on FreeLing's `gazLOC-c.dat` and on its `cities-CL.dat`. The lists are features, not rules, so a list alone cannot fix a class; the
 fixed classes (section 8.4) do.
 
 ### 8.4. The recognizer's rules and the classifier's shares
@@ -602,19 +569,7 @@ Talca"), section 8.6.
 
 ### 8.5. The change to FreeLing's code
 
-FreeLing 4.2 cannot fix a name's class, drops a place reading the
-dictionary gives a capitalised word inside a sentence, has no rule of its
-own for a word at the start of a sentence, and cannot weigh a name's
-classes. The change, `software/patches/freeling-4.2-np-classes.patch`
-(decided 261110d and 261110e), adds the four sections of section 8.4 to
-FreeLing's name recognizer (`src/libfreeling/np.cc` and
-`src/include/freeling/morfo/np.h`) and `<ClassShares>` to its classifier
-(`src/libfreeling/nec.cc`). A rule file without the recognizer's sections
-works exactly as before, and FreeLing without the change skips them; a
-classifier file with `<ClassShares>` stops FreeLing without the change.
-Its README, `software/patches/freeling-4.2-np-classes_README.md`, describes
-the change in the code, how to apply, build and install it, and how to
-check that the installed library has it:
+FreeLing 4.2 cannot fix a name's class, it drops a place reading to which the dictionary gives a capitalized word inside a sentence, it has no rule of its own for a word at the start of a sentence, and cannot weigh a name's classes. The change, `software/patches/freeling-4.2-np-classes.patch` (decided 261110d and 261110e), adds the four sections of section 8.4 to FreeLing's name recognizer (`src/libfreeling/np.cc` and `src/include/freeling/morfo/np.h`) and `<ClassShares>` to its classifier (`src/libfreeling/nec.cc`). A rule file without the recognizer's sections works exactly as before, and FreeLing without the change skips them; a classifier file with `<ClassShares>` stops FreeLing without the change. Its README, `software/patches/freeling-4.2-np-classes_README.md`, describes the change in the code, how to apply, build and install it, and how to check that the installed library has it:
 
 ```bash
 strings -e L /usr/local/lib/libfreeling.so | grep -c -x -E "DictionaryClasses|FixedClasses|ClassesAtSentenceStart|SentenceStartClasses|ClassShares|keep:"
