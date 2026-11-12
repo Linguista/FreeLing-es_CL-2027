@@ -10,13 +10,16 @@
 #   packaging/make-nfpm-config.py RELEASE > nfpm-run.yaml
 # RELEASE is the package release, distribution included (1.fc44,
 # 1~debian13, 1~ubuntu24.04), so that the packages of each distribution
-# have names of their own.
+# have names of their own. EXTRA_DEPENDS (space-separated) adds packages
+# that no library dependency shows: the en_US.UTF-8 locale, in which
+# FreeLing's "default" locale runs (glibc-langpack-en, locales).
 #
 # Every file and folder FreeLing installs is listed under the folders it
 # goes into (/usr/local/bin, /usr/local/lib ...), so the package owns its
 # own files and folders, never /usr/local or its standard folders.
 
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -33,6 +36,7 @@ def main():
     release = sys.argv[1]
     root = Path("pkgroot")
     deps = [l.strip() for l in Path("pkgdeps.txt").read_text().splitlines() if l.strip()]
+    deps += [d for d in os.environ.get("EXTRA_DEPENDS", "").split() if d not in deps]
     contents = []
 
     def add(folder):

@@ -64,34 +64,40 @@ jobs:
       matrix:
         # id: the name of its artifact; image: the distribution's container;
         # family: how its tools are installed (dnf or apt); packager: nfpm's
-        # package format; suffix:
-        # the distribution's part of the package release.
+        # package format; suffix: the distribution's part of the package
+        # release; extra: the package of the en_US.UTF-8 locale, FreeLing's
+        # default.
         include:
           - image: fedora:44
             id: fedora44
             family: dnf
             packager: rpm
             suffix: .fc44
+            extra: glibc-langpack-en
           - image: fedora:43
             id: fedora43
             family: dnf
             packager: rpm
             suffix: .fc43
+            extra: glibc-langpack-en
           - image: debian:13
             id: debian13
             family: apt
             packager: deb
             suffix: "~debian13"
+            extra: locales
           - image: ubuntu:24.04
             id: ubuntu2404
             family: apt
             packager: deb
             suffix: "~ubuntu24.04"
+            extra: locales
           - image: ubuntu:26.04
             id: ubuntu2604
             family: apt
             packager: deb
             suffix: "~ubuntu26.04"
+            extra: locales
     runs-on: ubuntu-latest
     container: ${{ matrix.image }}
     steps:
@@ -99,14 +105,18 @@ jobs:
         run: |
           if [ "${{ matrix.family }}" = dnf ]; then
             dnf -y -q install git gcc-c++ make cmake zlib-devel libicu-devel boost-devel \
-              patch file binutils findutils curl tar gzip which diffutils python3 rpm
+              patch file binutils findutils curl tar gzip which diffutils python3 rpm \
+              glibc-langpack-en glibc-langpack-es glibc-langpack-pt
           else
             export DEBIAN_FRONTEND=noninteractive
             apt-get -qq update
             apt-get -y -qq install git build-essential cmake zlib1g-dev libicu-dev \
               libboost-regex-dev libboost-filesystem-dev libboost-thread-dev \
               libboost-program-options-dev patch file binutils curl ca-certificates \
-              python3 > /dev/null
+              python3 locales > /dev/null
+            # FreeLing runs in en_US.UTF-8 (its "default" locale), also
+            # while its install builds the phonetic dictionaries.
+            for l in en_US es_ES pt_PT; do localedef -i $l -f UTF-8 $l.UTF-8; done
           fi
 
       - uses: actions/checkout@v5
@@ -127,7 +137,7 @@ jobs:
           tar xzf "$tarball" nfpm
           tag="${{ github.event.release.tag_name }}"
           case "$tag" in ''|*[!0-9]*) rel="${{ github.run_number }}" ;; *) rel="$tag" ;; esac
-          packaging/make-nfpm-config.py "$rel${{ matrix.suffix }}" > nfpm-run.yaml
+          EXTRA_DEPENDS="${{ matrix.extra }}" packaging/make-nfpm-config.py "$rel${{ matrix.suffix }}" > nfpm-run.yaml
           mkdir -p dist
           ./nfpm package --config nfpm-run.yaml --packager ${{ matrix.packager }} --target dist/
           rm -rf pkgroot
@@ -166,9 +176,10 @@ jobs:
       - name: Install git
         run: |
           if [ "${{ matrix.family }}" = dnf ]; then
-            dnf -y -q install git binutils
+            dnf -y -q install git binutils glibc-langpack-en glibc-langpack-es
           else
-            apt-get -qq update && DEBIAN_FRONTEND=noninteractive apt-get -y -qq install git binutils ca-certificates > /dev/null
+            apt-get -qq update && DEBIAN_FRONTEND=noninteractive apt-get -y -qq install git binutils ca-certificates locales > /dev/null
+            for l in en_US es_ES; do localedef -i $l -f UTF-8 $l.UTF-8; done
           fi
 
       - uses: actions/checkout@v5

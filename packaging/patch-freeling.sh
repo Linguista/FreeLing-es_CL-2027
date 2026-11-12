@@ -2,11 +2,17 @@
 # VERSION 1.0.0
 #
 # patch-freeling.sh -- applies to an unpacked FreeLing 4.2 source tree the
-# eight changes FreeLing es-CL 2027 is built with:
+# changes FreeLing es-CL 2027 is built with:
 #   1-5  build fixes for current compilers (CMake 4, GCC 15 and later,
-#        ICU 77 and later): C++17 instead of C++11, and <cmath> in the four
-#        files that use math functions without it (the other three build
-#        fixes are compiler flags, given by build-freeling.sh);
+#        ICU 77 and later): C++17 instead of C++11, and <cmath> in the five
+#        files that use math functions without it (smoothingLD.h only fails
+#        with GCC 13, Ubuntu 24.04; the other three build fixes are compiler
+#        flags, given by build-freeling.sh);
+#   2a   the two errors in templates never instantiated that GCC 15 and
+#        later report as warnings, silenced by -Wno-template-body, and
+#        GCC 14 (Debian 13) as errors: treeler's ConstantScores assigns to
+#        a const member, and the bundled Eigen calls derived() on a
+#        Transpose (fixed as Eigen 3.4.1 fixed it);
 #   6    the install: only the Spanish variants whose data the source
 #        tarball carries (es-old, es-ar, es-cl), not the two Catalan ones;
 #   7    a bug: csr_kb.cc indexed vectors it had only reserved (UKB word
@@ -37,12 +43,20 @@ sed -i 's/^set(CMAKE_CXX_STANDARD 11)$/set(CMAKE_CXX_STANDARD 17)/' CMakeLists.t
 
 # 5: <cmath> where math functions are used without it.
 for f in src/libfreeling/csr_kb.cc src/libfreeling/coref/relaxcor/relaxcor_fex_dep.cc \
-         src/libfreeling/summarizer/summarizer.cc src/libfreeling/numbers/numbers_cs.cc; do
+         src/libfreeling/summarizer/summarizer.cc src/libfreeling/numbers/numbers_cs.cc \
+         src/include/freeling/morfo/smoothingLD.h; do
     grep -q '#include' "$f" || fail "$f: no #include"
     grep -q '#include <cmath>' "$f" && fail "$f: already includes <cmath>"
     sed -i '0,/#include/s//#include <cmath>\n#include/' "$f"
     grep -q '#include <cmath>' "$f" || fail "$f: <cmath> not added"
 done
+
+# 2a: errors in uninstantiated templates (GCC 14 stops on them).
+grep -q '^    const double _s; $' src/libtreeler/treeler/base/scores.h || fail "scores.h: no const double _s"
+sed -i 's/^    const double _s; $/    double _s; /' src/libtreeler/treeler/base/scores.h
+t=src/eigen3/Eigen/src/Core/Transpositions.h
+[ "$(grep -c 'AliasFreeProduct>(matrix.derived(), trt.derived());' "$t")" -eq 1 ] || fail "Transpositions.h: the line to fix is not there once"
+sed -i 's/AliasFreeProduct>(matrix.derived(), trt.derived());/AliasFreeProduct>(matrix.derived(), trt);/' "$t"
 
 # 6: only the Spanish variants.
 grep -q '^SET(variants "es/es-old;es/es-ar;es/es-cl;ca/balear;ca/valencia")' CMakeLists.txt \
@@ -60,4 +74,4 @@ sed -i 's/edges\.reserve(rels\.size());/edges.resize(rels.size());/;
 # 8: the name classes.
 patch -p1 --forward --batch < "$np_patch"
 
-echo "patch-freeling.sh: the eight changes applied"
+echo "patch-freeling.sh: every change applied"
