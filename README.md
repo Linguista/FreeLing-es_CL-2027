@@ -838,17 +838,11 @@ into the release.
 
 ## 16. Changelog
 
-- 2027 (rebuilt 261112, freeling_escl_build.py 2.6.0): packages of FreeLing 4.2 with this release for Fedora 43 and 44, Debian 13 and Ubuntu 24.04 and 26.04, built and checked by GitHub (`packaging/`, `.github/workflows/packages.yml`); how FreeLing 4.2 fails to build on each, and the fixes (the section "If you really want to try and build this rather than use a package..."); why this new version; American spelling throughout. The data are unchanged; one class in `NAME-CLASSES.tsv` reads `organization` for `organisation`.
-- 2027 (rebuilt 261112, freeling_escl_build.py 2.5.1): the release is
-  public (decided 261112): no private path in any file (section 15), and
-  FreeLing's license, the GNU AGPL 3.0, in `LICENSE`. The data are
-  unchanged.
+- 2027 (rebuilt 261112, freeling_escl_build.py 2.6.0): packages of FreeLing 4.2 with this release for Fedora 43 and 44, Debian 13 and Ubuntu 24.04 and 26.04, built and checked by GitHub (`packaging/`, `.github/workflows/packages.yml`); how FreeLing 4.2 fails to build on each, and the fixes (the section "If you really want to try and build this rather than use a package..."); why this new version. The data are unchanged; one class in `NAME-CLASSES.tsv` reads `organization` for `organisation`.
 
-- 2027 (rebuilt 261112, freeling_escl_build.py 2.4.3): the unit code of tr
-  removed from `quantities.dat`; nguillatún, nguillatun and nguillatunes
-  have the lemma nguillatún (the Chilean noun list gave guillatun; decided
-  261112), corrected in the noun list itself (section 5) and in the
-  dictionaries.
+- 2027 (rebuilt 261112, freeling_escl_build.py 2.5.1): the release is public (decided 261112): no private path in any file (section 15), and FreeLing's license, the GNU AGPL 3.0, in `LICENSE`. The data are unchanged.
+
+- 2027 (rebuilt 261112, freeling_escl_build.py 2.4.3): the unit code of tr removed from `quantities.dat`; nguillatún, nguillatun and nguillatunes have the lemma nguillatún (the Chilean noun list gave guillatun; decided 261112), corrected in the noun list itself (section 5) and in the dictionaries.
   
 - 2027 (rebuilt 261112, freeling_escl_build.py 2.4.1): 56 unit names
   removed from `quantities.dat` (section 10): tr, mi, s, d, cd, cl, bu, pk,
