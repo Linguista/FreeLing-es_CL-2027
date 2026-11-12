@@ -1,0 +1,197 @@
+name: Build FreeLing es-CL packages
+
+# FreeLing 4.2 with FreeLing es-CL 2027, built from FreeLing's source on each
+# distribution, in that distribution's own container, so that the program
+# is linked against its own Boost and ICU. Each package is then installed in
+# a fresh container of the same distribution and checked
+# (packaging/test-freeling.sh); only checked packages are attached to a
+# release. The package release is the release's tag when it is a number
+# (1, 2, 3 ...), and otherwise the number of the run.
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  # Nothing is built if any file of the repository, or the last commit's
+  # author, committer or message, holds one of the terms in the repository
+  # secret PRIVATE_TERMS (one per line, not case-sensitive). Only file names
+  # and counts are printed, never the terms. Without the secret the check is
+  # skipped.
+  privacy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Check for private information
+        env:
+          PRIVATE_TERMS: ${{ secrets.PRIVATE_TERMS }}
+        run: |
+          if [ -z "$PRIVATE_TERMS" ]; then
+            echo "The secret PRIVATE_TERMS is not set: check skipped."
+            exit 0
+          fi
+          terms="$RUNNER_TEMP/terms"
+          printf '%s\n' "$PRIVATE_TERMS" | tr -d '\r' | sed '/^[[:space:]]*$/d' > "$terms"
+          found=0
+          files=0
+          while IFS= read -r f; do
+            files=$((files + 1))
+            n=$(grep -c -I -i -F -f "$terms" -- "$f" || true)
+            if [ "${n:-0}" -gt 0 ]; then
+              echo "PRIVATE INFORMATION: $n line(s) in $f"
+              found=1
+            fi
+          done < <(git ls-files)
+          n=$(git log -1 --format='%an%n%ae%n%cn%n%ce%n%B' | grep -c -i -F -f "$terms" || true)
+          if [ "${n:-0}" -gt 0 ]; then
+            echo "PRIVATE INFORMATION: $n line(s) in the last commit's author, committer or message"
+            found=1
+          fi
+          if [ "$found" -eq 0 ]; then
+            echo "No private terms in $files files or in the last commit."
+          fi
+          exit "$found"
+
+  build:
+    needs: privacy
+    strategy:
+      fail-fast: false
+      matrix:
+        # id: the name of its artifact; image: the distribution's container;
+        # family: how its tools are installed (dnf or apt); packager: nfpm's
+        # package format; suffix:
+        # the distribution's part of the package release.
+        include:
+          - image: fedora:44
+            id: fedora44
+            family: dnf
+            packager: rpm
+            suffix: .fc44
+          - image: fedora:43
+            id: fedora43
+            family: dnf
+            packager: rpm
+            suffix: .fc43
+          - image: debian:13
+            id: debian13
+            family: apt
+            packager: deb
+            suffix: "~debian13"
+          - image: ubuntu:24.04
+            id: ubuntu2404
+            family: apt
+            packager: deb
+            suffix: "~ubuntu24.04"
+          - image: ubuntu:26.04
+            id: ubuntu2604
+            family: apt
+            packager: deb
+            suffix: "~ubuntu26.04"
+    runs-on: ubuntu-latest
+    container: ${{ matrix.image }}
+    steps:
+      - name: Install the build tools
+        run: |
+          if [ "${{ matrix.family }}" = dnf ]; then
+            dnf -y -q install git gcc-c++ make cmake zlib-devel libicu-devel boost-devel \
+              patch file binutils findutils curl tar gzip which diffutils python3 rpm
+          else
+            export DEBIAN_FRONTEND=noninteractive
+            apt-get -qq update
+            apt-get -y -qq install git build-essential cmake zlib1g-dev libicu-dev \
+              libboost-regex-dev libboost-filesystem-dev libboost-thread-dev \
+              libboost-program-options-dev patch file binutils curl ca-certificates \
+              python3 > /dev/null
+          fi
+
+      - uses: actions/checkout@v5
+
+      - name: Get FreeLing 4.2's source
+        run: curl -fsSL -o FreeLing-src-4.2.tar.gz https://github.com/TALP-UPC/FreeLing/releases/download/4.2/FreeLing-src-4.2.tar.gz
+
+      - name: Build FreeLing 4.2 with FreeLing es-CL 2027
+        run: REMOVE_TARBALL=yes packaging/build-freeling.sh FreeLing-src-4.2.tar.gz
+
+      - name: Make the package
+        run: |
+          base=https://github.com/goreleaser/nfpm/releases/download/v2.47.0
+          tarball=nfpm_2.47.0_Linux_x86_64.tar.gz
+          curl -fsSL -o "$tarball" "$base/$tarball"
+          curl -fsSL -o nfpm-checksums.txt "$base/checksums.txt" || curl -fsSL -o nfpm-checksums.txt "$base/nfpm_2.47.0_checksums.txt"
+          grep " $tarball\$" nfpm-checksums.txt | sha256sum -c
+          tar xzf "$tarball" nfpm
+          tag="${{ github.event.release.tag_name }}"
+          case "$tag" in ''|*[!0-9]*) rel="${{ github.run_number }}" ;; *) rel="$tag" ;; esac
+          packaging/make-nfpm-config.py "$rel${{ matrix.suffix }}" > nfpm-run.yaml
+          mkdir -p dist
+          ./nfpm package --config nfpm-run.yaml --packager ${{ matrix.packager }} --target dist/
+          rm -rf pkgroot
+          ls -l dist
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: package-${{ matrix.id }}
+          path: dist/*
+          compression-level: 0
+
+  test:
+    needs: build
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - image: fedora:44
+            id: fedora44
+            family: dnf
+          - image: fedora:43
+            id: fedora43
+            family: dnf
+          - image: debian:13
+            id: debian13
+            family: apt
+          - image: ubuntu:24.04
+            id: ubuntu2404
+            family: apt
+          - image: ubuntu:26.04
+            id: ubuntu2604
+            family: apt
+    runs-on: ubuntu-latest
+    container: ${{ matrix.image }}
+    steps:
+      - name: Install git
+        run: |
+          if [ "${{ matrix.family }}" = dnf ]; then
+            dnf -y -q install git binutils
+          else
+            apt-get -qq update && DEBIAN_FRONTEND=noninteractive apt-get -y -qq install git binutils ca-certificates > /dev/null
+          fi
+
+      - uses: actions/checkout@v5
+
+      - uses: actions/download-artifact@v6
+        with:
+          name: package-${{ matrix.id }}
+          path: dist
+
+      - name: Install the package
+        run: |
+          ls -l dist
+          if [ "${{ matrix.family }}" = dnf ]; then
+            dnf -y -q install ./dist/*.rpm
+          else
+            apt-get -y -qq install ./dist/*.deb > /dev/null
+          fi
+
+      - name: Check it
+        run: packaging/test-freeling.sh
+
+      - name: Attach it to the release
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*
