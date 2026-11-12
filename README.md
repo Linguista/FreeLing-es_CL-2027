@@ -1,8 +1,8 @@
 # FreeLing es-CL 2027
 
-This is the Chilean Spanish version of FreeLing 4.2: the dictionaries, probabilities, multiword expressions, tagset, name recognizer rules and currencies that FreeLing's Chilean variant (es-cl) uses; the word lists of FreeLing's name classifier, replaced by Chilean ones; and a change to FreeLing's name recognizer and classifier that makes every Chilean locality a place (section 8).
+This is the Chilean Spanish version of FreeLing 4.2: Chilean versions of the dictionaries, probabilities, multiword expressions, tagset, name recognizer rules, currencies and units, as well a name recognizer and classifier that tags every Chilean locality as a place (section 8).
 
-Why this new version? The short of it is as follows: The 2016 version of FreeLing for Chilean Spanish was incorporated into the master version of FreeLing, but it excluded the custom tags for _voseo_ paradigm verbs ("V" in the last verb tag slot, which was unused except for marking gender in participles, which _voseo_ forms don't have). This made them indistinguishable from _tuteo_ forms, and thereby closing a whole avenue of potential linguistic inquiry. Furthermore, since FreeLing rebuilds its dictionary and various other files from scratch each time you run it, it ended up clobbering a good deal of Chileanization that I had done. At the same time, nasty Spainisms crept in everywhere, from proper names to units, leading to many tagging errors. Finally, this new version gave me a chance to iterate it over the [COSCACH](https://corpora.pro) corpus several times and add many new lemmas that aren't in the 2016 version. So consider that version, which is also the original FreeLing's Chilean Spanish version, to be thoroughly deprecated. 
+Why this new version? The short of it is as follows: The 2016 version of FreeLing for Chilean Spanish was incorporated into the master version of FreeLing, but it excluded the custom tags for _voseo_ paradigm verbs ("V" in the last verb tag slot, which was unused except for marking gender in participles, which _voseo_ forms don't have). This made them indistinguishable from _tuteo_ forms, and thereby closing a whole avenue of potential linguistic inquiry. Furthermore, since FreeLing rebuilds its dictionary and various other files from scratch each time you run it, it ended up clobbering a good deal of Chileanization work that I had done (that was on me, for not thoroughly understanding FreeLing's architecture). At the same time, nasty Spainisms crept in everywhere, from proper names to units, leading to many tagging errors. Finally, this new version gave me a chance to iterate it over the [COSCACH](https://corpora.pro) corpus several times and add many new lemmas that aren't in the 2016 version. So consider the 2016 version, which is the same as the one in FreeLing's Chilean Spanish version today, to be thoroughly deprecated. 
 
 This folder is the release. It is rebuilt, never edited by hand:
 
@@ -18,25 +18,15 @@ configs that use it. All three are kept in
 /home/user/csld/software/10-Infrastructure/freeling/scripts/
 ```
 
-A copy of every tool that made this build is in `software/`. A previous
-build is moved, whole, to
-`/home/user/software/deprecated/FreeLing_es-CL_2027.DEPRECATED-YYMMDD[letter]`.
+A copy of every tool that made this build is in `software/`. A previous build is moved, whole, to `/home/user/software/deprecated/FreeLing_es-CL_2027.DEPRECATED-YYMMDD[letter]`.
 
-This README describes grammatical categories in words. The data files use
-FreeLing's tags, which FreeLing requires; `CHANGELOG.tsv` and `VARIANTS.tsv`
-give every tag in words beside it.
+This README describes grammatical categories in words. The data files use FreeLing's tags, which FreeLing requires; `CHANGELOG.tsv` and `VARIANTS.tsv` give every tag in words beside it.
 
 ## Licence
 
-FreeLing es-CL 2027 is made from FreeLing 4.2's own data files, and is
-under FreeLing's licence: the GNU Affero General Public License, version 3
-or (at your option) any later version. The licence is in `LICENSE`.
-FreeLing is by the TALP Research Center of the Universitat Politècnica de
-Catalunya.
+FreeLing es-CL 2027 is made from FreeLing 4.2's own data files, and is under FreeLing's licence: the GNU Affero General Public License, version 3 or (at your option) any later version. The licence is in `LICENSE`. FreeLing is by the TALP Research Center of the Universitat Politècnica de Catalunya.
 
-In the release, the paths in this README and in the copies of the tools
-are those of the machine that built it, written in a public form
-(`/home/user/...`); every tool takes its paths as options.
+In the release, the paths in this README and in the copies of the tools are those of the machine that built it, written in a public form (`/home/user/...`); every tool takes its paths as options.
 
 ## 1. Contents
 
