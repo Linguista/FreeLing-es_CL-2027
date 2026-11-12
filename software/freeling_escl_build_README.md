@@ -81,16 +81,16 @@ when complete.
    Spanish dictionary byte for byte.
 2. Fixes the Chilean lists: the ir paradigm, the voseo readings of vais,
    dais, veis and deis, dai, veís and deís, erih and eríh, habís, the vos
-   tag, a malformed tag, capitalised forms; removes every voseo form of erar
+   tag, a malformed tag, capitalized forms; removes every voseo form of erar
    (decided 261101); removes regular forms of irregular verbs, checked
    against the Spanish dictionary's own paradigms.
 3. Adds the decided words (`CL.additions`), from the newest
    `dictionary-additions-all-rounds-standardized--*.tsv` (it refuses if a
    per-round additions file is newer):
-   - names with their class (person, place, organisation, other). A name
+   - names with their class (person, place, organization, other). A name
      whose lowercase form is also a common noun or a verb gets no
      proper-noun reading (decided 261110b): FreeLing's name recognizer tags
-     it when capitalised. A name whose other readings are adjectives,
+     it when capitalized. A name whose other readings are adjectives,
      adverbs or interjections keeps both readings (decided 261110);
    - nouns with their other number, and the lemma when it is the singular
      or the masculine and not yet a word; adjectives with all their forms;
@@ -114,7 +114,7 @@ when complete.
      A reading marked "nearly impossible" on its own (the four
      imperatives) is nearly impossible in `probabilitats.dat`, so hace
      alone stays the present indicative while FreeLing's affix rules
-     analyse háceme from it. What is still untagged is listed in
+     analyze háceme from it. What is still untagged is listed in
      `DECISIONS.tsv` and not added.
    A generated form that is already another word is not added.
 4. Applies the interjection decisions: the decided lemma, the removals
@@ -122,7 +122,7 @@ when complete.
    longer in the dictionary), and the rare ones (nearly impossible in
    `probabilitats.dat`; a rare multiword becomes ambiguous).
 5. Generates the spelling variants of every voseo form (`CL.variants`).
-6. Adds the person, place and organisation lists (`CL.names`), as before:
+6. Adds the person, place and organization lists (`CL.names`), as before:
    a list name whose lowercase form is an ordinary word is left to the name
    recognizer (decided 261101).
 7. Adds the forms kept in the text and read as a standard form
@@ -167,12 +167,12 @@ when complete.
     - **the fixed names**: the Chilean places `cities-CL.dat` adds to
       `cities.dat`, the places of `CL.cities.GRAM.txt` in neither of
       FreeLing's lists, and `fixed-name-classes--*.tsv`, which wins (class
-      place, person, organisation, other, or none: not fixed). Each is
+      place, person, organization, other, or none: not fixed). Each is
       written as FreeLing writes a name (lower case, words joined by _), and
       a name with del or al also with de_el or a_el;
     - **`np.dat` and `np-speech.dat`**: FreeLing's Spanish `np.dat` with
       every single letter ignored, and the sections `<DictionaryClasses>`
-      (place, person, organisation, other), `<ClassesAtSentenceStart>` (no
+      (place, person, organization, other), `<ClassesAtSentenceStart>` (no
       in `np.dat`, for written texts; yes in `np-speech.dat`, for
       transcribed speech), `<FixedClasses>` and `<SentenceStartClasses>`
       (from `sentence-start-classes--*.tsv`, each line in the file or files
@@ -213,7 +213,7 @@ A decided name whose other readings are adjectives, adverbs or
 interjections keeps both readings. Its line gives the proper noun 80% of
 the word's lexical probability for a place (the user's Chilean toponyms:
 much higher than the ordinary readings) and 30% for a person, an
-organisation or another name (moderate), decided 261110; the ordinary
+organization or another name (moderate), decided 261110; the ordinary
 readings share the rest in the proportions FreeLing already gives them. The
 two shares are `PLACE_SHARE` and `NAME_SHARE` at the top of the script.
 FreeLing's name recognizer still runs.
@@ -271,10 +271,10 @@ tab-separated, one header line, every round read, later rounds winning:
 
 | File | Columns | A row means |
 |---|---|---|
-| `fixed-name-classes--*.tsv` | name, class, source, ruling | the name always has this class: place, person, organisation or other; none: it is not fixed, even if the build would derive it (Navidad). Two different classes for one name in one round refuse the build |
+| `fixed-name-classes--*.tsv` | name, class, source, ruling | the name always has this class: place, person, organization or other; none: it is not fixed, even if the build would derive it (Navidad). Two different classes for one name in one round refuse the build |
 | `person-name-removals--*.tsv` | entry, list, ruling | the entry (as FreeLing writes it, lower case, words joined by _) is removed from the list; the list must be `gazPER-c.dat` |
 | `place-only-forms--*.tsv` | form, ruling | the form is a place and nothing else |
-| `sentence-start-classes--*.tsv` | form, reading, keep own readings, share, files, ruling | at the start of a sentence the one-word form gets the reading (name: the classifier decides; place, person, organisation, other), whatever the other rules say. Keep own readings: no, they are dropped; yes, they stay beside it; or word classes (verbs, nouns, adjectives, adverbs, pronouns, determiners, interjections, prepositions, conjunctions, numerals, separated by commas): only those stay. With readings kept, share is the new reading's percentage among the readings the word has there (above 0, below 100); with no, share is empty. Files: written (`np.dat`), speech (`np-speech.dat`) or both. A form may have one row for written and another for speech (decided 261110g: Pinto); a later file's row replaces the earlier rule for the files it names, and two rows of one file for the same form and file refuse the build. A form with no dictionary reading to keep, with no reading of the classes named, or that already has a proper-noun reading or a probability line of its own refuses the build; so does a form that keeps its own readings in both files with a different reading, share or word classes, as `probabilitats.dat` holds one line for both |
+| `sentence-start-classes--*.tsv` | form, reading, keep own readings, share, files, ruling | at the start of a sentence the one-word form gets the reading (name: the classifier decides; place, person, organization, other), whatever the other rules say. Keep own readings: no, they are dropped; yes, they stay beside it; or word classes (verbs, nouns, adjectives, adverbs, pronouns, determiners, interjections, prepositions, conjunctions, numerals, separated by commas): only those stay. With readings kept, share is the new reading's percentage among the readings the word has there (above 0, below 100); with no, share is empty. Files: written (`np.dat`), speech (`np-speech.dat`) or both. A form may have one row for written and another for speech (decided 261110g: Pinto); a later file's row replaces the earlier rule for the files it names, and two rows of one file for the same form and file refuse the build. A form with no dictionary reading to keep, with no reading of the classes named, or that already has a proper-noun reading or a probability line of its own refuses the build; so does a form that keeps its own readings in both files with a different reading, share or word classes, as `probabilitats.dat` holds one line for both |
 | `name-class-shares--*.tsv` | name, class, share, ruling | when the classifier classifies the name, it takes one of the classes of its rows, by its own weight plus half the log odds of the share (percent). The rows of a name in one file must add up to 100; a later file's rows for the name replace the earlier ones. A name with shares must not also have a fixed class |
 
 ## The units removed from quantities.dat (decided 261112)
@@ -311,7 +311,7 @@ refuses the build.
 Kept, as real units in Chilean writing: g, h (the hour), m, l, ml, w, km,
 kg, cm, mm, mg, min, tm, cal, mb, gb, kb and the rest. Still joined in
 COSCACH after this: about ten false starts before an ellipsis read as
-metres or litres ("dos m ...", "uno l ..."), which the file cannot tell
+meters or liters ("dos m ...", "uno l ..."), which the file cannot tell
 from the units; they are for the correction layer.
 
 ## The release is public (decided 261112)
@@ -346,9 +346,9 @@ So the release's copies of the tools and READMEs differ from the ones in
 the project in their paths only, and `SHA256SUMS` gives the sha256 of the
 copies. The privacy file itself is never copied into the release.
 
-The licence: FreeLing 4.2 is under the GNU Affero General Public License,
+The license: FreeLing 4.2 is under the GNU Affero General Public License,
 version 3 or later, and the release, made from its files, is under the same
-licence. `agpl-3.0.txt`, next to this script, is the text as the Free
+license. `agpl-3.0.txt`, next to this script, is the text as the Free
 Software Foundation publishes it (sha256
 `0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0`, checked
 before anything else); it goes into the release as `LICENSE`.
@@ -470,7 +470,7 @@ Linux (the FreeLing paths are Linux paths). Standard library only.
   that is not data is written with the private paths of the privacy file
   (`--privacy`) replaced by public ones, and nothing is written if a
   private term is left in any file, data included (exit 1). The release
-  carries FreeLing's licence, the GNU AGPL 3.0, as `LICENSE`. See "The
+  carries FreeLing's license, the GNU AGPL 3.0, as `LICENSE`. See "The
   release is public".
 - 2.4.3 (261112): the lemma guillatun of nguillatún, nguillatun and
   nguillatunes is corrected to nguillatún in the Chilean noun list itself

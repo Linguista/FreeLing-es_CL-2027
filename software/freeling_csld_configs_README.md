@@ -47,7 +47,7 @@ of a sentence:
 
 | | `np.dat`, CODICACH | `np-speech.dat`, COSCACH |
 |---|---|---|
-| `<ClassesAtSentenceStart>` | no: a word at the start of a sentence that is also a common noun or an adjective (Castro) is left to FreeLing | yes: a line of speech is an utterance, and a capitalised word at its start is a name |
+| `<ClassesAtSentenceStart>` | no: a word at the start of a sentence that is also a common noun or an adjective (Castro) is left to FreeLing | yes: a line of speech is an utterance, and a capitalized word at its start is a name |
 
 Each also gives a few names their own reading at the start of a sentence
 (`<SentenceStartClasses>`: Catar, Irán, Tomé and Quito the verb with a
@@ -77,8 +77,8 @@ it.
 ## The user map
 
 `freeling_tag_corpus.py` sends the stand-in tokens to FreeLing lowercased
-(FreeLing's name recognizer would join a capitalised token with its
-neighbours). The user map tags them before any other module runs (tags
+(FreeLing's name recognizer would join a capitalized token with its
+neighbors). The user map tags them before any other module runs (tags
 decided 261030):
 
 | Token | Tag |

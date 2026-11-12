@@ -42,16 +42,16 @@ FreeLing decides whether a word is a proper name, and which kind, in two
 steps:
 
 1. **The name recognizer** (`np`, configured by `np.dat`) decides which
-   words are a name. Inside a sentence, a capitalised word becomes a new
+   words are a name. Inside a sentence, a capitalized word becomes a new
    name with the tag "proper noun, unclassified" (`NP00000`), and every
    reading the dictionary gave it is dropped. At the start of a sentence,
-   where every word is capitalised, a word becomes a name only if the
+   where every word is capitalized, a word becomes a name only if the
    dictionary also knows it as a common noun or an adjective (or it is on the
    `<Names>` list); its dictionary readings are then kept beside the name
    reading, and the tagger chooses.
 2. **The name classifier** (`nec`, an AdaBoost model, configured by
    `nec-ab-poor1.dat`) gives every unclassified name a class: person, place,
-   organisation or other. Its features include word lists: whole names and
+   organization or other. Its features include word lists: whole names and
    name parts of each class (`es/nerc/data/gaz*.dat`) and a city list
    (`common/nec/cities.dat`).
 
@@ -61,11 +61,11 @@ data file can fix:
 - **A place the dictionary knows is still guessed.** Inside a sentence the
   dictionary's place reading is dropped before the classifier runs. España
   was classified as a person 459 times, Antofagasta 193 times, Perú as an
-  organisation 231 times, although the dictionary has each of them as a
+  organization 231 times, although the dictionary has each of them as a
   place. Concepción, a city that is also a given name, was a person 322
   times, Castro (also a surname) 61 times.
 - **There is no way to fix a class.** A name whose class is known for
-  certain (every commune of Chile is a place; SES is an organisation) can
+  certain (every commune of Chile is a place; SES is an organization) can
   only be pushed through the classifier's word lists, which are features,
   not rules.
 - **At the start of a sentence the recognizer's rule is all or nothing.** A
@@ -104,7 +104,7 @@ Nothing in the change is specific to Spanish or to Chile.
 ## 3. The rule file of the recognizer: four sections
 
 The tags are those of FreeLing's Spanish tagset: `NP00G00` proper noun,
-place; `NP00SP0` person; `NP00O00` organisation; `NP00V00` other; `NP00000`
+place; `NP00SP0` person; `NP00O00` organization; `NP00V00` other; `NP00000`
 unclassified (the classifier decides). A form is written in lower case, the
 words of a multiword name joined by `_`. FreeLing writes `del` and `al`
 inside a multiword name as `de_el` and `a_el` (Viña del Mar becomes
@@ -158,7 +158,7 @@ and the tagger chooses. This suits written texts, where a capital at the
 start of a sentence says nothing. With `yes`, the two rules above apply
 there too, and a word listed in `<FixedClasses>` is a name at the start of
 a sentence whatever its dictionary readings (a verb included). This suits
-transcribed speech, where a line is an utterance and a capitalised word at
+transcribed speech, where a line is an utterance and a capitalized word at
 its start is a name.
 
 ### 3.4. SentenceStartClasses
@@ -351,7 +351,7 @@ std::map<std::wstring,start_reading> start_classes;
   section says `yes`. A `<SentenceStartClasses>` line's third field is
   `keep`, or `keep:` followed by tag prefixes separated by commas; anything
   else means the dictionary readings are dropped.
-- **`np::ComputeToken`**, at the start of a sentence: a capitalised word is
+- **`np::ComputeToken`**, at the start of a sentence: a capitalized word is
   a name candidate if it is in `start_classes`, or if `classes_at_start` is
   true and it is in `fixed_classes`, or by FreeLing's own condition (not a
   closed-class word, and a common noun, an adjective or on `<Names>`).
@@ -516,10 +516,10 @@ file.
 | Fui a Lima y a Caracas. | place, place | place, place | place, place |
 | Viajamos a Asunción en enero. | person | place | place |
 | La señora Asunción vive al lado. | person | person | person |
-| La SES organizó los JUDEJUT. | SES: organisation, JUDEJUT: organisation | SES: organisation, JUDEJUT: other | the same |
+| La SES organizó los JUDEJUT. | SES: organization, JUDEJUT: organization | SES: organization, JUDEJUT: other | the same |
 | Vimos al Dr. House. | Dr._House: other | Dr._House: person | person |
 
-In transcribed speech a capitalised word at the start of a line is taken
+In transcribed speech a capitalized word at the start of a line is taken
 for a name, so the verbs there (Tomé un café) become places and Pinto the
 surname; in COSCACH such lines are rare, and nearly every capital at the
 start of a line is a name (section 10): a speaker's verb is written in
@@ -532,7 +532,7 @@ place name of the Chilean data: 24,408 occurrences of a place name, 22,422
 of them a token of exactly the name (the others are part of a longer name,
 such as Hospital de Puerto Montt). The class each exact token got:
 
-| FreeLing | Place | Person | Organisation | Other | Not a name |
+| FreeLing | Place | Person | Organization | Other | Not a name |
 |---|---|---|---|---|---|
 | 4.2 with FreeLing es-CL 2027 until 261110 | 16,940 (75.6%) | 3,666 (16.4%) | 1,573 (7.0%) | 162 (0.7%) | 81 (0.4%) |
 | the same, with the Chilean place and person lists of the classifier | 21,641 (96.5%) | 71 (0.3%) | 600 (2.7%) | 29 (0.1%) | 81 (0.4%) |
@@ -540,15 +540,15 @@ such as Hospital de Puerto Montt). The class each exact token got:
 | with this change, written mode (`np.dat`) | 22,302 (99.5%) | 16 (0.1%) | 49 (0.2%) | 15 (0.1%) | 40 (0.2%) |
 
 The word lists alone give most of the gain; the rest needs the fixed
-classes: with the lists only, Concepción was still an organisation 20 times,
+classes: with the lists only, Concepción was still an organization 20 times,
 and every place at the start of a line that is also a common noun or a verb
 (Castro 14 times) was still that word.
 
 In speech mode 28 occurrences at the start of a line are joined to the
-next capitalised word, so there are 22,394 exact tokens. What is left, in
+next capitalized word, so there are 22,394 exact tokens. What is left, in
 speech mode: Pinto a person 4 times (a surname by decision; in written
 mode its one occurrence at the start of a line is the verb), Alameda 9 and
-Corona 7 times an organisation, Navidad 7 times another name (not fixed),
+Corona 7 times an organization, Navidad 7 times another name (not fixed),
 Molina once a person (Enrique Molina, a school named after a person;
 section 11). In written mode also Castro 14 times the common noun at the
 start of a line (section 3.3). Before the rulings of 261110g (molina on
@@ -558,10 +558,10 @@ written mode 22,287 (99.4%) and 31.
 
 Of the 2,306 other names in the same lines (not place names of the Chilean
 data), 459 changed class, most of them for the better: 255 from
-organisation to place (Chile, Argentina, Estados Unidos, Cuba), 71 given
-names from organisation to person (Diego, Camila, Ignacio), 37 from person
+organization to place (Chile, Argentina, Estados Unidos, Cuba), 71 given
+names from organization to person (Diego, Camila, Ignacio), 37 from person
 to place (San Martín, Viña). Some went the other way: 27 from place to
-person (Florencia, Errázuriz), 14 from place to organisation (Inacap,
+person (Florencia, Errázuriz), 14 from place to organization (Inacap,
 Cepal, Huachipato, which are not places either).
 
 ## 11. What it does not decide

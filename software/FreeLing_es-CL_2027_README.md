@@ -29,11 +29,11 @@ This README describes grammatical categories in words. The data files use
 FreeLing's tags, which FreeLing requires; `CHANGELOG.tsv` and `VARIANTS.tsv`
 give every tag in words beside it.
 
-## Licence
+## License
 
 FreeLing es-CL 2027 is made from FreeLing 4.2's own data files, and is
-under FreeLing's licence: the GNU Affero General Public License, version 3
-or (at your option) any later version. The licence is in `LICENSE`.
+under FreeLing's license: the GNU Affero General Public License, version 3
+or (at your option) any later version. The license is in `LICENSE`.
 FreeLing is by the TALP Research Center of the Universitat Politècnica de
 Catalunya.
 
@@ -46,7 +46,7 @@ are those of the machine that built it, written in a public form
 | File | What it is |
 |---|---|
 | `README.md` | this file |
-| `LICENSE` | the GNU Affero General Public License 3.0, FreeLing's licence |
+| `LICENSE` | the GNU Affero General Public License 3.0, FreeLing's license |
 | `BUILD-REPORT.md` | the counts of this build and the sha256 of every input |
 | `CHANGELOG.tsv` | every line-level change, one per row: list, change, rule, form, lemma, tag, the tag in words, detail |
 | `DECISIONS.tsv` | every spelling and name decision read, one per row: decision file, form, what was decided, what the build did, detail |
@@ -90,7 +90,7 @@ The entries files:
 | `CL.vaux` | 38 | the voseo forms of ser, estar and haber |
 | `CL.verb` | 122,293 | the voseo paradigm of every Spanish verb, and the DUECh verbs |
 | `CL.variants` | 97,161 | the spelling variants of the voseo forms (section 7) |
-| `CL.names` | 21,563 | person, place and organisation names of the lists, and arica, barbados, chanco and pirque as places only (section 8) |
+| `CL.names` | 21,563 | person, place and organization names of the lists, and arica, barbados, chanco and pirque as places only (section 8) |
 | `CL.additions` | 20,610 | the decided words, with their paradigms (section 6.1) |
 | `CL.nonstandard` | 193 | forms kept in the text, read as a standard form (section 6.3) |
 | `CL.misspellings` | 9,353 | misspelt forms, read as their corrections (section 6.4) |
@@ -176,7 +176,7 @@ the corrected lists are in `grammatical-lists/` and deployed back.
 | chorrocientos gains the indefinite-pronoun reading | the feminine had it |
 | vos, voh, vo: tagged as voseo pronouns | the voseo pronoun tag |
 | narcotraficante: a malformed tag corrected | lowercase letter inside the tag |
-| capitalised keys lowercased (ABC, AFP, GCU, NEM, NN, PIB, UES) | never found (section 3) |
+| capitalized keys lowercased (ABC, AFP, GCU, NEM, NN, PIB, UES) | never found (section 3) |
 | U as a noun removed | its lowercase u is the conjunction |
 | nguillatún, nguillatun and nguillatunes: the lemma guillatun corrected to nguillatún | the correct lemma (decided 261112) |
 | every voseo form of erar removed, with its spelling variants | erar is practically never used, and its voseo forms collided with ser: erai and erís are ser only (decided 261101) |
@@ -209,10 +209,10 @@ names; the files that quote the interviews stay in COSCACH.
 From `dictionary-additions-all-rounds-standardized--*.tsv` (6,328 rows,
 standard lemmas applied) and `verb-form-readings--*.tsv` (25 rows):
 
-- Names keep their class: person, place, organisation, other. A name whose
+- Names keep their class: person, place, organization, other. A name whose
   lowercase form is also a common noun or a verb gets no proper-noun
   reading (decided 261110b): FreeLing's name recognizer tags it when it is
-  capitalised. 401 names are exempted this way (chile, concepción, general,
+  capitalized. 401 names are exempted this way (chile, concepción, general,
   rosa, victoria, consejo ...). A name whose other readings are adjectives,
   adverbs or interjections keeps both readings (41 names; section 6.6).
 - Nouns get their other number, and the lemma with its plural when the form
@@ -225,7 +225,7 @@ standard lemmas applied) and `verb-form-readings--*.tsv` (25 rows):
   evaluative value: cantitos, lemma canto, is noun, masculine, plural,
   evaluative (decided 261110: the diminutive of cantos); calladita, lemma
   callado, is an evaluative adjective. A superlative gets the superlative
-  value (relajadísimo, lemma relajado). A lexicalised diminutive whose lemma
+  value (relajadísimo, lemma relajado). A lexicalized diminutive whose lemma
   has the suffix itself (burritos, lemma burrito) is not evaluative.
 - New verbs get their whole paradigm, voseo included (168 verbs, 12,623
   lines): a verb made of a prefix and a known verb is conjugated like it
@@ -235,7 +235,7 @@ standard lemmas applied) and `verb-form-readings--*.tsv` (25 rows):
   regular verb never gets a stem change. Their spelling variants follow
   (section 7).
 - A verb form with attached pronouns (desestresarme, empréstame, tránsate:
-  transar plus te, decided 261110) is analysed by FreeLing's affix rules
+  transar plus te, decided 261110) is analyzed by FreeLing's affix rules
   once the verb is known. A non-standard form of a known verb gets the tags
   of the regular pattern where it has them (ponido, ponieron, descubrido,
   coce).
@@ -251,7 +251,7 @@ standard lemmas applied) and `verb-form-readings--*.tsv` (25 rows):
   llevámonos, and rootiar is the infinitive of rootiarlos. The four
   imperatives are nearly impossible on their own in `probabilitats.dat`,
   so hace alone stays "verb, main, indicative, present, 3rd person,
-  singular", while FreeLing's affix rules analyse háceme, hácele or
+  singular", while FreeLing's affix rules analyze háceme, hácele or
   díceselo from it. Four more forms are read through another decision
   (haguemos, vaiga, bendicir, intindís). anduvís is not added (section 14).
 - Round 9 (261112, the COSCACH words in which Perkins found a syllable
@@ -270,7 +270,7 @@ standard lemmas applied) and `verb-form-readings--*.tsv` (25 rows):
   single word's interjection count is 0 in `probabilitats.dat`, the other
   readings share at least 10,000, so FreeLing's smoothing leaves it about 1
   in 100,000; a multiword becomes ambiguous (A), so its words can stay
-  apart. mm is treated the same way: millimetre by far the more probable
+  apart. mm is treated the same way: millimeter by far the more probable
   (in COSCACH the text itself becomes mmm).
 - 235 removals (the Spanish interjections he, ha, fuera, hombre, vaya ...):
   their other readings stay. 53 Spanish forms that were only interjections
@@ -281,7 +281,7 @@ standard lemmas applied) and `verb-form-readings--*.tsv` (25 rows):
 
 From `dictionary-variants`: the form stays in the text and gets the readings
 of its standard form (haiga as haya, vaiga as vaya, volao as volado).
-hácele, hácelo and hácete (read as hazle, hazlo, hazte) are analysed by
+hácele, hácelo and hácete (read as hazle, hazlo, hazte) are analyzed by
 FreeLing's affix rules from the imperative hace (section 6.1). 11 are not
 added: the standard form is several words (el rubius) or not in the
 dictionary (jólidei).
@@ -291,12 +291,12 @@ dictionary (jólidei).
 Decided 261110: the text is corrected (the spelling step), and any misspelt
 form that slips through is read as its correction. 6,555 misspelt forms
 get their correction's readings, or the lemma and category of
-`correction-lemmas` where the user gave one (cosejo is the organisation
+`correction-lemmas` where the user gave one (cosejo is the organization
 Consejo); a corrected word not yet in the dictionary is added with that
 lemma and category (zeppelin, trocadero). Not added: a misspelt form that is
 itself a word (it is corrected in the text only), a split or a join, and a
 correction FreeLing does not know (numbers such as dieciséis, which FreeLing
-recognises by rule). Adverbs in -mente are read as adverbs. The corrections
+recognizes by rule). Adverbs in -mente are read as adverbs. The corrections
 óscar to oscar and bachelte to bachellet are withdrawn
 (`text-correction-removals--261110.tsv`): oscar and óscar are both lemma
 óscar. So is ses to sea (`text-correction-removals--261110c.tsv`): every
@@ -326,7 +326,7 @@ both readings, and its line in `probabilitats.dat` gives the proper noun:
 
 - 80% of the word's lexical probability for a place: the user's Chilean
   toponyms, much higher than the ordinary readings;
-- 30% for a person, an organisation or another name: moderate.
+- 30% for a person, an organization or another name: moderate.
 
 The ordinary readings share the rest in the proportions FreeLing already
 gives them. FreeLing's tagger divides each lexical probability by the tag's
@@ -391,7 +391,7 @@ FreeLing decides in two steps whether a word is a proper name, and which
 kind:
 
 1. **The name recognizer** (`np`, configured by `np.dat`) decides which
-   words are a name. Inside a sentence, a capitalised word becomes a new
+   words are a name. Inside a sentence, a capitalized word becomes a new
    name, "proper noun, unclassified", and every reading the dictionary gave
    it is dropped, a place reading included. At the start of a sentence a
    word becomes a name only if the dictionary also knows it as a common noun
@@ -399,8 +399,8 @@ kind:
    reading; a word whose only readings are verbs (arica, molina) is not a
    name there at all.
 2. **The name classifier** (`nec`) gives every unclassified name a class:
-   person, place, organisation or other. It weighs features, among them
-   whether the name or its neighbours are on its word lists: whole names
+   person, place, organization or other. It weighs features, among them
+   whether the name or its neighbors are on its word lists: whole names
    and name parts of each class (`es/nerc/data/gaz*.dat`) and a city list
    (`common/nec/cities.dat`).
 
@@ -408,7 +408,7 @@ Until 261110 the classifier read FreeLing's own lists: a world city list
 without most Chilean communes, and person lists that held España,
 Concepción, Lima and other places, and the Chilean surnames that are also
 communes (Castro, Molina, Pinto, Freire). On COSCACH, a quarter of the
-place names came out as persons or organisations (section 8.6).
+place names came out as persons or organizations (section 8.6).
 
 ### 8.2. The names in the dictionary (CL.names)
 
@@ -416,12 +416,12 @@ place names came out as persons or organisations (section 8.6).
 |---|---|
 | `CL.peoplenames.GRAM.txt`, first names and surnames | person |
 | `CL.cities.GRAM.txt`, places | place |
-| `CL.orgnames.GRAM.txt`, organisations | organisation, with the gender and number of the list |
+| `CL.orgnames.GRAM.txt`, organizations | organization, with the gender and number of the list |
 
 21,559 entries in all, lowercased with lowercased lemmas. A list name whose
 lowercase form is already a word is left to the name recognizer, which tags
-it when capitalised (decided 261101): 1,162 people, 988 places, 4
-organisations. Multiword places (agua_dulce) are not added.
+it when capitalized (decided 261101): 1,162 people, 988 places, 4
+organizations. Multiword places (agua_dulce) are not added.
 
 **Place only** (`place-only-forms--261110d.tsv`, `place-only-forms--261110e.tsv`):
 arica, barbados, chanco and pirque are places and nothing else (user,
@@ -458,7 +458,7 @@ and every place reading of the default dictionary and of the multiword
 expressions. All of them go into `gazLOC-c.dat` and `cities.dat`, except a
 single word that is also an ordinary word of the dictionary (a common noun,
 a verb ...) and not a fixed place (section 8.4): such a word on a place list
-would make the classifier see a place wherever it is capitalised. So
+would make the classifier see a place wherever it is capitalized. So
 castro is added to `gazLOC-c.dat` (it is a fixed place) and navidad is not
 (it is on `cities.dat` only because FreeLing's `cities-CL.dat` has it). The
 fixed places that are not place names of the Chilean data (most countries,
@@ -466,7 +466,7 @@ and Quito) are not added: their fixed class decides, and the classifier
 never sees them alone. Every addition and removal is a row of
 `CHANGELOG.tsv` (lists `cities`, `gazLOC-c`, `gazPER-c`).
 
-The classifier's other lists (organisations, other names, the place-name
+The classifier's other lists (organizations, other names, the place-name
 parts) and its model are FreeLing's: there is no Chilean version of them.
 FreeLing's own lists are kept whole, so a name decided not to be a place
 can still be on them: pinto is on FreeLing's `gazLOC-c.dat` and on its
@@ -487,7 +487,7 @@ fixed classes (section 8.4) do.
 
 | Section | Content |
 |---|---|
-| `<DictionaryClasses>` | place, person, organisation, other (`NP00G00 NP00SP0 NP00O00 NP00V00`): a one-word name the dictionary knows as a proper noun of one of these classes keeps that class and the dictionary's lemma; the classifier is not asked |
+| `<DictionaryClasses>` | place, person, organization, other (`NP00G00 NP00SP0 NP00O00 NP00V00`): a one-word name the dictionary knows as a proper noun of one of these classes keeps that class and the dictionary's lemma; the classifier is not asked |
 | `<FixedClasses>` | 688 lines, `form tag`: the 668 names whose class is fixed, written as FreeLing writes a name (lower case, the words joined by _), those holding del or al also with de_el or a_el, as FreeLing writes them inside a name (viña_del_mar and viña_de_el_mar) |
 | `<ClassesAtSentenceStart>` | `no` in `np.dat`, `yes` in `np-speech.dat` |
 | `<SentenceStartClasses>` | the reading of a few names at the start of a sentence (below): 6 lines in `np.dat`, 4 in `np-speech.dat` |
@@ -506,12 +506,12 @@ from):
 | Names | Class | Source |
 |---|---|---|
 | the 343 communes of Chile, all but Navidad, Molina and Pinto | place | `fixed-name-classes--261110d.tsv`, from the list of the communes of Chile, https://en.wikipedia.org/wiki/Communes_of_Chile (346 communes) |
-| 197 countries and 15 continents and regions of the world (Chile, Perú, España, Estados Unidos, Europa, Latinoamérica ...) | place | `fixed-name-classes--261110d.tsv` (user, 261110: places, not organisations) |
+| 197 countries and 15 continents and regions of the world (Chile, Perú, España, Estados Unidos, Europa, Latinoamérica ...) | place | `fixed-name-classes--261110d.tsv` (user, 261110: places, not organizations) |
 | the capitals of Latin America, 18 names: Buenos Aires, La Paz, Brasilia and Brasília, Bogotá, La Habana and Habana, Quito, San Salvador, Ciudad de Guatemala, Puerto Príncipe, Tegucigalpa, Ciudad de México, Managua, Ciudad de Panamá, Lima, Montevideo, Caracas | place | `fixed-name-classes--261110e.tsv` (user, 261110: Lima is treated as all other Latin American capitals); Santiago and Santo Domingo are communes of Chile; Asunción, San José and Sucre have shares instead (below) |
 | 66 Chilean regions, provinces and localities of FreeLing's `cities-CL.dat` that are not communes (Atacama, Chiloé, Ñuble, Región Metropolitana ...) | place | derived by the build: the names `cities-CL.dat` adds to `cities.dat` |
 | 24 places of the Chilean list in neither of FreeLing's city lists: Chilean short forms (Antofa, Conce, Valpo, Ohiggins) and some foreign cities written without their apostrophe | place | derived by the build from `CL.cities.GRAM.txt` |
 | Pinto | person | `fixed-name-classes--261110e.tsv` (user, 261110: Pinto is not a place, María Pinto is; a surname) |
-| SES | organisation | `fixed-name-classes--261110d.tsv` (round 8) |
+| SES | organization | `fixed-name-classes--261110d.tsv` (round 8) |
 | JUDEJUT | other | the same |
 | Dr. House, Dr. Simi | person | the same |
 
@@ -519,7 +519,7 @@ Not fixed, and left to the classifier (class none): Navidad (a commune, but
 mostly the holiday), Mauricio and Israel (countries, and common given names
 in Chile) (`fixed-name-classes--261110d.tsv`); Molina (a commune, and a
 common surname: not invariably a place, user, 261110;
-`fixed-name-classes--261110e.tsv`), weighted towards the place by its class
+`fixed-name-classes--261110e.tsv`), weighted toward the place by its class
 shares (below). OE and PH are left to the classifier
 too (user, 261110).
 
@@ -581,7 +581,7 @@ Pinto la vio ayer, Pinto no vino ...):
 
 "Pinto y dibujo" reads like "Pinto y Molina" up to its last word. 30% is the
 middle of the shares that tested best. In transcribed speech the share does
-not apply: a capitalised Pinto at the start of a COSCACH line is the
+not apply: a capitalized Pinto at the start of a COSCACH line is the
 surname (decided 261110g). In the probe, "Y" starts a line 13 times against
 "y" 1,861 times, "En" 11 against "en" 1,526, "No" 5 against "no" 1,051, and
 the one verb reading of Pinto there ("Pinto el", before "Sergio Navarro",
@@ -616,7 +616,7 @@ Talca"), section 8.6.
 ### 8.5. The change to FreeLing's code
 
 FreeLing 4.2 cannot fix a name's class, drops a place reading the
-dictionary gives a capitalised word inside a sentence, has no rule of its
+dictionary gives a capitalized word inside a sentence, has no rule of its
 own for a word at the start of a sentence, and cannot weigh a name's
 classes. The change, `software/patches/freeling-4.2-np-classes.patch`
 (decided 261110d and 261110e), adds the four sections of section 8.4 to
@@ -651,7 +651,7 @@ Hospital de Puerto Montt). It is in
 (`in/` the lines, `lists/targets.txt` the names, `tagged/` FreeLing's
 output before the change). The class each exact token got:
 
-| FreeLing | Place | Person | Organisation | Other | Not a name |
+| FreeLing | Place | Person | Organization | Other | Not a name |
 |---|---|---|---|---|---|
 | 4.2 with FreeLing es-CL 2027 as of 261110 (before) | 16,940 (75.6%) | 3,666 (16.4%) | 1,573 (7.0%) | 162 (0.7%) | 81 (0.4%) |
 | the same, with the Chilean lists of section 8.3 only | 21,641 (96.5%) | 71 | 600 | 29 | 81 |
@@ -665,9 +665,9 @@ test copy, token for token. 261110g changed 16 of the 220,734 tokens in
 speech, 15 Molina and one Pinto, and 15 in written texts, all Molina.)
 
 Before: España a person 459 times, Concepción 322, Antofagasta 193; Perú an
-organisation 231 times. After: each a place every time. Of the 2,306 other
+organization 231 times. After: each a place every time. Of the 2,306 other
 names in the same lines, 459 changed class, most of them for the better:
-255 countries from organisation to place, 71 given names from organisation
+255 countries from organization to place, 71 given names from organization
 to person, 37 from person to place (San Martín, Viña); 27 went from place
 to person (Florencia, Errázuriz).
 
@@ -683,7 +683,7 @@ What is left:
   Pinto, al Pinto, and "Pinto el" at the start of a line, which in
   written mode is the verb);
 - a whole name that holds a place ("con Santiago Pérez" is one name, and
-  the classifier calls it a place); two capitalised words in a row are one
+  the classifier calls it a place); two capitalized words in a row are one
   name (Caracas Venezuela at the start of a line);
 - the place names that are also given names and not fixed (Navidad,
   Mauricio, Israel), as decided;
@@ -709,7 +709,7 @@ What is left:
 | catar, irán, quito, tomé | the place 10% against the verb at the start of a written sentence (section 8.4): `tomé NP-VMI NP 111 VMI 1000`; `quito AQ-NP-VMI AQ 47040 NP 112 VMI 1008`, where the place is counted against the verb only (the adjective is not kept at the start of a sentence), and elsewhere the adjective and the verb keep FreeLing's proportions |
 
 `locucions.dat` is the deployed full set, with the repairs of every build
-(duplicate lines merged, lemmas written as patterns repaired, capitalised
+(duplicate lines merged, lemmas written as patterns repaired, capitalized
 keys lowercased, a comma as its own token, three tags corrected, jeans_day
 and jean_day), and the interjection decisions (section 6.2). The key
 `ya_<po>` named a lemma po that no form has, so it never matched; it is
@@ -745,7 +745,7 @@ tres cd" 3 candelas. Removed from `<MeasureNames>`:
 | mi | the possessive mi, not the mile |
 | s, d | the letters, and false starts, not the second and the day |
 | cd | CD, the compact disc, not the candela |
-| cl, bu | false starts, not the centilitre and the bushel |
+| cl, bu | false starts, not the centiliter and the bushel |
 | pk | the chat spelling of porque, not the peck |
 | in | the English word in, not the inch |
 | pt | punto, points, not the pint |
@@ -756,8 +756,8 @@ días, `TM_d:2`; milla, pie, galón, libra, onza, pulgada are kept), except
 the code of tr, `WG tr`, which no name uses once tr is removed. Kept, as real units in Chilean writing: g, h, m, l, ml,
 w, km, kg, cm, mm, mg, min, tm, cal, mb, gb, kb and the rest. Every removal
 is a row of `CHANGELOG.tsv` (list `quantities`, change `removed`), with its
-reason. A false start before an ellipsis that FreeLing reads as metres or
-litres ("dos m ...", "uno l ...", about ten in COSCACH) is still joined: the
+reason. A false start before an ellipsis that FreeLing reads as meters or
+liters ("dos m ...", "uno l ...", about ten in COSCACH) is still joined: the
 file cannot tell it from the unit.
 
 ## 11. The tuteo-tagged dictionary
@@ -869,7 +869,7 @@ into the release.
 
 - 2027 (rebuilt 261112, freeling_escl_build.py 2.5.1): the release is
   public (decided 261112): no private path in any file (section 15), and
-  FreeLing's licence, the GNU AGPL 3.0, in `LICENSE`. The data are
+  FreeLing's license, the GNU AGPL 3.0, in `LICENSE`. The data are
   unchanged.
 
 - 2027 (rebuilt 261112, freeling_escl_build.py 2.4.3): the unit code of tr
