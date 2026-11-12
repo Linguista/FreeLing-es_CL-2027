@@ -1,11 +1,6 @@
 # FreeLing es-CL 2027
 
-Chilean Spanish data for FreeLing 4.2: the dictionaries, probabilities,
-multiword expressions, tagset, name recognizer rules and currencies that
-FreeLing's Chilean variant (es-cl) uses; the word lists of FreeLing's name
-classifier, replaced by Chilean ones; and a change to FreeLing's name
-recognizer and classifier that makes every Chilean locality a place
-(section 8).
+This is the Chilean Spanish version of FreeLing 4.2: the dictionaries, probabilities, multiword expressions, tagset, name recognizer rules and currencies that FreeLing's Chilean variant (es-cl) uses; the word lists of FreeLing's name classifier, replaced by Chilean ones; and a change to FreeLing's name recognizer and classifier that makes every Chilean locality a place (section 8).
 
 This folder is the release. It is rebuilt, never edited by hand:
 
