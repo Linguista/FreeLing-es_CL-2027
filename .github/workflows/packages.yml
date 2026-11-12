@@ -6,15 +6,23 @@ name: Build FreeLing es-CL packages
 # a fresh container of the same distribution and checked
 # (packaging/test-freeling.sh); only checked packages are attached to a
 # release. The package release is the release's tag when it is a number
-# (1, 2, 3 ...), and otherwise the number of the run.
+# (1, 2, 3 ...), and otherwise the number of the run. Run by hand with
+# "test only" set to the number of an earlier run, only the checks are run,
+# on that run's packages.
 
 on:
   release:
     types: [published]
   workflow_dispatch:
+    inputs:
+      test_only:
+        description: "Test only: the run whose packages to check (empty: build them)"
+        required: false
+        default: ""
 
 permissions:
   contents: write
+  actions: read
 
 jobs:
   # Nothing is built if any file of the repository, or the last commit's
@@ -59,6 +67,7 @@ jobs:
 
   build:
     needs: privacy
+    if: inputs.test_only == ''
     strategy:
       fail-fast: false
       matrix:
@@ -151,6 +160,7 @@ jobs:
 
   test:
     needs: build
+    if: always() && (needs.build.result == 'success' || (needs.build.result == 'skipped' && inputs.test_only != ''))
     strategy:
       fail-fast: false
       matrix:
@@ -188,6 +198,8 @@ jobs:
         with:
           name: package-${{ matrix.id }}
           path: dist
+          run-id: ${{ inputs.test_only || github.run_id }}
+          github-token: ${{ github.token }}
 
       - name: Install the package
         run: |
