@@ -91,7 +91,7 @@ for.
 
 | | Default `dicc.src` | Historical `historical/dicc.src` |
 |---|---|---|
-| for | every contemporary corpus: COSCACH, CODICACH | CORHICACH only |
+| for | contemporary corpora | historical corpora (referred to as CORHICACH for an upcoming corpus) |
 | vos | voseo only (pronoun, personal, 2nd person, common gender, singular, voseo) | voseo and polite (as for usted) |
 | -is forms with a voseo and a vosotros reading of the same verb and tense (salís, comís, vivís) | voseo only (497 forms) | both |
 | deis | vosotros only (the voseo form is deís) | vosotros only |
