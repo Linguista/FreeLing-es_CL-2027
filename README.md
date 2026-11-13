@@ -60,7 +60,7 @@ These measures vastly improve tagging accuracy on both transcriptions and texts 
 
 **The lexicon**
 
-- **About 6,000 additional Chilean lemas[1] (compared to the 2016 version)** decided one by one in the spelling review of a large corpus of spoken Chilean Spanish, each with its lemma and word class, nouns with both numbers, adjectives with all their forms (section 6.1).
+- **About 6,000 additional Chilean lemmas[1] (compared to the 2016 version)** decided one by one in the spelling review of a large corpus of spoken Chilean Spanish, each with its lemma and word class, nouns with both numbers, adjectives with all their forms (section 6.1).
 - **170 new verbs with their whole paradigm**, voseo included (hackear, reprogramar, sobreexigir), each conjugated like the known verb it is made from or like the verbs that share its ending, so a regular verb never gets a stem change (section 6.1).
 - **Chilean imperatives with attached pronouns**: háceme, díceselo, pónete, etc., which compete with the canonical imperatives hazme, díselo and ponte (section 6.1).
 - **Evaluative and superlative values**: a diminutive or augmentative whose lemma is the base word carries the evaluative value (cantitos, lemma canto; calladita, lemma callado), a superlative the superlative value (relajadísimo); a lexicalized diminutive (burrito) does not (section 6.1).
