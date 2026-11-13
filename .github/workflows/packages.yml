@@ -11,11 +11,16 @@ name: Build FreeLing es-CL packages
 # sort before every release. macOS (Apple silicon and Intel) gets a
 # tarball instead of a package: FreeLing built against Homebrew's Boost and
 # ICU, installed in /usr/local/freeling-es-cl-2027, checked on the machine
-# that built it and attached to the release. Run by hand with
+# that built it and attached to the release. Windows (x86-64) gets a zip:
+# FreeLing built with MSYS2's UCRT64 toolchain, with the libraries it needs
+# beside its programs, checked where it was built and again unpacked
+# elsewhere through analyze.bat. Run by hand with
 # "test only" set to the number of an earlier run, only the checks are run,
 # on that run's packages.
 
 on:
+  push:
+    branches: [windows-package-test]
   release:
     types: [published]
   workflow_dispatch:
@@ -304,6 +309,117 @@ jobs:
       - uses: actions/upload-artifact@v6
         with:
           name: package-${{ matrix.id }}
+          path: dist/*
+          compression-level: 0
+
+      - name: Attach it to the release
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*
+
+  # Windows: FreeLing 4.2 with FreeLing es-CL 2027, built on GitHub's Windows
+  # machine with MSYS2's UCRT64 toolchain (GCC, Boost, ICU; the Windows fixes
+  # of patch-freeling.sh and two build options: Boost linked dynamically,
+  # every symbol of each DLL exported), installed into a folder and checked
+  # there; the libraries it needs from MSYS2 are copied beside its programs,
+  # and the zip of that folder is unpacked elsewhere and checked again
+  # through analyze.bat from Windows' own shell, with nothing of MSYS2 on the
+  # path, before it is attached to the release.
+  windows:
+    needs: privacy
+    if: inputs.test_only == ''
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: msys2/setup-msys2@v2
+        with:
+          msystem: UCRT64
+          update: true
+          install: >-
+            mingw-w64-ucrt-x86_64-gcc
+            mingw-w64-ucrt-x86_64-cmake
+            mingw-w64-ucrt-x86_64-ninja
+            mingw-w64-ucrt-x86_64-boost
+            mingw-w64-ucrt-x86_64-icu
+            mingw-w64-ucrt-x86_64-zlib
+            patch curl tar gzip coreutils sed grep diffutils binutils zip
+
+      - name: Get FreeLing 4.2's source
+        run: |
+          curl -fsSL -o "$RUNNER_TEMP/FreeLing-src-4.2.tar.gz" https://github.com/TALP-UPC/FreeLing/releases/download/4.2/FreeLing-src-4.2.tar.gz
+          echo "f96afbdb000d7375426644fb2f25baff9a63136dddce6551ea0fd20059bfce3b  $RUNNER_TEMP/FreeLing-src-4.2.tar.gz" | sha256sum -c -
+          mkdir -p src
+          tar -xzf "$RUNNER_TEMP/FreeLing-src-4.2.tar.gz" -C src
+
+      - name: The changes of FreeLing es-CL 2027
+        run: packaging/patch-freeling.sh "$PWD/src/FreeLing-4.2" "$PWD/software/patches/freeling-4.2-np-classes.patch"
+
+      - name: Build and install FreeLing 4.2
+        run: |
+          cmake -S src/FreeLing-4.2 -B build -G Ninja \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_INSTALL_PREFIX="$PWD/stage/freeling-es-cl-2027" \
+            -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+            -DBoost_USE_STATIC_LIBS=OFF \
+            -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--export-all-symbols" \
+            -DCMAKE_CXX_FLAGS="-Wno-template-body" \
+            -DCMAKE_C_FLAGS="-std=gnu17"
+          ninja -C build > build.log 2>&1 || { grep -E "^FAILED|error:|undefined reference" build.log | head -100 || true; tail -40 build.log; exit 1; }
+          ninja -C build install > install.log 2>&1 || { tail -60 install.log; exit 1; }
+
+      - name: The Chilean data
+        run: packaging/install-data.sh "$PWD/stage/freeling-es-cl-2027/share/freeling"
+
+      - name: Check it
+        run: PREFIX="$PWD/stage/freeling-es-cl-2027" packaging/test-freeling.sh
+
+      - name: The libraries from MSYS2, beside the programs
+        run: |
+          p="$PWD/stage/freeling-es-cl-2027"
+          export PATH="$p/lib:$PATH"
+          ldd "$p"/bin/*.exe "$p"/lib/*.dll | awk '$3 ~ /^\/ucrt64\/bin\// {print $3}' | sort -u > msys2-dlls.txt
+          cat msys2-dlls.txt
+          [ -s msys2-dlls.txt ] || { echo "no library of MSYS2 found"; exit 1; }
+          xargs -a msys2-dlls.txt cp -t "$p/bin/"
+
+      - name: Make the zip
+        run: |
+          tag="${{ github.event.release.tag_name }}"
+          [ -n "$tag" ] || tag="0.${{ github.run_number }}"
+          p=stage/freeling-es-cl-2027
+          mkdir -p "$p/share/doc/freeling-es-cl"
+          cp README.md LICENSE BUILD-REPORT.md CHANGELOG.tsv "$p/share/doc/freeling-es-cl/"
+          mkdir -p dist
+          (cd stage && zip -qr "../dist/freeling-es-cl-2027-$tag-windows-x86_64.zip" freeling-es-cl-2027)
+          ls -l dist
+
+      - name: Check the zip from Windows' own shell, without MSYS2
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $zip = Get-ChildItem dist/*.zip | Select-Object -First 1
+          Expand-Archive $zip.FullName -DestinationPath "$env:RUNNER_TEMP\fl"
+          $bat = "$env:RUNNER_TEMP\fl\freeling-es-cl-2027\bin\analyze.bat"
+          $env:PATH = "C:\Windows\system32;C:\Windows"
+          $OutputEncoding = [System.Text.UTF8Encoding]::new($false)
+          [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
+          $out = "Vos tenís que venir a Ñuñoa." | & $bat -f es-cl.cfg --outlv tagged --nonec --sense none
+          $out
+          if (-not ($out -match '^tenís tener VMIP2SV')) { throw "tenís was not read as a voseo form of tener" }
+          if (-not ($out -match '^Ñuñoa ñuñoa NP')) { throw "Ñuñoa was not read as the name ñuñoa" }
+          $out = "La jente i el rei." | & $bat -f es-cl-19th-century.cfg --outlv tagged --nonec --sense none
+          $out
+          if (-not ($out -match '^jente gente NCFS000')) { throw "the 19th-century dictionary did not read jente as gente" }
+          "ok    the zip works from analyze.bat with nothing of MSYS2 on the path"
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: package-windows-x86_64
           path: dist/*
           compression-level: 0
 

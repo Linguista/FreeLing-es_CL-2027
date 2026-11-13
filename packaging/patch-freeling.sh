@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# VERSION 1.1.0
+# VERSION 1.2.0
 #
 # patch-freeling.sh -- applies to an unpacked FreeLing 4.2 source tree the
 # changes FreeLing es-CL 2027 is built with:
@@ -21,7 +21,29 @@
 #   7    a bug: csr_kb.cc indexed vectors it had only reserved (UKB word
 #        sense annotation aborts wherever assertions are on);
 #   8    the name classes of the name recognizer and classifier
-#        (software/patches/freeling-4.2-np-classes.patch).
+#        (software/patches/freeling-4.2-np-classes.patch);
+#   9    Windows with GCC (MSYS2's UCRT64, the Windows build): each change
+#        takes effect only there (under __MINGW32__, or in a Windows-only
+#        part of a CMakeLists.txt), so Linux and macOS build exactly as
+#        before:
+#        9a  crfsuite no longer defines _MSC_VER: with it, MinGW's headers
+#            give their inline functions ordinary definitions, and the
+#            library does not link (multiple definition of llabs ...);
+#        9b  crfsuite's aligned memory uses MinGW's _aligned_malloc and
+#            _aligned_free (MinGW has no posix_memalign);
+#        9c  libfreeling links ICU's i18n and data libraries under their
+#            Windows names too (ICU_IN_LIBRARY, ICU_DT_LIBRARY), without
+#            which the collator is not found;
+#        9d  the locale: libstdc++ on MinGW knows only "C", so the C runtime
+#            gets the UTF-8 locale and the C++ locale stays "C" (FreeLing's
+#            locale "eng" stops every program);
+#        9e  the standard streams convert UTF-8 themselves, as on macOS,
+#            instead of the C runtime's wide mode (_O_U8TEXT), which only
+#            MSVC's streams write through: with it nothing is read or
+#            written.
+#        Two more Windows fixes are build options, in the Windows job of
+#        .github/workflows/packages.yml: Boost linked dynamically, and every
+#        symbol of each DLL exported.
 # Every change must apply exactly as expected, or the script stops.
 #
 # Usage: patch-freeling.sh FREELING_SOURCE_DIR NP_CLASSES_PATCH
@@ -97,5 +119,35 @@ sed -i 's/edges\.reserve(rels\.size());/edges.resize(rels.size());/;
 
 # 8: the name classes.
 patch -p1 --forward --batch < "$np_patch"
+
+# 9: Windows with GCC (MinGW).
+c=src/crfsuite/CMakeLists.txt
+[ "$(grep -c -- ' -D_MSC_VER=1 )' "$c")" -eq 1 ] || fail "$c: -D_MSC_VER=1 is not there once"
+sed -i 's/ -D_MSC_VER=1 )/ )/' "$c"
+c=src/crfsuite/crfsuite/crf/vecmath.h
+[ "$(grep -c '^#ifdef _MSC_VER$' "$c")" -eq 2 ] || fail "$c: not FreeLing 4.2's"
+sed -i -z 's/#ifdef _MSC_VER\n#include <malloc.h>/#if defined(_MSC_VER) || defined(__MINGW32__)\n#include <malloc.h>/' "$c"
+[ "$(grep -c '__MINGW32__' "$c")" -eq 1 ] || fail "$c: _aligned_malloc not given to MinGW"
+for c in src/crfsuite/crfsuite/lbfgs/arithmetic_sse_double.h src/crfsuite/crfsuite/lbfgs/arithmetic_sse_float.h; do
+    [ "$(grep -c '^#if[ \t]*defined(_MSC_VER)[ \t]*$' "$c")" -eq 1 ] || fail "$c: not FreeLing 4.2's"
+    sed -i 's/^#if[ \t]*defined(_MSC_VER)[ \t]*$/#if     defined(_MSC_VER) || defined(__MINGW32__)/' "$c"
+done
+c=src/crfsuite/crfsuite/lbfgs/arithmetic_sse_double.h
+sed -i -z 's/#ifdef[ \t]*_MSC_VER\n\([ \t]*_aligned_free\)/#if defined(_MSC_VER) || defined(__MINGW32__)\n\1/' "$c"
+[ "$(grep -c '__MINGW32__' "$c")" -eq 2 ] || fail "$c: _aligned_free not given to MinGW"
+c=src/libfreeling/CMakeLists.txt
+[ "$(grep -c '\${ICU_DATA_LIBRARY}' "$c")" -eq 1 ] || fail "$c: \${ICU_DATA_LIBRARY} is not there once"
+sed -i 's/\${ICU_DATA_LIBRARY}/${ICU_DATA_LIBRARY} ${ICU_IN_LIBRARY} ${ICU_DT_LIBRARY}/' "$c"
+c=src/libfreeling/util.cc
+grep -q '^        current_locale = locale(locale::classic(), lname.c_str(), locale::ctype);$' "$c" || fail "$c: the locale line is not there"
+grep -q '^        #if defined MACOSX$' "$c" || fail "$c: the macOS stream conversion is not there"
+grep -q '^    std::ios_base::sync_with_stdio(false);$' "$c" || fail "$c: sync_with_stdio is not there"
+grep -q '^      setUtf8Mode(stdin, "stdin");$' "$c" || fail "$c: the _O_U8TEXT mode is not there"
+sed -i 's/^        current_locale = locale(locale::classic(), lname.c_str(), locale::ctype);$/#if defined __MINGW32__\n        ::setlocale(LC_ALL, ".UTF-8");\n        current_locale = locale::classic();\n#else\n        current_locale = locale(locale::classic(), lname.c_str(), locale::ctype);\n#endif/;
+        s/^        #if defined MACOSX$/        #if defined MACOSX || defined __MINGW32__/;
+        s/^    std::ios_base::sync_with_stdio(false);$/    std::ios_base::sync_with_stdio(false);\n#if defined __MINGW32__\n    wcin.imbue(current_locale);\n    wcout.imbue(current_locale);\n    wcerr.imbue(current_locale);\n#endif/;
+' "$c"
+sed -i -z 's/\n    #if defined WIN32 || defined WIN64\n      setUtf8Mode(stdin, "stdin");/\n    #if (defined WIN32 || defined WIN64) \&\& !defined __MINGW32__\n      setUtf8Mode(stdin, "stdin");/' "$c"
+[ "$(grep -c '__MINGW32__' "$c")" -eq 4 ] || fail "$c: the Windows changes did not all apply"
 
 echo "patch-freeling.sh: every change applied"

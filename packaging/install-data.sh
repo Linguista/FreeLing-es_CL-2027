@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
-# VERSION 1.0.0
+# VERSION 1.1.0
 #
 # install-data.sh -- puts FreeLing es-CL 2027's data into an installed
 # FreeLing 4.2: the Chilean files over FreeLing's own (the files and places
 # of freeling_escl_deploy.py --target system), FreeLing's Chilean city list
 # removed (the Chilean cities.dat merges it), and es/locucions.dat, the
 # multiword file FreeLing Old reads, made a link to es-cl/locucions.dat.
-# build-freeling.sh (Linux packages) and the macOS job of
-# .github/workflows/packages.yml run it.
+# build-freeling.sh (Linux packages) and the macOS and Windows jobs of
+# .github/workflows/packages.yml run it. On Windows (MSYS2), where the
+# package is a zip and a zip holds no symbolic links, es/locucions.dat is a
+# copy of es-cl/locucions.dat instead of a link.
 #
 # Usage: packaging/install-data.sh SHARE
 #   SHARE  FreeLing's installed data folder, e.g. /usr/local/share/freeling
@@ -33,5 +35,12 @@ for f in $files; do
 done
 rm -f "$share/common/nec/cities-CL.dat"
 rm -f "$share/es/locucions.dat"
-ln -s es-cl/locucions.dat "$share/es/locucions.dat"
-echo "install-data.sh: $n Chilean files in $share; es/locucions.dat -> es-cl/locucions.dat"
+case "$(uname -s)" in
+    MINGW*|MSYS*)
+        cp "$share/es/es-cl/locucions.dat" "$share/es/locucions.dat"
+        how="a copy of es-cl/locucions.dat" ;;
+    *)
+        ln -s es-cl/locucions.dat "$share/es/locucions.dat"
+        how="-> es-cl/locucions.dat" ;;
+esac
+echo "install-data.sh: $n Chilean files in $share; es/locucions.dat $how"
