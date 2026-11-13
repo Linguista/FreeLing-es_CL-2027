@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# VERSION 1.1.0
+# VERSION 1.2.0
 #
 # freeling_csld_configs.py -- write the FreeLing configs the CSLD tags with,
 # and the user map of the stand-in tokens.
@@ -11,8 +11,12 @@
 #   /usr/local/share/freeling/es/es-cl/dicc.src             the default:
 #       contemporary Chilean Spanish (vos always voseo; an -is form with a
 #       voseo and a vosotros reading keeps the voseo one)
-#   /usr/local/share/freeling/es/es-cl/historical/dicc.src  older Spanish,
-#       for CORHICACH only (vos also polite; the -is forms keep both)
+#   /usr/local/share/freeling/es/es-cl/historical/dicc.src  the 19th-century
+#       dictionary, for historical corpora only: older Spanish (vos also
+#       polite, the -is forms keep both readings) and the 19th-century
+#       spellings (Bello, Sarmiento, the Chilean neographers), with its own
+#       probabilities and multiwords (historical/probabilitats.dat,
+#       historical/locucions.dat; decided 261112, 261113)
 #
 # From the base config <project root>/software/10-Infrastructure/freeling/
 # csld-es-cl.cfg this writes:
@@ -28,7 +32,11 @@
 #       sentence only (decided 261110d)
 #   codicach/usermap--codicach.dat       its user map
 #   historical/csld-es-cl--historical.cfg CORHICACH
-#       the historical dictionary; the base config's name recognizer
+#       the 19th-century dictionary, probabilities and multiwords;
+#       compound analysis off (FreeLing builds its compound analyzer from
+#       every form of the dictionary with foma, whose stack holds 2,097,152
+#       entries: fewer than the 19th-century dictionary has, and FreeLing
+#       stops with "Stack full!"); the base config's name recognizer
 # Both name recognizers are the rule-based one (decided 261030), with a
 # spelled-out letter never a name (decided 261101); their name classes are
 # read only by FreeLing with the name-class change (FreeLing es-CL 2027,
@@ -78,7 +86,7 @@ import sys
 import time
 from pathlib import Path
 
-VERSION = "1.1.0"
+VERSION = "1.2.0"
 
 FL_REL = Path("software/10-Infrastructure/freeling")
 BASE_CFG = "csld-es-cl.cfg"
@@ -127,11 +135,15 @@ def vos_tags(dicc: Path):
     return set()
 
 
-def make_config(base_lines, settings, extra, problems, name):
+def make_config(base_lines, settings, extra, problems, name, drop=()):
     """The base config with each KEY=value of settings replacing the base's
-    one line for that key (refused unless there is exactly one), and the
-    extra lines added at the end."""
+    one line for that key (refused unless there is exactly one), every line
+    of a key in drop commented out, and the extra lines added at the
+    end."""
     lines = list(base_lines)
+    for key in drop:
+        lines = [("#" + l) if l.strip().startswith(key + "=") else l
+                 for l in lines]
     for key, value in settings:
         hits = [i for i, l in enumerate(lines)
                 if l.strip().startswith(key + "=")]
@@ -230,6 +242,8 @@ def main(argv=None):
     log("CORHICACH          : %s" % hi_cfg)
     problems = []
     needed = [base_cfg, sysd / "dicc.src", sysd / "historical" / "dicc.src",
+              sysd / "historical" / "probabilitats.dat",
+              sysd / "historical" / "locucions.dat",
               sysd / "tagset.dat", sysd / "quantities.dat",
               sysd / "probabilitats.dat", sysd / "locucions.dat"] + \
         [sysd / npf for _, _, _, npf, _ in cont]
@@ -274,9 +288,14 @@ def main(argv=None):
             ["# Stand-in tokens, see freeling_tag_corpus.py", "UserMap=yes",
              "UserMapFile=%s" % umap], problems, cfg.name)
         outputs += [(cfg, text.encode()), (umap, USERMAP_TEXT.encode())]
+    hist_common = [(k, sysd / "historical" / v.name)
+                   if k in ("ProbabilityFile", "LocutionsFile") else (k, v)
+                   for k, v in common]
     hi_text = make_config(
-        base, common + [("DictionaryFile", sysd / "historical" / "dicc.src")],
-        [], problems, hi_cfg.name)
+        base, hist_common + [("DictionaryFile",
+                              sysd / "historical" / "dicc.src"),
+                             ("CompoundAnalysis", "no")],
+        [], problems, hi_cfg.name, drop=("CompoundFile",))
     outputs.append((hi_cfg, hi_text.encode()))
     if problems:
         for p in problems:

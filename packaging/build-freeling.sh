@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# VERSION 1.0.0
+# VERSION 1.1.0
 #
 # build-freeling.sh -- builds FreeLing 4.2 with the eight changes of
 # FreeLing es-CL 2027, installs it into /usr/local together with the
@@ -61,16 +61,8 @@ make -C "$work/build" install
 rm -rf "$work/build" "$src"
 
 # The Chilean data, over FreeLing's own files (the files and places of
-# freeling_escl_deploy.py --target system).
-files="es/es-cl/dicc.src es/es-cl/historical/dicc.src es/es-cl/probabilitats.dat
-es/es-cl/locucions.dat es/es-cl/tagset.dat es/es-cl/np.dat es/es-cl/np-speech.dat
-es/es-cl/quantities.dat common/nec/cities.dat es/nerc/data/gazLOC-c.dat
-es/nerc/data/gazPER-c.dat es/nerc/data/gazPER-p.dat es/nerc/nec/nec-ab-poor1.dat"
-for f in $files; do
-    install -D -m 644 "$repo/data/$f" "$share/$f"
-done
-# Merged into cities.dat by the Chilean build.
-rm -f "$share/common/nec/cities-CL.dat"
+# freeling_escl_deploy.py --target system), and the link for FreeLing Old.
+"$here/install-data.sh" "$share"
 
 # The library must hold the name-class change.
 n=$(strings -e L "$prefix/lib/libfreeling.so" | grep -c -x -E "DictionaryClasses|FixedClasses|ClassesAtSentenceStart|SentenceStartClasses|ClassShares|keep:" || true)

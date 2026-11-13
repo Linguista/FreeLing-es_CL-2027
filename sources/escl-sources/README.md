@@ -6,9 +6,9 @@ CSLD grammatical lists. `freeling_escl_build.py` reads every file here on
 every build, so these files are needed for every new version of the data.
 
 They come from the spelling review of COSCACH (the CSLD spoken corpus) and
-from the decisions on names made while tagging it, in rounds: the part of a
+from the decisions on names, multiwords and dictionary words made while tagging it and building the 19th-century dictionary, in rounds: the part of a
 file name after `--` is its round (a date, YYMMDD, with a letter for a
-second round on the same day). Later rounds win where they disagree.
+second round on the same day). Every round is read, and a later round wins for the same expression (the same form, or the same lemma in `lemma-standardization`); something is taken out only by a removals file, never by leaving it out of a later round. `dictionary-additions-all-rounds-standardized` is the exception: it is itself every round merged, so only the newest is read.
 
 Every file is UTF-8 NFC, tab-separated, with one header line. None quotes
 the interviews: they are lists of words, forms and names, each with what
@@ -27,12 +27,18 @@ was decided about it.
 | `lemma-standardization` | lemma, standard lemma, sheet, group | the one lemma used for the spellings of a word |
 | `interjections` | form, lemma, probability, multiword, interjection in FreeLing es-CL 2027 now, sheet | an interjection or discourse marker, with its lemma; RARE ones are seldom chosen; multiword ones go to the multiword list |
 | `interjection-removals` | form, why | an interjection reading removed |
+| `locutions` | form, lemma, tag, flag | a multiword expression joined into one token with this lemma and EAGLES tag; flag I always joined, A ambiguous (the tagger decides); a later round wins for the same multiword |
+| `locution-removals` | form, why | a multiword removed: its words are tagged separately |
+| `dictionary-words` | form, lemma, category, tag, notes | a word to add: with a tag, exactly that reading; without one, the category's readings (the other number and gender of a noun or an adjective, the whole paradigm of a new verb); a later round wins for the same form and lemma |
+| `historical-attested-spellings` | spelling, source | a spelling attested in historical texts (the CSLD Historic-Word-List, and the pre-reform spellings taken out of its contemporary word list on 260811); the 19th-century dictionary gives it the readings of the one modern word with the same letters, when it has an extra or a moved accent |
 | `verb-form-readings` | form, lemma, entry, tags, alone, reading in words | the readings of a verb form the build could not tag by itself |
 | `fixed-name-classes` | name, class, source, ruling | a name that always has this class (place, person, organization, other), or none: not fixed |
 | `person-name-removals` | entry, list, ruling | an entry removed from FreeLing's list of whole person names |
 | `place-only-forms` | form, ruling | a form that is a place and nothing else |
 | `sentence-start-classes` | form, reading, keep own readings, share, files, ruling | the reading a capitalized form gets at the start of a sentence, for written texts, speech or both |
 | `name-class-shares` | name, class, share, ruling | the classes a name may take, with their shares (percent) |
+
+One file has no round: `dictionary-hand-edits.tsv`, words added to the dictionary by hand, one reading per line (form, lemma, tag), edited in place; its comment lines (`#`) say what goes in it and how. Every line is added at every build.
 
 The full meaning of each column, and what the build does with every row,
 are in `freeling_escl_build_README.md` (in `software/` of the release) and

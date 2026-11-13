@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# VERSION 1.0.0
+# VERSION 1.1.0
 #
 # patch-freeling.sh -- applies to an unpacked FreeLing 4.2 source tree the
 # changes FreeLing es-CL 2027 is built with:
@@ -13,8 +13,11 @@
 #        GCC 14 (Debian 13) as errors: treeler's ConstantScores assigns to
 #        a const member, and the bundled Eigen calls derived() on a
 #        Transpose (fixed as Eigen 3.4.1 fixed it);
-#   6    the install: only the Spanish variants whose data the source
-#        tarball carries (es-old, es-ar, es-cl), not the two Catalan ones;
+#   6    the install: Spanish only. The English and Portuguese data the
+#        source tarball carries, the configs of every other language and
+#        the Argentine variant (es-ar) are deleted from the source tree,
+#        so they are neither built nor installed; the variants are
+#        FreeLing Old (es-old, untouched) and es-cl;
 #   7    a bug: csr_kb.cc indexed vectors it had only reserved (UKB word
 #        sense annotation aborts wherever assertions are on);
 #   8    the name classes of the name recognizer and classifier
@@ -58,10 +61,31 @@ t=src/eigen3/Eigen/src/Core/Transpositions.h
 [ "$(grep -c 'AliasFreeProduct>(matrix.derived(), trt.derived());' "$t")" -eq 1 ] || fail "Transpositions.h: the line to fix is not there once"
 sed -i 's/AliasFreeProduct>(matrix.derived(), trt.derived());/AliasFreeProduct>(matrix.derived(), trt);/' "$t"
 
-# 6: only the Spanish variants.
+# 6: Spanish only. The languages and variants built are set in
+# CMakeLists.txt; install(DIRECTORY data/ ...) installs every data folder
+# there is, so the others are deleted from the tree as well.
+grep -q '^SET(languages "as;ca;cs;cy;de;en;es;fr;gl;hr;it;nb;pt;ru;sl")' CMakeLists.txt \
+    || fail "CMakeLists.txt: the language list is not FreeLing 4.2's"
 grep -q '^SET(variants "es/es-old;es/es-ar;es/es-cl;ca/balear;ca/valencia")' CMakeLists.txt \
     || fail "CMakeLists.txt: the variant list is not FreeLing 4.2's"
-sed -i 's|^SET(variants "es/es-old;es/es-ar;es/es-cl;ca/balear;ca/valencia")|SET(variants "es/es-old;es/es-ar;es/es-cl")|' CMakeLists.txt
+sed -i 's|^SET(languages "as;ca;cs;cy;de;en;es;fr;gl;hr;it;nb;pt;ru;sl")|SET(languages "es")|' CMakeLists.txt
+sed -i 's|^SET(variants "es/es-old;es/es-ar;es/es-cl;ca/balear;ca/valencia")|SET(variants "es/es-old;es/es-cl")|' CMakeLists.txt
+# FreeLing-src-4.2.tar.gz carries the data of English and Portuguese
+# besides Spanish (the other languages come in separate tarballs).
+for lg in en pt; do
+    [ -d "data/$lg" ] || fail "data/$lg: not there"
+    rm -rf "data/$lg"
+done
+[ -d data/es/es-ar ] || fail "data/es/es-ar: not there"
+rm -rf data/es/es-ar
+for c in as ca ca-balear ca-valencia cs cy de en es-ar fr gl it nb pt ru sl; do
+    [ -f "data/config/$c.cfg" ] || fail "data/config/$c.cfg: not there"
+    rm -f "data/config/$c.cfg"
+done
+left="$(LC_ALL=C ls data | tr '\n' ' ')"
+[ "$left" = "common config es " ] || fail "data/ holds more than common, config and es: $left"
+left="$(LC_ALL=C ls data/config | tr '\n' ' ')"
+[ "$left" = "es-cl.cfg es-old.cfg es.cfg ident.cfg " ] || fail "data/config holds other configs: $left"
 
 # 7: reserve() leaves size() at 0; the vectors are then indexed.
 grep -q 'edges\.reserve(rels\.size());' src/libfreeling/csr_kb.cc || fail "csr_kb.cc: edges.reserve not found"

@@ -1,19 +1,20 @@
 # FreeLing es-CL 2027 -- build report
 
-Built by freeling_escl_build.py 2.6.0 on 261112.
+Built by freeling_escl_build.py 2.8.1 on 261112.
 
 | item | count |
 |---|---|
 | additions removed | 1 |
-| cities added | 1216 |
+| cities added | 1217 |
 | cities not added | 988 |
+| common-misspellings changed | 5 |
 | contemporary removed | 498 |
-| gazLOC-c added | 3099 |
+| gazLOC-c added | 3100 |
 | gazPER-c removed | 7 |
 | interjections removed | 170 |
-| locucions not added | 5 |
+| locucions changed | 54 |
+| locucions not added | 23 |
 | locucions-MINIMAL changed | 8 |
-| misspellings changed | 5 |
 | names added | 4 |
 | names changed | 259 |
 | nom changed | 6 |
@@ -25,8 +26,10 @@ Built by freeling_escl_build.py 2.6.0 on 261112.
 | quantities changed | 5 |
 | quantities removed | 57 |
 | standard-lemmas changed | 10 |
-| variants added | 97161 |
+| variants added | 97183 |
 | variants not added | 949 |
+| decisions: 19th-century readings, set | 5 |
+| decisions: common-misspellings, added | 1 |
 | decisions: correction-lemmas, added | 24 |
 | decisions: dictionary-additions-all-rounds-standardized, added | 6038 |
 | decisions: dictionary-additions-all-rounds-standardized, decided | 25 |
@@ -36,24 +39,30 @@ Built by freeling_escl_build.py 2.6.0 on 261112.
 | decisions: dictionary-additions-all-rounds-standardized, not added | 2 |
 | decisions: dictionary-additions-all-rounds-standardized, paradigm added | 168 |
 | decisions: dictionary-additions-all-rounds-standardized, read through another decision | 4 |
+| decisions: dictionary-hand-edits.tsv, added | 7 |
 | decisions: dictionary-variants, added | 121 |
 | decisions: dictionary-variants, left to FreeLing | 3 |
 | decisions: dictionary-variants, not added | 11 |
+| decisions: dictionary-words, added | 130 |
+| decisions: dictionary-words, in the paradigm | 17 |
+| decisions: dictionary-words, paradigm added | 2 |
 | decisions: fixed-name-classes, applied | 582 |
 | decisions: interjection-removals, no reading left | 53 |
 | decisions: interjection-removals, removed | 235 |
 | decisions: interjections, added | 326 |
 | decisions: interjections, locution | 103 |
+| decisions: locutions, locution | 54 |
 | decisions: name-class-shares, applied | 5 |
+| decisions: old-accents, added | 8 |
 | decisions: person-name-removals, applied | 7 |
 | decisions: place-only-forms, applied | 4 |
 | decisions: sentence-start-classes, applied | 9 |
-| decisions: text-corrections, added | 6556 |
-| decisions: text-corrections, not added | 1153 |
+| decisions: text-corrections, added | 6555 |
+| decisions: text-corrections, not added | 1154 |
 | decisions: verb-form-readings, added | 25 |
-| new verbs conjugated | 168 |
-| their forms | 12623 |
-| variant forms | 96539 |
+| new verbs conjugated | 170 |
+| their forms | 12767 |
+| variant forms | 96561 |
 | names added from the lists | 21559 |
 | decided names exempted (also a common noun or verb) | 401 |
 | decided names weighted | 41 |
@@ -61,14 +70,23 @@ Built by freeling_escl_build.py 2.6.0 on 261112.
 | FormTagFreq lines added | 0 |
 | FormTagFreq lines replaced | 0 |
 | FormTagFreq lines removed | 0 |
-| default dicc.src forms | 796414 |
-| historical dicc.src forms | 796414 |
+| default dicc.src forms | 937701 |
+| historical dicc.src forms | 2146645 |
+| common misspellings added (unaccented forms) | 140895 |
+| left out: from several accented forms | 516 |
+| CL.common-misspellings lines | 163652 |
+| CL.old-accents lines | 14 |
+| 19th century: new spellings | 1203611 |
+| 19th century: words given a Bello reading | 518 |
+| 19th century: Bello readings nearly impossible | 127 |
+| 19th century: attested spellings added | 5333 |
+| 19th century: multiwords added | 6539 |
 | default: -is forms with both readings | 0 |
-| historical: -is forms with both readings | 497 |
+| historical: -is forms with both readings | 1247 |
 | place-only forms | 4 |
-| place names in the Chilean data | 3465 |
-| gazLOC-c.dat: names (added) | 4881 (3099) |
-| cities.dat: names (added) | 3427 (1216) |
+| place names in the Chilean data | 3466 |
+| gazLOC-c.dat: names (added) | 4882 (3100) |
+| cities.dat: names (added) | 3428 (1217) |
 | gazPER-c.dat: names (removed) | 4439 (7) |
 | gazPER-p.dat: name parts | 3018 |
 | fixed names (places) | 668 (663) |
@@ -86,13 +104,16 @@ Built by freeling_escl_build.py 2.6.0 on 261112.
 - `CL.tanc`: 30 lines
 - `CL.vaux`: 38 lines
 - `CL.verb`: 122292 lines
-- `CL.variants`: 97161 lines
+- `CL.variants`: 97183 lines
 - `CL.names`: 21563 lines
-- `CL.additions`: 20621 lines
+- `CL.additions`: 21015 lines
 - `CL.nonstandard`: 193 lines
-- `CL.misspellings`: 9354 lines
+- `CL.common-misspellings`: 163652 lines
+- `CL.old-accents`: 14 lines
 - `CL.standard-lemmas`: 10 lines
 - `historical/dictionary/entries/CL.historical`: 9 lines
+- `historical/dictionary/entries/CL.19th-century-spellings`: 1415505 lines
+- `historical/dictionary/entries/CL.19th-century-attested`: 8111 lines
 - forms left with no reading (Spanish interjections only): 53
 
 ## Inputs
@@ -110,14 +131,16 @@ Built by freeling_escl_build.py 2.6.0 on 261112.
 - `/home/user/build/FreeLing-4.2/data/es/tagset.dat` 5b1faf7e5d74bdf5ff80bbfe16e95af236ebe24433899ce0ef8ad1ce67a8aee2
 - `/home/user/build/FreeLing-4.2/data/es/tagger.dat` 3e86bc15a91e49078d5f7d54cb9da252bc5360451567af95d4a48de6c6caa89c
 - `/home/user/build/FreeLing-4.2/data/es/probabilitats.dat` f4e598b3e31754781fac5cc81f806d85be1e25af988e40760076c8a589894cd5
+- `/home/user/build/FreeLing-4.2/data/es/locucions.dat` c4440d93ad51ea4cf3c224cbb69d978aa86fdbb05a9e758b42fa98a46d2d7913
 - `/home/user/build/FreeLing-4.2/data/common/nec/cities.dat` b29f9221229e86a039bcc1ba09d8889e244b81aab0821391cd30b2448826b585
 - `/home/user/build/FreeLing-4.2/data/common/nec/cities-CL.dat` cc73038c9b4b8a276e7bfb2d04fec8f8593a9618434431c26e183b22ab6b1cf2
 - `/home/user/build/FreeLing-4.2/data/es/nerc/data/gazLOC-c.dat` 57008ccfe07096d6986556f6c4186529cde239cbe222c2ae9837c63765077909
 - `/home/user/build/FreeLing-4.2/data/es/nerc/data/gazPER-c.dat` be4817b954e8e062c4dbb9b714effc5b672c45aa9b89e0d7d06a108b90de59bd
 - `/home/user/build/FreeLing-4.2/data/es/nerc/nec/nec-ab-poor1.dat` 4469ae51bf0a0004f293558f93fba6ff54d574b7c12abc2ba1048f67c04e4dc6
+- FreeLing 4.2's `data/config/es-cl.cfg`, carried in this script 2934d4320a5690d4fbfb945325a7df20cb99d3e0393e8b8d7e6d3ddb37e8a42c
 - `/home/user/csld/linguistic-derived/grammatical-lists/individual/contemporary/freeling-cl/metadata/tagset.dat` 4f8def5440de2ffe6b73b11fc309ac8c6817b0f785ddb8ad41f8e5c875f137e8
-- `/home/user/build/FreeLing-4.2/data/es/es-cl/probabilitats.dat` 03b7ab6bf2887a88ffe9a253d0c18591103d29cfdda3ef6c8e0782c063732de3
-- `/home/user/build/FreeLing-4.2/data/es/es-cl/locucions.dat` 73c1e1b9e2920232b9f903775365300f6a7a07c3038cb208efe810840bfb0a2a
+- `/home/user/build/FreeLing-4.2/data/es/es-cl/probabilitats.dat` 29d6f4cf8085696280d1a99aac5bf8ce6fd8e1206d7a0bebdce1fdbe5d2c7ec5
+- `/home/user/build/FreeLing-4.2/data/es/es-cl/locucions.dat` 2f70ca2c42e9e65367f2f70e30f283bb260ba778af9c7a5ce777dee53bbbd428
 - `/home/user/csld/linguistic-derived/people-names-list/gazPER-p.dat` a71d55ddb8c134f260ac34f02691b514bbf34a0d8d5150be39267ce06c98b0f0
 - `/home/user/csld/software/10-Infrastructure/freeling/patches/freeling-4.2-np-classes.patch` 69542743afc056043aefa58483672a5f583b5df37346c8f7af109cb34ecc713d
 - `/home/user/csld/software/10-Infrastructure/freeling/patches/freeling-4.2-np-classes_README.md` 2e6e51c0b07ea71476889b7096b459bc2c484cc9cd65275f0e46b39280c7d64f
@@ -136,10 +159,14 @@ Built by freeling_escl_build.py 2.6.0 on 261112.
 - `/home/user/csld/linguistic-derived/grammatical-lists/individual/contemporary/freeling-cl/CL.orgnames.GRAM.txt` eea5e3cdc146a57d9e03d9e3ad97e47eec658189ae90f6b03ce44f1089da336b
 - `/home/user/csld/linguistic-derived/grammatical-lists/individual/contemporary/freeling-cl/CL.cities.GRAM.txt` 676b574107917e5d9903dc4513e26280f527b4cf78d46bb00ac60d0625752202
 - `/home/user/csld/software/10-Infrastructure/freeling/escl-sources/dictionary-additions-all-rounds-standardized--261112.tsv` 7a448affb0adba8b4eef8bf97c2e16be458667f89519e54027f212a96d47a0d7
+- `/home/user/csld/software/10-Infrastructure/freeling/escl-sources/dictionary-words--261113.tsv` 2bb4255c9f5bc7cdaf976b92cb00480870230638898944a01276ca8bf1ffa0ef
+- `/home/user/csld/software/10-Infrastructure/freeling/escl-sources/dictionary-hand-edits.tsv` bcd33cbb0842b5a74c7953d17af15116b2c47725b485268ffb85b08ed558e6da
+- `/home/user/csld/software/10-Infrastructure/freeling/escl-sources/historical-attested-spellings--261113.tsv` 6448340990a138b4583f3d9d0a320334a45dba9a716c8de0cfe716afcd192ce0
 - `/home/user/csld/software/10-Infrastructure/freeling/escl-sources/dictionary-addition-removals--261109.tsv` ab8bbd8d9abbce65865ba69eda30226e14c361f5811063d8f8deed5be1ae9f45
 - `/home/user/csld/software/10-Infrastructure/freeling/escl-sources/interjections--261108.tsv` 2c270479e8c03245acee71d02e275620bec34dc1ca483291a7d7a6ff60fa060b
 - `/home/user/csld/software/10-Infrastructure/freeling/escl-sources/interjection-removals--261108.tsv` 2d55e0a7a6d884619545fa423c9f53d03e7f5ee4c887274664293587092290cc
 - `/home/user/csld/software/10-Infrastructure/freeling/escl-sources/lemma-standardization--261112.tsv` da1e37d8bd16af4a08863e6766372e4ed5909ea1ba2727113a63c6282b915de7
+- `/home/user/csld/software/10-Infrastructure/freeling/escl-sources/locutions--261113.tsv` 0aab3c5332804ca5bf76c4561d8015498026ecd67007e9ca2970f64eb1f1f003
 - `/home/user/csld/software/10-Infrastructure/freeling/escl-sources/dictionary-variants--261103.tsv` b77deda0f3f94207bacadb2d537e917e722d2cb06b844149300de93b642b9d66
 - `/home/user/csld/software/10-Infrastructure/freeling/escl-sources/dictionary-variants--261103b.tsv` 090b31fe6ca0ced6037e8ea6cd5614575b858a59b2257f970af3b388b25b01f3
 - `/home/user/csld/software/10-Infrastructure/freeling/escl-sources/dictionary-variants--261106.tsv` 5878ebd9eb942e98090aaf1c39347ea5f20b7be4c34b2613b5dea18d322cc879

@@ -1,0 +1,55 @@
+form	lemma	tag	flag	notes
+de a poco	de_a_poco	RG	I	Argentine worksheet 261112
+a caballito	a_caballito	RG	I	Argentine worksheet 261112
+en cuatro patas	en_cuatro_patas	RG	I	Argentine worksheet 261112
+para el orto	para_el_orto	AQ0CN00	I	Argentine worksheet 261112
+mala leche	mala_leche	AQ0CN00	I	Argentine worksheet 261112
+de medio pelo	de_medio_pelo	AQ0CN00	I	Argentine worksheet 261112
+medio pelo	medio_pelo	AQ0CN00	I	Argentine worksheet 261112
+flor de	flor_de	AQ0CN00	A	Argentine worksheet 261112
+caído de la cama	caído_de_la_cama	AQ0MS00	I	Argentine worksheet 261112
+caída de la cama	caído_de_la_cama	AQ0FS00	I	Argentine worksheet 261112
+caídos de la cama	caído_de_la_cama	AQ0MP00	I	Argentine worksheet 261112
+caídas de la cama	caído_de_la_cama	AQ0FP00	I	Argentine worksheet 261112
+buen día	buen_día	I	I	Argentine worksheet 261112
+taca taca	taca_taca	NCMS000	I	Argentine worksheet 261112
+tenedor libre	tenedor_libre	NCMS000	I	Argentine worksheet 261112
+tenedores libres	tenedor_libre	NCMP000	I	Argentine worksheet 261112
+dulce de leche	dulce_de_leche	NCMS000	I	Argentine worksheet 261112
+dulces de leche	dulce_de_leche	NCMP000	I	Argentine worksheet 261112
+dogo argentino	dogo_argentino	NCMS000	I	Argentine worksheet 261112
+dogos argentinos	dogo_argentino	NCMP000	I	Argentine worksheet 261112
+touch and go	touch_and_go	NCMS000	I	Argentine worksheet 261112
+amo de casa	amo_de_casa	NCMS000	I	Argentine worksheet 261112
+amos de casa	amo_de_casa	NCMP000	I	Argentine worksheet 261112
+autito chocador	autito_chocador	NCMS000	I	Argentine worksheet 261112
+autitos chocadores	autito_chocador	NCMP000	I	Argentine worksheet 261112
+sueño del pibe	sueño_del_pibe	NCMS000	I	Argentine worksheet 261112
+lomo de burro	lomo_de_burro	NCMS000	I	Argentine worksheet 261112
+lomos de burro	lomo_de_burro	NCMP000	I	Argentine worksheet 261112
+play off	play_off	NCMS000	I	Argentine worksheet 261112
+play offs	play_off	NCMP000	I	Argentine worksheet 261112
+touch pad	touch_pad	NCMS000	I	Argentine worksheet 261112
+touch pads	touch_pad	NCMP000	I	Argentine worksheet 261112
+vino navegado	vino_navegado	NCMS000	I	Argentine worksheet 261112
+harina tostada	harina_tostada	NCFS000	I	Argentine worksheet 261112
+salsa blanca	salsa_blanca	NCFS000	I	Argentine worksheet 261112
+salsas blancas	salsa_blanca	NCFP000	I	Argentine worksheet 261112
+cinta scotch	cinta_scotch	NCFS000	I	Argentine worksheet 261112
+pole position	pole_position	NCFS000	I	Argentine worksheet 261112
+villa miseria	villa_miseria	NCFS000	I	Argentine worksheet 261112
+villas miseria	villa_miseria	NCFP000	I	Argentine worksheet 261112
+viveza criolla	viveza_criolla	NCFS000	I	Argentine worksheet 261112
+<poner>_las_pilas	ponerse_las_pilas	$1:VM	I	Argentine worksheet 261112
+<hacer>_dedo	hacer_dedo	$1:VM	I	Argentine worksheet 261112
+<cebar>_el_mate	cebar_el_mate	$1:VM	I	Argentine worksheet 261112
+<estar>_meado_de_perro	estar_meado_de_perro	$1:VM	I	Argentine worksheet 261112
+<estar>_meada_de_perro	estar_meado_de_perro	$1:VM	I	Argentine worksheet 261112
+<hacer>_el_lindo	hacerse_el_lindo	$1:VM	I	Argentine worksheet 261112
+<hacer>_la_linda	hacerse_el_lindo	$1:VM	I	Argentine worksheet 261112
+<hacer>_el_loco	hacerse_el_loco	$1:VM	I	Argentine worksheet 261112
+<hacer>_la_loca	hacerse_el_loco	$1:VM	I	Argentine worksheet 261112
+<meter>_pata	meter_pata	$1:VM	I	Argentine worksheet 261112
+<poner>_la_gorra	ponerse_la_gorra	$1:VM	I	Argentine worksheet 261112
+<poner>_los_pantalones	ponerse_los_pantalones	$1:VM	I	Argentine worksheet 261112
+<serruchar>_el_piso	serruchar_el_piso	$1:VM	I	Argentine worksheet 261112

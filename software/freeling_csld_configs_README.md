@@ -1,6 +1,6 @@
 # freeling_csld_configs_README.md
 
-Documents `freeling_csld_configs.py` 1.1.0.
+Documents `freeling_csld_configs.py` 1.2.0.
 
 Real file: `/home/user/csld/software/10-Infrastructure/freeling/scripts/freeling_csld_configs.py`
 
@@ -17,7 +17,7 @@ FreeLing es-CL 2027 has two dictionaries (decided 261109), installed by
 | Dictionary | For | vos | -is forms (salís, comís) |
 |---|---|---|---|
 | `/usr/local/share/freeling/es/es-cl/dicc.src`, the default | contemporary Chilean Spanish: COSCACH, CODICACH | voseo only | voseo only |
-| `/usr/local/share/freeling/es/es-cl/historical/dicc.src` | older Spanish: CORHICACH only | voseo and polite | voseo and vosotros |
+| `/usr/local/share/freeling/es/es-cl/historical/dicc.src`, the 19th-century one, with its own `historical/probabilitats.dat` and `historical/locucions.dat` | historical corpora: older Spanish and the 19th-century Chilean spellings (Bello, the 1844 orthography, Sarmiento, the neographers) | voseo and polite, read as polite | voseo and vosotros, read as vosotros |
 
 From the base config
 `/home/user/csld/software/10-Infrastructure/freeling/csld-es-cl.cfg`
@@ -30,7 +30,7 @@ it writes, in
 | `coscach/usermap--coscach.dat` | its user map | |
 | `codicach/csld-es-cl--codicach.cfg` | CODICACH, written texts | the default dictionary; the Chilean name recognizer for written texts, `es-cl/np.dat`; the user map |
 | `codicach/usermap--codicach.dat` | its user map | |
-| `historical/csld-es-cl--historical.cfg` | CORHICACH | the historical dictionary |
+| `historical/csld-es-cl--historical.cfg` | CORHICACH | the 19th-century dictionary, probabilities and multiwords; compound analysis off |
 
 All three use the Chilean tagset, probabilities, multiwords and currencies
 (`es-cl/quantities.dat`: the peso is the Chilean peso, UF and UTM). Every
@@ -92,7 +92,7 @@ decided 261030):
 Nothing is written if one fails:
 
 - the base config has exactly one line for each key set;
-- the installed files the configs name exist (deploy first), the default
+- the installed files the configs name exist, the 19th-century probabilities and multiwords among them (deploy first), the default
   dictionary has vos with the voseo reading only and the historical one has
   both;
 - `np.dat` says `<ClassesAtSentenceStart>` no and `np-speech.dat` says yes;
@@ -115,6 +115,8 @@ freeling_csld_configs.py
 
 ## Tested
 
+261113, version 1.2.0, with the base config of 261113 and FreeLing es-CL 2027 as `freeling_escl_deploy.py` 2.2.0 installs it: the historical config differs from the base config in the tagset, quantities, dictionary, probabilities and multiwords (the 19th-century ones), `CompoundAnalysis=no` and the `CompoundFile` line commented out; the COSCACH and CODICACH configs are as 1.1.0 wrote them. FreeLing 4.2 with the historical config (the CoNLL column file left out) read jente as gente, i as y, rei as rey and salís (after vosotros) as vosotros.
+
 261110, on a copy of the project's FreeLing folder and of the installed
 data as FreeLing es-CL 2027 is deployed since 261110: the dry run listed the five
 files to write and the two to retire, and wrote nothing; the real run wrote
@@ -132,6 +134,8 @@ the user map's path.
 Linux. Standard library only.
 
 ## Changelog
+
+- 1.2.0 (261113): the historical config reads the 19th-century dictionary's own probabilities and multiwords (`historical/probabilitats.dat`, `historical/locucions.dat`) and turns compound analysis off (`CompoundAnalysis=no`, the `CompoundFile` line commented out): FreeLing builds its compound analyzer from every form of the dictionary with foma, whose stack holds 2,097,152 entries, fewer than the 19th-century dictionary has, and stops with "Stack full!". Refuses if those two files are not installed.
 
 - 1.1.0 (261110): separate configs for COSCACH (`coscach/`, the name
   recognizer for speech, `es-cl/np-speech.dat`) and CODICACH (`codicach/`,

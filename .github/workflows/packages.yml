@@ -8,7 +8,10 @@ name: Build FreeLing es-CL packages
 # release. The package release is the release's tag, which must be a date,
 # YYMMDD, with an optional letter for a second release that day (261112,
 # 261112b); a run started by hand makes test packages, 0.<run number>, which
-# sort before every release. Run by hand with
+# sort before every release. macOS (Apple silicon and Intel) gets a
+# tarball instead of a package: FreeLing built against Homebrew's Boost and
+# ICU, installed in /usr/local/freeling-es-cl-2027, checked on the machine
+# that built it and attached to the release. Run by hand with
 # "test only" set to the number of an earlier run, only the checks are run,
 # on that run's packages.
 
@@ -220,6 +223,89 @@ jobs:
 
       - name: Check it
         run: packaging/test-freeling.sh
+
+      - name: Attach it to the release
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*
+
+  # macOS: FreeLing 4.2 with FreeLing es-CL 2027, built on GitHub's macOS 15
+  # machines (Apple silicon and Intel) against Homebrew's Boost and ICU,
+  # installed in /usr/local/freeling-es-cl-2027 and checked there; the
+  # tarball of that folder is attached to the release. Installing it needs
+  # Homebrew's boost and icu4c (the README, "macOS").
+  macos:
+    needs: privacy
+    if: inputs.test_only == ''
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: macos-15
+            id: macos-arm64
+          - runner: macos-15-intel
+            id: macos-x86_64
+    runs-on: ${{ matrix.runner }}
+    env:
+      PREFIX: /usr/local/freeling-es-cl-2027
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Tools and libraries from Homebrew
+        run: |
+          brew update >/dev/null || true
+          brew install boost icu4c cmake gnu-sed coreutils binutils
+          echo "$(brew --prefix gnu-sed)/libexec/gnubin" >> "$GITHUB_PATH"
+          echo "$(brew --prefix coreutils)/libexec/gnubin" >> "$GITHUB_PATH"
+          echo "$(brew --prefix binutils)/bin" >> "$GITHUB_PATH"
+          brew list --versions boost icu4c
+
+      - name: Get FreeLing 4.2's source
+        run: |
+          curl -fsSL -o "$RUNNER_TEMP/FreeLing-src-4.2.tar.gz" https://github.com/TALP-UPC/FreeLing/releases/download/4.2/FreeLing-src-4.2.tar.gz
+          echo "f96afbdb000d7375426644fb2f25baff9a63136dddce6551ea0fd20059bfce3b  $RUNNER_TEMP/FreeLing-src-4.2.tar.gz" | sha256sum -c -
+          tar -xzf "$RUNNER_TEMP/FreeLing-src-4.2.tar.gz" -C "$RUNNER_TEMP"
+
+      - name: The changes of FreeLing es-CL 2027
+        run: packaging/patch-freeling.sh "$RUNNER_TEMP/FreeLing-4.2" "$GITHUB_WORKSPACE/software/patches/freeling-4.2-np-classes.patch"
+
+      - name: Build and install FreeLing 4.2
+        run: |
+          sudo mkdir -p "$PREFIX"
+          sudo chown "$(id -u):$(id -g)" "$PREFIX"
+          cmake -S "$RUNNER_TEMP/FreeLing-4.2" -B "$RUNNER_TEMP/build" \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_INSTALL_PREFIX="$PREFIX" \
+            -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+            -DICU_ROOT="$(brew --prefix icu4c)" \
+            -DBOOST_ROOT="$(brew --prefix boost)" \
+            -DCMAKE_CXX_FLAGS="-Wno-unknown-warning-option -Wno-template-body" \
+            -DCMAKE_C_FLAGS="-std=gnu17"
+          make -C "$RUNNER_TEMP/build" -j"$(sysctl -n hw.ncpu)" > "$RUNNER_TEMP/build.log" 2>&1 || { tail -200 "$RUNNER_TEMP/build.log"; exit 1; }
+          make -C "$RUNNER_TEMP/build" install > "$RUNNER_TEMP/install.log" 2>&1 || { tail -100 "$RUNNER_TEMP/install.log"; exit 1; }
+
+      - name: The Chilean data
+        run: packaging/install-data.sh "$PREFIX/share/freeling"
+
+      - name: Check it
+        run: packaging/test-freeling.sh
+
+      - name: Make the tarball
+        run: |
+          tag="${{ github.event.release.tag_name }}"
+          [ -n "$tag" ] || tag="0.${{ github.run_number }}"
+          mkdir -p "$PREFIX/share/doc/freeling-es-cl"
+          cp README.md LICENSE BUILD-REPORT.md CHANGELOG.tsv "$PREFIX/share/doc/freeling-es-cl/"
+          mkdir -p dist
+          tar -C / -czf "dist/freeling-es-cl-2027-$tag-${{ matrix.id }}.tar.gz" "${PREFIX#/}"
+          ls -l dist
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: package-${{ matrix.id }}
+          path: dist/*
+          compression-level: 0
 
       - name: Attach it to the release
         if: github.event_name == 'release'

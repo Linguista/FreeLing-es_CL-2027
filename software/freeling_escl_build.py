@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# VERSION 2.6.0
+# VERSION 2.8.1
 #
 # freeling_escl_build.py -- build FreeLing es-CL 2027, the Chilean Spanish
 # data for FreeLing 4.2, from FreeLing's own Spanish source files, the CSLD
@@ -33,7 +33,15 @@
 #       data/es/nerc/data/gazPER-c.dat  its list of whole person names
 #       data/es/nerc/nec/nec-ab-poor1.dat  the classifier's file, to which
 #                                   the class shares are added
-#   No installed FreeLing file and no archived (deprecated) file is read.
+#       data/es/locucions.dat       FreeLing's general Spanish multiwords,
+#                                   merged into the Chilean multiword file
+#                                   (decided 261112: FreeLing reads one
+#                                   multiword file, and the CSLD configs name
+#                                   the Chilean one, so without the merge
+#                                   every general multiword is lost)
+#   No installed FreeLing file and no archived (deprecated) file is read,
+#   and no es-cl.cfg at all: FreeLing's es-cl config, the basis of the
+#   release's two configs, is carried in this script (decided 261113).
 #   <project root>/linguistic-derived/grammatical-lists/individual/
 #       contemporary/freeling-cl/CL.*.GRAM.txt      the Chilean lists
 #       contemporary/freeling-cl/metadata/tagset.dat the Chilean tagset
@@ -95,9 +103,13 @@
 #       Spanish. vos is always voseo (PP2CS0V only), and an -is form with a
 #       voseo and a vosotros reading of the same verb and tense keeps the
 #       voseo reading only (salis, comis).
-#   data/es/es-cl/historical/dicc.src  older Spanish, for CORHICACH only:
-#       vos also keeps its polite reading (PP2CS0P), and the -is forms keep
-#       both readings. Used only when asked for (a separate config).
+#   data/es/es-cl/historical/dicc.src  the 19th-century dictionary, for
+#       historical corpora only: vos also keeps its polite reading
+#       (PP2CS0P), the -is forms keep both readings (vosotros preferred),
+#       and the 19th-century Chilean spellings, the attested old-accent
+#       spellings and their multiwords are added, with its own
+#       probabilitats.dat and locucions.dat (decided 261112, 261113). Used
+#       only when asked for: data/config/es-cl-19th-century.cfg.
 #
 # What it does, in order (every line-level change goes to CHANGELOG.tsv,
 # every decision row to DECISIONS.tsv):
@@ -118,19 +130,28 @@
 #   7  adds the person, place and organization lists (CL.names)
 #   8  adds the non-standard forms kept in the text (CL.nonstandard) and the
 #      misspelt forms the text corrects, read as their corrections
-#      (CL.misspellings); withdraws the proper-noun reading of every decided
+#      (CL.common-misspellings); withdraws the proper-noun reading of every decided
 #      name that is also a common noun or a verb (decided 261110b)
 #   9  applies the standard lemmas, and makes every place-only form a
 #      place and nothing else (place-only-forms: Arica is never a form of
 #      aricar, decided 261110d; Barbados, Chanco, Pirque, decided 261110e)
-#  10  builds the two dictionaries, the tuteo-tagged one (zipped), and
+#   9c adds fué, fuí, dió, vió, á, é, ó, ú with the readings of their
+#      modern forms (CL.old-accents)
+#   9d adds every accented form written without its accents, when that is
+#      not already a word and comes from one form only
+#      (CL.common-misspellings)
+#  10  builds the two dictionaries (the 19th-century one with its
+#      spellings, attested spellings and decided words), the tuteo-tagged
+#      one (zipped), and
 #      FreeLing's own entries and remove files for both, and checks that
 #      FreeLing's build-dict would give the same dictionaries
 #  11  writes probabilitats.dat (lemma preferences, the decided names, rare
 #      interjections, mm, the 20% future against the imperfect subjunctive,
 #      poder over podar, the share of a reading added beside a word's own
 #      at the start of a sentence (sentence-start-classes)), locucions.dat
-#      (ya_poh, the multiword interjections), quantities.dat (Chilean peso,
+#      (FreeLing's general multiwords merged in, the Chilean entry winning
+#      for a key in both; ya_poh, the multiword interjections, the decided
+#      multiwords of locutions and locution-removals), quantities.dat (Chilean peso,
 #      UF, UTM, euro)
 #  11b the names (decided 261110d, 261110e, 261110f, 261110g): the
 #      classifier's lists and file, as FreeLing names them, so it reads
@@ -182,7 +203,7 @@ import unicodedata
 import zipfile
 from pathlib import Path
 
-VERSION = "2.6.0"
+VERSION = "2.8.1"
 RELEASE = "FreeLing es-CL 2027"
 
 SOURCE_TREE = Path("/home/user/build/FreeLing-4.2")
@@ -203,12 +224,22 @@ LINKED_DECISIONS = Path("/home/user/corpora/"
 BUILD_STEMS = (
     "all-corpora-replacements", "correction-lemmas",
     "dictionary-addition-removals", "dictionary-additions",
+    "dictionary-words", "historical-attested-spellings",
     "dictionary-additions-all-rounds-standardized", "dictionary-variants",
     "fixed-name-classes", "interjection-removals", "interjections",
-    "lemma-standardization", "name-class-shares", "person-name-removals",
+    "lemma-standardization", "locution-removals", "locutions",
+    "name-class-shares", "person-name-removals",
     "place-only-forms", "sentence-start-classes", "text-correction-removals",
     "text-corrections", "verb-form-readings",
 )
+# Kinds that are not decisions of the COSCACH spelling review: they live
+# only in escl-sources and need no link in the COSCACH decisions folder.
+UNLINKED_STEMS = ("locution-removals", "locutions", "dictionary-words",
+                  "historical-attested-spellings")
+# The hand-edit file of the dictionary (decided 261112): exact dictionary
+# lines (form, lemma, tag), applied at every build. It has no round: it is
+# edited in place, and its # lines say what goes in it.
+HAND_EDITS_NAME = "dictionary-hand-edits.tsv"
 GAZPER_P_REL = Path("linguistic-derived/people-names-list/gazPER-p.dat")
 README_NAME = "FreeLing_es-CL_2027_README.md"
 
@@ -241,6 +272,8 @@ FL42 = {
         "3e86bc15a91e49078d5f7d54cb9da252bc5360451567af95d4a48de6c6caa89c",
     "data/es/probabilitats.dat":
         "f4e598b3e31754781fac5cc81f806d85be1e25af988e40760076c8a589894cd5",
+    "data/es/locucions.dat":
+        "c4440d93ad51ea4cf3c224cbb69d978aa86fdbb05a9e758b42fa98a46d2d7913",
     "data/common/nec/cities.dat":
         "b29f9221229e86a039bcc1ba09d8889e244b81aab0821391cd30b2448826b585",
     "data/common/nec/cities-CL.dat":
@@ -252,6 +285,165 @@ FL42 = {
     "data/es/nerc/nec/nec-ab-poor1.dat":
         "4469ae51bf0a0004f293558f93fba6ff54d574b7c12abc2ba1048f67c04e4dc6",
 }
+
+# FreeLing 4.2's own es-cl config (data/config/es-cl.cfg, sha256 below),
+# the basis of the release's two configs. It is carried here, not read from
+# the source tree, so that no es-cl.cfg on this machine is read by the build
+# (decided 261113: the CSLD tags only with csld-es-cl.cfg and the configs
+# written from it). Trailing spaces are kept out of the text and put back on
+# the lines listed, so that the text is FreeLing's byte for byte.
+ES_CL_CFG_SHA = ("2934d4320a5690d4fbfb945325a7df20"
+                 "cb99d3e0393e8b8d7e6d3ddb37e8a42c")
+ES_CL_CFG_TRAILING = (5, 45, 73, 82, 95, 98)
+ES_CL_CFG_TEXT = """\
+##
+#### default configuration file for Spanish analyzer
+##
+
+#### General options
+Lang=es
+Locale=default
+
+### Tagset description file, used by different modules
+TagsetFile=$FREELINGSHARE/es/tagset.dat
+
+#### Trace options. Only effective if we have compiled with -DVERBOSE
+#
+## Possible values for TraceModule (may be OR'ed)
+#define SPLIT_TRACE         0x00000001
+#define TOKEN_TRACE         0x00000002
+#define MACO_TRACE          0x00000004
+#define OPTIONS_TRACE       0x00000008
+#define NUMBERS_TRACE       0x00000010
+#define DATES_TRACE         0x00000020
+#define PUNCT_TRACE         0x00000040
+#define DICT_TRACE          0x00000080
+#define SUFF_TRACE          0x00000100
+#define LOCUT_TRACE         0x00000200
+#define NP_TRACE            0x00000400
+#define PROB_TRACE          0x00000800
+#define QUANT_TRACE         0x00001000
+#define NEC_TRACE           0x00002000
+#define AUTOMAT_TRACE       0x00004000
+#define TAGGER_TRACE        0x00008000
+#define HMM_TRACE           0x00010000
+#define RELAX_TRACE         0x00020000
+#define RELAX_TAGGER_TRACE  0x00040000
+#define CONST_GRAMMAR_TRACE 0x00080000
+#define SENSES_TRACE        0x00100000
+#define CHART_TRACE         0x00200000
+#define GRAMMAR_TRACE       0x00400000
+#define DEP_TRACE           0x00800000
+#define UTIL_TRACE          0x01000000
+
+TraceLevel=3
+TraceModule=0x0000
+
+## Options to control the applied modules. The input may be partially
+## processed, or not a full analysis may me wanted. The specific
+## formats are a choice of the main program using the library, as well
+## as the responsability of calling only the required modules.
+## Valid input/output formats are: plain, token, splitted, morfo, tagged, parsed
+InputLevel=text
+OutputLevel=tagged
+
+# consider each newline as a sentence end
+AlwaysFlush=no
+
+#### Tokenizer options
+TokenizerFile=$FREELINGSHARE/es/tokenizer.dat
+
+#### Splitter options
+SplitterFile=$FREELINGSHARE/es/splitter.dat
+
+#### Morfo options
+AffixAnalysis=yes
+CompoundAnalysis=yes
+MultiwordsDetection=yes
+NumbersDetection=yes
+PunctuationDetection=yes
+DatesDetection=yes
+QuantitiesDetection=yes
+DictionarySearch=yes
+ProbabilityAssignment=yes
+DecimalPoint=,
+ThousandPoint=.
+LocutionsFile=$FREELINGSHARE/es/es-cl/locucions.dat
+QuantitiesFile=$FREELINGSHARE/es/quantities.dat
+AffixFile=$FREELINGSHARE/es/afixos.dat
+CompoundFile=$FREELINGSHARE/es/compounds.dat
+ProbabilityFile=$FREELINGSHARE/es/es-cl/probabilitats.dat
+DictionaryFile=$FREELINGSHARE/es/es-cl/dicc.src
+PunctuationFile=$FREELINGSHARE/common/punct.dat
+ProbabilityThreshold=0.001
+
+# NER options
+NERecognition=yes
+
+# config file for "crf" machine learning NERC
+# (recognition and classification in a single step)
+NPDataFile=$FREELINGSHARE/es/nerc/nerc/nerc.dat
+
+# config file for "basic" rule based NER
+#NPDataFile=$FREELINGSHARE/es/np.dat
+
+# config file for "bio" machine learning NER
+# NPDataFile=$FREELINGSHARE/es/nerc/ner/ner-ab-poor1.dat
+# NPDataFile=$FREELINGSHARE/es/nerc/ner/ner-ab-rich.dat
+# "rich" model is trained with rich gazetteer. Offers higher accuracy but
+# requires adapting gazetteer files to have high coverage on target corpus.
+# "poor1" model is trained with poor gazetteer. Accuracy is splightly lower
+# but suffers small accuracy loss the gazetteer has low coverage in target
+# corpus. If in doubt, use "poor1" model.
+
+## Phonetic encoding of words.
+Phonetics=no
+PhoneticsFile=$FREELINGSHARE/es/phonetics.dat
+
+## NEC options. See README in common/nec
+NEClassification=no
+NECFile=$FREELINGSHARE/es/nerc/nec/nec-ab-poor1.dat
+#NECFile=$FREELINGSHARE/es/nerc/nec/nec-ab-rich.dat
+
+## Sense annotation options (none,all,mfs,ukb)
+SenseAnnotation=none
+SenseConfigFile=$FREELINGSHARE/es/senses.dat
+UKBConfigFile=$FREELINGSHARE/es/ukb.dat
+
+#### Tagger options
+Tagger=hmm
+TaggerHMMFile=$FREELINGSHARE/es/tagger.dat
+TaggerRelaxFile=$FREELINGSHARE/es/constr_gram-B.dat
+TaggerRelaxMaxIter=500
+TaggerRelaxScaleFactor=670.0
+TaggerRelaxEpsilon=0.001
+TaggerRetokenize=yes
+TaggerForceSelect=tagger
+
+#### Parser options
+GrammarFile=$FREELINGSHARE/es/chunker/grammar-chunk.dat
+
+#### Dependence Parser options
+DependencyParser=txala
+DepTxalaFile=$FREELINGSHARE/es/dep_txala/dependences.dat
+DepTreelerFile=$FREELINGSHARE/es/treeler/dependences.dat
+
+# Semantic Role Labelling options
+SRLTreelerFile=$FREELINGSHARE/es/treeler/srl.dat
+
+#### Coreference Solver options
+CorefFile=$FREELINGSHARE/es/coref/relaxcor/relaxcor.dat
+SemGraphExtractorFile=$FREELINGSHARE/es/semgraph/semgraph-SRL.dat
+"""
+
+
+def stock_es_cl_cfg() -> str:
+    """FreeLing 4.2's es-cl config, exactly as FreeLing ships it."""
+    lines = ES_CL_CFG_TEXT.split("\n")[:-1]
+    for n in ES_CL_CFG_TRAILING:
+        lines[n - 1] += " "
+    return "\n".join(lines) + "\n"
+
 # The Spanish dictionary those entries give (FreeLing's installed
 # es/dicc.src): the build checks that it rebuilds it byte for byte.
 ES_DICC_SHA = "b173f77f9a2d1100f83bbf7f287182579e7a768028529ff7aaa69dbb5c8b35fd"
@@ -282,7 +474,8 @@ PACKAGING_FILES = ["patch-freeling.sh", "patch-freeling_README.md",
                    "test-freeling.sh", "test-freeling_README.md",
                    "make-nfpm-config.py", "make-nfpm-config_README.md",
                    "postinstall-deb.sh", "postinstall-deb_README.md",
-                   "ldconfig.sh", "ldconfig_README.md"]
+                   "ldconfig.sh", "ldconfig_README.md",
+                   "install-data.sh", "install-data_README.md"]
 PACKAGING_WORKFLOW = "packages.yml"
 PATCH_FILES = ["freeling-4.2-np-classes.patch",
                "freeling-4.2-np-classes_README.md", "np.cc", "np.h", "nec.cc"]
@@ -326,11 +519,164 @@ NAME_LISTS = [("peoplenames", "CL.peoplenames.GRAM.txt"),
 # Proper-noun classes of the lists (decided 261101).
 NAME_TAG = {"peoplenames": "NP00SP0", "cities": "NP00G00"}
 LOCUTION_TAG_FIX = {("chuchunco_city", "NPFS000"): "NP00G00",
-                    ("*", "AQ0NC00"): "AQ0CN00"}
+                    ("*", "AQ0NC00"): "AQ0CN00",
+                    # FreeLing's general file tags tal y cual as Fs, a
+                    # punctuation mark; it is used as cual is (PI0CS00).
+                    ("tal_y_cual", "Fs"): "PI0CS00"}
 # The entries files the build writes, in order.
 SOURCES = ["adj", "adv", "demonyms", "int", "nom", "tanc", "vaux", "verb",
-           "variants", "names", "additions", "nonstandard", "misspellings",
-           "standard-lemmas"]
+           "variants", "names", "additions", "nonstandard",
+           "common-misspellings", "old-accents", "standard-lemmas"]
+
+# The accented one-syllable forms written before the 1952 reform, in both
+# dictionaries (decided 261112): each gets every reading of its modern form.
+OLD_ACCENTS = [("fué", "fue"), ("fuí", "fui"), ("dió", "dio"),
+               ("vió", "vio"), ("á", "a"), ("é", "e"), ("ó", "o"), ("ú", "u")]
+# Common misspellings (decided 261112): every correctly spelled form with
+# a written accent or a diaeresis, written without them, when the result
+# is not already a word and comes from that one form only.
+STRIP_MARKS = str.maketrans("áéíóúü", "aeiouu")
+ACCENTS_ONLY = str.maketrans("áéíóú", "aeiou")
+# The 19th-century dictionary (the historical one; decided 261112, 261113):
+# the spellings of Bello and García del Río (1823), Sarmiento (1843), the
+# Chilean orthography of 1844 and the Chilean neographers (1890s to early
+# 1900s), generated from every form of the dictionary and given the
+# readings of the form they come from. A word may show any combination of
+# them; a rule changes every place it applies in a word. The order matters:
+# g before e/i becomes j before u is dropped from gue/gui. Accents are
+# never dropped (decided 261112).
+X_TO_J = {"méxico": "méjico", "mexicano": "mejicano", "mexicana": "mejicana",
+          "mexicanos": "mejicanos", "mexicanas": "mejicanas",
+          "texas": "tejas", "oaxaca": "oajaca", "ximénez": "jiménez",
+          "quixote": "quijote", "xalapa": "jalapa"}
+_V = "aeiouáéíóúü"
+HIST_RULES = [
+    ("g>j", "g before e or i written j (jente, jeneral)",
+     lambda w: re.sub(r"g(?=[eiéí])", "j", w)),
+    ("x>j", "x for the j sound written j (Méjico, Tejas)",
+     lambda w: X_TO_J.get(w, w)),
+    ("x>cs", "x before a vowel written cs (ecsamen)",
+     lambda w: re.sub(r"x(?=[%s])" % _V, "cs", w)),
+    ("x>s", "x before a consonant written s (esplicar, estranjero)",
+     lambda w: re.sub(r"x(?=[^%s])" % _V, "s", w)),
+    ("y>i", "y as a vowel written i (rei, mui, hoi, i)",
+     lambda w: re.sub(r"y(?![%s])" % _V, "i", w)),
+    ("c>s", "c before e or i written s (sielo, sienzia)",
+     lambda w: re.sub(r"c(?=[eiéí])", "s", w)),
+    ("c>z", "c before e or i written z (soziedad, zientífica)",
+     lambda w: re.sub(r"c(?=[eiéí])", "z", w)),
+    ("z>s", "z written s (sapato)", lambda w: w.replace("z", "s")),
+    ("qu>q", "qu written q (qerer, qeso)",
+     lambda w: re.sub(r"qu(?=[eiéí])", "q", w)),
+    ("qu>k", "qu written k (keso)",
+     lambda w: re.sub(r"qu(?=[eiéí])", "k", w)),
+    ("c>k", "c for the k sound written k (kasa, elektrizidad)",
+     lambda w: re.sub(r"c(?![eiéíh])", "k", w)),
+    ("c>q", "c for the k sound written q (qasa, qomerziantes)",
+     lambda w: re.sub(r"c(?![eiéíh])", "q", w)),
+    ("gu>g", "the silent u of gue, gui dropped (gerra, giso)",
+     lambda w: re.sub(r"gu(?=[eiéí])", "g", w)),
+    ("h-", "silent h dropped before a vowel (ombre, umano)",
+     lambda w: re.sub(r"(?<!c)h(?=[%s])" % _V, "", w)),
+    ("v>b", "v written b (bino, Balparaíso)", lambda w: w.replace("v", "b")),
+    ("r>rr", "the trill written rr at the start and after n, l, s "
+     "(rrazional, Enrrique)",
+     lambda w: re.sub(r"(^|(?<=[nls]))r(?!r)", "rr", w)),
+]
+# The rules the Chilean orthography of 1844 adopted (decided 261113): only
+# they may give a spelling that is already a word, and the reading they
+# add to it is then nearly impossible on its own in the 19th-century
+# probabilitats.dat. A spelling another rule gives that is already a word
+# is not added.
+BELLO_ADOPTED = ("g>j", "y>i", "x>s")
+# Bello spellings that are also other words, decided one by one for the
+# 19th-century dictionary (decided 261113). A list gives the readings the
+# form keeps, and only those; a word in quotes, the readings of that word;
+# "no voseo", its readings without the voseo ones.
+HIST_READINGS = {
+    "i": [("y", "CC"), ("i", "NCFS000")],   # the conjunction y, 99%
+    "rei": [("rey", "NCMS000")],            # never the name Rei
+    "lei": [("ley", "NCFS000")],            # never the plural of leu
+    "hai": "hay",                           # always hay
+    "soi": "no voseo",                      # soy, never voseo
+}
+# Their probabilities (short tag -> percent), and those of testo.
+HIST_PROBS = {"i": {"CC": 99, "NC": 1}, "testo": {"NC": 90, "VMI": 10}}
+
+
+def hist_variants(word: str, rules):
+    """Every spelling the rules give for word, any combination of them,
+    in their order; the word itself is left out."""
+    out = {word}
+    for _, _, f in rules:
+        out |= {f(x) for x in out}
+    out.discard(word)
+    return out
+
+
+def key_variants(key: str, rules):
+    """The same for a multiword key: the <lemma> tokens are left alone."""
+    toks = key.split("_")
+    plain = [i for i, t in enumerate(toks) if not t.startswith("<")]
+    out = {key}
+    for _, _, f in rules:
+        new = set()
+        for k in out:
+            t = k.split("_")
+            for i in plain:
+                t[i] = f(t[i])
+            new.add("_".join(t))
+        out |= new
+    out.discard(key)
+    return out
+
+
+def accent_kind(old: str, modern: str) -> str:
+    """How an attested spelling differs from the modern one when both are
+    the same letters but for the accents: extra (ménos), moved (ráices) or
+    missing (colaboracion)."""
+    diff = [i for i, (a, b) in enumerate(zip(old, modern)) if a != b]
+    o = any(old[i] in "áéíóú" for i in diff)
+    m = any(modern[i] in "áéíóú" for i in diff)
+    if o and not m:
+        return "extra"
+    if m and not o:
+        return "missing"
+    return "moved"
+
+
+def write_config(text: str, folder: str, problems, name: str,
+                 compounds: bool = True) -> str:
+    """FreeLing's es-cl config with the Chilean tagset and quantities and
+    the dictionary, probabilities and multiwords of `folder` (es/es-cl or
+    es/es-cl/historical). Without compounds, compound analysis is off and
+    no compound file is named: FreeLing builds its compound analyzer from
+    every form of the dictionary with foma, whose stack holds 2,097,152
+    entries, fewer than the 19th-century dictionary has (FreeLing stops
+    with "Stack full!")."""
+    swaps = [("TagsetFile=$FREELINGSHARE/es/tagset.dat",
+              "TagsetFile=$FREELINGSHARE/es/es-cl/tagset.dat"),
+             ("QuantitiesFile=$FREELINGSHARE/es/quantities.dat",
+              "QuantitiesFile=$FREELINGSHARE/es/es-cl/quantities.dat"),
+             ("LocutionsFile=$FREELINGSHARE/es/es-cl/locucions.dat",
+              "LocutionsFile=$FREELINGSHARE/%s/locucions.dat" % folder),
+             ("ProbabilityFile=$FREELINGSHARE/es/es-cl/probabilitats.dat",
+              "ProbabilityFile=$FREELINGSHARE/%s/probabilitats.dat" % folder),
+             ("DictionaryFile=$FREELINGSHARE/es/es-cl/dicc.src",
+              "DictionaryFile=$FREELINGSHARE/%s/dicc.src" % folder)]
+    if not compounds:
+        swaps += [("CompoundAnalysis=yes", "CompoundAnalysis=no"),
+                  ("CompoundFile=$FREELINGSHARE/es/compounds.dat",
+                   "#CompoundFile=$FREELINGSHARE/es/compounds.dat")]
+    lines = text.splitlines()
+    for old, new in swaps:
+        hits = [i for i, x in enumerate(lines) if x.strip() == old]
+        if len(hits) != 1:
+            problems.append("data/config/es-cl.cfg: %r is not there once "
+                            "(for %s)" % (old, name))
+            continue
+        lines[hits[0]] = new
+    return "\n".join(lines) + "\n"
 
 # The ir paradigm, as it stands correct in the build tree (the newest list
 # has 53 lines with an empty stem, "a ir VMM03S0" ..., and lacks 50 real
@@ -1689,26 +2035,95 @@ class Decisions:
                 problems.append("%s is newer than %s: the all-rounds "
                                 "additions file must be regenerated first"
                                 % (rounds[-1].name, adds[-1].name))
+        # dictionary-words (decided 261113): form, lemma, category, tag,
+        # notes. With a tag, the form gets exactly that reading; without
+        # one, it gets the category's readings, as a decided addition does
+        # (the other number and gender of a noun or an adjective, the whole
+        # paradigm of a new verb). Every round is read; a later round wins
+        # for the same form and lemma.
+        self.words = collections.OrderedDict()
+        for p in decision_files(d, "dictionary-words"):
+            h, rows = take(p)
+            for r in rows:
+                if len(r) >= 3 and r[0].strip():
+                    r = [nfc(x).strip() for x in r] + ["", ""]
+                    self.words[(r[0].lower(), lemma_key(r[1]))] = (
+                        r[0].lower(), r[1], r[2], r[3], p.name)
+        # the hand-edit file: form, lemma, tag; # lines are comments
+        self.hand_edits = []
+        hp = d / HAND_EDITS_NAME
+        if hp.is_file():
+            self.files.append(hp)
+            for i, line in enumerate(hp.read_text(encoding="utf-8")
+                                     .splitlines(), 1):
+                if not line.strip() or line.lstrip().startswith("#"):
+                    continue
+                t = [nfc(x).strip() for x in line.split("\t")]
+                if len(t) < 3 or not all(t[:3]):
+                    problems.append("%s line %d: form, lemma and tag, "
+                                    "separated by tabs" % (hp.name, i))
+                    continue
+                self.hand_edits.append((t[0].lower(), lemma_key(t[1]), t[2],
+                                        i))
+        # historical-attested-spellings (decided 261113): spellings attested
+        # in historical texts (the CSLD Historic-Word-List and the
+        # pre-reform spellings taken out of the contemporary word list).
+        self.attested = collections.OrderedDict()
+        for p in decision_files(d, "historical-attested-spellings"):
+            h, rows = take(p)
+            for r in rows:
+                if r and r[0].strip():
+                    self.attested[nfc(r[0]).strip().lower()] = p.name
         self.addition_removals = set()
         for p in decision_files(d, "dictionary-addition-removals"):
             h, rows = take(p)
             for r in rows:
                 self.addition_removals.add((r[0], r[1], r[2]))
-        self.interjections = []
-        p = decision_files(d, "interjections")
-        if p:
-            h, rows = take(p[-1])
-            self.interjections = rows
-        self.interjection_removals = []
-        p = decision_files(d, "interjection-removals")
-        if p:
-            h, rows = take(p[-1])
-            self.interjection_removals = [r[0] for r in rows]
-        self.std_rows = []
-        p = decision_files(d, "lemma-standardization")
-        if p:
-            h, rows = take(p[-1])
-            self.std_rows = rows
+        # Every round is read, and a later round wins for the same form
+        # (decided 261112: per expression, never a whole file). Something
+        # is taken out only by a removals kind, never by leaving it out of
+        # a later round.
+        by_form = collections.OrderedDict()
+        for p in decision_files(d, "interjections"):
+            h, rows = take(p)
+            for r in rows:
+                if r and r[0].strip():
+                    by_form[r[0].strip().lower()] = r
+        self.interjections = list(by_form.values())
+        rm = collections.OrderedDict()
+        for p in decision_files(d, "interjection-removals"):
+            h, rows = take(p)
+            for r in rows:
+                if r and r[0].strip():
+                    rm[r[0]] = True
+        self.interjection_removals = list(rm)
+        by_lemma = collections.OrderedDict()
+        for p in decision_files(d, "lemma-standardization"):
+            h, rows = take(p)
+            for r in rows:
+                if r and r[0].strip():
+                    by_lemma[r[0].strip()] = r
+        self.std_rows = list(by_lemma.values())
+        # locutions (decided 261112): form, lemma, tag, flag (I always
+        # joined, A ambiguous), with any further columns ignored; a later
+        # round wins for the same multiword. locution-removals: form, why.
+        self.locutions = collections.OrderedDict()
+        for p in decision_files(d, "locutions"):
+            h, rows = take(p)
+            for r in rows:
+                if len(r) >= 3 and r[0].strip():
+                    self.locutions[multiword_key(r[0])] = (
+                        lemma_key(r[1]) or multiword_key(r[0]).replace(
+                            "a_el_", "al_").replace("de_el_", "del_"),
+                        r[2].strip(),
+                        (r[3].strip().upper() if len(r) > 3 else "") or "I",
+                        p.name)
+        self.locution_removals = collections.OrderedDict()
+        for p in decision_files(d, "locution-removals"):
+            h, rows = take(p)
+            for r in rows:
+                if r and r[0].strip():
+                    self.locution_removals[multiword_key(r[0])] = p.name
         self.variants = {}
         for p in decision_files(d, "dictionary-variants"):
             h, rows = take(p)
@@ -1998,7 +2413,9 @@ def covered_by_pattern(key, lemma, entries, lemmas_of):
 
 
 def process_locutions(text: str, changes, name, interj=None, interj_rm=(),
-                      add_new=True, lemmas_of=None):
+                      add_new=True, lemmas_of=None, general=None,
+                      decided=None, decided_rm=None, tagset=None,
+                      problems=None):
     """The repairs of every build (lowercase keys, commas as tokens, lemma
     patterns, tag fixes, duplicate lines merged, jeans_day, ya_poh), then
     the interjection decisions: interj maps a key to (lemma, rare); a key
@@ -2008,8 +2425,32 @@ def process_locutions(text: str, changes, name, interj=None, interj_rm=(),
     entries = collections.OrderedDict()
     have = {x.split()[0] for x in body}
     extra = [x for x in LOCUTIONS_ADD if x.split()[0] not in have]
-    for n_line, s in enumerate(body + extra):
-        new_line = n_line >= len(body)
+    # FreeLing's general Spanish multiwords (decided 261112): every entry
+    # whose key the Chilean file does not have; for a key in both, the
+    # Chilean entry wins. They get the same repairs as the Chilean ones.
+    gen_lines = []
+    if general:
+        chilean = {x.split()[0].lower(): x for x in body + extra}
+        for s in split_locutions(general)[1]:
+            k = s.split()[0].lower()
+            if k in chilean:
+                # a key already merged by an earlier build is silent; a
+                # Chilean entry that differs is logged
+                if " ".join(chilean[k].split()[1:]) != " ".join(s.split()[1:]):
+                    changes.append((name, "not added", "FreeLing's general "
+                                    "multiword: the Chilean entry wins", k,
+                                    "", "", s))
+                continue
+            gen_lines.append(s)
+    n_body, n_extra = len(body), len(extra)
+    for n_line, s in enumerate(body + extra + gen_lines):
+        new_line = n_body <= n_line < n_body + n_extra
+        if n_line >= n_body + n_extra:
+            t0 = s.split()
+            changes.append((name, "added", "FreeLing's general multiword "
+                            "(decided 261112)", t0[0].lower(),
+                            t0[1] if len(t0) > 1 else "",
+                            t0[2] if len(t0) > 2 else "", ""))
         t = s.split()
         form, flag = t[0], t[-1]
         if form != form.lower():
@@ -2103,9 +2544,44 @@ def process_locutions(text: str, changes, name, interj=None, interj_rm=(),
                             "(decided 261108)%s" % (
                                 ", RARE: ambiguous" if rare else ""),
                             key, lemma, "I", ""))
+    # the decided multiwords (locutions, locution-removals; decided 261112)
+    for key, (lemma, tag, flag, fname) in (decided or {}).items():
+        why = undecodable(tag, tagset) if tagset is not None and \
+            not re.match(r"^\$\d+:", tag) else None
+        if why or flag not in ("I", "A"):
+            if problems is not None:
+                problems.append("%s: multiword %s: %s" % (
+                    fname, key, why or "flag %s is neither I nor A" % flag))
+            continue
+        old = entries.get(key)
+        entries[key] = ([(lemma, tag)], flag)
+        changes.append((name, "changed" if old else "added",
+                        "multiword as decided (%s)" % fname, key, lemma,
+                        tag, " ".join([x for p in old[0] for x in p] +
+                                      [old[1]]) if old else ""))
+    for key, fname in (decided_rm or {}).items():
+        if key in entries:
+            ps, fl = entries.pop(key)
+            changes.append((name, "removed", "multiword removed as decided "
+                            "(%s)" % fname, key, "", "",
+                            " ".join([x for p in ps for x in p] + [fl])))
+        elif problems is not None:
+            problems.append("%s: no multiword %s to remove" % (fname, key))
     lines = [" ".join([f] + [x for p in ps for x in p] + [fl])
              for f, (ps, fl) in entries.items()]
     return "\n".join(head + lines + tail) + "\n", len(body), len(lines)
+
+
+def multiword_key(form: str) -> str:
+    """A decided multiword as FreeLing matches it: the locution key, with
+    al and del split into a el and de el (FreeLing splits them before it
+    matches multiwords; al tiro is a_el_tiro). A key with a <lemma> pattern
+    is taken as written."""
+    k = locution_key(form)
+    if "<" in k:
+        return k
+    return "_".join({"al": "a_el", "del": "de_el"}.get(w, w)
+                    for w in k.split("_"))
 
 
 def locution_key(form: str) -> str:
@@ -2765,7 +3241,8 @@ def check_links(ddir: Path, linked: Path):
     out = []
     real = ddir.resolve()
     for p in sorted(linked.iterdir()):
-        if stem_of(p.name) not in BUILD_STEMS:
+        if stem_of(p.name) not in BUILD_STEMS or \
+                stem_of(p.name) in UNLINKED_STEMS:
             continue
         if not p.is_symlink():
             out.append("%s is an ordinary file in the COSCACH decisions "
@@ -2777,7 +3254,8 @@ def check_links(ddir: Path, linked: Path):
             out.append("%s is a link to %s, not to its file in %s"
                        % (p, os.readlink(p), ddir))
     for p in sorted(ddir.iterdir()):
-        if stem_of(p.name) not in BUILD_STEMS:
+        if stem_of(p.name) not in BUILD_STEMS or \
+                stem_of(p.name) in UNLINKED_STEMS:
             continue
         q = linked / p.name
         if not q.is_symlink():
@@ -2889,6 +3367,10 @@ def main(argv=None):
             problems.append("%s is not FreeLing 4.2's file (sha256 %s, "
                             "expected %s)" % (st / rel, sha(b), h))
         srcb[rel] = b
+    if sha(stock_es_cl_cfg().encode("utf-8")) != ES_CL_CFG_SHA:
+        problems.append("the es-cl config carried in this script is not "
+                        "FreeLing 4.2's (sha256 %s)"
+                        % sha(stock_es_cl_cfg().encode("utf-8")))
     tagset_text = chilean_tagset.read_text(encoding="utf-8")
     if sha(tagset_text.encode("utf-8")) != TAGSET_SHA:
         problems.append("%s is not the approved Chilean tagset (sha256 %s, "
@@ -3111,6 +3593,7 @@ def main(argv=None):
     decided_names = collections.defaultdict(set)
     decided_tags = []          # (form, lemma, tag): the decision wins
     verb_rows = collections.OrderedDict()
+    verb_file = {}
     for row in dec.additions:
         form, lemma, cat = row[0], row[1], row[2]
         if (form, lemma, cat) in dec.addition_removals:
@@ -3137,11 +3620,51 @@ def main(argv=None):
         dlog.append((addf, form, "%s, %s" % (lemma, cat), "added",
                      "; ".join(["%s %s" % (f, g) for f, l, g in lines] +
                                notes)))
+    # dictionary-words and the hand edits (decided 261112, 261113)
+    for (fk, lk_), (form, lemma, cat, tag, wf) in dec.words.items():
+        if tag:
+            why = undecodable(tag, tagset) if TAG_RE.match(tag) else \
+                "not a tag"
+            if why:
+                problems.append("%s: %s: tag %s: %s" % (wf, form, tag, why))
+                continue
+            additions.append((form, lemma_key(lemma), tag))
+            decided_tags.append((form, lemma_key(lemma), tag))
+            dlog.append((wf, form, "%s, %s" % (lemma, tag), "added",
+                         "exactly this reading"))
+            continue
+        k = category_of(cat)
+        if k is None or k[0] in ("-", "?"):
+            problems.append("%s: %s: unknown category %r" % (wf, form, cat))
+            continue
+        if k[0] == "V":
+            verb_rows.setdefault(lemma_key(lemma), []).append(form)
+            verb_file[lemma_key(lemma)] = wf
+            continue
+        lines, notes = word_analyses(form, lemma, cat, exists)
+        additions += lines
+        if k[0] == "NP":
+            decided_names[form].add("place" if k[1] == "NP00G00" else "name")
+        decided_tags += [t for t in lines if t[0] == form]
+        dlog.append((wf, form, "%s, %s" % (lemma, cat), "added",
+                     "; ".join(["%s %s" % (f, g) for f, l, g in lines] +
+                               notes)))
+    for form, lemma, tag, i in dec.hand_edits:
+        why = undecodable(tag, tagset) if TAG_RE.match(tag) else "not a tag"
+        if why:
+            problems.append("%s line %d: %s: tag %s: %s"
+                            % (HAND_EDITS_NAME, i, form, tag, why))
+            continue
+        additions.append((form, lemma, tag))
+        decided_tags.append((form, lemma, tag))
+        dlog.append((HAND_EDITS_NAME, form, "%s, %s" % (lemma, tag), "added",
+                     "hand edit, line %d" % i))
     vidx = verb_index(merged)
     models = VerbModels(vidx)
     unresolved = []
     n_paradigms = n_paradigm_lines = 0
     for lk, forms in verb_rows.items():
+        addf = verb_file.get(lk, dec.additions_file.name)
         if not lk.endswith(INFINITIVE):
             for form in forms:
                 dlog.append((addf, form, "%s, verb" % lk, "not added",
@@ -3190,6 +3713,7 @@ def main(argv=None):
                              "read as decided in %s" % dec.verb_forms_file))
                 continue
             unresolved.append((form, lk))
+    addf = dec.additions_file.name
 
     # The verb forms decided one by one (verb-form-readings).
     rare_tags = collections.defaultdict(set)    # entry -> short tags to zero
@@ -3481,7 +4005,7 @@ def main(argv=None):
         missp += [(form, l, g) for l, g in readings]
         dlog.append((fn, form, "corrected to %s" % c, "added",
                      "read as %s: %s" % (how_read, in_words(readings[:6]))))
-    src["misspellings"] = list(dict.fromkeys(missp))
+    src["common-misspellings"] = list(dict.fromkeys(missp))
     src["additions"] = list(dict.fromkeys(src["additions"] + corr_add))
 
     # ---- the exemption (decided 261110b) ---------------------------------
@@ -3592,10 +4116,148 @@ def main(argv=None):
                          in_words([(l, g) for _, l, g in gone]) or "nothing",
                          "kept" if has_place else "added")))
 
+    # ---- 9c  the accented one-syllable forms (decided 261112) -------------
+    merged = merge()
+    old_acc = []
+    for acc, plain_ in OLD_ACCENTS:
+        an = merged.get(plain_, [])
+        if not an:
+            problems.append("%s: %s has no reading to copy" % (acc, plain_))
+            continue
+        for l, g in an:
+            old_acc.append((acc, l, g))
+        dlog.append(("old-accents", acc, "the readings of %s" % plain_,
+                     "added", in_words(an)))
+    src["old-accents"] = list(dict.fromkeys(old_acc))
+    merged = merge()
+
+    # ---- 9d  common misspellings (decided 261112) ------------------------
+    # Sources: every correctly spelled form, that is, its readings other
+    # than those of the misspelt and non-standard forms the text keeps.
+    wrong = set(src["common-misspellings"]) | set(src["nonstandard"])
+    cand = collections.defaultdict(list)
+    for f, an in merged.items():
+        if "_" in f:
+            continue
+        s_ = f.translate(STRIP_MARKS)
+        if s_ == f or s_ in merged:
+            continue
+        ok = [(l, g) for l, g in an if (f, l, g) not in wrong]
+        if ok:
+            cand[s_].append((f, ok))
+    n_miss = collections.Counter()
+    miss_new = []
+    for s_, srcs in sorted(cand.items()):
+        if len(srcs) > 1:
+            n_miss["from several accented forms"] += 1
+            continue
+        f, ok = srcs[0]
+        miss_new += [(s_, l, g) for l, g in ok]
+        n_miss["added"] += 1
+    src["common-misspellings"] = list(dict.fromkeys(
+        src["common-misspellings"] + miss_new))
+    dlog.append(("common-misspellings", "(generated)", "unaccented forms",
+                 "added", "%d forms; %d left out (from several accented "
+                 "forms)" % (n_miss["added"],
+                             n_miss["from several accented forms"])))
+
     # ---- 10  the two dictionaries ----------------------------------------
     merged = merge()
     hist = {f: an for f, an in merged.items() if an}
     cont, cont_removed = contemporary(hist, changes)
+    # The 19th-century spellings (decided 261112, 261113): generated from
+    # every correctly spelled form of the historical dictionary but the
+    # proper nouns, into its own entries file.
+    wrong = set(src["common-misspellings"]) | set(src["nonstandard"])
+    h_new = collections.defaultdict(list)     # new spelling -> readings
+    h_coll = collections.defaultdict(list)    # existing word -> readings
+    n_hist = collections.Counter()
+    for f, an in list(hist.items()):
+        if "_" in f:
+            continue
+        ok = [(l, g) for l, g in an if (f, l, g) not in wrong
+              and not g.startswith("NP")]
+        if not ok:
+            continue
+        allv = hist_variants(f, HIST_RULES)
+        if not allv:
+            continue
+        bello = hist_variants(f, [r for r in HIST_RULES
+                                  if r[0] in BELLO_ADOPTED])
+        for v in allv:
+            if v in hist:
+                if v not in bello:
+                    n_hist["already a word, not a Bello rule"] += 1
+                    continue
+                for p in ok:
+                    if p not in hist[v] and p not in h_coll[v]:
+                        h_coll[v].append(p)
+            else:
+                for p in ok:
+                    if p not in h_new[v]:
+                        h_new[v].append(p)
+    h_coll = {v: ps for v, ps in h_coll.items() if ps}
+    h_over = []
+    # the spellings attested in historical texts: the readings of the one
+    # modern spelling with the same letters, when the attested one has an
+    # extra or a moved accent (a missing accent is never added: decided
+    # 261112)
+    modern_by_key = collections.defaultdict(list)
+    for f, an in cont.items():
+        if "_" in f:
+            continue
+        ok = [(l, g) for l, g in an if (f, l, g) not in wrong]
+        if ok:
+            modern_by_key[f.translate(ACCENTS_ONLY)].append((f, ok))
+    h_att = collections.defaultdict(list)
+    for a_, fname in dec.attested.items():
+        if a_ in hist or a_ in h_new or not re.search("[áéíóú]", a_):
+            n_hist["attested: already a word or no accent"] += 1
+            continue
+        c_ = [m for m in modern_by_key.get(a_.translate(ACCENTS_ONLY), [])
+              if m[0] != a_]
+        if len(c_) != 1:
+            n_hist["attested: %s modern spellings" % (
+                "no" if not c_ else "several")] += 1
+            continue
+        mf, ok = c_[0]
+        if accent_kind(a_, mf) == "missing":
+            n_hist["attested: missing accent"] += 1
+            continue
+        h_att[a_] = ok
+        n_hist["attested: added"] += 1
+    for v, ps in h_new.items():
+        for l, g in ps:
+            hist.setdefault(v, []).append((l, g))
+    for v, ps in h_att.items():
+        for l, g in ps:
+            if (l, g) not in hist.setdefault(v, []):
+                hist[v].append((l, g))
+    for v, ps in h_coll.items():
+        hist[v] = hist[v] + ps
+    for f, spec in HIST_READINGS.items():
+        before = list(hist.get(f, []))
+        if spec == "no voseo":
+            new = [(l, g) for l, g in before if not is_voseo(g)]
+        elif isinstance(spec, str):
+            new = list(cont.get(spec, []))
+        else:
+            new = list(spec)
+        if not new:
+            problems.append("19th century: %s would be left with no reading"
+                            % f)
+            continue
+        hist[f] = new
+        h_coll.pop(f, None)
+        h_over.extend((f, l, g) for l, g in new)
+        dlog.append(("19th-century readings", f, "decided 261113",
+                     "set", "%s (was %s)" % (in_words(new), in_words(before))))
+    hist_spell = sorted({(v, l, g) for v, ps in h_new.items() for l, g in ps}
+                        | {(v, l, g) for v, ps in h_coll.items()
+                           for l, g in ps} | set(h_over))
+    hist_att = sorted({(v, l, g) for v, ps in h_att.items() for l, g in ps})
+    n_hist["new spellings"] = len(h_new)
+    n_hist["words given a Bello reading"] = len(h_coll)
     hist_set = {(f, l, g) for f, an in hist.items() for l, g in an}
     cont_set = {(f, l, g) for f, an in cont.items() for l, g in an}
     dicc_h = build_dict(hist_set)
@@ -3609,11 +4271,21 @@ def main(argv=None):
     for n in SOURCES:
         src[n] = [t for t in src[n] if t in cont_set]
     entries_c = [t for n in SOURCES for t in src[n]]
-    hist_only = sorted(hist_set - cont_set - base_set)
+    hist_spell = [t for t in hist_spell if t in hist_set]
+    hist_extra = set(hist_spell) | set(hist_att)
+    hist_only = sorted(hist_set - cont_set - base_set - hist_extra)
+    hist_spell = sorted(set(hist_spell) - base_set - cont_set)
+    # readings of the Chilean entries files the 19th-century dictionary
+    # drops (decided 261113: rei, soi, hai). FreeLing's build-dict applies
+    # a remove folder to the Spanish entries only, so these are listed
+    # apart, and the check below leaves them out of the Chilean entries.
+    remove_h_cl = sorted({t for t in entries_c if t not in hist_set})
+    hist_att = sorted(set(hist_att) - base_set - cont_set - set(hist_spell))
     remove_h = sorted(base_set - hist_set)
     remove_c = sorted(base_set - cont_set)
-    sim_h, empty_h = simulate_freeling_build(base, remove_h,
-                                             entries_c + hist_only)
+    sim_h, empty_h = simulate_freeling_build(
+        base, remove_h, [t for t in entries_c if t in hist_set] + hist_only +
+        hist_spell + hist_att)
     sim_c, empty_c = simulate_freeling_build(base, remove_c, entries_c)
     if sim_h != dicc_h:
         problems.append("FreeLing's build-dict would not give the historical "
@@ -3787,13 +4459,132 @@ def main(argv=None):
             lemmas_of[f].add(l)
     loc_full, lf_in, lf_out = process_locutions(
         (bt / "locucions.dat").read_text(encoding="utf-8"), changes,
-        "locucions", interj_multi, rm_multi, lemmas_of=lemmas_of)
+        "locucions", interj_multi, rm_multi, lemmas_of=lemmas_of,
+        general=srcb["data/es/locucions.dat"].decode("utf-8"),
+        decided=dec.locutions, decided_rm=dec.locution_removals,
+        tagset=tagset, problems=problems)
+    for key, (lemma, tag, flag, fname) in dec.locutions.items():
+        dlog.append((fname, key, "multiword, lemma %s, tag %s, flag %s"
+                     % (lemma, tag, flag), "locution", "locucions.dat"))
+    for key, fname in dec.locution_removals.items():
+        dlog.append((fname, key, "multiword removed", "removed",
+                     "locucions.dat"))
     loc_min, lm_in, lm_out = process_locutions(
         MINIMAL_LOCUTIONS, changes, "locucions-MINIMAL", interj_multi,
         rm_multi, add_new=False)
     loc_full = fix_tagset_reference(loc_full, "locucions", changes, problems)
     loc_min = fix_tagset_reference(loc_min, "locucions-MINIMAL", changes,
                                    problems)
+    # The 19th-century probabilities (decided 261113): a reading a Bello
+    # rule adds to a word that already exists is nearly impossible on its
+    # own; the rest is the default probabilitats.dat.
+    cls_h, single_h, form_h = read_prob_tables(prob_text)
+    managed_h = {}
+    n_coll_same = 0
+    for v, ps in sorted(h_coll.items()):
+        an = hist[v]
+        shorts = collections.Counter(short_tag(g, tagset) for _, g in an)
+        old_s = {short_tag(g, tagset) for l, g in an if (l, g) not in ps}
+        new_s = {short_tag(g, tagset) for _, g in ps} - old_s
+        if not new_s:
+            n_coll_same += 1
+            continue
+        line = managed_line(v, shorts, form_h.get(v), cls_h, single_h,
+                            zero=new_s)
+        if line:
+            managed_h[v] = (line, "a 19th-century spelling of %s: nearly "
+                            "impossible on its own (decided 261113)"
+                            % in_words(ps))
+    for f, pct in HIST_PROBS.items():
+        an = hist.get(f, [])
+        have_s = {short_tag(g, tagset) for _, g in an}
+        if set(pct) != have_s:
+            problems.append("19th century: %s has the short tags %s, not %s"
+                            % (f, " ".join(sorted(have_s)),
+                               " ".join(sorted(pct))))
+            continue
+        keys = sorted(pct)
+        managed_h[f] = ("%s %s %s" % (f, "-".join(keys), " ".join(
+            "%s %d" % (k, pct[k]) for k in keys)), "decided 261113")
+    prob_hist, _, n_ft_h, n_repl_h, _ = process_probabilities(
+        prob_text, [], managed_h, [], ())
+    # vosotros over voseo (decided 261113): a form with both readings, of
+    # the same verb and tense, is read as vosotros, and vos as the polite
+    # pronoun. Both readings have the same short tag, so FreeLing's
+    # probabilities and tagger cannot tell them apart; the tag preferences
+    # (PosPreferences) decide between analyses of equal probability.
+    vpref = {(VOS_POLITE, VOS_TAG)}
+    for f, an in hist.items():
+        sv = {(l, g[:4]): g for l, g in an if VOSEO.match(g)}
+        for l, g in an:
+            if VOSOTROS.match(g) and (l, g[:4]) in sv:
+                vpref.add((g, sv[(l, g[:4])]))
+    pl = prob_hist.splitlines()
+    a_ = pl.index("<PosPreferences>")
+    b_ = pl.index("</PosPreferences>")
+    have_p = {tuple(x.split()[:2]) for x in pl[a_ + 1:b_] if x.split()}
+    vclash = sorted(p for p in vpref if (p[1], p[0]) in have_p)
+    vadd = sorted(p for p in vpref if p not in have_p and p not in vclash)
+    if vclash:
+        problems.append("19th century: PosPreferences already prefers "
+                        "voseo for %s" % ", ".join("%s %s" % p for p in vclash))
+    pl[b_:b_] = ["%s %s" % p for p in vadd]
+    prob_hist = "\n".join(pl) + "\n"
+    n_hist["vosotros over voseo (tag preferences)"] = len(vadd)
+    # A reading a Bello rule adds that shares its word class with one the
+    # word already has cannot be made improbable by its counts: FreeLing
+    # gives both the same probability. The lemma preferences settle it:
+    # the word's own lemma wins (FreeLing's probabilities module orders
+    # analyses of equal probability by them).
+    prefs = set()
+    for v, ps in h_coll.items():
+        own = [(l, g) for l, g in hist[v] if (l, g) not in ps]
+        for l, g in ps:
+            for l0, g0 in own:
+                if l0 != l and short_tag(g0, tagset) == short_tag(g, tagset):
+                    prefs.add((l0, l))
+    prefs = sorted(p for p in prefs if (p[1], p[0]) not in prefs)
+    pl = prob_hist.splitlines()
+    a_ = pl.index("<LemmaPreferences>")
+    b_ = pl.index("</LemmaPreferences>")
+    have_p = {tuple(x.split()[:2]) for x in pl[a_ + 1:b_] if x.split()}
+    clash = [p for p in prefs if (p[1], p[0]) in have_p]
+    prefs = [p for p in prefs if p not in have_p and p not in clash]
+    pl[b_:b_] = ["%s %s" % p for p in prefs]
+    prob_hist = "\n".join(pl) + "\n"
+    n_hist["Bello lemmas below the word's own (lemma preferences)"] = \
+        len(prefs)
+    n_hist["Bello lemma preferences left out (the opposite preference "
+           "exists)"] = len(clash)
+    n_hist["Bello readings nearly impossible"] = len(managed_h)
+    n_hist["Bello readings sharing a word class (no line)"] = n_coll_same
+    # The 19th-century multiwords: every multiword in the spellings of the
+    # rules, when the key is new (decided 261113).
+    head_l, body_l, tail_l = split_locutions(loc_full)
+    have_l = {x.split()[0] for x in body_l}
+    loc_add = []
+    for x in body_l:
+        t = x.split()
+        for k in sorted(key_variants(t[0], HIST_RULES)):
+            if k not in have_l:
+                have_l.add(k)
+                loc_add.append(" ".join([k] + t[1:]))
+    loc_hist = "\n".join(head_l + body_l + loc_add + tail_l) + "\n"
+    n_hist["multiwords"] = len(loc_add)
+    cfg_base = stock_es_cl_cfg()
+    cfg_c = write_config(cfg_base, "es/es-cl", problems, "es-cl.cfg")
+    cfg_h = write_config(cfg_base, "es/es-cl/historical", problems,
+                         "es-cl-19th-century.cfg", compounds=False)
+    # The 19th-century files sit one folder down: their tagset is the
+    # Chilean one in the folder above.
+    prob_hist = prob_hist.replace("<TagsetFile>\n./tagset.dat\n",
+                                  "<TagsetFile>\n../tagset.dat\n", 1)
+    loc_hist = loc_hist.replace("<TagSetFile>\n./tagset.dat\n",
+                                "<TagSetFile>\n../tagset.dat\n", 1)
+    if "../tagset.dat" not in prob_hist or "../tagset.dat" not in loc_hist:
+        problems.append("historical probabilitats.dat or locucions.dat: the "
+                        "tagset reference could not be pointed at "
+                        "../tagset.dat")
     np_text = process_np(srcb["data/es/np.dat"].decode("utf-8"), changes,
                          problems)
     quant_text = process_quantities(
@@ -3811,7 +4602,10 @@ def main(argv=None):
                             "historical/dicc.src"),
                            (dicc_0.decode("utf-8"), "dicc", "dicc-0-tags.src"),
                            (prob_text, "prob", "probabilitats.dat"),
+                           (prob_hist, "prob",
+                            "historical/probabilitats.dat"),
                            (loc_full, "locu", "locucions.dat"),
+                           (loc_hist, "locu", "historical/locucions.dat"),
                            (loc_min, "locu", "locucions-MINIMAL.dat"),
                            (name_files["data/es/es-cl/np.dat"], "np",
                             "np.dat"),
@@ -3863,7 +4657,27 @@ def main(argv=None):
             check_c = (vos_tags, deis, isf)
         else:
             check_h = (vos_tags, deis, isf)
+    # Every line of the common misspellings must be in the dictionary
+    # FreeLing reads, with exactly its readings (decided 261112).
+    for dicc, nm in ((dicc_c, "dicc.src"), (dicc_h, "historical/dicc.src")):
+        got = set()
+        for line in dicc.decode("utf-8").splitlines():
+            t = line.split()
+            if len(t) >= 3 and len(t) % 2 == 1:
+                got.update((t[0], t[i], t[i + 1]) for i in range(1, len(t), 2))
+        lost = [x for x in src["common-misspellings"] + src["old-accents"]
+                if x not in got]
+        if lost:
+            problems.append("%s: %d line(s) of CL.common-misspellings and "
+                            "CL.old-accents are not in it, e.g. %s"
+                            % (nm, len(lost), " ".join(lost[0])))
+        if nm == "historical/dicc.src":
+            lost = [x for x in hist_spell + hist_att if x not in got]
+            if lost:
+                problems.append("%s: %d 19th-century line(s) are not in it"
+                                % (nm, len(lost)))
     for text, nm in ((loc_full, "locucions.dat"),
+                     (loc_hist, "historical/locucions.dat"),
                      (loc_min, "locucions-MINIMAL.dat")):
         _, body, _ = split_locutions(text)
         for st_ in body:
@@ -3933,6 +4747,20 @@ def main(argv=None):
     log("FreeLing's build-dict gives both, byte for byte (historical-only "
         "readings %d; forms left with no reading %d)" % (len(hist_only),
                                                          len(emptied)))
+    log("common misspellings: %d unaccented forms added, %d left out (from "
+        "several accented forms); CL.common-misspellings %d lines, all in "
+        "dicc.src" % (n_miss["added"], n_miss["from several accented forms"],
+                      len(src["common-misspellings"])))
+    log("old accents: %d lines (%s)" % (len(src["old-accents"]), ", ".join(
+        a for a, _ in OLD_ACCENTS)))
+    log("19th century: %d new spellings (%d lines), %d words given a Bello "
+        "reading (%d nearly impossible on their own), %d attested spellings, "
+        "%d multiwords" % (n_hist["new spellings"], len(hist_spell),
+                           n_hist["words given a Bello reading"],
+                           n_hist["Bello readings nearly impossible"],
+                           n_hist["attested: added"], n_hist["multiwords"]))
+    for k_, v_ in sorted(n_hist.items()):
+        log("  %-52s %8d" % (k_, v_))
 
     # The files of the release that are copied as they are: their privacy
     # is checked here too, so a dry run shows it (the build report and the
@@ -3994,8 +4822,18 @@ def main(argv=None):
             put(d + "dictionary/entries/CL." + n, lines_of(src[n]))
     put(d + "remove/CL.removed", lines_of(remove_c))
     put(d + "historical/remove/CL.removed", lines_of(remove_h))
+    put(d + "historical/CL.removed-from-chilean-entries",
+        lines_of(remove_h_cl))
     put(d + "historical/dictionary/entries/CL.historical",
         lines_of(hist_only))
+    put(d + "historical/dictionary/entries/CL.19th-century-spellings",
+        lines_of(hist_spell))
+    put(d + "historical/dictionary/entries/CL.19th-century-attested",
+        lines_of(hist_att))
+    put(d + "historical/probabilitats.dat", prob_hist)
+    put(d + "historical/locucions.dat", loc_hist)
+    put("data/config/es-cl.cfg", cfg_c)
+    put("data/config/es-cl-19th-century.cfg", cfg_h)
     put(d + "probabilitats.dat", prob_text)
     put(d + "locucions.dat", loc_full)
     put(d + "locucions-MINIMAL.dat", loc_min)
@@ -4067,6 +4905,21 @@ def main(argv=None):
             "| FormTagFreq lines removed | %d |" % n_prm,
             "| default dicc.src forms | %d |" % n_c,
             "| historical dicc.src forms | %d |" % n_h,
+            "| common misspellings added (unaccented forms) | %d |"
+            % n_miss["added"],
+            "| left out: from several accented forms | %d |"
+            % n_miss["from several accented forms"],
+            "| CL.common-misspellings lines | %d |"
+            % len(src["common-misspellings"]),
+            "| CL.old-accents lines | %d |" % len(src["old-accents"]),
+            "| 19th century: new spellings | %d |" % n_hist["new spellings"],
+            "| 19th century: words given a Bello reading | %d |"
+            % n_hist["words given a Bello reading"],
+            "| 19th century: Bello readings nearly impossible | %d |"
+            % n_hist["Bello readings nearly impossible"],
+            "| 19th century: attested spellings added | %d |"
+            % n_hist["attested: added"],
+            "| 19th century: multiwords added | %d |" % n_hist["multiwords"],
             "| default: -is forms with both readings | %d |" % check_c[2],
             "| historical: -is forms with both readings | %d |" % check_h[2],
             "| place-only forms | %d |" % len(place_only),
@@ -4091,11 +4944,17 @@ def main(argv=None):
         rep.append("- `CL.%s`: %d lines" % (n, len(set(src[n]))))
     rep.append("- `historical/dictionary/entries/CL.historical`: %d lines"
                % len(hist_only))
+    rep.append("- `historical/dictionary/entries/CL.19th-century-spellings`: "
+               "%d lines" % len(hist_spell))
+    rep.append("- `historical/dictionary/entries/CL.19th-century-attested`: "
+               "%d lines" % len(hist_att))
     rep.append("- forms left with no reading (Spanish interjections only): "
                "%d" % len(emptied))
     rep += ["", "## Inputs", ""]
     for rel in FL42:
         rep.append("- `%s` %s" % (st / rel, FL42[rel]))
+    rep.append("- FreeLing 4.2's `data/config/es-cl.cfg`, carried in this "
+               "script %s" % ES_CL_CFG_SHA)
     for p in [chilean_tagset, bt / "probabilitats.dat",
               bt / "locucions.dat", gazper_p] + patch_files + \
             [gram / f for _, f in LISTS + NAME_LISTS] + list(dec.files):

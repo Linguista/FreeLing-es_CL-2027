@@ -1,6 +1,6 @@
 # freeling_escl_build_README.md
 
-Documents `freeling_escl_build.py` 2.6.0.
+Documents `freeling_escl_build.py` 2.8.1.
 
 Real file: `/home/user/csld/software/10-Infrastructure/freeling/scripts/freeling_escl_build.py`
 
@@ -9,8 +9,8 @@ Real file: `/home/user/csld/software/10-Infrastructure/freeling/scripts/freeling
 Builds FreeLing es-CL 2027, the Chilean Spanish data for FreeLing 4.2, into
 the release folder
 `/home/user/FreeLing_es-CL_2027`.
-It builds two dictionaries: the default one, for contemporary Chilean
-Spanish, and a historical one, for CORHICACH only; the Chilean versions of
+It builds two dictionaries: the default one, FreeLing es-CL 2027, for contemporary Chilean
+Spanish, and the 19th-century one, for historical corpora only, with the 19th-century Chilean spellings, its own probabilities and multiwords, and its own config (see "The 19th-century dictionary"); the Chilean versions of
 the name classifier's word lists and its file, under FreeLing's own names;
 and the two rule files of the name recognizer, for written texts and for
 transcribed speech (decided 261110d, 261110e, 261110f and 261110g). What
@@ -33,7 +33,9 @@ FreeLing 4.2's sha256.
 | reads | `/home/user/build/FreeLing-4.2/data/es/tagset.dat` (to check the Chilean tagset against) |
 | reads | `/home/user/build/FreeLing-4.2/data/es/tagger.dat` (only its word frequencies, for `NAME-WEIGHTS.tsv`) |
 | reads | `/home/user/build/FreeLing-4.2/data/es/probabilitats.dat` (only the lines of the decided names: the basis of every line the build writes for them) |
+| reads | `/home/user/build/FreeLing-4.2/data/es/locucions.dat` (FreeLing's general Spanish multiwords, merged into the Chilean multiword file: see "The multiwords") |
 | reads | `/home/user/build/FreeLing-4.2/data/common/nec/cities.dat` and `cities-CL.dat` (FreeLing's city list and its Chilean version, merged here) |
+| carries | FreeLing 4.2's `data/config/es-cl.cfg` (sha256 `2934d4320a5690d4fbfb945325a7df20cb99d3e0393e8b8d7e6d3ddb37e8a42c`), the basis of the release's two configs, as text in the script: no `es-cl.cfg` on the machine is read (decided 261113) |
 | reads | `/home/user/build/FreeLing-4.2/data/es/nerc/data/gazLOC-c.dat` and `gazPER-c.dat` (the classifier's whole place and person names) |
 | reads | `/home/user/build/FreeLing-4.2/data/es/nerc/nec/nec-ab-poor1.dat` (the classifier's file, to which the class shares are added) |
 | reads | `/home/user/csld/linguistic-derived/people-names-list/gazPER-p.dat` (the Chilean person-name parts, copied as they are) |
@@ -48,7 +50,7 @@ FreeLing 4.2's sha256.
 | copies | into `software/patches/`: the change to FreeLing's name recognizer and classifier, from `/home/user/csld/software/10-Infrastructure/freeling/patches/` (`freeling-4.2-np-classes.patch`, its README, `np.cc`, `np.h`, `nec.cc`) |
 | reads | `/home/user/csld/software/10-Infrastructure/freeling/freeling-release-privacy.tsv` (the privacy file: private, never copied into the release; see "The release is public") |
 | copies | `agpl-3.0.txt`, next to this script (the GNU AGPL 3.0, checked by sha256), into the release as `LICENSE` |
-| copies | the packaging of FreeLing 4.2 with this release for Fedora, Debian and Ubuntu, from `/home/user/csld/software/10-Infrastructure/freeling/packaging/`: the six scripts and their READMEs into the release's `packaging/` folder, and `packages.yml`, the GitHub workflow that builds and checks the packages, into `.github/workflows/` (see "The packaging") |
+| copies | the packaging of FreeLing 4.2 with this release for Fedora, Debian and Ubuntu, from `/home/user/csld/software/10-Infrastructure/freeling/packaging/`: the seven scripts and their READMEs into the release's `packaging/` folder, and `packages.yml`, the GitHub workflow that builds and checks the packages, into `.github/workflows/` (see "The packaging") |
 | writes | `/home/user/FreeLing_es-CL_2027/` |
 | moves | a previous build to `/home/user/software/deprecated/FreeLing_es-CL_2027.DEPRECATED-YYMMDD[letter]` |
 
@@ -151,7 +153,7 @@ when complete.
     mm, hm, the four imperatives, the unaccented future, poder over podar,
     the readings kept at the start of a sentence),
     `locucions.dat`
-    (ya_poh, the multiword interjections), `locucions-MINIMAL.dat` and
+    (FreeLing's general multiwords merged in, ya_poh, the multiword interjections, the decided multiwords: see "The multiwords"), `locucions-MINIMAL.dat` and
     `quantities.dat` (the Chilean peso, UF, UTM, the euro's code, and 56
     unit names removed: see "The units removed" below).
 11. Writes the names (decided 261110d and 261110e; section 8 of the release
@@ -246,10 +248,14 @@ The kinds of file (the part of the name before `--`): `all-corpora-replacements`
 `correction-lemmas`, `dictionary-addition-removals`, `dictionary-additions`,
 `dictionary-additions-all-rounds-standardized`, `dictionary-variants`,
 `fixed-name-classes`, `interjection-removals`, `interjections`,
-`lemma-standardization`, `name-class-shares`, `person-name-removals`,
+`lemma-standardization`, `locution-removals`, `locutions`, `dictionary-words`, `historical-attested-spellings`, `name-class-shares`, `person-name-removals`,
 `place-only-forms`, `sentence-start-classes`, `text-correction-removals`,
 `text-corrections`, `verb-form-readings`. All are lists of words and forms;
-none quotes the interviews. The files that do (the occurrence rulings, the
+none quotes the interviews.
+
+Every round of every kind is read, and a later round wins for the same expression: the same form, or the same lemma in `lemma-standardization` (decided 261112: per expression, never a whole file). Something is taken out only by a removals kind (`dictionary-addition-removals`, `interjection-removals`, `text-correction-removals`, `locution-removals`, `person-name-removals`), never by leaving it out of a later round. The one exception is `dictionary-additions-all-rounds-standardized`, which is itself every round of additions merged: only the newest is read, and it must be at least as new as the newest round of additions.
+
+`locutions`, `locution-removals`, `dictionary-words` and `historical-attested-spellings` are not decisions of the COSCACH spelling review: they live only in `escl-sources` and need no link in the COSCACH folder; nor does the hand-edit file `dictionary-hand-edits.tsv`. The files that do (the occurrence rulings, the
 ir + hacer and sino occurrences) and the COSCACH-only records stay ordinary
 files in the COSCACH folder.
 
@@ -265,6 +271,48 @@ it and leaves the link (relative, as every link in the project).
 
 The release carries a copy of every source file read, in
 `sources/escl-sources/`, with its README.
+
+## The 19th-century dictionary (decided 261112, 261113)
+
+The historical dictionary is FreeLing es-CL 19th Century: the 2027 dictionary with the vosotros readings of the -is forms and the polite vos (as before), plus:
+
+- **the 19th-century spellings**, generated from every correctly spelled form but the proper nouns (`HIST_RULES`: Bello and García del Río 1823, Sarmiento 1843, the Chilean orthography of 1844, the Chilean neographers): g before e/i as j, x for the j sound as j (a short list, `X_TO_J`), x before a vowel as cs, x before a consonant as s, vowel y as i, c before e/i as s or z, z as s, qu as q or k, c for the k sound as k or q, the silent u of gue/gui dropped, silent h dropped before a vowel, v as b, the trill as rr. Every combination is generated, in that order (g as j before gue loses its u), and a rule changes every place it applies in a word. Accents are never dropped. Each spelling gets the readings of the form it comes from. Into `historical/dictionary/entries/CL.19th-century-spellings`;
+- **a spelling that is already a word** is added only when the rules of the 1844 orthography (`BELLO_ADOPTED`: g as j, y as i, x as s) give it; its new readings are nearly impossible on their own in `historical/probabilitats.dat` (a zero count for their short tags, as for the rare interjections), and where they share a short tag with the word's own readings, the word's own lemma is preferred (LemmaPreferences). Any other rule's spelling that is already a word is not added;
+- **five words decided one by one** (`HIST_READINGS`, decided 261113): i is y and the letter i, rei is rey only, lei is ley only, hai is hay only, soi is never voseo; and two probabilities (`HIST_PROBS`): i is y 99%, testo is texto 90% and testar 10%. A reading of the Chilean lists one of them drops (rei as a name, the voseo readings of hai and soi) is listed in `historical/CL.removed-from-chilean-entries`, since FreeLing's build-dict applies a remove folder to the Spanish entries only;
+- **the attested spellings** of `historical-attested-spellings--*.tsv` (from the CSLD Historic-Word-List and the pre-reform spellings taken out of the contemporary word list on 260811) with an extra or a moved accent get the readings of the one modern form with the same letters; a spelling with several such forms, or one that lacks an accent the modern form has, is not added. Into `CL.19th-century-attested`;
+- **vosotros over voseo**: the tag preferences (PosPreferences) of `historical/probabilitats.dat` prefer each vosotros tag to its voseo tag and the polite vos to the voseo one. Both readings have the same short tag, so no share can be given: the preference is absolute;
+- **the multiwords** in the 19th-century spellings (`key_variants`; a `<lemma>` token is left alone), when the key is new: `historical/locucions.dat`;
+- **its config**, `data/config/es-cl-19th-century.cfg`: FreeLing 4.2's es-cl config (`data/config/es-cl.cfg`, carried in the script and sha256-checked) with the Chilean tagset and currencies, the 19th-century dictionary, probabilities and multiwords, and compound analysis off: FreeLing builds its compound analyzer from every form of the dictionary with foma, whose stack holds 2,097,152 entries, fewer than this dictionary has (FreeLing stops with "Stack full!"). `data/config/es-cl.cfg` is the same for the 2027 data, with compound analysis on. The two files of the 19th-century folder name `../tagset.dat`, the Chilean tagset in the folder above.
+
+The build checks that FreeLing's build-dict would give the 19th-century dictionary from the Spanish entries minus `historical/remove/CL.removed`, the Chilean entries minus `historical/CL.removed-from-chilean-entries`, and the three historical entries files.
+
+## The accented one-syllable forms and the common misspellings (decided 261112)
+
+- `CL.old-accents`: fué, fuí, dió, vió, á, é, ó, ú (`OLD_ACCENTS`), each with every reading of fue, fui, dio, vio, a, e, o, u, in both dictionaries.
+- `CL.common-misspellings` (formerly `CL.misspellings`): the misspelt forms of the transcriptions, read as their corrections, as before, and every correctly spelled form with a written accent or a diaeresis, written without them, read as that form, when the result is not already a word and comes from that one form only. A form whose readings all come from the misspelt or the non-standard forms is never a source. After the build, every line of `CL.common-misspellings` and `CL.old-accents` must be in `dicc.src` and in `historical/dicc.src` with exactly its readings, or nothing is written.
+
+## Dictionary words and hand edits (decided 261112, 261113)
+
+- `dictionary-words--YYMMDD.tsv` (form, lemma, category, tag, notes), in `escl-sources` only (no link in the COSCACH folder): with a tag, exactly that reading (a tag the Chilean tagset cannot decode refuses the build); without one, the category's readings, as for a decided addition (nouns and adjectives with their other number and gender, new verbs with their whole paradigm). Every round is read; a later round wins for the same form and lemma.
+- `dictionary-hand-edits.tsv` (form, lemma, tag), in `escl-sources`, with no round: edited in place; `#` lines are comments and say what goes in it. Every line is added at every build; a tag the Chilean tagset cannot decode refuses the build. It is copied into the release's `sources/escl-sources/`.
+
+## The multiwords (decided 261112)
+
+FreeLing reads one multiword file, the one the config's `LocutionsFile` names, and the CSLD configs name the Chilean one, `es/es-cl/locucions.dat`. Until 2.7.0 that file held only the Chilean multiwords (2,058), so every general Spanish multiword (o sea, por ejemplo, por lo menos, a pesar de ...) was split into its words in every corpus tagged with it. From 2.7.0 the build merges FreeLing's general file, `data/es/locucions.dat` (sha256-checked against FreeLing 4.2), into the Chilean one:
+
+- every general entry whose key the Chilean file does not have is added, with the same repairs as the Chilean entries (capitalized keys lowercased, duplicate lines merged); each is a row of `CHANGELOG.tsv` (rule "FreeLing's general multiword");
+- for a key in both files the Chilean entry wins (ni_fu_ni_fa stays an adjective); a general entry that differs from the Chilean one is logged as "not added";
+- FreeLing's general file tags tal y cual as `Fs`, a punctuation mark: it gets `PI0CS00`, as cual has (`LOCUTION_TAG_FIX`);
+- on 261112's sources: 2,058 Chilean lines, 1,563 general lines added, 3,613 entries.
+
+The decided multiwords come from two kinds of file in `escl-sources`:
+
+| Kind | Columns | A row means |
+|---|---|---|
+| `locutions--YYMMDD.tsv` | form, lemma, tag, flag (further columns ignored) | the multiword is joined with this lemma and EAGLES tag. Flag I: always joined; A: ambiguous, FreeLing's tagger decides between the multiword and the separate words. An empty lemma is the form joined by `_`; an empty flag is I. A tag the Chilean tagset cannot decode, or a flag other than I or A, refuses the build. A later round wins for the same multiword; a decided multiword replaces any entry with its key |
+| `locution-removals--YYMMDD.tsv` | form, why | the multiword is removed: its words are tagged separately. A removal of a key the file does not have refuses the build |
+
+The form is written as it is said (al final); the build writes the key as FreeLing matches it, splitting al and del (`a_el_final`), as FreeLing splits them before it matches multiwords. A form with a `<lemma>` pattern (`<dar>_lo_mismo`) is taken as written. Every row is a row of `DECISIONS.tsv`.
 
 ## The decision files of the names
 
@@ -373,6 +421,13 @@ A missing packaging file refuses the build, as any other input does.
 
 ## Tested
 
+261113, version 2.8.1, a full build on the test tree with no `data/config/es-cl.cfg` in its source tree: every file of the release byte for byte as 2.8.0 built it (both configs and both dictionaries included), except `BUILD-REPORT.md` (its version line and the config's input line), `software/freeling_escl_build.py` and `SHA256SUMS`.
+
+261113, version 2.8.0, full builds on the test tree with the escl-sources of 261113 (and the rounds of 261113: `dictionary-words`, `locutions`, `historical-attested-spellings`, `dictionary-hand-edits.tsv`): 2027 dictionary 937,701 forms; 19th-century dictionary 2,146,645 forms (1,203,611 new spellings, 5,333 attested spellings, 518 words given a Bello reading, 6,539 multiwords); 140,895 unaccented forms, 516 left out; every line of `CL.common-misspellings` and `CL.old-accents` found in both dictionaries; FreeLing's build-dict check passed for both. FreeLing 4.2 compiled from source with `packaging/patch-freeling.sh` 1.1.0 (Spanish only) and this release installed: with `es-cl.cfg`, tenís is tener VMIP2SV, comeriamos is comer, colaboracion is colaboración, tatoo is tatuaje, cesfam and minipimer NCMN000, ponerse las pilas, me pongo las pilas, ponte las pilas and se puso las pilas one multiword each, dulce de leche, de a poco, flor de, buen día and medio pelo as decided; with `es-cl-19th-century.cfg`, jente gente, jeneral general, esplicó explicar, mui muy, hoi hoy, rei rey, i y, lei ley, hai hay, soi soy, á a, fué ser, ménos menos, ántes antes, órden orden, soziedad sociedad, zientífica científico, qeso queso, testo texto ("El testo del libro") and testar ("Testo mi casa a mis hijos"), salís vosotros; with `es-old.cfg` (FreeLing Old, its multiword file the link to the Chilean one), dixo decir, muger mujer, fermosa hermoso. `test-freeling.sh` 1.1.0 passed. Built again on its own output (its `probabilitats.dat` and `locucions.dat` as the deployed build tree's), every data file and both configs byte for byte the same. Memory: about 780 MB with 2027, 930 MB with the 19th century. Without compound analysis off, the 19th-century config stops FreeLing ("Stack full!").
+
+261112, version 2.7.0, full builds on the test tree (FreeLing 4.2's `data/es/locucions.dat` added to its source tree): with no `locutions` file, every data file byte for byte as 2.6.0 built it except `locucions.dat` (2,058 lines in, 3,613 entries out); built again on its own output, every data file byte for byte the same; with two rounds of `locutions` and one of `locution-removals`, a lo mejor and al final (`a_el_final`, flag A) added, sin embargo with the tag of the later round, tal y cual removed, all three files copied into `sources/escl-sources/` and listed in `DECISIONS.tsv`; a round with an undecodable tag refused the dry run (exit 2). Without the general file and the decided multiwords, the multiword step gives the published `locucions.dat` byte for byte.
+
+
 261112, version 2.6.0, a full build on the test tree: the dictionaries, every data file and the corrected grammatical lists byte for byte as 2.5.0 built them; the packaging copied (scripts executable), the workflow in `.github/workflows/`, `SHA256SUMS` checked, no private line in the 73 copied files. The fixed class of SES, written `organisation` in its decision file, is read as organization and written so in `NAME-CLASSES.tsv`, the one change in the release's tables besides the American spelling of their notes.
 
 261112, version 2.5.1, dry runs on the test tree: with the lists as they
@@ -479,6 +534,11 @@ Linux (the FreeLing paths are Linux paths). Standard library only.
 
 ## Changelog
 
+- 2.8.1 (261113): FreeLing 4.2's `es-cl.cfg` is carried in the script (`ES_CL_CFG_TEXT`, checked against its sha256) instead of read from the source tree: the CSLD tags only with `csld-es-cl.cfg` and the configs written from it, and every other es-cl config on the machine is retired (decided 261113). The release is otherwise unchanged.
+
+- 2.8.0 (261113): the 19th-century dictionary (decided 261112, 261113): the 19th-century Chilean spellings, the attested old-accent spellings, five words decided one by one, its own probabilities (Bello readings of existing words nearly impossible, vosotros over voseo) and multiwords, and the two configs `data/config/es-cl.cfg` and `es-cl-19th-century.cfg` (FreeLing's `data/config/es-cl.cfg` is a new sha256-checked input); `CL.old-accents` in both dictionaries; `CL.misspellings` becomes `CL.common-misspellings`, with every accented form written without its accents; two new kinds of source, `dictionary-words` and `historical-attested-spellings`, and the hand-edit file `dictionary-hand-edits.tsv`; the packaging's new `install-data.sh` (the Chilean data into an installed FreeLing, for the Linux packages and the macOS tarballs) is copied with the other packaging scripts. See "The 19th-century dictionary", "The accented one-syllable forms and the common misspellings" and "Dictionary words and hand edits".
+
+- 2.7.0 (261112): FreeLing's general Spanish multiwords (`data/es/locucions.dat`, sha256-checked) are merged into the Chilean multiword file, the Chilean entry winning for a key in both; until now every general multiword was split in every CSLD corpus, as the configs name the Chilean file only. tal y cual gets `PI0CS00` (FreeLing's file has `Fs`). Two new kinds of source, `locutions` and `locution-removals`, which need no link in the COSCACH folder. Every kind is now read per expression across all its rounds, later rounds winning (interjections, interjection removals and lemma standardization read only their newest file until now); `dictionary-additions-all-rounds-standardized` stays newest only, being itself every round merged. See "The multiwords".
 - 2.6.0 (261112): the packaging of FreeLing 4.2 with the release for Fedora, Debian and Ubuntu (`../packaging/`, `--packaging`) is copied into every release, the scripts into `packaging/` and the GitHub workflow into `.github/workflows/`, so the release folder is the complete GitHub repository (see "The packaging"). The project writes American English (decided 261112): the decision files' class `organisation` is read as `organization` (`CLASS_SPELLING`), as is the category `proper noun, organisation or brand`, and the build's notes, messages and comments use American spelling. The data are unchanged.
 - 2.5.1 (261112): a list lemma fix (`LIST_LEMMA_FIXES`) that finds nothing
   to correct no longer refuses the build when the list already has the

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# VERSION 2.1.0
+# VERSION 2.2.1
 #
 # freeling_escl_deploy.py -- put a FreeLing es-CL 2027 build (made by
 # freeling_escl_build.py) where it is used.
@@ -15,11 +15,16 @@
 #               dictionary/entries/CL.*   the Chilean entries
 #               remove/CL.removed         the Spanish readings removed
 #               probabilitats.dat, locucions.dat, tagset.dat
+#       and retires, as replaced files are (below), the entries file the
+#       build no longer writes:
+#           dictionary/entries/CL.misspellings  now CL.common-misspellings
 #   --target system   run with sudo
 #       the installed data FreeLing reads, in /usr/local/share/freeling/
 #           es/es-cl/
 #               dicc.src              the default dictionary (contemporary)
-#               historical/dicc.src   the historical one (CORHICACH only)
+#               historical/dicc.src   the 19th-century dictionary (historical
+#                                     corpora only), with its own
+#               historical/probabilitats.dat, historical/locucions.dat
 #               np.dat                the name recognizer, written texts
 #               np-speech.dat         the name recognizer, transcribed speech
 #               probabilitats.dat, locucions.dat, tagset.dat, quantities.dat
@@ -31,11 +36,22 @@
 #           es/nerc/nec/nec-ab-poor1.dat
 #                                     the classifier's model, with the class
 #                                     shares of some names (<ClassShares>)
+#       and makes es/locucions.dat, the multiword file FreeLing Old
+#       (config/es-old.cfg) reads, a link to es-cl/locucions.dat, the
+#       Chilean file with FreeLing's general multiwords merged in (decided
+#       261113: es-old's own folder stays as FreeLing ships it). FreeLing's
+#       own es/locucions.dat is retired like a replaced file.
 #       and retires, as replaced files are (below), the FreeLing files the
 #       Chilean ones replace and nothing reads any more:
 #           common/nec/cities-CL.dat           merged into cities.dat
 #           es/nerc/data/gazPER-p.dat.upstream FreeLing's own name parts,
 #                                              kept there on 291026
+#       and retires the es-cl configs from config/ (es-cl.cfg, installed
+#       by FreeLing's own install, and es-cl-19th-century.cfg): the CSLD
+#       tags only with csld-es-cl.cfg and the configs written from it, so
+#       no other es-cl config is kept where it could be used by mistake
+#       (decided 261113). The release's two configs are in its data/config/
+#       folder and in the packages, not installed here.
 #
 # Only files whose content differs are replaced. The file replaced is first
 # moved to a deprecated/ folder beside it, named
@@ -70,7 +86,7 @@ import sys
 import time
 from pathlib import Path
 
-VERSION = "2.1.0"
+VERSION = "2.2.1"
 
 RELEASE = Path("/home/user/software/"
                "FreeLing_es-CL_2027")
@@ -78,19 +94,27 @@ GRAM_REL = Path("linguistic-derived/grammatical-lists/individual/"
                 "contemporary/freeling-cl")
 BUILD_TREE = Path("/home/user/build/FreeLing-4.2/data/es/es-cl")
 SHARE = Path("/usr/local/share/freeling")
-KNOWN_EXT = (".txt", ".dat", ".src", ".tsv", ".md")
+KNOWN_EXT = (".txt", ".dat", ".src", ".tsv", ".md", ".cfg")
 # Paths under the release's data/ folder and under the installed share
 # folder alike.
 SYSTEM_FILES = ["es/es-cl/" + n for n in (
-    "dicc.src", "historical/dicc.src", "probabilitats.dat", "locucions.dat",
+    "dicc.src", "historical/dicc.src", "historical/probabilitats.dat",
+    "historical/locucions.dat", "probabilitats.dat", "locucions.dat",
     "tagset.dat", "np.dat", "np-speech.dat", "quantities.dat")] + [
     "common/nec/cities.dat", "es/nerc/data/gazLOC-c.dat",
     "es/nerc/data/gazPER-c.dat", "es/nerc/data/gazPER-p.dat",
     "es/nerc/nec/nec-ab-poor1.dat"]
+# The link FreeLing Old reads its multiwords through (decided 261113).
+OLD_LINK = ("es/locucions.dat", "es-cl/locucions.dat")
+# Build-tree files the build no longer writes (--target user).
+USER_RETIRE = ["dictionary/entries/CL.misspellings"]
 # FreeLing files the Chilean ones replace (decided 261110d): retired from
 # the share folder when present.
 SYSTEM_RETIRE = ["common/nec/cities-CL.dat",
-                 "es/nerc/data/gazPER-p.dat.upstream"]
+                 "es/nerc/data/gazPER-p.dat.upstream",
+                 # decided 261113: the CSLD tags only with csld-es-cl.cfg
+                 # and the configs written from it
+                 "config/es-cl.cfg", "config/es-cl-19th-century.cfg"]
 USER_FILES = ["probabilitats.dat", "locucions.dat", "tagset.dat"]
 LIBFREELING = Path("/usr/local/lib/libfreeling.so")
 # What the library with the name-class change holds and FreeLing 4.2 does
@@ -224,16 +248,19 @@ def main(argv=None):
                 % b)
         return 2
     if not (data / "historical" / "dicc.src").is_file() or \
-            not (data / "np-speech.dat").is_file() or \
+            not (data / "historical" / "probabilitats.dat").is_file() or \
+            not (rel / "data" / "config" / "es-cl-19th-century.cfg").is_file() \
+            or not (data / "np-speech.dat").is_file() or \
             not (rel / "data" / "es" / "nerc" / "nec" /
                  "nec-ab-poor1.dat").is_file():
-        log("REFUSED: the release has no historical dictionary, no "
-            "np-speech.dat or no nec-ab-poor1.dat: it was made by an older "
-            "freeling_escl_build.py")
+        log("REFUSED: the release has no 19th-century dictionary and "
+            "config, no np-speech.dat or no nec-ab-poor1.dat: it was made by "
+            "an older freeling_escl_build.py")
         return 2
 
     pairs = []
     retire = []
+    link = None
     compress = a.target == "system"
     if a.target == "user":
         if is_root:
@@ -260,6 +287,7 @@ def main(argv=None):
                       bt / "remove" / "CL.removed"))
         for n in USER_FILES:
             pairs.append((data / n, bt / n))
+        retire = [bt / n for n in USER_RETIRE if (bt / n).exists()]
     else:
         if not is_root:
             log("REFUSED: --target system writes /usr/local; run it with sudo")
@@ -267,7 +295,7 @@ def main(argv=None):
         share = Path(a.share)
         for d in (share / "es" / "es-cl", share / "common" / "nec",
                   share / "es" / "nerc" / "data",
-                  share / "es" / "nerc" / "nec"):
+                  share / "es" / "nerc" / "nec", share / "config"):
             if not d.is_dir():
                 log("REFUSED: not found: %s" % d)
                 return 2
@@ -287,6 +315,13 @@ def main(argv=None):
         for n in SYSTEM_FILES:
             pairs.append((rel / "data" / n, share / n))
         retire = [share / n for n in SYSTEM_RETIRE if (share / n).exists()]
+        link_p = share / OLD_LINK[0]
+        if link_p.is_symlink() and os.readlink(link_p) == OLD_LINK[1]:
+            link = None
+        else:
+            link = link_p
+            if link_p.exists() or link_p.is_symlink():
+                retire.append(link_p)
 
     todo = plan(pairs)
     stamp = time.strftime("%y%m%d")
@@ -303,17 +338,22 @@ def main(argv=None):
     retires = []
     if retire:
         log("")
-        log("%d FreeLing file(s) replaced by the Chilean ones, to retire"
-            % len(retire))
+        log("%d file(s) no longer read, to retire" % len(retire))
     for old in retire:
-        dep = deprecated_name(old, stamp, True)
+        dep = deprecated_name(old, stamp, compress)
         retires.append((old, dep))
         log("  %s" % old)
-        log("      -> %s (compressed, mode 000)" % dep)
+        log("      -> %s%s" % (dep, " (compressed, mode 000)" if compress
+                               else ""))
+    if link:
+        log("")
+        log("link for FreeLing Old: %s -> %s" % (link, OLD_LINK[1]))
     locked = [(dst, why) for _, dst, _ in moves
               for why in [writable(dst)] if why]
     locked += [(old, why) for old, _ in retires
-               for why in [writable(old)] if why]
+               for why in [writable(old)] if why and not old.is_symlink()]
+    if link and not os.access(link.parent, os.W_OK):
+        locked.append((link.parent, "folder not writable"))
     if locked:
         log("")
         for dst, why in locked:
@@ -326,7 +366,7 @@ def main(argv=None):
         log("")
         log("DRY RUN -- nothing moved or written.")
         return 0
-    if not moves and not retires:
+    if not moves and not retires and not link:
         log("Nothing to do: every file is already current.")
         return 0
     for src, dst, dep in moves:
@@ -353,6 +393,15 @@ def main(argv=None):
             os.replace(tmp, dst)
     for old, dep in retires:
         dep.parent.mkdir(parents=True, exist_ok=True)
+        if old.is_symlink():
+            # a link elsewhere: nothing to keep but where it pointed
+            dep.with_suffix(dep.suffix + ".link").write_text(
+                os.readlink(old) + "\n", encoding="utf-8")
+            os.unlink(old)
+            continue
+        if not compress:
+            os.replace(old, dep)
+            continue
         part = dep.with_name(dep.name + ".part")
         with old.open("rb") as fi, lzma.open(part, "wb", preset=9) as fo:
             for chunk in iter(lambda: fi.read(1 << 20), b""):
@@ -360,14 +409,19 @@ def main(argv=None):
         os.replace(part, dep)
         os.chmod(dep, 0o000)
         os.unlink(old)
+    if link:
+        os.symlink(OLD_LINK[1], link)
     log("")
     log("%d file(s) replaced; previous versions kept in deprecated/%s" % (
         sum(1 for m in moves if m[2]),
         " (compressed, mode 000)" if compress else ""))
     log("%d new file(s)" % sum(1 for m in moves if not m[2]))
     if retires:
-        log("%d FreeLing file(s) retired to deprecated/ (compressed, mode "
-            "000)" % len(retires))
+        log("%d file(s) retired to deprecated/%s" % (
+            len(retires), " (compressed, mode 000)" if compress else ""))
+    if link:
+        log("FreeLing Old reads the Chilean multiwords: %s -> %s"
+            % (link, OLD_LINK[1]))
     log("=" * 78)
     return 0
 

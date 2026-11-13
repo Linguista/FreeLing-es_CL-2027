@@ -1,6 +1,6 @@
 # build-freeling_README.md
 
-Documents `build-freeling.sh` 1.0.0.
+Documents `build-freeling.sh` 1.1.0.
 
 ## Purpose
 
@@ -25,7 +25,7 @@ Run it as root, on a fresh, disposable machine or container: FreeLing's own `mak
 1. Checks the tarball's sha256 (`f96afbdb000d7375426644fb2f25baff9a63136dddce6551ea0fd20059bfce3b`) and unpacks it.
 2. Applies the changes (`patch-freeling.sh`).
 3. Configures with `-DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_CXX_FLAGS="-Wno-template-body" -DCMAKE_C_FLAGS="-std=gnu17"`, builds and installs.
-4. Copies the 13 Chilean data files over FreeLing's (the files and places of `freeling_escl_deploy.py --target system`) and removes `common/nec/cities-CL.dat`, which the Chilean `cities.dat` merges.
+4. Runs `install-data.sh`, which copies the 17 Chilean files over FreeLing's (the files and places of `freeling_escl_deploy.py --target system`: the 2027 and 19th-century data and the configs `config/es-cl.cfg` and `config/es-cl-19th-century.cfg`), removes `common/nec/cities-CL.dat`, which the Chilean `cities.dat` merges, and makes `es/locucions.dat`, FreeLing Old's multiword file, a link to `es-cl/locucions.dat`.
 5. Checks that `libfreeling.so` has the name-class change (six marks).
 6. Finds the distribution packages the programs and libraries need, from their shared-library dependencies, into `pkgdeps.txt`.
 7. Moves everything installed into `pkgroot/`, writes `pkgetc/freeling-es-cl.conf` (`/usr/local/lib`, for `/etc/ld.so.conf.d/`) and adds the documents.
@@ -39,3 +39,8 @@ The machine needs the en_US.UTF-8 locale: FreeLing's install builds its phonetic
 ## Platform
 
 Linux. bash, CMake, a C++ compiler, Boost, ICU, zlib, patch, file, binutils (readelf, strings), rpm or dpkg.
+
+## Changelog
+
+- 1.1.0 (261113): the Chilean data are installed by `install-data.sh` (shared with the macOS build): the 19th-century dictionary's probabilities and multiwords and the two configs too, and `es/locucions.dat` linked to the Chilean multiword file for FreeLing Old; only Spanish is built (`patch-freeling.sh` 1.1.0).
+- 1.0.0 (261112): first version.

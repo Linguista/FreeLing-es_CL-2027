@@ -1,32 +1,45 @@
 #!/usr/bin/env bash
-# VERSION 1.0.0
+# VERSION 1.1.0
 #
 # test-freeling.sh -- checks an installed FreeLing es-CL 2027 package: the
 # library has the name-class change, the Chilean files are FreeLing es-CL
-# 2027's (their sha256 as in this repository's SHA256SUMS), and FreeLing
-# analyzes a Chilean sentence with the Chilean dictionary: tenís is a
-# voseo form of tener.
+# 2027's (their sha256 as in this repository's SHA256SUMS), FreeLing
+# analyzes a Chilean sentence with the Chilean dictionary (tenís is a
+# voseo form of tener), a 19th-century one with the 19th-century
+# dictionary (jente is gente, i is y), and an Old Spanish one with FreeLing
+# Old (dixo is decir), whose multiword file is the Chilean one.
 #
 # Usage, from the repository root: packaging/test-freeling.sh
+# PREFIX=DIR names another install prefix than /usr/local (the macOS
+# tarballs install into /usr/local/freeling-es-cl-2027); on macOS, GNU
+# coreutils and binutils (sha256sum, strings -e L) must come first in PATH.
 
 set -euo pipefail
-prefix=/usr/local
+prefix="${PREFIX:-/usr/local}"
+lib="$prefix/lib/libfreeling.so"
+[ -e "$lib" ] || lib="$prefix/lib/libfreeling.dylib"
 share="$prefix/share/freeling"
 
-n=$(strings -e L "$prefix/lib/libfreeling.so" | grep -c -x -E "DictionaryClasses|FixedClasses|ClassesAtSentenceStart|SentenceStartClasses|ClassShares|keep:" || true)
-[ "$n" -eq 6 ] || { echo "FAIL  libfreeling.so: $n of the 6 marks of the name-class change"; exit 1; }
-echo "ok    libfreeling.so has the name-class change"
+n=$(strings -e L "$lib" | grep -c -x -E "DictionaryClasses|FixedClasses|ClassesAtSentenceStart|SentenceStartClasses|ClassShares|keep:" || true)
+[ "$n" -eq 6 ] || { echo "FAIL  $lib: $n of the 6 marks of the name-class change"; exit 1; }
+echo "ok    $(basename "$lib") has the name-class change"
 
-for f in es/es-cl/dicc.src es/es-cl/historical/dicc.src es/es-cl/probabilitats.dat \
+for f in es/es-cl/dicc.src es/es-cl/historical/dicc.src es/es-cl/historical/probabilitats.dat \
+         es/es-cl/historical/locucions.dat es/es-cl/probabilitats.dat \
          es/es-cl/locucions.dat es/es-cl/tagset.dat es/es-cl/np.dat es/es-cl/np-speech.dat \
          es/es-cl/quantities.dat common/nec/cities.dat es/nerc/data/gazLOC-c.dat \
-         es/nerc/data/gazPER-c.dat es/nerc/data/gazPER-p.dat es/nerc/nec/nec-ab-poor1.dat; do
+         es/nerc/data/gazPER-c.dat es/nerc/data/gazPER-p.dat es/nerc/nec/nec-ab-poor1.dat \
+         config/es-cl.cfg config/es-cl-19th-century.cfg; do
     want="$(awk -v r="data/$f" '$2 == r {print $1}' SHA256SUMS)"
     have="$(sha256sum "$share/$f" | cut -d' ' -f1)"
     [ -n "$want" ] && [ "$want" = "$have" ] || { echo "FAIL  $share/$f is not the release's"; exit 1; }
 done
 [ ! -e "$share/common/nec/cities-CL.dat" ] || { echo "FAIL  cities-CL.dat is still installed"; exit 1; }
-echo "ok    the 13 Chilean files are the release's"
+[ "$(readlink "$share/es/locucions.dat")" = "es-cl/locucions.dat" ] || { echo "FAIL  es/locucions.dat is not a link to es-cl/locucions.dat"; exit 1; }
+for d in en pt es/es-ar; do
+    [ ! -e "$share/$d" ] || { echo "FAIL  $share/$d is installed"; exit 1; }
+done
+echo "ok    the 17 Chilean files are the release's; only Spanish is installed"
 
 status=0
 out="$(echo "Vos tenís que venir a Arica." | "$prefix/bin/analyze" -f es-cl.cfg --outlv tagged --nonec --sense none 2>&1)" || status=$?
@@ -34,4 +47,15 @@ echo "$out"
 [ "$status" -eq 0 ] || { echo "FAIL  analyze exited with $status"; exit 1; }
 echo "$out" | grep -q "^tenís tener VMIP2SV" || { echo "FAIL  tenís was not read as a voseo form of tener"; exit 1; }
 echo "ok    FreeLing reads tenís as a voseo form of tener"
+
+out="$(echo "La jente i el rei." | "$prefix/bin/analyze" -f es-cl-19th-century.cfg --outlv tagged --nonec --sense none 2>&1)" || { echo "$out"; echo "FAIL  analyze with es-cl-19th-century.cfg"; exit 1; }
+echo "$out"
+echo "$out" | grep -q "^jente gente NCFS000" && echo "$out" | grep -q "^i y CC" \
+    || { echo "FAIL  the 19th-century dictionary did not read jente as gente and i as y"; exit 1; }
+echo "ok    the 19th-century dictionary reads jente as gente and i as y"
+
+out="$(echo "Et dixo el rey." | "$prefix/bin/analyze" -f es-old.cfg --outlv tagged --nonec --sense none 2>&1)" || { echo "$out"; echo "FAIL  analyze with es-old.cfg"; exit 1; }
+echo "$out"
+echo "$out" | grep -q "^dixo decir VMIS3S0" || { echo "FAIL  FreeLing Old did not read dixo as decir"; exit 1; }
+echo "ok    FreeLing Old reads dixo as decir"
 echo "ALL CHECKS PASSED"

@@ -73504,6 +73504,17 @@ variants	added	spelling variant	pajaris	pajarear	VMSP2SV	verb, main, subjunctive
 variants	added	spelling variant	pajaríh	pajarear	VMSP2SV	verb, main, subjunctive, present, 2nd person, singular, voseo	
 variants	added	spelling variant	pajarih	pajarear	VMSP2SV	verb, main, subjunctive, present, 2nd person, singular, voseo	
 variants	added	spelling variant	pajarí	pajarear	VMSP2SV	verb, main, subjunctive, present, 2nd person, singular, voseo	
+variants	added	spelling variant	pajearai	pajear	VMIF2SV	verb, main, indicative, future, 2nd person, singular, voseo	
+variants	added	spelling variant	pajearay	pajear	VMIF2SV	verb, main, indicative, future, 2nd person, singular, voseo	
+variants	added	spelling variant	pajearáy	pajear	VMIF2SV	verb, main, indicative, future, 2nd person, singular, voseo	
+variants	added	spelling variant	pajeariai	pajear	VMIC2SV	verb, main, indicative, conditional, 2nd person, singular, voseo	
+variants	added	spelling variant	pajeai	pajear	VMIP2SV	verb, main, indicative, present, 2nd person, singular, voseo	
+variants	added	spelling variant	pajeay	pajear	VMIP2SV	verb, main, indicative, present, 2nd person, singular, voseo	
+variants	added	spelling variant	pajeáy	pajear	VMIP2SV	verb, main, indicative, present, 2nd person, singular, voseo	
+variants	added	spelling variant	pajeis	pajear	VMSP2SV	verb, main, subjunctive, present, 2nd person, singular, voseo	
+variants	added	spelling variant	pajeíh	pajear	VMSP2SV	verb, main, subjunctive, present, 2nd person, singular, voseo	
+variants	added	spelling variant	pajeih	pajear	VMSP2SV	verb, main, subjunctive, present, 2nd person, singular, voseo	
+variants	added	spelling variant	pajeí	pajear	VMSP2SV	verb, main, subjunctive, present, 2nd person, singular, voseo	
 variants	added	spelling variant	palabrearai	palabrear	VMIF2SV	verb, main, indicative, future, 2nd person, singular, voseo	
 variants	added	spelling variant	palabrearay	palabrear	VMIF2SV	verb, main, indicative, future, 2nd person, singular, voseo	
 variants	added	spelling variant	palabrearáy	palabrear	VMIF2SV	verb, main, indicative, future, 2nd person, singular, voseo	
@@ -88866,6 +88877,17 @@ variants	added	spelling variant	serrarai	serrar	VMIF2SV	verb, main, indicative, 
 variants	added	spelling variant	serraray	serrar	VMIF2SV	verb, main, indicative, future, 2nd person, singular, voseo	
 variants	added	spelling variant	serraráy	serrar	VMIF2SV	verb, main, indicative, future, 2nd person, singular, voseo	
 variants	added	spelling variant	serrariai	serrar	VMIC2SV	verb, main, indicative, conditional, 2nd person, singular, voseo	
+variants	added	spelling variant	serrucharai	serruchar	VMIF2SV	verb, main, indicative, future, 2nd person, singular, voseo	
+variants	added	spelling variant	serrucharay	serruchar	VMIF2SV	verb, main, indicative, future, 2nd person, singular, voseo	
+variants	added	spelling variant	serrucharáy	serruchar	VMIF2SV	verb, main, indicative, future, 2nd person, singular, voseo	
+variants	added	spelling variant	serruchariai	serruchar	VMIC2SV	verb, main, indicative, conditional, 2nd person, singular, voseo	
+variants	added	spelling variant	serruchai	serruchar	VMIP2SV	verb, main, indicative, present, 2nd person, singular, voseo	
+variants	added	spelling variant	serruchay	serruchar	VMIP2SV	verb, main, indicative, present, 2nd person, singular, voseo	
+variants	added	spelling variant	serrucháy	serruchar	VMIP2SV	verb, main, indicative, present, 2nd person, singular, voseo	
+variants	added	spelling variant	serruchis	serruchar	VMSP2SV	verb, main, subjunctive, present, 2nd person, singular, voseo	
+variants	added	spelling variant	serruchíh	serruchar	VMSP2SV	verb, main, subjunctive, present, 2nd person, singular, voseo	
+variants	added	spelling variant	serruchih	serruchar	VMSP2SV	verb, main, subjunctive, present, 2nd person, singular, voseo	
+variants	added	spelling variant	serruchí	serruchar	VMSP2SV	verb, main, subjunctive, present, 2nd person, singular, voseo	
 variants	added	spelling variant	serrai	serrar	VMIP2SV	verb, main, indicative, present, 2nd person, singular, voseo	
 variants	added	spelling variant	serray	serrar	VMIP2SV	verb, main, indicative, present, 2nd person, singular, voseo	
 variants	added	spelling variant	serráy	serrar	VMIP2SV	verb, main, indicative, present, 2nd person, singular, voseo	
@@ -100709,11 +100731,11 @@ names	changed	standard lemma (decided 261108)	potosi	potosí	NP00G00	noun, prope
 names	changed	standard lemma (decided 261108)	shanghai	shanghái	NP00G00	noun, proper, place	shanghai
 names	changed	standard lemma (decided 261108)	sofia	sofía	NP00G00	noun, proper, place	sofia
 names	changed	standard lemma (decided 261108)	valparaiso	valparaíso	NP00G00	noun, proper, place	valparaiso
-misspellings	changed	standard lemma (decided 261108)	aristia	ariztía	NP00SP0	noun, proper, person	aristía
-misspellings	changed	standard lemma (decided 261108)	biblicamente	bíblicamente	RG	adverb, general	biblicamente
-misspellings	changed	standard lemma (decided 261108)	gafitería	gasfitería	NCFS000	noun, common, feminine, singular	gasfiteria
-misspellings	changed	standard lemma (decided 261108)	nguillatu	nguillatún	NCMS000	noun, common, masculine, singular	nguillatun
-misspellings	changed	standard lemma (decided 261108)	raking	ránking	NCMS000	noun, common, masculine, singular	ranking
+common-misspellings	changed	standard lemma (decided 261108)	aristia	ariztía	NP00SP0	noun, proper, person	aristía
+common-misspellings	changed	standard lemma (decided 261108)	biblicamente	bíblicamente	RG	adverb, general	biblicamente
+common-misspellings	changed	standard lemma (decided 261108)	gafitería	gasfitería	NCFS000	noun, common, feminine, singular	gasfiteria
+common-misspellings	changed	standard lemma (decided 261108)	nguillatu	nguillatún	NCMS000	noun, common, masculine, singular	nguillatun
+common-misspellings	changed	standard lemma (decided 261108)	raking	ránking	NCMS000	noun, common, masculine, singular	ranking
 place-only	removed	a place, never another word (decided 261110d)	arica	aricar	VMIP3S0	verb, main, indicative, present, 3rd person, singular	FreeLing's Spanish dictionary
 place-only	removed	a place, never another word (decided 261110d)	arica	aricar	VMM02S0	verb, main, imperative, 2nd person, singular	FreeLing's Spanish dictionary
 names	added	a place, never another word (decided 261110d)	arica	arica	NP00G00	noun, proper, place	place-only form
@@ -101224,11 +101246,83 @@ contemporary	removed	an -is form is voseo in contemporary Chilean Spanish, not v
 contemporary	removed	an -is form is voseo in contemporary Chilean Spanish, not vosotros	deconstruís	deconstruir	VMIP2P0	verb, main, indicative, present, 2nd person, plural	kept in the historical dictionary
 contemporary	removed	an -is form is voseo in contemporary Chilean Spanish, not vosotros	conscribís	conscribir	VMIP2P0	verb, main, indicative, present, 2nd person, plural	kept in the historical dictionary
 contemporary	removed	an -is form is voseo in contemporary Chilean Spanish, not vosotros	setís	sentir	VMIP2P0	verb, main, indicative, present, 2nd person, plural	kept in the historical dictionary
+locucions	not added	FreeLing's general multiword: the Chilean entry wins	a_muerte				a_muerte a_muerte AQ0CN00 I
+locucions	not added	FreeLing's general multiword: the Chilean entry wins	a_muerte				a_muerte a_muerte RG I
+locucions	not added	FreeLing's general multiword: the Chilean entry wins	full_time				full_time full_time AQ0CN00 I
+locucions	not added	FreeLing's general multiword: the Chilean entry wins	full_time				full_time full_time RG I
+locucions	not added	FreeLing's general multiword: the Chilean entry wins	in_vitro				in_vitro in_vitro AQ0CN00 I
+locucions	not added	FreeLing's general multiword: the Chilean entry wins	in_vitro				in_vitro in_vitro RG I
+locucions	not added	FreeLing's general multiword: the Chilean entry wins	in_vivo				in_vivo in_vivo AQ0CN00 I
+locucions	not added	FreeLing's general multiword: the Chilean entry wins	in_vivo				in_vivo in_vivo RG I
+locucions	not added	FreeLing's general multiword: the Chilean entry wins	motu_proprio				motu_proprio motu_proprio AQ0CN00 I
+locucions	not added	FreeLing's general multiword: the Chilean entry wins	motu_proprio				motu_proprio motu_proprio RG I
+locucions	not added	FreeLing's general multiword: the Chilean entry wins	ni_fu_ni_fa				ni_fu_ni_fa ni_fu_ni_fa RG I
+locucions	not added	FreeLing's general multiword: the Chilean entry wins	pues_sí_que				pues_sí_que pues_sí_que CS I
+locucions	not added	FreeLing's general multiword: the Chilean entry wins	pues_sí_que				pues_sí_que pues_sí_que I I
+locucions	not added	FreeLing's general multiword: the Chilean entry wins	tal_y_cual				tal_y_cual tal_y_cual Fs I
+locucions	not added	FreeLing's general multiword: the Chilean entry wins	todo_lo_contrario				todo_lo_contrario todo_lo_contrario I I
+locucions	not added	FreeLing's general multiword: the Chilean entry wins	todo_lo_contrario				todo_lo_contrario todo_lo_contrario RG I
+locucions	not added	FreeLing's general multiword: the Chilean entry wins	urbi_et_orbi				urbi_et_orbi urbi_et_orbi AQ0CN00 I
+locucions	not added	FreeLing's general multiword: the Chilean entry wins	urbi_et_orbi				urbi_et_orbi urbi_et_orbi RG I
 locucions	not added	multiword interjection already given by the pattern ya_<poh>	ya_poh	ya_poh	I	interjection	
 locucions	not added	multiword interjection already given by the pattern ya_<poh>	ya_po	ya_poh	I	interjection	
 locucions	not added	multiword interjection already given by the pattern puta_la_<huevada>	puta_la_wea	puta_la_huevada	I	interjection	
 locucions	not added	multiword interjection already given by the pattern puta_la_<huevada>	puta_la_weá	puta_la_huevada	I	interjection	
 locucions	not added	multiword interjection already given by the pattern puta_la_<huevada>	puta_la_huevada	puta_la_huevada	I	interjection	
+locucions	changed	multiword as decided (locutions--261113.tsv)	de_a_poco	de_a_poco	RG	adverb, general	de_a_poco RG I
+locucions	changed	multiword as decided (locutions--261113.tsv)	a_caballito	a_caballito	RG	adverb, general	a_caballito RG I
+locucions	changed	multiword as decided (locutions--261113.tsv)	en_cuatro_patas	en_cuatro_patas	RG	adverb, general	en_cuatro_patas RG I
+locucions	changed	multiword as decided (locutions--261113.tsv)	para_el_orto	para_el_orto	AQ0CN00	adjective, qualifying, common gender, invariable number	para_el_orto AQ0CN00 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	mala_leche	mala_leche	AQ0CN00	adjective, qualifying, common gender, invariable number	mala_leche AQ0CN00 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	de_medio_pelo	de_medio_pelo	AQ0CN00	adjective, qualifying, common gender, invariable number	de_medio_pelo AQ0CN00 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	medio_pelo	medio_pelo	AQ0CN00	adjective, qualifying, common gender, invariable number	medio_pelo AQ0CN00 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	flor_de	flor_de	AQ0CN00	adjective, qualifying, common gender, invariable number	flor_de AQ0CN00 A
+locucions	changed	multiword as decided (locutions--261113.tsv)	caído_de_la_cama	caído_de_la_cama	AQ0MS00	adjective, qualifying, masculine, singular	caído_de_la_cama AQ0MS00 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	caída_de_la_cama	caído_de_la_cama	AQ0FS00	adjective, qualifying, feminine, singular	caído_de_la_cama AQ0FS00 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	caídos_de_la_cama	caído_de_la_cama	AQ0MP00	adjective, qualifying, masculine, plural	caído_de_la_cama AQ0MP00 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	caídas_de_la_cama	caído_de_la_cama	AQ0FP00	adjective, qualifying, feminine, plural	caído_de_la_cama AQ0FP00 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	buen_día	buen_día	I	interjection	buen_día I I
+locucions	changed	multiword as decided (locutions--261113.tsv)	taca_taca	taca_taca	NCMS000	noun, common, masculine, singular	taca_taca NCMS000 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	tenedor_libre	tenedor_libre	NCMS000	noun, common, masculine, singular	tenedor_libre NCMS000 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	tenedores_libres	tenedor_libre	NCMP000	noun, common, masculine, plural	tenedor_libre NCMP000 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	dulce_de_leche	dulce_de_leche	NCMS000	noun, common, masculine, singular	dulce_de_leche NCMS000 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	dulces_de_leche	dulce_de_leche	NCMP000	noun, common, masculine, plural	dulce_de_leche NCMP000 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	dogo_argentino	dogo_argentino	NCMS000	noun, common, masculine, singular	dogo_argentino NCMS000 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	dogos_argentinos	dogo_argentino	NCMP000	noun, common, masculine, plural	dogo_argentino NCMP000 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	touch_and_go	touch_and_go	NCMS000	noun, common, masculine, singular	touch_and_go NCMS000 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	amo_de_casa	amo_de_casa	NCMS000	noun, common, masculine, singular	amo_de_casa NCMS000 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	amos_de_casa	amo_de_casa	NCMP000	noun, common, masculine, plural	amo_de_casa NCMP000 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	autito_chocador	autito_chocador	NCMS000	noun, common, masculine, singular	autito_chocador NCMS000 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	autitos_chocadores	autito_chocador	NCMP000	noun, common, masculine, plural	autito_chocador NCMP000 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	sueño_de_el_pibe	sueño_del_pibe	NCMS000	noun, common, masculine, singular	sueño_del_pibe NCMS000 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	lomo_de_burro	lomo_de_burro	NCMS000	noun, common, masculine, singular	lomo_de_burro NCMS000 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	lomos_de_burro	lomo_de_burro	NCMP000	noun, common, masculine, plural	lomo_de_burro NCMP000 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	play_off	play_off	NCMS000	noun, common, masculine, singular	play_off NCMS000 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	play_offs	play_off	NCMP000	noun, common, masculine, plural	play_off NCMP000 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	touch_pad	touch_pad	NCMS000	noun, common, masculine, singular	touch_pad NCMS000 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	touch_pads	touch_pad	NCMP000	noun, common, masculine, plural	touch_pad NCMP000 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	vino_navegado	vino_navegado	NCMS000	noun, common, masculine, singular	vino_navegado NCMS000 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	harina_tostada	harina_tostada	NCFS000	noun, common, feminine, singular	harina_tostada NCFS000 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	salsa_blanca	salsa_blanca	NCFS000	noun, common, feminine, singular	salsa_blanca NCFS000 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	salsas_blancas	salsa_blanca	NCFP000	noun, common, feminine, plural	salsa_blanca NCFP000 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	cinta_scotch	cinta_scotch	NCFS000	noun, common, feminine, singular	cinta_scotch NCFS000 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	pole_position	pole_position	NCFS000	noun, common, feminine, singular	pole_position NCFS000 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	villa_miseria	villa_miseria	NCFS000	noun, common, feminine, singular	villa_miseria NCFS000 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	villas_miseria	villa_miseria	NCFP000	noun, common, feminine, plural	villa_miseria NCFP000 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	viveza_criolla	viveza_criolla	NCFS000	noun, common, feminine, singular	viveza_criolla NCFS000 I
+locucions	changed	multiword as decided (locutions--261113.tsv)	<poner>_las_pilas	ponerse_las_pilas	$1:VM	category of word 1 of the expression: verb, main	ponerse_las_pilas $1:VM I
+locucions	changed	multiword as decided (locutions--261113.tsv)	<hacer>_dedo	hacer_dedo	$1:VM	category of word 1 of the expression: verb, main	hacer_dedo $1:VM I
+locucions	changed	multiword as decided (locutions--261113.tsv)	<cebar>_el_mate	cebar_el_mate	$1:VM	category of word 1 of the expression: verb, main	cebar_el_mate $1:VM I
+locucions	changed	multiword as decided (locutions--261113.tsv)	<estar>_meado_de_perro	estar_meado_de_perro	$1:VM	category of word 1 of the expression: verb, main	estar_meado_de_perro $1:VM I
+locucions	changed	multiword as decided (locutions--261113.tsv)	<estar>_meada_de_perro	estar_meado_de_perro	$1:VM	category of word 1 of the expression: verb, main	estar_meado_de_perro $1:VM I
+locucions	changed	multiword as decided (locutions--261113.tsv)	<hacer>_el_lindo	hacerse_el_lindo	$1:VM	category of word 1 of the expression: verb, main	hacerse_el_lindo $1:VM I
+locucions	changed	multiword as decided (locutions--261113.tsv)	<hacer>_la_linda	hacerse_el_lindo	$1:VM	category of word 1 of the expression: verb, main	hacerse_el_lindo $1:VM I
+locucions	changed	multiword as decided (locutions--261113.tsv)	<hacer>_el_loco	hacerse_el_loco	$1:VM	category of word 1 of the expression: verb, main	hacerse_el_loco $1:VM I
+locucions	changed	multiword as decided (locutions--261113.tsv)	<hacer>_la_loca	hacerse_el_loco	$1:VM	category of word 1 of the expression: verb, main	hacerse_el_loco $1:VM I
+locucions	changed	multiword as decided (locutions--261113.tsv)	<meter>_pata	meter_pata	$1:VM	category of word 1 of the expression: verb, main	meter_pata $1:VM I
+locucions	changed	multiword as decided (locutions--261113.tsv)	<poner>_la_gorra	ponerse_la_gorra	$1:VM	category of word 1 of the expression: verb, main	ponerse_la_gorra $1:VM I
+locucions	changed	multiword as decided (locutions--261113.tsv)	<poner>_los_pantalones	ponerse_los_pantalones	$1:VM	category of word 1 of the expression: verb, main	ponerse_los_pantalones $1:VM I
+locucions	changed	multiword as decided (locutions--261113.tsv)	<serruchar>_el_piso	serruchar_el_piso	$1:VM	category of word 1 of the expression: verb, main	serruchar_el_piso $1:VM I
 locucions-MINIMAL	changed	ya po: the key named a lemma po that no form has; po and poh have the lemma poh (decided 261109)	ya_<poh>	ya_poh			ya_<po>
 locucions-MINIMAL	changed	multiword interjection as decided (261108), RARE: ambiguous, so its words can stay apart	conche_tu_madre	concha_de_tu_madre	I	interjection	concha_de_tu_madre I concha_de_tu_madre AQ0CN00 concha_de_tu_madre NCCS000 I
 locucions-MINIMAL	changed	multiword interjection as decided (261108), RARE: ambiguous, so its words can stay apart	conche_tu_mare	concha_de_tu_madre	I	interjection	concha_de_tu_madre I concha_de_tu_madre AQ0CN00 concha_de_tu_madre NCCS000 I
@@ -104367,6 +104461,7 @@ gazLOC-c	added	a place name of the Chilean data (decided 261110d)	yangjiang	yang
 gazLOC-c	added	a place name of the Chilean data (decided 261110d)	yangquan	yangquan			
 gazLOC-c	added	a place name of the Chilean data (decided 261110d)	yangzhou	yangzhou			
 gazLOC-c	added	a place name of the Chilean data (decided 261110d)	yanji	yanji			
+gazLOC-c	added	a place name of the Chilean data (decided 261110d)	yanquilandia	yanquilandia			
 gazLOC-c	added	a place name of the Chilean data (decided 261110d)	yantai	yantai			
 gazLOC-c	added	a place name of the Chilean data (decided 261110d)	yaounde	yaounde			
 gazLOC-c	added	a place name of the Chilean data (decided 261110d)	yautepec	yautepec			
@@ -105628,6 +105723,7 @@ cities	added	a place name of the Chilean data (decided 261110d)	xi_an	xi_an
 cities	added	a place name of the Chilean data (decided 261110d)	ya_an	ya_an			
 cities	added	a place name of the Chilean data (decided 261110d)	yaguipulli	yaguipulli			
 cities	added	a place name of the Chilean data (decided 261110d)	yan_an	yan_an			
+cities	added	a place name of the Chilean data (decided 261110d)	yanquilandia	yanquilandia			
 cities	added	a place name of the Chilean data (decided 261110d)	yautepec	yautepec			
 cities	added	a Chilean place of FreeLing's cities-CL.dat	yerbas_buenas	yerbas_buenas			
 cities	added	a place name of the Chilean data (decided 261110d)	yucatán	yucatán			

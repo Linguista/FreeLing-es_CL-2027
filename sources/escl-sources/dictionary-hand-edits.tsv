@@ -1,0 +1,16 @@
+# dictionary-hand-edits.tsv -- words added to the FreeLing es-CL 2027 dictionary by hand.
+#
+# What goes here: a reading the dictionary should have, exactly as FreeLing writes it. One reading per line, three fields separated by one tab:
+#   form    the word as written, in lower case (FreeLing looks words up in lower case)
+#   lemma   its lemma (spaces written as _)
+#   tag     its full tag in the Chilean tagset (e.g. NCMS000, NCMN000 for a noun with the same plural, AQ0CS00, RG, I)
+# A word with several readings (singular and plural, masculine and feminine) gets one line for each.
+# The build adds every line at every build and refuses a tag the Chilean tagset cannot decode. Lines starting with # are comments; empty lines are ignored.
+# To take a reading out again, delete its line.
+cesfam	CESFAM	NCMN000
+sar	SAR	NCMN000
+cosam	COSAM	NCFN000
+minipimer	minipimer	NCMN000
+chupafusiles	chupafusiles	NCMN000
+tatú	tatuaje	NCMS000
+tatoo	tatuaje	NCMS000
