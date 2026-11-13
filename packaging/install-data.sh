@@ -2,8 +2,8 @@
 # VERSION 1.1.0
 #
 # install-data.sh -- puts FreeLing es-CL 2027's data into an installed
-# FreeLing 4.2: the Chilean files over FreeLing's own (the files and places
-# of freeling_escl_deploy.py --target system), FreeLing's Chilean city list
+# FreeLing 4.2: the 17 Chilean files over FreeLing's own, FreeLing's
+# Chilean city list
 # removed (the Chilean cities.dat merges it), and es/locucions.dat, the
 # multiword file FreeLing Old reads, made a link to es-cl/locucions.dat.
 # build-freeling.sh (Linux packages) and the macOS and Windows jobs of

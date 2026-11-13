@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# VERSION 2.2.1
+# VERSION 2.2.2
 #
 # freeling_escl_deploy.py -- put a FreeLing es-CL 2027 build (made by
 # freeling_escl_build.py) where it is used.
 #
-#   --target user     run as usuario, NOT as root
+#   --target user     run as your own user, NOT as root
 #       the CSLD grammatical lists
 #           <project root>/linguistic-derived/grammatical-lists/individual/
 #               contemporary/freeling-cl/CL.*.GRAM.txt
@@ -86,7 +86,7 @@ import sys
 import time
 from pathlib import Path
 
-VERSION = "2.2.1"
+VERSION = "2.2.2"
 
 RELEASE = Path("/home/user/software/"
                "FreeLing_es-CL_2027")
@@ -264,8 +264,8 @@ def main(argv=None):
     compress = a.target == "system"
     if a.target == "user":
         if is_root:
-            log("REFUSED: run --target user as usuario, not with sudo (the "
-                "files must stay usuario's)")
+            log("REFUSED: run --target user as your own user, not with "
+                "sudo (the files must stay yours)")
             return 2
         root = Path(a.root).resolve() if a.root else find_project_root(
             Path(__file__).resolve().parent)

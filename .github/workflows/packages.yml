@@ -19,8 +19,6 @@ name: Build FreeLing es-CL packages
 # on that run's packages.
 
 on:
-  push:
-    branches: [windows-package-test]
   release:
     types: [published]
   workflow_dispatch:

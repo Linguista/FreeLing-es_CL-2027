@@ -39,6 +39,8 @@ Linux, macOS (with GNU sed first in `PATH`), and Windows in MSYS2's shell. bash,
 
 261113, version 1.1.0, on a freshly unpacked `FreeLing-src-4.2.tar.gz`: every change applied; FreeLing then configured, built and installed with only Spanish (`share/freeling/` holding `common`, `config` and `es`; FreeLing Old and es-cl the only variants), and analyzed with `es-cl.cfg`, `es-cl-19th-century.cfg` and `es-old.cfg`. A first attempt that expected the fourteen other language folders stopped at once, as it should: the source tarball carries only English and Portuguese besides Spanish.
 
+261113, version 1.2.0: two fresh source trees patched here, one by 1.1.0 and one by 1.2.0, differ only in the seven files of the six Windows fixes (the three crfsuite headers and its `CMakeLists.txt`, libfreeling's `CMakeLists.txt`, `util.cc` and `dictionary.cc`); the Linux and macOS builds below confirm that none of it changes them. GitHub Actions run 43379595248 (branch windows-package-test, 261113): all 14 jobs passed. Windows (MSYS2 UCRT64, GCC) built with all six Windows fixes, and its package checks and the check of the zip from PowerShell passed; before fix 9f the Windows build lemmatized Ñuñoa as Ñuñoa, after it as ñuñoa, as on Linux and macOS. The five Linux builds and their tests on clean systems, and both macOS builds, passed unchanged. Run 43388088727 (261113), with the two Chilean test sentences, passed all 14 jobs as well.
+
 ## Changelog
 
 - 1.2.0 (261113): the six Windows fixes (9a to 9f), each effective only on Windows with GCC.

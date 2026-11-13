@@ -1,6 +1,6 @@
 # freeling_escl_deploy_README.md
 
-Documents `freeling_escl_deploy.py` 2.2.1.
+Documents `freeling_escl_deploy.py` 2.2.2.
 
 Real file: `/home/user/csld/software/10-Infrastructure/freeling/scripts/freeling_escl_deploy.py`
 
@@ -12,7 +12,7 @@ is used. The release must be intact: every file must match its
 
 | Target | Run as | Replaces |
 |---|---|---|
-| `user` | usuario | the CSLD grammatical lists, `/home/user/csld/linguistic-derived/grammatical-lists/individual/contemporary/freeling-cl/CL.*.GRAM.txt`; the FreeLing build tree, `/home/user/build/FreeLing-4.2/data/es/es-cl/` (`dictionary/entries/CL.*`, `remove/CL.removed`, `probabilitats.dat`, `locucions.dat`, `tagset.dat`) |
+| `user` | your own user, not root | the CSLD grammatical lists, `/home/user/csld/linguistic-derived/grammatical-lists/individual/contemporary/freeling-cl/CL.*.GRAM.txt`; the FreeLing build tree, `/home/user/build/FreeLing-4.2/data/es/es-cl/` (`dictionary/entries/CL.*`, `remove/CL.removed`, `probabilitats.dat`, `locucions.dat`, `tagset.dat`) |
 | `system` | sudo | the installed data FreeLing reads, in `/usr/local/share/freeling/`: `es/es-cl/dicc.src` (the default dictionary), `es/es-cl/historical/dicc.src` (the 19th-century one, for historical corpora) with its `historical/probabilitats.dat` and `historical/locucions.dat`, `es/es-cl/np.dat` (the name recognizer, written texts), `es/es-cl/np-speech.dat` (the name recognizer, transcribed speech), `es/es-cl/probabilitats.dat`, `locucions.dat`, `tagset.dat`, `quantities.dat`; the name classifier's lists `common/nec/cities.dat`, `es/nerc/data/gazLOC-c.dat`, `gazPER-c.dat`, `gazPER-p.dat`; the classifier's file `es/nerc/nec/nec-ab-poor1.dat` (FreeLing's, with the class shares of some names). No config: see below |
 
 Only files whose content differs are replaced. The file replaced is first
@@ -114,6 +114,8 @@ equal to the release's; a second run found nothing to do. The user target
 refuses to run with sudo.
 
 ## Changelog
+
+- 2.2.2 (261113): the user target's messages and this README name no account: "your own user" (the release is public, and the account name is private).
 
 - 2.2.1 (261113): the system target no longer installs `config/es-cl.cfg` and `config/es-cl-19th-century.cfg`, and retires both from `/usr/local/share/freeling/config/` (compressed, mode 000): the CSLD tags only with `csld-es-cl.cfg` and the configs written from it (decided 261113). The release's two configs stay in its `data/config/` and in the packages.
 

@@ -36,7 +36,9 @@ Linux, macOS, and Windows in MSYS2's UCRT64 shell. bash, binutils (strings), sha
 
 261113, version 1.1.0, against FreeLing 4.2 built with `patch-freeling.sh` 1.1.0 and the release of `freeling_escl_build.py` 2.8.0 installed (the prefix changed for the test): ALL CHECKS PASSED.
 
-261113, version 1.2.0: GitHub Actions run 43379595248 (branch windows-package-test, 261113): all 15 jobs passed. ALL CHECKS PASSED on Fedora 43 and 44, Debian 13, Ubuntu 24.04 and 26.04, macOS 15 (Apple silicon and Intel) and Windows; on every one "Él llegó a Ñuñoa." gave Él él PP3MS00 and Ñuñoa ñuñoa NP00G00. The lowercasing check failed on the Windows build before fix 9f, as it should.
+261113, version 1.2.0: GitHub Actions run 43379595248 (branch windows-package-test, 261113): all 14 jobs passed. ALL CHECKS PASSED on Fedora 43 and 44, Debian 13, Ubuntu 24.04 and 26.04, macOS 15 (Apple silicon and Intel) and Windows; on every one "Él llegó a Ñuñoa." gave Él él PP3MS00 and Ñuñoa ñuñoa NP00G00. The lowercasing check failed on the Windows build before fix 9f, as it should.
+
+261113, version 1.2.0 with the two Chilean sentences: GitHub Actions run 43388088727 (branch windows-package-test, 261113): all 14 jobs passed. In every run of this script (the five Linux tests on clean systems, both macOS builds and the Windows build) the six patterns of "Cachái que mi vecina, la Javi, no está ni ahí con voh, conchetumare. Dice que soi cuartero y que no te bañai nunca." matched, among them Cachái cachar VMIP2SV and bañai bañar VMIP2SV, and so did the case-sensitive check of the Windows zip from PowerShell.
 
 ## Changelog
 

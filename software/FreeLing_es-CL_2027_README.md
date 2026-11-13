@@ -6,6 +6,7 @@
 ![FreeLing](https://img.shields.io/badge/FreeLing-4.2%2C%20bundled-8250df)
 ![packages](https://img.shields.io/badge/packages-Fedora%2043%20%7C%2044%20%7C%20Debian%2013%20%7C%20Ubuntu%2024.04%20%7C%2026.04-8250df)
 ![macOS](https://img.shields.io/badge/macOS-15%2C%20Apple%20silicon%20%7C%20Intel-8250df)
+![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011%2C%20x86--64-8250df)
 ![processors](https://img.shields.io/badge/processors-x86--64%20%7C%20arm64%20(macOS)-1f6feb)
 ![data](https://img.shields.io/badge/data-UTF--8%20NFC-d29922)
 ![languages](https://img.shields.io/badge/languages-Spanish%20only-d29922)
@@ -116,7 +117,19 @@ sudo tar -xzf freeling-es-cl-2027-YYMMDD-macos-arm64.tar.gz -C /
 echo "Vos tenís que venir." | /usr/local/freeling-es-cl-2027/bin/analyze -f es-cl.cfg --outlv tagged
 ```
 
-The programs find Homebrew's libraries where Homebrew installs them (`/opt/homebrew` on Apple silicon, `/usr/local` on Intel); a Homebrew upgrade of boost or icu4c to a new major version needs the tarball of a newer release. There is no Windows build yet.
+The programs find Homebrew's libraries where Homebrew installs them (`/opt/homebrew` on Apple silicon, `/usr/local` on Intel); a Homebrew upgrade of boost or icu4c to a new major version needs the tarball of a newer release.
+
+## Windows
+
+Each release has a zip for 64-bit Windows 10 and 11 (`freeling-es-cl-2027-YYMMDD-windows-x86_64.zip`): FreeLing 4.2 with every change of this release, built by GitHub on its Windows machines with MSYS2's UCRT64 toolchain (GCC, Boost and ICU), with the Chilean data installed, and with every library it needs in its `bin` folder, so nothing else has to be installed. It is checked where it was built (`packaging/test-freeling.sh`) and again unpacked elsewhere, through `analyze.bat` from Windows' own shell. Unpack it anywhere, for example in `C:\FreeLing`, and run `analyze.bat` from its `bin` folder, in PowerShell:
+
+```powershell
+$OutputEncoding = [System.Text.UTF8Encoding]::new($false)
+[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
+"Vos tenís que venir." | C:\FreeLing\freeling-es-cl-2027\bin\analyze.bat -f es-cl.cfg --outlv tagged
+```
+
+FreeLing reads and writes UTF-8: the two first lines make PowerShell send and show it as UTF-8. `analyze.bat` finds the configs by name (`es-cl.cfg`, `es-cl-19th-century.cfg`, `es-old.cfg`) in the zip's `share\freeling\config` folder. Six changes to FreeLing's source make it build and run on Windows with GCC (`packaging/patch-freeling.sh`, 9a to 9f); they take effect only there.
 
 ## If you really want to try and build this rather than use a package...
 
@@ -204,8 +217,8 @@ In this release, the paths in the README and in the copies of the tools are thos
 | `grammatical-lists/freeling-cl/CL.*.GRAM.txt` | the corrected grammatical lists, tab-separated, in the layout of the CSLD lists they replace |
 | `software/` | the tools that made this build, their READMEs, this README, and the six `explode-*-4-FreeLing.pl` scripts with `explode-VERBS-4-FreeLing_README.md` |
 | `sources/escl-sources/` | every decision file this build read, with its README: the release can be rebuilt from itself (section 6) |
-| `packaging/` | the packaging of FreeLing 4.2 with this release for Fedora 43 and 44, Debian 13 and Ubuntu 24.04 and 26.04, and the macOS tarballs: the scripts that patch, build, package and check it, each with its README (section "If you really want to try and build this rather than use a package...") |
-| `.github/workflows/packages.yml` | the GitHub workflow that builds the packages on each distribution, installs each on a fresh one, checks it (and builds and checks the macOS tarballs on macOS 15, Apple silicon and Intel), and attaches it to a release tagged with a date (YYMMDD, an optional letter for a second release that day) |
+| `packaging/` | the packaging of FreeLing 4.2 with this release for Fedora 43 and 44, Debian 13 and Ubuntu 24.04 and 26.04, the macOS tarballs and the Windows zip: the scripts that patch, build, package and check it, each with its README (section "If you really want to try and build this rather than use a package...") |
+| `.github/workflows/packages.yml` | the GitHub workflow that builds the packages on each distribution, installs each on a fresh one, checks it (and builds and checks the macOS tarballs on macOS 15, Apple silicon and Intel, and the Windows zip), and attaches it to a release tagged with a date (YYMMDD, an optional letter for a second release that day) |
 | `software/patches/` | the change to FreeLing's name recognizer and classifier: `freeling-4.2-np-classes.patch`, its README, and the three source files it changes, as changed (section 8.5) |
 
 The entries files:
@@ -683,6 +696,8 @@ The library, once, and before the system deployment, which refuses to run withou
 The release is public. The build writes every file of it that is not data (this README, the build report, the software, the sources) with the private paths of `freeling-release-privacy.tsv` replaced by public ones, and writes nothing if any private term of that file is left in any file of the release, data included. The privacy file is in `software/10-Infrastructure/freeling/` of the project and is never copied into the release.
 
 ## 16. Changelog
+
+- 2027 (rebuilt 261113, freeling_escl_build.py 2.8.1): a zip for 64-bit Windows (section "Windows"), built with MSYS2's UCRT64 toolchain and the six Windows fixes of `packaging/patch-freeling.sh` 1.2.0; no change to the data or the configs.
 
 - 2027 (rebuilt 261113, freeling_escl_build.py 2.8.1): no change to the data or the configs; the build carries FreeLing 4.2's `es-cl.cfg` instead of reading it. This README gains the list of linguistic innovations.
 
