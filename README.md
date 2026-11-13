@@ -113,7 +113,7 @@ Everything in 2027, plus:
 - **FreeLing's own Old Spanish** (dixo, muger, fermosa), installed exactly as FreeLing ships it, beside the two Chilean dictionaries and chosen by its own config, so medieval and Golden Age texts are read with the dictionary made for them (section 2.2).
 - **It reads FreeLing's general Spanish multiwords merged with the Chilean ones**, through a link to the Chilean multiword file (sections 2.2 and 9).
 
-# Builds
+## Builds
 
 ## macOS
 
