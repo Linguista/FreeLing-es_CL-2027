@@ -4,8 +4,9 @@
 # test-freeling.sh -- checks an installed FreeLing es-CL 2027 package: the
 # library has the name-class change, the Chilean files are FreeLing es-CL
 # 2027's (their sha256 as in this repository's SHA256SUMS), FreeLing
-# analyzes a Chilean sentence with the Chilean dictionary (tenís is a
-# voseo form of tener), lowercases a capital that is not A to Z (Él is él,
+# analyzes two Chilean sentences with the Chilean dictionary (cachái, soi
+# and bañai are voseo forms; voh is vos; no está ni ahí and conchetumare are
+# Chilean multiwords), lowercases a capital that is not A to Z (Él is él,
 # Ñuñoa ñuñoa), a 19th-century one with the 19th-century
 # dictionary (jente is gente, i is y), and an Old Spanish one with FreeLing
 # Old (dixo is decir), whose multiword file is the Chilean one.
@@ -63,11 +64,14 @@ done
 echo "ok    the 17 Chilean files are the release's; only Spanish is installed"
 
 status=0
-out="$(echo "Vos tenís que venir a Arica." | analyze es-cl.cfg --outlv tagged --nonec --sense none 2>&1)" || status=$?
+out="$(echo "Cachái que mi vecina, la Javi, no está ni ahí con voh, conchetumare. Dice que soi cuartero y que no te bañai nunca." | analyze es-cl.cfg --outlv tagged --nonec --sense none 2>&1)" || status=$?
 echo "$out"
 [ "$status" -eq 0 ] || { echo "FAIL  analyze exited with $status"; exit 1; }
-echo "$out" | grep -q "^tenís tener VMIP2SV" || { echo "FAIL  tenís was not read as a voseo form of tener"; exit 1; }
-echo "ok    FreeLing reads tenís as a voseo form of tener"
+for want in "^Cachái cachar VMIP2SV " "^no_está_ni_ahí no_estar_ni_ahí VMIP3S0 " "^voh vos PP2CS0V " \
+            "^conchetumare concha_de_tu_madre I " "^soi ser VSIP2SV " "^bañai bañar VMIP2SV "; do
+    echo "$out" | grep -q "$want" || { echo "FAIL  the Chilean sentences: no line matching $want"; exit 1; }
+done
+echo "ok    FreeLing reads the Chilean sentences: cachái, soi and bañai as voseo, voh as vos, no está ni ahí and conchetumare as Chilean multiwords"
 
 out="$(echo "Él llegó a Ñuñoa." | analyze es-cl.cfg --outlv tagged --nonec --sense none 2>&1)" || { echo "$out"; echo "FAIL  analyze with es-cl.cfg"; exit 1; }
 echo "$out"

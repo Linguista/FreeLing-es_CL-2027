@@ -415,9 +415,14 @@ jobs:
           $OutputEncoding = [System.Text.UTF8Encoding]::new($false)
           [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
           # -cmatch, not -match: PowerShell's -match ignores case, and the lemma's case is what is checked
-          $out = "Vos tenís que venir a Ñuñoa." | & $bat -f es-cl.cfg --outlv tagged --nonec --sense none
+          $out = "Cachái que mi vecina, la Javi, no está ni ahí con voh, conchetumare. Dice que soi cuartero y que no te bañai nunca." | & $bat -f es-cl.cfg --outlv tagged --nonec --sense none
           $out
-          if (-not ($out -cmatch '^tenís tener VMIP2SV')) { throw "tenís was not read as a voseo form of tener" }
+          foreach ($want in @('^Cachái cachar VMIP2SV ', '^no_está_ni_ahí no_estar_ni_ahí VMIP3S0 ', '^voh vos PP2CS0V ', '^conchetumare concha_de_tu_madre I ', '^soi ser VSIP2SV ', '^bañai bañar VMIP2SV ')) {
+            if (-not ($out -cmatch $want)) { throw "the Chilean sentences: no line matching $want" }
+          }
+          $out = "Él llegó a Ñuñoa." | & $bat -f es-cl.cfg --outlv tagged --nonec --sense none
+          $out
+          if (-not ($out -cmatch '^Él él P')) { throw "Él was not lowercased to él" }
           if (-not ($out -cmatch '^Ñuñoa ñuñoa NP')) { throw "Ñuñoa was not read as the name ñuñoa" }
           $out = "La jente i el rei." | & $bat -f es-cl-19th-century.cfg --outlv tagged --nonec --sense none
           $out
