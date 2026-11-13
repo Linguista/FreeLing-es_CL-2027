@@ -40,7 +40,12 @@
 #        9e  the standard streams convert UTF-8 themselves, as on macOS,
 #            instead of the C runtime's wide mode (_O_U8TEXT), which only
 #            MSVC's streams write through: with it nothing is read or
-#            written.
+#            written;
+#        9f  upper and lower case through ICU (util.cc, dictionary.cc):
+#            MinGW's C runtime changes the case of ASCII letters only, so
+#            the lowercase form of a capitalized Él, Ángel or Ñuñoa, which
+#            FreeLing looks up in the dictionary and gives names as their
+#            lemma, kept its capital.
 #        Two more Windows fixes are build options, in the Windows job of
 #        .github/workflows/packages.yml: Boost linked dynamically, and every
 #        symbol of each DLL exported.
@@ -149,5 +154,15 @@ sed -i 's/^        current_locale = locale(locale::classic(), lname.c_str(), loc
 ' "$c"
 sed -i -z 's/\n    #if defined WIN32 || defined WIN64\n      setUtf8Mode(stdin, "stdin");/\n    #if (defined WIN32 || defined WIN64) \&\& !defined __MINGW32__\n      setUtf8Mode(stdin, "stdin");/' "$c"
 [ "$(grep -c '__MINGW32__' "$c")" -eq 4 ] || fail "$c: the Windows changes did not all apply"
+
+# 9f: case changes through ICU on MinGW, in the two files that call towlower
+# and towupper. Inserted just before "namespace freeling {", after every
+# #include, so that only FreeLing's own calls are renamed.
+for c in src/libfreeling/util.cc src/libfreeling/dictionary.cc; do
+    [ "$(grep -c '^namespace freeling {' "$c")" -eq 1 ] || fail "$c: not one \"namespace freeling {\""
+    grep -q 'towupper' "$c" || fail "$c: no towupper to replace"
+    sed -i 's/^namespace freeling {$/#if defined __MINGW32__\n#include <unicode\/uchar.h>\nstatic inline wint_t freeling_towlower(wint_t c) { return (wint_t) u_tolower((UChar32) c); }\nstatic inline wint_t freeling_towupper(wint_t c) { return (wint_t) u_toupper((UChar32) c); }\n#define towlower freeling_towlower\n#define towupper freeling_towupper\n#endif\n\nnamespace freeling {/' "$c"
+    [ "$(grep -c 'freeling_towupper' "$c")" -eq 2 ] || fail "$c: the ICU case change did not apply"
+done
 
 echo "patch-freeling.sh: every change applied"

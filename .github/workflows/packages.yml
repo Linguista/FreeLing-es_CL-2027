@@ -414,13 +414,14 @@ jobs:
           $env:PATH = "C:\Windows\system32;C:\Windows"
           $OutputEncoding = [System.Text.UTF8Encoding]::new($false)
           [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
+          # -cmatch, not -match: PowerShell's -match ignores case, and the lemma's case is what is checked
           $out = "Vos tenís que venir a Ñuñoa." | & $bat -f es-cl.cfg --outlv tagged --nonec --sense none
           $out
-          if (-not ($out -match '^tenís tener VMIP2SV')) { throw "tenís was not read as a voseo form of tener" }
-          if (-not ($out -match '^Ñuñoa ñuñoa NP')) { throw "Ñuñoa was not read as the name ñuñoa" }
+          if (-not ($out -cmatch '^tenís tener VMIP2SV')) { throw "tenís was not read as a voseo form of tener" }
+          if (-not ($out -cmatch '^Ñuñoa ñuñoa NP')) { throw "Ñuñoa was not read as the name ñuñoa" }
           $out = "La jente i el rei." | & $bat -f es-cl-19th-century.cfg --outlv tagged --nonec --sense none
           $out
-          if (-not ($out -match '^jente gente NCFS000')) { throw "the 19th-century dictionary did not read jente as gente" }
+          if (-not ($out -cmatch '^jente gente NCFS000')) { throw "the 19th-century dictionary did not read jente as gente" }
           "ok    the zip works from analyze.bat with nothing of MSYS2 on the path"
 
       - uses: actions/upload-artifact@v6

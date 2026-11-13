@@ -5,7 +5,8 @@
 # library has the name-class change, the Chilean files are FreeLing es-CL
 # 2027's (their sha256 as in this repository's SHA256SUMS), FreeLing
 # analyzes a Chilean sentence with the Chilean dictionary (tenís is a
-# voseo form of tener), a 19th-century one with the 19th-century
+# voseo form of tener), lowercases a capital that is not A to Z (Él is él,
+# Ñuñoa ñuñoa), a 19th-century one with the 19th-century
 # dictionary (jente is gente, i is y), and an Old Spanish one with FreeLing
 # Old (dixo is decir), whose multiword file is the Chilean one.
 #
@@ -67,6 +68,12 @@ echo "$out"
 [ "$status" -eq 0 ] || { echo "FAIL  analyze exited with $status"; exit 1; }
 echo "$out" | grep -q "^tenís tener VMIP2SV" || { echo "FAIL  tenís was not read as a voseo form of tener"; exit 1; }
 echo "ok    FreeLing reads tenís as a voseo form of tener"
+
+out="$(echo "Él llegó a Ñuñoa." | analyze es-cl.cfg --outlv tagged --nonec --sense none 2>&1)" || { echo "$out"; echo "FAIL  analyze with es-cl.cfg"; exit 1; }
+echo "$out"
+echo "$out" | grep -q "^Él él P" && echo "$out" | grep -q "^Ñuñoa ñuñoa NP" \
+    || { echo "FAIL  a capital other than A to Z was not lowercased (Él, Ñuñoa)"; exit 1; }
+echo "ok    FreeLing lowercases accented capitals and Ñ (Él is él, Ñuñoa ñuñoa)"
 
 out="$(echo "La jente i el rei." | analyze es-cl-19th-century.cfg --outlv tagged --nonec --sense none 2>&1)" || { echo "$out"; echo "FAIL  analyze with es-cl-19th-century.cfg"; exit 1; }
 echo "$out"
