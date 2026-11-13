@@ -115,7 +115,7 @@ Everything in 2027, plus:
 
 ## Builds
 
-## Fedora
+### Fedora
 
 Each release has an RPM for Fedora 44 and one for Fedora 43, both for x86-64 processors (`freeling-es-cl-4.2.0-YYMMDD.fc44.x86_64.rpm`, `freeling-es-cl-4.2.0-YYMMDD.fc43.x86_64.rpm`): FreeLing 4.2 with every change of this release, built by GitHub in a container of that distribution (so it links to that distribution's own Boost and ICU), then installed on a fresh container of the same distribution and checked there (`packaging/test-freeling.sh`); only packages that pass are attached to a release. It installs into `/usr/local`: the programs in `/usr/local/bin`, the library in `/usr/local/lib` (registered through `/etc/ld.so.conf.d/freeling-es-cl.conf`), the data and the three configs in `/usr/local/share/freeling`. Each package is about 560 MB. It cannot be installed beside another package named `freeling`. dnf installs what it needs from Fedora with it, including `glibc-langpack-en` (FreeLing runs in the en_US.UTF-8 locale).
 
