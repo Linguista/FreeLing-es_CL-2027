@@ -334,6 +334,11 @@ jobs:
       run:
         shell: msys2 {0}
     steps:
+      # Git on Windows turns LF into CRLF at checkout, which changes every data file and fails the release's sha256 sums
+      - name: Keep the files' own line endings
+        shell: pwsh
+        run: git config --global core.autocrlf false
+
       - uses: actions/checkout@v5
 
       - uses: msys2/setup-msys2@v2
