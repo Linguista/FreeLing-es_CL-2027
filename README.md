@@ -113,6 +113,8 @@ Everything in 2027, plus:
 - **FreeLing's own Old Spanish** (dixo, muger, fermosa), installed exactly as FreeLing ships it, beside the two Chilean dictionaries and chosen by its own config, so medieval and Golden Age texts are read with the dictionary made for them (section 2.2).
 - **It reads FreeLing's general Spanish multiwords merged with the Chilean ones**, through a link to the Chilean multiword file (sections 2.2 and 9).
 
+# Builds
+
 ## macOS
 
 Each release has a tarball for macOS 15 or later on Apple silicon (`freeling-es-cl-2027-YYMMDD-macos-arm64.tar.gz`) and on Intel (`...-macos-x86_64.tar.gz`): FreeLing 4.2 with every change of this release, built by GitHub on its macOS 15 machines against Homebrew's Boost and ICU, with the Chilean data installed and checked (`packaging/test-freeling.sh`) on the machine that built it. It installs into `/usr/local/freeling-es-cl-2027`:
