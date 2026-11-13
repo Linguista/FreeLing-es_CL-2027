@@ -351,10 +351,11 @@ jobs:
 
       - name: Get FreeLing 4.2's source
         run: |
-          curl -fsSL -o "$RUNNER_TEMP/FreeLing-src-4.2.tar.gz" https://github.com/TALP-UPC/FreeLing/releases/download/4.2/FreeLing-src-4.2.tar.gz
-          echo "f96afbdb000d7375426644fb2f25baff9a63136dddce6551ea0fd20059bfce3b  $RUNNER_TEMP/FreeLing-src-4.2.tar.gz" | sha256sum -c -
+          # RUNNER_TEMP is a Windows path (D:\a\_temp), which MSYS2's tar takes for a remote host, so the tarball goes in the workspace
+          curl -fsSL -o FreeLing-src-4.2.tar.gz https://github.com/TALP-UPC/FreeLing/releases/download/4.2/FreeLing-src-4.2.tar.gz
+          echo "f96afbdb000d7375426644fb2f25baff9a63136dddce6551ea0fd20059bfce3b  FreeLing-src-4.2.tar.gz" | sha256sum -c -
           mkdir -p src
-          tar -xzf "$RUNNER_TEMP/FreeLing-src-4.2.tar.gz" -C src
+          tar -xzf FreeLing-src-4.2.tar.gz -C src
 
       - name: The changes of FreeLing es-CL 2027
         run: packaging/patch-freeling.sh "$PWD/src/FreeLing-4.2" "$PWD/software/patches/freeling-4.2-np-classes.patch"
