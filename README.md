@@ -134,7 +134,7 @@ echo "Vos tenís que venir." | /usr/local/bin/analyze -f es-cl.cfg --outlv tagge
 
 A newer release is installed the same way, over the old one. To remove it: `sudo dnf remove freeling-es-cl`.
 
-## Ubuntu
+### Ubuntu
 
 Each release has a package for Ubuntu 26.04 and one for Ubuntu 24.04, both for x86-64 processors (`freeling-es-cl_4.2.0-YYMMDD.ubuntu26.04_amd64.deb`, `freeling-es-cl_4.2.0-YYMMDD.ubuntu24.04_amd64.deb`): FreeLing 4.2 with every change of this release, built by GitHub in a container of that distribution (so it links to that distribution's own Boost and ICU), then installed on a fresh container of the same distribution and checked there (`packaging/test-freeling.sh`); only packages that pass are attached to a release. It installs into `/usr/local`: the programs in `/usr/local/bin`, the library in `/usr/local/lib` (registered through `/etc/ld.so.conf.d/freeling-es-cl.conf`), the data and the three configs in `/usr/local/share/freeling`. Each package is about 560 MB. It cannot be installed beside another package named `freeling`. apt installs what it needs from Ubuntu with it, including `locales`; when the package is installed it generates the en_US.UTF-8 locale (FreeLing runs in it) with `locale-gen en_US.UTF-8` if it is missing, and leaves every other locale and setting alone.
 
@@ -153,7 +153,7 @@ echo "Vos tenís que venir." | /usr/local/bin/analyze -f es-cl.cfg --outlv tagge
 
 A newer release is installed the same way, over the old one. To remove it: `sudo apt remove freeling-es-cl`.
 
-## Debian
+### Debian
 
 Each release has a package for Debian 13 on x86-64 processors (`freeling-es-cl_4.2.0-YYMMDD.debian13_amd64.deb`): FreeLing 4.2 with every change of this release, built by GitHub in a container of that distribution (so it links to that distribution's own Boost and ICU), then installed on a fresh container of the same distribution and checked there (`packaging/test-freeling.sh`); only packages that pass are attached to a release. It installs into `/usr/local`: the programs in `/usr/local/bin`, the library in `/usr/local/lib` (registered through `/etc/ld.so.conf.d/freeling-es-cl.conf`), the data and the three configs in `/usr/local/share/freeling`. Each package is about 560 MB. It cannot be installed beside another package named `freeling`. apt installs what it needs from Debian with it, including `locales`; when the package is installed it generates the en_US.UTF-8 locale (FreeLing runs in it) by enabling it in `/etc/locale.gen` if it is missing, and leaves every other locale and setting alone.
 
@@ -171,7 +171,7 @@ echo "Vos tenís que venir." | /usr/local/bin/analyze -f es-cl.cfg --outlv tagge
 
 A newer release is installed the same way, over the old one. To remove it: `sudo apt remove freeling-es-cl`.
 
-## macOS
+### macOS
 
 Each release has a tarball for macOS 15 or later on Apple silicon (`freeling-es-cl-2027-YYMMDD-macos-arm64.tar.gz`) and on Intel (`...-macos-x86_64.tar.gz`): FreeLing 4.2 with every change of this release, built by GitHub on its macOS 15 machines against Homebrew's Boost and ICU, with the Chilean data installed and checked (`packaging/test-freeling.sh`) on the machine that built it. It installs into `/usr/local/freeling-es-cl-2027`.
 
@@ -188,7 +188,7 @@ echo "Vos tenís que venir." | /usr/local/freeling-es-cl-2027/bin/analyze -f es-
 
 The programs find Homebrew's libraries where Homebrew installs them (`/opt/homebrew` on Apple silicon, `/usr/local` on Intel); a Homebrew upgrade of boost or icu4c to a new major version needs the tarball of a newer release.
 
-## Windows
+### Windows
 
 Each release has a zip for 64-bit Windows 10 and 11 (`freeling-es-cl-2027-YYMMDD-windows-x86_64.zip`): FreeLing 4.2 with every change of this release, built by GitHub on its Windows machines with MSYS2's UCRT64 toolchain (GCC, Boost and ICU), with the Chilean data installed, and with every library it needs in its `bin` folder, so nothing else has to be installed. It is checked where it was built (`packaging/test-freeling.sh`) and again unpacked elsewhere, through `analyze.bat` from Windows' own shell. Unpack it anywhere, for example in `C:\FreeLing`, and run `analyze.bat` from its `bin` folder, in PowerShell.
 
