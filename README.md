@@ -60,24 +60,27 @@ These measures vastly improve tagging accuracy on both transcriptions and texts 
 
 **The lexicon**
 
-- **About 6,000 Chilean words** decided one by one in the spelling review of a large corpus of spoken Chilean Spanish, each with its lemma and word class, nouns with both numbers, adjectives with all their forms (section 6.1).
+- **About 6,000 additional Chilean lemas[1] (compared to the 2016 version)** decided one by one in the spelling review of a large corpus of spoken Chilean Spanish, each with its lemma and word class, nouns with both numbers, adjectives with all their forms (section 6.1).
 - **170 new verbs with their whole paradigm**, voseo included (hackear, reprogramar, sobreexigir), each conjugated like the known verb it is made from or like the verbs that share its ending, so a regular verb never gets a stem change (section 6.1).
-- **Chilean imperatives with attached pronouns**: háceme, díceselo, pónete, llevámonos, read from the imperatives hace, dice, pone and llevamos, which on their own stay the ordinary present (section 6.1).
+- **Chilean imperatives with attached pronouns**: háceme, díceselo, pónete, etc., which compete with the canonical imperatives hazme, díselo and ponte (section 6.1).
 - **Evaluative and superlative values**: a diminutive or augmentative whose lemma is the base word carries the evaluative value (cantitos, lemma canto; calladita, lemma callado), a superlative the superlative value (relajadísimo); a lexicalized diminutive (burrito) does not (section 6.1).
-- **Argentine and Rioplatense words** used in Chile (birome, subte, pibe, concheto, desprolijo, bue, holis), with their multiwords (de a poco, dulce de leche, ponerse las pilas), and current words such as cesfam, sar, cosam, minipimer, chupafusiles, tatú and tatoo (section 6.5b).
-- **Standard lemmas**: one lemma for the spellings of a word (sánguche, closet, video, frijol, ránking, marketing; agustín, josé), so every spelling of a word is counted under one lemma (section 6.5).
-- **Lemma preferences** for forms two verbs share: hacer over hacendar, ser over erar, vender over vendar, poder over podar; and the unaccented future against the -ra subjunctive (cantarai is the future 1 time in 5) (section 9).
+- **Words and expressions from the FreeLing es-AR dictionary** that are used in Chile (e.g. desprolijo, bue, holis), along with multiwords (de a poco, dulce de leche, ponerse las pilas).
+- **Modern Chilean words and spelling variants not found in most lexical resources** such as CESFAM, SAR, COSAM, minipimer, chupafusiles, tatú and tatoo (section 6.5b).
+- **Standardized lemmas**: one lemma for multiple spellings of a word (sánguche and sandwich, ranking and ránking, marketing and márketing), so every spelling of a word is counted under one lemma (section 6.5).
+- **Lemma preferences** for forms two verbs share, to increase overall tagging accuracy: hacer over hacendar, ser over erar, vender over vendar, poder over podar (section 9).
 - **Errors of the earlier Chilean lists corrected**: the empty-stem forms of ir (a, o, e given as forms of ir), lost forms of ser restored (erih, eríh), capitalized keys that FreeLing could never find, malformed tags (section 5).
+
+[1] We invite you to join our campaign to not say "lemmata".
 
 **Interjections and multiwords**
 
 - **326 Chilean interjections and discourse markers** with their lemma (po and poh, lemma poh), and 103 multiword ones (ya po and ya poh as ya_poh). Rare ones keep their interjection reading but are seldom chosen (section 6.2).
-- **Spanish interjections removed**: the interjection readings of he, ha, fuera, hombre, vaya and 230 more are gone (their other readings stay), and 53 Spanish forms that were only interjections (agur, caray, olé) are no longer in the dictionary (section 6.2).
+- **Interjections from Spain removed**: the interjection readings of he, ha, fuera, hombre, vaya and 230 more are gone (their other readings stay), and 53 Spanish forms that were only interjections (agur, caray, olé) are no longer in the dictionary (section 6.2).
 - **FreeLing's general Spanish multiwords merged with the Chilean ones** (o sea, por ejemplo, a pesar de: 1,563 added). FreeLing reads one multiword file, and the Chilean one used to hold only the Chilean multiwords, so every general multiword was split into its words. Duplicate and broken multiword lines are repaired (section 9).
 
 **Names**
 
-- **Every Chilean locality is a place**: the 343 communes, the countries, the capitals of Latin America and 66 regions, provinces and localities have a fixed class, and the name classifier's lists are replaced by Chilean ones. On a corpus of spoken Chilean Spanish, Chilean place names went from 75.6% tagged as places to 99.6%; España, Concepción, Antofagasta and Perú are places every time (sections 8.3, 8.4 and 8.6).
+- **Every Chilean locality is a place**: the 343 _comunas_, countries, capitals of Latin America and 66 regions, provinces and localities all have a fixed class, and the name classifier's lists are replaced by Chilean ones. On a corpus of spoken Chilean Spanish, Chilean place names went from 75.6% tagged as places to 99.6%; España, Concepción, Antofagasta and Perú are places every time (sections 8.3, 8.4 and 8.6).
 - **Names that are also surnames or words are weighed, not fixed**: Molina leans toward the place, Pinto is a surname, Asunción and Sucre are mostly places and sometimes persons, and Quito or Tomé at the start of a written sentence are the verb with a 10% chance of being the place (section 8.4).
 - **Speech and writing are told apart**: in transcribed speech a line rarely starts with a capital unless its first word is a name, so a separate name recognizer (`np-speech.dat`) reads a capital at the start of a line as a name (section 8.4).
 - **Spelled-out letters are never names** (S H) (section 8.4).
@@ -85,12 +88,12 @@ These measures vastly improve tagging accuracy on both transcriptions and texts 
 
 **Currencies and units**
 
-- **Chilean currencies**: peso alone and the sign $ are the Chilean peso (CLP), not the Cuban peso and the US dollar; unidad de fomento (UF) and unidad tributaria mensual (UTM) are added; the euro is EUR (section 10).
-- **56 unit names removed** that turned ordinary words, letters and false starts into measures: mi (the possessive, not the mile), tr, s, d, cd, pk (porque in chat writing, not the peck), and the imperial units nobody writes in Chile (section 10).
+- **Chilean currencies**: peso alone and the sign $ are the Chilean peso (CLP), not the Cuban peso and the US dollar (how did the Cuban peso ever become the default, anyway?); unidad de fomento (UF) and unidad tributaria mensual (UTM) are added; the euro is EUR and not the deprecated abbreviation previously included (section 10).
+- **56 unit names removed** when they turned ordinary words, letters and false starts into spurious measures: mi (the possessive, not the mile), tr, s, d, cd, pk (porque in chat writing, not the peck), and the imperial units nobody writes in Chile (section 10). (That said, I can't help but love the fact that the peck was included until now.).
 
-**Voseo tagged as tuteo, if wanted**
+**Voseo tagged as tuteo, if so desired**
 
-- **A tuteo-tagged copy of the default dictionary**, in which voseo verb forms carry the tuteo tags and vos is tagged like te and ti (section 11).
+- **A tuteo-tagged copy of the default dictionary**, in which voseo verb forms carry the tuteo tags and vos is tagged like te and ti (section 11). This option does nothing but throw large amounts of information away, making _tuteo_ and _voseo_ verb form tags indistinguishable, but there's no accounting for taste. (There _is_ a hidden pitfall in using the _voseo_ tags that I had to find and fix for them to fully work - since they deviate from EAGLES tags by one letter, there's a FreeLing module that doesn't recognize them; that module has been fixed, so the voseo tags always work for everything).
 
 ### FreeLing es-CL 19th Century
 
