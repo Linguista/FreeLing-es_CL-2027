@@ -38,9 +38,10 @@ permissions:
 jobs:
   # Nothing is built if any file of the repository, or the last commit's
   # author, committer or message, holds one of the terms in the repository
-  # secret PRIVATE_TERMS (one per line, not case-sensitive). Only file names
-  # and counts are printed, never the terms. Without the secret the check is
-  # skipped.
+  # secret PRIVATE_TERMS (one per line, in any case, and not inside a longer
+  # word where the term begins or ends with a letter, as the build checks
+  # it). Only file names and counts are printed, never the terms. Without
+  # the secret the check is skipped.
   privacy:
     runs-on: ubuntu-latest
     steps:
@@ -54,27 +55,46 @@ jobs:
             echo "The secret PRIVATE_TERMS is not set: check skipped."
             exit 0
           fi
-          terms="$RUNNER_TEMP/terms"
-          printf '%s\n' "$PRIVATE_TERMS" | tr -d '\r' | sed '/^[[:space:]]*$/d' > "$terms"
-          found=0
-          files=0
-          while IFS= read -r f; do
-            files=$((files + 1))
-            n=$(grep -c -I -i -F -f "$terms" -- "$f" || true)
-            if [ "${n:-0}" -gt 0 ]; then
-              echo "PRIVATE INFORMATION: $n line(s) in $f"
-              found=1
-            fi
-          done < <(git ls-files)
-          n=$(git log -1 --format='%an%n%ae%n%cn%n%ce%n%B' | grep -c -i -F -f "$terms" || true)
-          if [ "${n:-0}" -gt 0 ]; then
-            echo "PRIVATE INFORMATION: $n line(s) in the last commit's author, committer or message"
-            found=1
-          fi
-          if [ "$found" -eq 0 ]; then
-            echo "No private terms in $files files or in the last commit."
-          fi
-          exit "$found"
+          git ls-files -z > "$RUNNER_TEMP/files"
+          git log -1 --format='%an%n%ae%n%cn%n%ce%n%B' > "$RUNNER_TEMP/commit"
+          python3 - "$RUNNER_TEMP/files" "$RUNNER_TEMP/commit" <<'PY'
+          # The rule of freeling_escl_build.py: a term matches in any case,
+          # and, where it begins or ends with a letter, not inside a longer
+          # word, so a corpus name does not match an ordinary word that
+          # holds its letters (a Chilean noun and verb hold those of one).
+          import os, re, sys
+          terms = [t.rstrip() for t in os.environ["PRIVATE_TERMS"].replace("\r", "").split("\n")]
+          terms = [t for t in terms if t.strip()]
+          rxs = []
+          for t in terms:
+              pat = re.escape(t.lower())
+              if t[:1].isalpha():
+                  pat = r"(?<![^\W\d_])" + pat
+              if t[-1:].isalpha():
+                  pat += r"(?![^\W\d_])"
+              rxs.append((t.lower(), re.compile(pat)))
+          def hits(text):
+              text = text.lower()
+              return sum(1 for line in text.split("\n")
+                         if any(x in line and rx.search(line) for x, rx in rxs))
+          found = 0
+          files = [f for f in open(sys.argv[1], "rb").read().decode("utf-8").split("\0") if f]
+          for f in files:
+              b = open(f, "rb").read()
+              if b"\0" in b[:8000]:
+                  continue
+              n = hits(b.decode("utf-8", "replace"))
+              if n:
+                  print("PRIVATE INFORMATION: %d line(s) in %s" % (n, f))
+                  found = 1
+          n = hits(open(sys.argv[2], encoding="utf-8", errors="replace").read())
+          if n:
+              print("PRIVATE INFORMATION: %d line(s) in the last commit's author, committer or message" % n)
+              found = 1
+          if not found:
+              print("No private terms in %d files or in the last commit." % len(files))
+          sys.exit(found)
+          PY
 
   build:
     needs: privacy
