@@ -85,6 +85,12 @@ jobs:
         # release; extra: the package of the en_US.UTF-8 locale, FreeLing's
         # default.
         include:
+          - image: fedora:45
+            id: fedora45
+            family: dnf
+            packager: rpm
+            suffix: .fc45
+            extra: glibc-langpack-en
           - image: fedora:44
             id: fedora44
             family: dnf
@@ -180,6 +186,9 @@ jobs:
       fail-fast: false
       matrix:
         include:
+          - image: fedora:45
+            id: fedora45
+            family: dnf
           - image: fedora:44
             id: fedora44
             family: dnf
