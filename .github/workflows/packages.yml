@@ -434,6 +434,29 @@ jobs:
           $out = "La jente i el rei." | & $bat -f es-cl-19th-century.cfg --outlv tagged --output freeling --nonec --sense none
           $out
           if (-not ($out -cmatch '^jente gente NCFS000')) { throw "the 19th-century dictionary did not read jente as gente" }
+          # The folder loop of the README's Quick start: two folders, a name with a space
+          $src = "$env:RUNNER_TEMP\corpus"
+          $dst = "$env:RUNNER_TEMP\corpus-tagged"
+          New-Item -ItemType Directory -Force -Path "$src\entrevistas\2024", "$src\prensa" | Out-Null
+          Set-Content -Encoding utf8 -Path "$src\entrevistas\2024\una entrevista.txt" -Value "Vos tenís que venir."
+          Set-Content -Encoding utf8 -Path "$src\prensa\nota.txt" -Value "El ministro llegó a Ñuñoa."
+          $src = (Resolve-Path $src).Path
+          Get-ChildItem -Path $src -Recurse -File -Filter *.txt | ForEach-Object {
+            $out = Join-Path $dst ($_.FullName.Substring($src.Length) -replace '\.txt$', '.conll')
+            New-Item -ItemType Directory -Force -Path (Split-Path $out) | Out-Null
+            Get-Content -Raw -Encoding utf8 $_.FullName | & $bat -f es-cl.cfg --outlv tagged | Set-Content -Encoding utf8 $out
+          }
+          $t = Get-Content -Raw -Encoding utf8 "$dst\entrevistas\2024\una entrevista.conll"
+          $t
+          if (-not ($t -cmatch 'tenís +tener +VMIP2SV')) { throw "the folder loop: tenís not tagged in una entrevista.conll" }
+          $t = Get-Content -Raw -Encoding utf8 "$dst\prensa\nota.conll"
+          $t
+          if (-not ($t -cmatch 'Ñuñoa +ñuñoa +NP')) { throw "the folder loop: Ñuñoa not tagged in nota.conll" }
+          "ok    the folder loop of the Quick start"
+          # The parser on Windows: reported, not required
+          $d = "Vos tenís que venir." | & $bat -f es-cl.cfg --outlv dep
+          $d
+          if ($d -cmatch 'tenís +tener +VMIP2SV .* sentence') { "ok    the parser" } else { "NOTE  the parser gave no dependency labels on Windows" }
           "ok    the zip works from analyze.bat with nothing of MSYS2 on the path"
 
       - uses: actions/upload-artifact@v6
