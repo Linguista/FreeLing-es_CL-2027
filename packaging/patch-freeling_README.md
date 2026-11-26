@@ -1,10 +1,10 @@
 # patch-freeling_README.md
 
-Documents `patch-freeling.sh` 1.5.0.
+Documents `patch-freeling.sh` 1.6.0.
 
 ## Purpose
 
-Applies to an unpacked FreeLing 4.2 source tree every change FreeLing es-CL 2027 is built with: the source fixes current compilers need (C++17, `<cmath>` in five files, the two errors in unused templates), the install fix and Spanish only (the language list limited to `es`, the variants to FreeLing Old `es/es-old` and `es/es-cl`; the English and Portuguese data the source tarball carries, the Argentine variant `es/es-ar` and the configs of every other language deleted from the tree, so nothing of them is built or installed, decided 261112), the fix of the bug that aborts word-sense annotation, the name-class change (`software/patches/freeling-4.2-np-classes.patch`), and the six fixes FreeLing 4.2 needs to build and run on Windows with GCC (MSYS2's UCRT64, the Windows build): each takes effect only there (under `__MINGW32__`, or in a Windows-only part of a `CMakeLists.txt`), so Linux and macOS build exactly as before; and the known-roots change of the affix analysis (`software/patches/freeling-4.2-known-roots.patch`, change 10, decided 261116): a word read as a dictionary root and a suffix is not also taken apart into a prefix, another root and a suffix (reírse is no longer reir + se, acompañarlo no longer aacompañar + lo), and a root with the accent of a hiatus keeps it when the word is split (reír + me). The README's section "If you really want to try and build this rather than use a package..." explains each one.
+Applies to an unpacked FreeLing 4.2 source tree every change FreeLing es-CL 2027 is built with: the source fixes current compilers need (C++17, `<cmath>` in five files, the two errors in unused templates), the install fix and Spanish only (the language list limited to `es`, the variants to FreeLing Old `es/es-old` and `es/es-cl`; the English and Portuguese data the source tarball carries, the Argentine variant `es/es-ar` and the configs of every other language deleted from the tree, so nothing of them is built or installed, decided 261112), the fix of the bug that aborts word-sense annotation, the name-class change (`software/patches/freeling-4.2-np-classes.patch`), and the six fixes FreeLing 4.2 needs to build and run on Windows with GCC (MSYS2's UCRT64, the Windows build): each takes effect only there (under `__MINGW32__`, or in a Windows-only part of a `CMakeLists.txt`), so Linux and macOS build exactly as before; and the known-roots change of the affix analysis (`software/patches/freeling-4.2-known-roots.patch`, change 10, decided 261116): a word read as a dictionary root and a suffix is not also taken apart into a prefix, another root and a suffix (reírse is no longer reir + se, acompañarlo no longer aacompañar + lo), and a root with the accent of a hiatus keeps it when the word is split (reír + me); the probability columns and the ambiguous multiwords (changes 11 and 12, below); and FreeLing Old's parser (change 13, below). The README's section "If you really want to try and build this rather than use a package..." explains each one.
 
 ## Usage
 
@@ -22,6 +22,10 @@ The first argument is the unpacked source folder of `FreeLing-src-4.2.tar.gz`; t
 | 12 | `freeling-4.2-ambiguous-multiwords.patch` | a defect of FreeLing 4.2 fixed: it reads the `A` (ambiguous) flag of its multiword file and never uses it, so every multiword was always joined; the tagger now decides, and the flag may carry a weight (`A:0.9`) |
 
 Each has a README in `software/patches/`. The twelve files they change (the tagger, the class `word`, the multiword module, the probabilities module and the CoNLL reader and writer) must be FreeLing 4.2's before, by sha256, and have the sha256 the two READMEs give after.
+
+## Change 13
+
+FreeLing 4.2's own config for FreeLing Old, `data/config/es-old.cfg`, names its parser's files where FreeLing 4.2 has none: `GrammarFile=$FREELINGSHARE/es/grammar-dep.dat` and `DepTxalaFile=$FREELINGSHARE/es/dep/dependences.dat`. FreeLing Old has no parser setting of its own, so it uses FreeLing's default, the rule-based txala parser, which needs both files; asked to parse (`--outlv dep`), it stopped with "GRAMMAR: Error opening file '.../es/grammar-dep.dat'". The two lines now name the files FreeLing 4.2 has, as its `es.cfg` names them: `es/chunker/grammar-chunk.dat` and `es/dep_txala/dependences.dat`. The config must be FreeLing 4.2's before (sha256 `dbb29e19b98fc56dcfbd6dc5267b0f4fc3bfa8f61e3212798bac0f840a1a2b7a`) and has the sha256 `4215d956fbd59aea416afce87b677c49a2d519e6bb6f558dbc39d35d3043dc3b` after; the two files must be in the tree. Nothing else in FreeLing Old changes: its dictionary, tagger and rules are FreeLing's, and it still reads no multiwords and no currencies (`MultiwordsDetection=no`, `QuantitiesDetection=no`, as FreeLing ships it). The parser's rules were written for modern Spanish.
 
 ## What it checks
 
@@ -56,6 +60,7 @@ Linux, macOS (with GNU sed first in `PATH`), and Windows in MSYS2's shell. bash,
 
 ## Changelog
 
+- 1.6.0 (261126): change 13: FreeLing Old's config names the parser's files where FreeLing 4.2 has them (`es/chunker/grammar-chunk.dat`, `es/dep_txala/dependences.dat`), so FreeLing Old parses; the config checked by sha256 before and after.
 - 1.5.0 (261119): changes 11 and 12, the probability columns and the ambiguous multiwords, applied from a fourth and a fifth argument after the known-roots change, with their twelve files checked by sha256 before and after.
 - 1.4.0 (261119): checks that FreeLing Old's `data/config/es-old.cfg` has compound analysis off, as FreeLing ships it (compound analysis off in every config, decided 261118); nothing in FreeLing Old is changed.
 - 1.3.0 (261116): change 10, the known-roots change of the affix analysis, applied from a third argument after the Windows fixes, with `suffixes.cc` and `suffixes.h` checked by sha256 before and after; the patch paths are made absolute before the script changes folder.

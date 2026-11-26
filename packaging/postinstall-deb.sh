@@ -1,13 +1,13 @@
 #!/bin/sh
-# VERSION 1.0.0
+# VERSION 1.1.0
 #
-# postinstall-deb.sh -- runs after the Debian and Ubuntu package is
-# installed: refreshes the shared-library cache, and makes sure the
+# postinstall-deb.sh -- runs after the Debian, Ubuntu and Arch Linux
+# package is installed: refreshes the shared-library cache, and makes sure the
 # en_US.UTF-8 locale exists, because FreeLing runs in it (its "default"
 # locale) and stops without it. The locale is added the way each
 # distribution adds one, so that it stays when the locales are regenerated
-# later: on Ubuntu with locale-gen en_US.UTF-8, on Debian by enabling it in
-# /etc/locale.gen and running locale-gen. No other locale, and no system
+# later: on Ubuntu with locale-gen en_US.UTF-8, on Debian and Arch Linux by
+# enabling it in /etc/locale.gen and running locale-gen. No other locale, and no system
 # setting (LANG and the rest), is touched.
 set -e
 ldconfig

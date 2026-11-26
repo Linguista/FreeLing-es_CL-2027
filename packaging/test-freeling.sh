@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# VERSION 1.7.0
+# VERSION 1.8.0
 #
 # test-freeling.sh -- checks an installed FreeLing es-CL 2027 package: the
 # library has the name-class change, the probability columns and the
@@ -13,8 +13,10 @@
 # rules of afixos.dat), cansá as the participle of cansar with the informal
 # dictionary and never with the default one, a 19th-century one with the
 # 19th-century dictionary (jente is gente, i is y), and an Old Spanish one
-# with FreeLing
-# Old (dixo is decir), whose multiword file is the Chilean one; with the
+# with FreeLing Old (dixo is decir), which also parses it (its config names
+# the parser's files where FreeLing 4.2 has them: change 13 of
+# patch-freeling.sh); on Linux and macOS every ICU and Boost library comes
+# from FreeLing's own copies in PREFIX/lib/freeling-es-cl (bundle-libraries.sh); with the
 # speech config, nn is the hesitation (an interjection) and a stand-in token
 # keeps its tag (xxxredactedxxx Fz); the CoNLL columns LEX_PROB and TAG_PROB
 # hold a probability for every token (the tag-probabilities change); and a
@@ -84,6 +86,25 @@ for d in en pt es/es-ar; do
 done
 echo "ok    the 27 Chilean files are the release's; only Spanish is installed"
 
+if [ "$windows" = no ]; then
+    bdir="$prefix/lib/freeling-es-cl"
+    [ -d "$bdir" ] && [ -n "$(ls -A "$bdir")" ] || { echo "FAIL  $bdir: FreeLing's own ICU and Boost are not there"; exit 1; }
+    if [ "$(uname -s)" = Darwin ]; then
+        bad="$(for f in "$prefix"/bin/* "$prefix"/lib/*.dylib "$bdir"/*; do
+                   otool -h "$f" >/dev/null 2>&1 && otool -L "$f" | tail -n +2 | awk '{print $1}'
+               done | grep -E '/lib(icu|boost_)' | grep -v "^$bdir/" | sort -u || true)"
+    else
+        bdir="$(realpath "$bdir")"
+        bad="$(for f in "$prefix"/bin/* "$prefix"/lib/*.so "$bdir"/*; do
+                   readelf -h "$f" >/dev/null 2>&1 && LD_LIBRARY_PATH= ldd "$f"
+               done | awk '$1 ~ /^lib(icu|boost_)/ {print $1, $3}' | while read -r l p; do
+                   case "$(realpath -m "$p")" in "$bdir"/*) ;; *) echo "$l => $p" ;; esac
+               done | sort -u || true)"
+    fi
+    [ -z "$bad" ] || { echo "$bad"; echo "FAIL  ICU or Boost not loaded from $bdir"; exit 1; }
+    echo "ok    every ICU and Boost library comes from FreeLing's own copies ($(ls "$bdir" | wc -l | tr -d ' ') in $bdir)"
+fi
+
 status=0
 out="$(echo "Cachái que mi vecina, la Javi, no está ni ahí con voh, conchetumare. Dice que soi cuartero y que no te bañai nunca." | analyze es-cl.cfg --outlv tagged --output freeling --nonec --sense none 2>&1)" || status=$?
 echo "$out"
@@ -132,6 +153,12 @@ out="$(echo "Et dixo el rey." | analyze es-old.cfg --outlv tagged --output freel
 echo "$out"
 echo "$out" | grep -q "^dixo decir VMIS3S0" || { echo "FAIL  FreeLing Old did not read dixo as decir"; exit 1; }
 echo "ok    FreeLing Old reads dixo as decir"
+
+out="$(echo "Et dixo el rey." | analyze es-old.cfg --outlv dep --output freeling --nonec --sense none 2>&1)" || { echo "$out"; echo "FAIL  FreeLing Old does not parse (es-old.cfg, --outlv dep)"; exit 1; }
+echo "$out"
+echo "$out" | grep -q "(dixo decir VMIS3S0" && echo "$out" | grep -q "/dobj/(rey rey NCMS000" \
+    || { echo "FAIL  FreeLing Old's parse has no tree with dixo and its object rey"; exit 1; }
+echo "ok    FreeLing Old parses (rey is the object of dixo)"
 
 out="$(echo "nn y xxxredactedxxx dijo que no." | analyze es-cl-speech.cfg --outlv tagged --output freeling --nonec --sense none 2>&1)" || { echo "$out"; echo "FAIL  analyze with es-cl-speech.cfg"; exit 1; }
 echo "$out"

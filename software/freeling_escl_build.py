@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# VERSION 2.21.1
+# VERSION 2.22.0
 #
 # freeling_escl_build.py -- build FreeLing es-CL 2027, the Chilean Spanish
 # data for FreeLing 4.2, from FreeLing's own Spanish source files, the
@@ -246,7 +246,7 @@ import unicodedata
 import zipfile
 from pathlib import Path
 
-VERSION = "2.21.1"
+VERSION = "2.22.0"
 RELEASE = "FreeLing es-CL 2027"
 
 # The product folder (the folder above this script's tools/ folder),
@@ -525,6 +525,9 @@ SOFTWARE_HERE = ["freeling_escl_build.py", "freeling_escl_build_README.md",
                  "freeling_parquet.py", "freeling_parquet_README.md",
                  "freeling_server.py", "freeling_server_README.md",
                  "freeling_analyzer.py", "freeling_analyzer_README.md",
+                 # Old Spanish parsed through a temporary modernization
+                 # (decided 261126)
+                 "freeling_old_parse.py", "freeling_old_parse_README.md",
                  "freeling_comma_multiwords.txt"]
 # The corpus folders of the tagging tools (decided 261119): corpora/ in the
 # release folder, a real folder or a link. Never made or read by the build,
@@ -539,8 +542,9 @@ STANDINS_NAME = "stand-ins.tsv"
 # folder, copied into software/patches/: the name recognizer's name classes
 # (decided 261110d) and the known-roots change of the affix analysis
 # (decided 261116).
-# The packaging of FreeLing 4.2 with this release for Fedora, Debian and
-# Ubuntu (decided 261112), in ../packaging/ beside this script's folder:
+# The packaging of FreeLing 4.2 with this release (decided 261112): Fedora,
+# openSUSE, Debian, Ubuntu, Arch Linux, any Linux (the generic tarball),
+# macOS and Windows, in ../packaging/ beside this script's folder:
 # copied into the release's packaging/ folder, and the GitHub workflow that
 # builds the packages into .github/workflows/ (the release is the GitHub
 # repository).
@@ -550,7 +554,9 @@ PACKAGING_FILES = ["patch-freeling.sh", "patch-freeling_README.md",
                    "make-nfpm-config.py", "make-nfpm-config_README.md",
                    "postinstall-deb.sh", "postinstall-deb_README.md",
                    "ldconfig.sh", "ldconfig_README.md",
-                   "install-data.sh", "install-data_README.md"]
+                   "install-data.sh", "install-data_README.md",
+                   # the packages carry their own ICU and Boost (decided 261126)
+                   "bundle-libraries.sh", "bundle-libraries_README.md"]
 PACKAGING_WORKFLOW = "packages.yml"
 PATCH_FILES = ["freeling-4.2-np-classes.patch",
                "freeling-4.2-np-classes_README.md", "np.cc", "np.h", "nec.cc",

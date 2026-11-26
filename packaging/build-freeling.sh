@@ -1,10 +1,19 @@
 #!/usr/bin/env bash
-# VERSION 1.3.0
+# VERSION 1.4.0
 #
 # build-freeling.sh -- builds FreeLing 4.2 with the changes of
 # FreeLing es-CL 2027, installs it into /usr/local together with the
 # Chilean data of this repository, and copies everything installed into
-# pkgroot/ for nfpm to package.
+# pkgroot/ for nfpm to package. FreeLing carries its own copies of the
+# ICU and Boost libraries it was built against (bundle-libraries.sh), so an
+# upgrade of the system cannot break it.
+#
+# PREFIX=DIR installs into another prefix than /usr/local (the generic
+# Linux tarball: /opt/freeling-es-cl-2027), and RELOCATABLE=yes makes the
+# run paths relative to each file ($ORIGIN), so that folder can be moved
+# anywhere (bundle-libraries.sh). The packages the libraries come from are
+# found with rpm (Fedora, openSUSE, the Red Hat family), dpkg (Debian,
+# Ubuntu) or pacman (Arch Linux).
 #
 # Meant for a fresh, disposable machine or container (the GitHub build):
 # it runs FreeLing's own "make install", which writes into /usr/local and
@@ -27,7 +36,7 @@ here="$(cd "$(dirname "$0")" && pwd)"
 repo="$(dirname "$here")"
 tarball="$(realpath "${1:?FreeLing-src-4.2.tar.gz}")"
 jobs="${JOBS:-$(nproc)}"
-prefix=/usr/local
+prefix="${PREFIX:-/usr/local}"
 share="$prefix/share/freeling"
 work="${WORK:-/tmp/freeling-build}"
 
@@ -46,6 +55,7 @@ src="$work/FreeLing-4.2"
     "$repo/software/patches/freeling-4.2-ambiguous-multiwords.patch"
 
 # What is in the prefix before the install: none of it is packaged.
+mkdir -p "$prefix"
 find "$prefix" -mindepth 1 \( -type f -o -type l \) | sort > "$work/before.txt"
 
 # Build fixes 1 to 3 as flags: CMake 4 refuses the bundled dynet's
@@ -71,11 +81,17 @@ rm -rf "$work/build" "$src"
 n=$(strings -e L "$prefix/lib/libfreeling.so" | grep -c -x -E "DictionaryClasses|FixedClasses|ClassesAtSentenceStart|SentenceStartClasses|ClassShares|keep:" || true)
 [ "$n" -eq 6 ] || { echo "libfreeling.so lacks the name-class change ($n of 6 marks)" >&2; exit 1; }
 
+# FreeLing's own copies of the ICU and Boost libraries it was built against,
+# in /usr/local/lib/freeling-es-cl/, found first by every program and
+# library of FreeLing (their run path), so that an upgrade of the system
+# cannot break it; the package then needs no ICU or Boost package.
+"$here/bundle-libraries.sh" "$prefix"
+
 # The distribution packages that provide the shared libraries the
 # programs and libraries need, other than those installed here.
 find "$prefix" -mindepth 1 \( -type f -o -type l \) | sort > "$work/after.txt"
 comm -13 "$work/before.txt" "$work/after.txt" > "$work/new.txt"
-own="$(grep -E '/lib/[^/]*\.so' "$work/new.txt" | xargs -r -n1 basename | sort -u)"
+own="$(grep -E '/lib/(freeling-es-cl/)?[^/]*\.so' "$work/new.txt" | xargs -r -n1 basename | sort -u)"
 needed="$(grep -v '/share/' "$work/new.txt" | while read -r f; do
         [ -f "$f" ] && [ ! -L "$f" ] && file -b "$f" | grep -q '^ELF' && readelf -d "$f"
     done | sed -n 's/.*(NEEDED).*\[\(.*\)\]/\1/p' | sort -u)"
@@ -85,7 +101,9 @@ for lib in $needed; do
     path="$(ldconfig -p | awk -v l="$lib" '$1 == l {print $NF; exit}')"
     [ -n "$path" ] || { echo "no system library for $lib" >&2; exit 1; }
     path="$(realpath "$path")"
-    if command -v rpm >/dev/null 2>&1 && rpm -qf "$path" >/dev/null 2>&1; then
+    if command -v pacman >/dev/null 2>&1; then
+        pacman -Qoq "$path"
+    elif command -v rpm >/dev/null 2>&1 && rpm -qf "$path" >/dev/null 2>&1; then
         rpm -qf --qf '%{NAME}\n' "$path"
     else
         dpkg -S "$path" 2>/dev/null | head -1 | cut -d: -f1

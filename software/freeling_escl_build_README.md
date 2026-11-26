@@ -1,6 +1,6 @@
 # freeling_escl_build_README.md
 
-Documents `freeling_escl_build.py` 2.21.1.
+Documents `freeling_escl_build.py` 2.22.0.
 
 Real file: `/path/to/project/derived-software/FreeLing_es-CL_2027/tools/freeling_escl_build.py`
 
@@ -53,11 +53,11 @@ FreeLing 4.2's sha256.
 | copies | into `software/patches/`: the changes to FreeLing's code, from `/path/to/project/derived-software/FreeLing_es-CL_2027/third-party/patches/`: the name classes of the name recognizer and classifier (`freeling-4.2-np-classes.patch`, its README, `np.cc`, `np.h`, `nec.cc`) and, since 2.10.0, the known-roots change of the affix analysis (`freeling-4.2-known-roots.patch` and its README) and, since 2.18.0, the probability columns (`freeling-4.2-tag-probabilities.patch` and its README) and the ambiguous multiwords (`freeling-4.2-ambiguous-multiwords.patch` and its README) |
 | reads | `/path/to/project/derived-software/FreeLing_es-CL_2027/config/freeling-release-privacy.tsv` (the privacy file: private, never copied into the release; see "The release is public") |
 | copies | `agpl-3.0.txt`, next to this script (the GNU AGPL 3.0, checked by sha256), into the release as `LICENSE` |
-| copies | the packaging of FreeLing 4.2 with this release for Fedora, Debian and Ubuntu, from `/path/to/project/derived-software/FreeLing_es-CL_2027/packaging/`: the seven scripts and their READMEs into the release's `packaging/` folder, and `packages.yml`, the GitHub workflow that builds and checks the packages, into `.github/workflows/` (see "The packaging") |
+| copies | the packaging of FreeLing 4.2 with this release for Fedora, openSUSE, Debian, Ubuntu, Arch Linux, any Linux (the generic tarball), macOS and Windows, from `/path/to/project/derived-software/FreeLing_es-CL_2027/packaging/`: the eight scripts and their READMEs into the release's `packaging/` folder, and `packages.yml`, the GitHub workflow that builds and checks the packages, into `.github/workflows/` (see "The packaging") |
 | writes | `/path/to/FreeLing-es_CL-2027/`, with `.gitignore` (`corpora/`) |
 | moves | a previous build to `/path/to/software/deprecated/FreeLing-es_CL-2027.DEPRECATED-YYMMDD[letter]`, and a build under the former name, `FreeLing_es-CL_2027`, to `deprecated/FreeLing_es-CL_2027.DEPRECATED-YYMMDD[letter]` |
 | carries over | the `corpora/` folder (or link) of the previous build, unread and unchanged, into the new one (see "The corpus folders") |
-| copies | into `software/`: the tagging tools, `freeling.py`, `freeling_common.py`, `freeling_ud.py`, `freeling_perkins.py`, `freeling_parquet.py`, `freeling_server.py`, `freeling_analyzer.py`, their READMEs and `freeling_comma_multiwords.txt`, from this script's folder |
+| copies | into `software/`: the tagging tools, `freeling.py`, `freeling_common.py`, `freeling_ud.py`, `freeling_perkins.py`, `freeling_parquet.py`, `freeling_server.py`, `freeling_analyzer.py`, `freeling_old_parse.py` (Old Spanish parsed through a temporary modernization, since 2.22.0), their READMEs and `freeling_comma_multiwords.txt`, from this script's folder |
 
 ## Usage
 
@@ -524,17 +524,19 @@ before anything else); it goes into the release as `LICENSE`.
 
 ## The packaging (decided 261112)
 
-The release folder is the GitHub repository Linguista/FreeLing-es_CL-2027, and GitHub builds from it packages of FreeLing 4.2 with this release (`freeling-es-cl`) for Fedora 43 and 44, Debian 13 and Ubuntu 24.04 and 26.04, each built on its own distribution, installed on a fresh one and checked before it is attached to a release. The scripts that do it are kept in the project, in `derived-software/FreeLing_es-CL_2027/packaging/`, each with its README, and the build copies them into every release: the scripts into `packaging/`, the workflow `packages.yml` into `.github/workflows/`, where GitHub looks for it. So a rebuilt release folder is the complete repository.
+The release folder is the GitHub repository Linguista/FreeLing-es_CL-2027, and GitHub builds from it packages of FreeLing 4.2 with this release (`freeling-es-cl`) for Fedora 43, 44 and 45, openSUSE Tumbleweed, Debian 13, Ubuntu 24.04 and 26.04 and Arch Linux, a generic tarball for any other Linux (built on AlmaLinux 9), tarballs for macOS (Apple silicon and Intel) and a zip for Windows, each built on its own system, installed on a fresh one and checked before it is attached to a release. Since 2.22.0 every one carries its own copies of the ICU and Boost libraries it was built against (`bundle-libraries.sh`), and the checks run with the system's own removed, so an upgrade of the system cannot break it; every file is also attached under a name that never changes, so `releases/latest/download/NAME` always gives the newest. The scripts that do it are kept in the project, in `derived-software/FreeLing_es-CL_2027/packaging/`, each with its README, and the build copies them into every release: the scripts into `packaging/`, the workflow `packages.yml` into `.github/workflows/`, where GitHub looks for it. So a rebuilt release folder is the complete repository.
 
 | File | What it does |
 |---|---|
 | `patch-freeling.sh` | applies to FreeLing 4.2's source every change it is built with |
 | `build-freeling.sh` | builds and installs FreeLing 4.2 with this release's data, and gathers what the package installs and needs |
 | `make-nfpm-config.py` | writes the package's configuration for nfpm |
-| `postinstall-deb.sh` | Debian and Ubuntu: refreshes the library cache and generates the en_US.UTF-8 locale if it is missing |
+| `bundle-libraries.sh` | copies into the installed FreeLing the ICU and Boost libraries it was built against and makes it load them, so an upgrade of the system cannot break it (Linux and macOS) |
+| `install-data.sh` | puts the Chilean data into an installed FreeLing 4.2 |
+| `postinstall-deb.sh` | Debian, Ubuntu and Arch Linux: refreshes the library cache and generates the en_US.UTF-8 locale if it is missing |
 | `ldconfig.sh` | refreshes the library cache (Fedora, and removal everywhere) |
 | `test-freeling.sh` | checks an installed package |
-| `packages.yml` | the GitHub workflow: on a release tagged with a date (YYMMDD, an optional letter for a second release that day), builds, checks and attaches the packages |
+| `packages.yml` | the GitHub workflow: on a release tagged with a date (YYMMDD, an optional letter for a second release that day), builds, checks and attaches the packages, each under its dated name and its name that never changes |
 
 A missing packaging file refuses the build, as any other input does.
 
@@ -669,6 +671,7 @@ Linux (the FreeLing paths are Linux paths). Standard library only.
 
 ## Changelog
 
+- 2.22.0 (261126): copies `freeling_old_parse.py` and its README into `software/` (Old Spanish parsed through a temporary modernization) and `bundle-libraries.sh` and its README into `packaging/` (the packages carry their own ICU and Boost). The data built is unchanged.
 - 2.21.1 (261126): an attested 19th-century spelling loses a reading that a `reading-removals` file takes out. The attested spellings took their readings from the modern word before the removals ran, so ménos still carried the noun reading meno NCMP000 that menos had lost, and the build refused (the 19th-century dictionary would not have matched FreeLing's own build-dict).
 - 2.21.0 (261126): a new kind of decision file, `contemporary-reading-removals`: a reading taken out of the default and informal dictionaries and kept in the 19th-century one, for the old spellings FreeLing's Spanish dictionary lists as modern (carácteres, cánon; decided 261126). The first round of `reading-removals` of the same day takes out the misspellings that dictionary lists as words (alemána, alemánes, inmediaciónes, remuneraciónes, varónes, mísiles, póstula, cópec, hólding, súpera), réclama, and the noun meno with the false plural reading it gave menos and ménos.
 - 2.20.0 (261121): the FreeLing 4.2 source tree is `third-party/FreeLing-4.2/` in the product folder (FreeLing 4.2 is installed inside the product folder (decided 261121)); `--source-tree` and `--build-tree` default to it, found from the project root. The data built is unchanged.

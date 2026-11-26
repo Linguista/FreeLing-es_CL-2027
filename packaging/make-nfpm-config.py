@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# VERSION 1.0.0
+# VERSION 1.1.0
 #
 # make-nfpm-config.py -- writes the nfpm configuration of the FreeLing
 # es-CL 2027 package from what build-freeling.sh left in the repository
@@ -23,7 +23,7 @@ import os
 import sys
 from pathlib import Path
 
-VERSION = "1.0.0"
+VERSION = "1.1.0"
 PREFIX = "usr/local"
 # Standard folders that other packages also put files in: the package owns
 # only what it puts inside them.
@@ -76,18 +76,24 @@ def main():
             "for word sense annotation, and the name-class change of FreeLing\n"
             "es-CL 2027, installed in /usr/local with the Chilean dictionaries,\n"
             "probabilities, multiword expressions, tagset, name recognizer rules,\n"
-            "currencies and name classifier lists in place of FreeLing's."),
+            "currencies and name classifier lists in place of FreeLing's. It\n"
+            "carries its own copies of the ICU and Boost libraries it was built\n"
+            "against, in /usr/local/lib/freeling-es-cl, so that an upgrade of\n"
+            "the system cannot break it."),
         "conflicts": ["freeling"],
         "depends": deps,
         "contents": contents,
         "scripts": {"postinstall": "./packaging/ldconfig.sh",
                     "postremove": "./packaging/ldconfig.sh"},
-        # Debian and Ubuntu: the locales package does not generate
-        # en_US.UTF-8 by itself, so the package does (Fedora's
-        # glibc-langpack-en carries it ready-made).
+        # Debian, Ubuntu and Arch Linux: nothing generates en_US.UTF-8 by
+        # itself, so the package does (Fedora's glibc-langpack-en and
+        # openSUSE's glibc-locale carry it ready-made).
         "overrides": {"deb": {"scripts": {
             "postinstall": "./packaging/postinstall-deb.sh",
-            "postremove": "./packaging/ldconfig.sh"}}},
+            "postremove": "./packaging/ldconfig.sh"}},
+            "archlinux": {"scripts": {
+                "postinstall": "./packaging/postinstall-deb.sh",
+                "postremove": "./packaging/ldconfig.sh"}}},
     }
     # nfpm reads YAML; JSON is YAML.
     json.dump(conf, sys.stdout, indent=1, ensure_ascii=False)

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# VERSION 1.5.0
+# VERSION 1.6.0
 #
 # patch-freeling.sh -- applies to an unpacked FreeLing 4.2 source tree the
 # changes FreeLing es-CL 2027 is built with:
@@ -17,7 +17,7 @@
 #        source tarball carries, the configs of every other language and
 #        the Argentine variant (es-ar) are deleted from the source tree,
 #        so they are neither built nor installed; the variants are
-#        FreeLing Old (es-old, untouched) and es-cl;
+#        FreeLing Old (es-old) and es-cl;
 #   7    a bug: csr_kb.cc indexed vectors it had only reserved (UKB word
 #        sense annotation aborts wherever assertions are on);
 #   8    the name classes of the name recognizer and classifier
@@ -64,6 +64,13 @@
 #        261119): FreeLing 4.2 reads the A flag of its multiword file and
 #        then never uses it, so every multiword is always joined. Applied
 #        after 11, which it builds on.
+#  13    FreeLing Old's config (data/config/es-old.cfg) names its parser's
+#        files where FreeLing 4.2 has none, es/grammar-dep.dat and
+#        es/dep/dependences.dat, so FreeLing Old stops at the parse level
+#        ("GRAMMAR: Error opening file"): the two lines name the files
+#        FreeLing 4.2 has and es.cfg names, es/chunker/grammar-chunk.dat
+#        and es/dep_txala/dependences.dat. Nothing else in FreeLing Old is
+#        changed.
 # Every change must apply exactly as expected, or the script stops.
 #
 # Usage: patch-freeling.sh FREELING_SOURCE_DIR NP_CLASSES_PATCH KNOWN_ROOTS_PATCH \
@@ -153,10 +160,18 @@ left="$(LC_ALL=C ls data | tr '\n' ' ')"
 [ "$left" = "common config es " ] || fail "data/ holds more than common, config and es: $left"
 left="$(LC_ALL=C ls data/config | tr '\n' ' ')"
 [ "$left" = "es-cl.cfg es-old.cfg es.cfg ident.cfg " ] || fail "data/config holds other configs: $left"
-# FreeLing Old is installed as FreeLing ships it; its compound analysis is
-# off as shipped (compound analysis is off in every config, decided 261118).
+# FreeLing Old's compound analysis is off as shipped (compound analysis is
+# off in every config, decided 261118).
 grep -q '^CompoundAnalysis=no$' data/config/es-old.cfg \
     || fail "data/config/es-old.cfg: compound analysis is not off as FreeLing ships it"
+
+# 13: FreeLing Old's parser files, where FreeLing 4.2 has them.
+c=data/config/es-old.cfg
+echo "dbb29e19b98fc56dcfbd6dc5267b0f4fc3bfa8f61e3212798bac0f840a1a2b7a  $c" | sha256sum -c --quiet - || fail "$c: not FreeLing 4.2's"
+[ -f data/es/chunker/grammar-chunk.dat ] && [ -f data/es/dep_txala/dependences.dat ] || fail "FreeLing 4.2's parser files are not where es.cfg names them"
+sed -i 's|^GrammarFile=\$FREELINGSHARE/es/grammar-dep\.dat$|GrammarFile=$FREELINGSHARE/es/chunker/grammar-chunk.dat|;
+        s|^DepTxalaFile=\$FREELINGSHARE/es/dep/dependences\.dat$|DepTxalaFile=$FREELINGSHARE/es/dep_txala/dependences.dat|' "$c"
+echo "4215d956fbd59aea416afce87b677c49a2d519e6bb6f558dbc39d35d3043dc3b  $c" | sha256sum -c --quiet - || fail "$c: the parser lines are not as change 13 makes them"
 
 # 7: reserve() leaves size() at 0; the vectors are then indexed.
 grep -q 'edges\.reserve(rels\.size());' src/libfreeling/csr_kb.cc || fail "csr_kb.cc: edges.reserve not found"

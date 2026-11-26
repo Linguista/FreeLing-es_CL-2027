@@ -1,6 +1,6 @@
 # FreeLing es-CL 2027 -- build report
 
-Built by freeling_escl_build.py 2.21.1 on 261126.
+Built by freeling_escl_build.py 2.22.0 on 261126.
 
 | item | count |
 |---|---|

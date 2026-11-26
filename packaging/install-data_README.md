@@ -1,6 +1,6 @@
 # install-data_README.md
 
-Documents `install-data.sh` 1.3.0.
+Documents `install-data.sh` 1.4.0.
 
 ## Purpose
 
