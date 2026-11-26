@@ -983,7 +983,7 @@ The unit codes in `<Measure>` stay, so the full words keep working (dos días, `
 | `speech/es-cl--speech.cfg` | the speech corpus, transcribed speech | default | `es-cl/np-speech.dat` |
 | `written/es-cl--written.cfg` | the written corpus, written texts | default | `es-cl/np.dat` |
 | `written-informal/es-cl--written-informal.cfg` | the written corpus's informal writing (Usenet, IRC, forums, email, Reddit, YouTube) | informal (section 6.8), with `usermap-informal.dat` in its user map (section 6.7) | `es-cl/np.dat` |
-| `19th-century/es-cl--historical.cfg` | 19th-century corpora | 19th century, with its probabilities and multiwords (section 2.1) | FreeLing's statistical recognizer, as in the base config |
+| `historical/es-cl--historical.cfg` | 19th-century corpora | 19th century, with its probabilities and multiwords (section 2.1) | FreeLing's statistical recognizer, as in the base config |
 
 All four use the Chilean tagset and currencies, with compound analysis off (section 2); the speech corpus and the written corpus each have the stand-in user map beside their config (`usermap--speech.dat`, `usermap--written.dat`). The config the speech corpus and the written corpus shared until 261110, `speech-and-written/es-cl--speech-and-written.cfg`, is retired to `speech-and-written/deprecated/` with its user map. The separate the speech corpus/the written corpus copy of the dictionary was retired earlier: the installed default is that dictionary. The place and person lists of section 8.3 are also features of FreeLing's statistical recognizer, so the 19th-century config reads them too (all but `cities.dat`); the fixed and dictionary classes are read only by the speech corpus's and the written corpus's.
 
