@@ -1,0 +1,5 @@
+form	lemma	category	tag	notes
+pentecostal	pentecostal		NCCS000	user, 261118: the lemma of pentecostal and pentecostales is pentecostal; FreeLing's dictionary lacked the word, and its compound module read it as pente + costal (repente_costal); the noun (un pentecostal, una pentecostal)
+pentecostales	pentecostal		NCCP000	user, 261118: the lemma of pentecostal and pentecostales is pentecostal; FreeLing's dictionary lacked the word, and its compound module read it as pente + costal (repente_costal); the noun
+pentecostal	pentecostal		AQ0CS00	user, 261118: the lemma of pentecostal and pentecostales is pentecostal; FreeLing's dictionary lacked the word, and its compound module read it as pente + costal (repente_costal); the adjective (la iglesia pentecostal)
+pentecostales	pentecostal		AQ0CP00	user, 261118: the lemma of pentecostal and pentecostales is pentecostal; FreeLing's dictionary lacked the word, and its compound module read it as pente + costal (repente_costal); the adjective

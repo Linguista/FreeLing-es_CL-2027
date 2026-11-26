@@ -1,0 +1,31 @@
+# freeling_comma_multiwords.txt -- the multiwords written with a comma,
+# read by freeling.py and freeling_analyzer.py (FreeLing es-CL 2027).
+# One phrase per line, as written, with its commas; a verb phrase from the
+# word after the verb (cancha, tiro y lado for dar cancha, tiro y lado).
+# Each comma of a phrase found in a text is sent to FreeLing as a blank, so
+# FreeLing joins the words as the multiword keyed without the comma in
+# locucions.dat. Any capitalization; whole words.
+# Lines starting with # are comments.
+al pan, pan, al vino, vino
+aquí te las traigo, pedro
+aquí te las traigo, peter
+caca, niño
+calabaza, calabaza
+callampín, bombín
+cancha, tiro y lado
+corre, corre la guaraca
+enchúfate, plancha de campo
+igual, pascual
+mala cueva, dijo el conejo
+matiné, vermut y noche
+me extraña, araña
+no me ayude tanto, compadre
+no te cleo, dijo el chino
+ojo, pestaña y ceja
+oreja, pestaña y ceja
+pan, pan, vino, vino
+pedro, juan y diego
+sí, oh
+te conozco, mosco
+toma, cachito de goma
+vamos arando, dijo la mosca

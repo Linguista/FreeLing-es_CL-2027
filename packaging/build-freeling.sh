@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# VERSION 1.1.0
+# VERSION 1.3.0
 #
-# build-freeling.sh -- builds FreeLing 4.2 with the eight changes of
+# build-freeling.sh -- builds FreeLing 4.2 with the changes of
 # FreeLing es-CL 2027, installs it into /usr/local together with the
 # Chilean data of this repository, and copies everything installed into
 # pkgroot/ for nfpm to package.
@@ -40,7 +40,10 @@ tar -xzf "$tarball" -C "$work"
 src="$work/FreeLing-4.2"
 [ "${REMOVE_TARBALL:-no}" = yes ] && rm -f "$tarball"
 
-"$here/patch-freeling.sh" "$src" "$repo/software/patches/freeling-4.2-np-classes.patch"
+"$here/patch-freeling.sh" "$src" "$repo/software/patches/freeling-4.2-np-classes.patch" \
+    "$repo/software/patches/freeling-4.2-known-roots.patch" \
+    "$repo/software/patches/freeling-4.2-tag-probabilities.patch" \
+    "$repo/software/patches/freeling-4.2-ambiguous-multiwords.patch"
 
 # What is in the prefix before the install: none of it is packaged.
 find "$prefix" -mindepth 1 \( -type f -o -type l \) | sort > "$work/before.txt"

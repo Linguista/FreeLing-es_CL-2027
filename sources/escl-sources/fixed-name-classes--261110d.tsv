@@ -559,7 +559,7 @@ Sudamérica	place	continent or region of the world	user, 261110: places, not org
 Suramérica	place	continent or region of the world	user, 261110: places, not organisations
 Mauricio	none	country, and a common given name in Chile	not fixed: also a common given name (the probe of 261110 found "el Israel" as a person); left to the classifier
 Israel	none	country, and a common given name in Chile	not fixed: also a common given name (the probe of 261110 found "el Israel" as a person); left to the classifier
-SES	organisation	round 8 of the COSCACH spelling review	user, 261110: the name of a student organisation
-JUDEJUT	other	round 8 of the COSCACH spelling review	user, 261110: the JUDEJUT games, an event
-Dr. House	person	round 8 of the COSCACH spelling review	user, 261110: a proper name, one name
-Dr. Simi	person	round 8 of the COSCACH spelling review	user, 261110: a proper name, one name
+SES	organisation	round 8 of the speech corpus spelling review	user, 261110: the name of a student organisation
+JUDEJUT	other	round 8 of the speech corpus spelling review	user, 261110: the JUDEJUT games, an event
+Dr. House	person	round 8 of the speech corpus spelling review	user, 261110: a proper name, one name
+Dr. Simi	person	round 8 of the speech corpus spelling review	user, 261110: a proper name, one name

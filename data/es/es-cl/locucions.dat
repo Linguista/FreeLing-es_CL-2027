@@ -30,13 +30,13 @@ a_el_callo al_callo RG I
 a_el_cateo al_cateo RG I
 a_el_cateo_de_la_laucha al_cateo_de_la_laucha RG I
 a_el_chinchín al_chinchín RG I
-a_el_cuete al_cuete AQ0CN00 al_cuete RG I
+a_el_cuete al_cuete AQ0CN00 al_cuete RG A
 a_el_debe al_debe RG I
 a_el_hilo al_hilo RG I
-a_el_lote al_lote AQ0CN00 al_lote RG I
+a_el_lote al_lote AQ0CN00 al_lote RG A
 a_el_lotijuay al_lotijuay AQ0CN00 al_lotijuay RG I
 a_el_otro_lado al_otro_lado RG I
-a_el_peo al_peo AQ0CN00 al_peo RG I
+a_el_peo al_peo AQ0CN00 al_peo RG A
 a_el_pinche al_pinche AQ0CN00 al_pinche RG I
 a_el_revés_de_los_cristianos al_revés_de_los_cristianos RG I
 a_el_seco al_seco RG I
@@ -77,7 +77,7 @@ agarrada_para_el_hueveo agarrada_para_el_hueveo NCFS000 I
 a_gatillazos a_gatillazos RG I
 agua_florida agua_florida NCFS000 I
 <aguantar>_un_metro aguantar_un_metro $1:VM I
-ahí_no_más ahí_no_más AQ0CN00 ahí_no_más RG I
+ahí_no_más ahí_no_más AQ0CN00 ahí_no_más RG A:0.8
 ah_mierda ah_mierda I I
 ají_cacho_de_cabra ají_cacho_de_cabra NCMS000 I
 ají_en_el_poto ají_en_el_poto NCMS000 I
@@ -85,7 +85,7 @@ ají_putamadre ají_putamadre NCMS000 I
 a_la_altura_de_el_unto a_la_altura_del_unto RG I
 a_la_bolsa a_la_bolsa RG I
 a_la_brutanteque a_la_brutanteque RG I
-a_la_chucha a_la_chucha I a_la_chucha RG I
+a_la_chucha a_la_chucha RG a_la_chucha I A
 a_la_chucha_de_el_mundo a_la_chucha_del_mundo RG I
 a_la_chucha_de_la_loma a_la_chucha_de_la_loma RG I
 a_la_chuña a_la_chuña RG I
@@ -157,7 +157,6 @@ año_de_la_ñauca año_de_la_ñauca RG I
 años_de_circo años_de_circo NCMP000 I
 <anotar>_un_poroto anotar_un_poroto $1:VM I
 apagada_de_tele apagada_de_tele NCFS000 I
-<apagar>_a_un_hombre_el_<calefón> apagar_a_un_hombre_el_calefón $1:VM I
 <apagar>_la_tele apagar_la_tele $1:VM I
 a_palos_con_el_águila a_palos_con_el_águila RG I
 a_pata a_pata RG I
@@ -175,8 +174,6 @@ apretada_de_raja apretada_de_raja NCFS000 I
 <apurar>_el_tranco apurar_el_tranco $1:VM I
 <apurar>_la_causa apurar_la_causa $1:VM I
 a_puro_pulso a_puro_pulso RG I
-aquí_te_las_traigo_,_pedro aquí_te_las_traigo,_Pedro I I
-aquí_te_las_traigo_,_peter aquí_te_las_traigo,_Peter I I
 aquí_y_en_la_quebrada_de_el_ají aquí_y_en_la_quebrada_del_ají RG I
 araña_de_el_trigo araña_del_trigo NCFS000 I
 <árbol>_de_pascua árbol_de_Pascua $1:NC I
@@ -202,17 +199,17 @@ arroz_graneado arroz_graneado NCMS000 I
 a_sangre_de_pato a_sangre_de_pato RG I
 a_sangre_pato a_sangre_pato RG I
 aserruchada_de_piso aserruchada_de_piso NCFS000 I
-<aserruchador>_de_piso aserruchador_de_piso $1:AQ aserruchador_de_piso $1:NC I
+<aserruchador>_de_piso aserruchador_de_piso $1:NC I
 <aserruchar>_el_piso aserruchar_el_piso $1:VM I
 asiento_de_picana asiento_de_picana NCMS000 I
 <asiento>_<minero> asiento_minero $1:NC I
 asistencia_pública asistencia_pública NCFS000 I
 a_tablero_vuelto a_tablero_vuelto AQ0CN00 a_tablero_vuelto RG I
-atado_de_huevas atado_de_huevadas AQ0CN00 atado_de_huevadas NCCN000 I
-atento_a_el_lupo atento_a_el_lupo AQ0CN00 atento_a_el_lupo RG I
-a_toda_orquesta a_toda_orquesta AQ0CN00 a_toda_orquesta RG I
-a_toda_raja a_toda_raja AQ0CN00 a_toda_raja RG I
-a_todo_cachete a_todo_cachete AQ0CN00 a_todo_cachete RG I
+atado_de_huevas atado_de_huevadas AQ0CN00 atado_de_huevadas NCCS000 I
+atento_a_el_lupo atento_al_lupo AQ0CN00 atento_al_lupo RG I
+a_toda_orquesta a_toda_orquesta AQ0CN00 a_toda_orquesta RG A
+a_toda_raja a_toda_raja AQ0CN00 a_toda_raja RG A
+a_todo_cachete a_todo_cachete AQ0CN00 a_todo_cachete RG A
 a_todo_chancho a_todo_chancho RG I
 a_todo_concho a_todo_concho RG I
 a_todo_imperio a_todo_imperio RG I
@@ -227,7 +224,7 @@ a_un_lugar_los_boletos a_un_lugar_los_boletos I I
 avivada_de_cueca avivada_de_cueca NCFS000 I
 <avivar>_la_cueca avivar_la_cueca $1:VM I
 azul_de_metileno azul_de_metileno NCMS000 I
-azul_paquete_de_vela azul_paquete_de_vela AQ0CN00 azul_paquete_de_vela NCCN000 I
+azul_paquete_de_vela azul_paquete_de_vela AQ0CN00 azul_paquete_de_vela NCMS000 I
 baby_fútbol baby_fútbol NCMS000 I
 <baile>_<chino> baile_chino $1:NC I
 bajada_de_cama bajada_de_cama NCFS000 I
@@ -250,7 +247,7 @@ biblia_en_verde biblia_en_verde NCFS000 I
 <blanco>_como_una_pancutra blanco_como_una_pancutra $1:AQ I
 <blanco>_como_una_pantruca blanco_como_una_pantruca $1:AQ I
 blue_jean blue_jean NCMS000 I
-boca_de_tarro boca_de_tarro AQ0CN00 boca_de_tarro NCCN000 I
+boca_de_tarro boca_de_tarro AQ0CN00 boca_de_tarro NCCS000 I
 bolsa_de_gatos bolsa_de_gatos NCFS000 I
 bomba_de_bencina bomba_de_bencina NCFS000 I
 bombita_de_agua bombita_de_agua NCFS000 I
@@ -259,10 +256,10 @@ boqui_pilpil boqui_pilpil NCMS000 I
 <botar>_el_diente_de_leche botar_el_diente_de_leche $1:VM I
 <brazo>_de_reina brazo_de_reina $1:NC I
 broca_cochi broca_cochi NCMS000 I
-buena_onda buena_onda AQ0CN00 buena_onda NCCN000 I
+buena_onda buena_onda AQ0CN00 buena_onda NCCS000 I
 buenas_peras buenas_peras AQ0CN00 buenas_peras NCCN000 I
-buen_chato buen_chato AQ0CN00 buen_chato NCCN000 I
-buen_gallo buen_gallo AQ0CN00 buen_gallo NCCN000 I
+buen_chato buen_chato AQ0CN00 buen_chato NCCS000 I
+buen_gallo buen_gallo AQ0CN00 buen_gallo NCCS000 I
 <bueno>_para_el_diente bueno_para_el_diente $1:AQ I
 <bueno>_para_el_frasco bueno_para_el_frasco $1:AQ I
 <bueno>_para_la_pestaña bueno_para_la_pestaña $1:AQ I
@@ -275,17 +272,17 @@ buque_de_arte buque_de_arte NCMS000 I
 <caballo>_de_batalla caballo_de_batalla $1:NC I
 <caballo>_de_paso caballo_de_paso $1:NC I
 <caballo>_pilchero caballo_pilchero $1:NC I
-cabeza_caliente cabeza_caliente AQ0CN00 cabeza_caliente NCCN000 I
-cabeza_de_ajo cabeza_de_ajo AQ0CN00 cabeza_de_ajo NCCN000 I
-cabeza_de_cobre cabeza_de_cobre AQ0CN00 cabeza_de_cobre NCCN000 I
-cabeza_de_incendio cabeza_de_incendio AQ0CN00 cabeza_de_incendio NCCN000 I
-cabeza_de_músculo cabeza_de_músculo AQ0CN00 cabeza_de_músculo NCCN000 I
+cabeza_caliente cabeza_caliente AQ0CN00 cabeza_caliente NCCS000 I
+cabeza_de_ajo cabeza_de_ajo AQ0CN00 cabeza_de_ajo NCCS000 I
+cabeza_de_cobre cabeza_de_cobre AQ0CN00 cabeza_de_cobre NCCS000 I
+cabeza_de_incendio cabeza_de_incendio AQ0CN00 cabeza_de_incendio NCCS000 I
+cabeza_de_músculo cabeza_de_músculo AQ0CN00 cabeza_de_músculo NCCS000 I
 cabeza_de_pescado cabeza_de_pescado NCFS000 I
-cabeza_de_pichí cabeza_de_pichí AQ0CN00 cabeza_de_pichí NCCN000 I
+cabeza_de_pichí cabeza_de_pichí AQ0CN00 cabeza_de_pichí NCCS000 I
 cabeza_de_playa cabeza_de_playa NCFS000 I
-cabeza_de_pollo cabeza_de_pollo AQ0CN00 cabeza_de_pollo NCCN000 I
-cabeza_de_rodilla cabeza_de_rodilla AQ0CN00 cabeza_de_rodilla NCCN000 I
-cabeza_de_tuna cabeza_de_tuna AQ0CN00 cabeza_de_tuna NCCN000 I
+cabeza_de_pollo cabeza_de_pollo AQ0CN00 cabeza_de_pollo NCCS000 I
+cabeza_de_rodilla cabeza_de_rodilla AQ0CN00 cabeza_de_rodilla NCCS000 I
+cabeza_de_tuna cabeza_de_tuna AQ0CN00 cabeza_de_tuna NCCS000 I
 cable_a_tierra cable_a_tierra NCMS000 I
 <cabro>_<chico> cabro_chico $1:AQ cabro_chico $1:NC I
 cacha_floja cacha_floja NCFS000 I
@@ -294,7 +291,7 @@ cacha_mal_hecha cacha_mal_hecha NCFS000 I
 <cachar>_el_mote cachar_el_mote $1:VM I
 cachipún_alemán cachipún_alemán NCMS000 I
 cacho_de_cabra cacho_de_cabra NCMS000 I
-cacho_de_paragua cacho_de_paragua AQ0CN00 cacho_de_paragua NCCN000 I
+cacho_de_paragua cacho_de_paragua AQ0CN00 cacho_de_paragua NCCS000 I
 <caer>_a_el_frasco caer_al_frasco $1:VM I
 <caer>_a_el_litro caer_al_litro $1:VM I
 <caer>_de_cajón caer_de_cajón $1:VM I
@@ -340,10 +337,9 @@ caído_a_el_frasco caído_al_frasco AQ0MS00 I
 caído_a_el_litro caído_al_litro AQ0MS00 I
 caídos_a_el_frasco caído_al_frasco AQ0MP00 I
 caídos_a_el_litro caído_al_litro AQ0MP00 I
-calabaza_,_calabaza calabaza,_calabaza I I
 calafate_sour calafate_sour NCMS000 I
 caldo_de_cabeza caldo_de_cabeza NCMS000 I
-caldo_de_chancho caldo_de_chancho AQ0CN00 caldo_de_chancho NCCN000 I
+caldo_de_chancho caldo_de_chancho AQ0CN00 caldo_de_chancho NCCS000 I
 calentada_de_hocico calentada_de_hocico NCFS000 I
 calentada_de_mate calentada_de_mate NCFS000 I
 <calentar>_el_asiento calentar_el_asiento $1:VM I
@@ -352,7 +348,7 @@ calentada_de_mate calentada_de_mate NCFS000 I
 <calentar>_la_jeta calentar_la_jeta $1:VM I
 <calentar>_la_silla calentar_la_silla $1:VM I
 <calentar>_la_sopa calentar_la_sopa $1:VM I
-calienta_sopa calienta_sopa AQ0CN00 calienta_sopa NCCN000 I
+calienta_sopa calienta_sopa AQ0CN00 calienta_sopa NCCS000 I
 callado_el_loro callado_el_loro AQ0CN00 callado_el_loro RG I
 calleuque_el_loro calleuque_el_loro AQ0CN00 calleuque_el_loro RG I
 calzón_roto calzón_roto NCMS000 I
@@ -368,8 +364,8 @@ capital_golondrina capital_golondrina NCMS000 I
 capitán_araya capitán_Araya NCMS000 I
 cara_de_chicha cara_de_chicha NCFS000 I
 cara_de_gallo cara_de_gallo NCFS000 I
-cara_de_palo cara_de_palo AQ0CN00 cara_de_palo NCCN000 I
-cara_de_raja cara_de_raja AQ0CN00 cara_de_raja NCCN000 I
+cara_de_palo cara_de_palo AQ0CN00 cara_de_palo NCCS000 I
+cara_de_raja cara_de_raja AQ0CN00 cara_de_raja NCCS000 I
 cara_y_sello cara_y_sello NCFS000 I
 care_palo cara_de_palo AQ0CN00 I
 cargada_a_el_billete cargado_al_billete AQ0FS00 I
@@ -395,11 +391,11 @@ castaña_de_cajú castaña_de_cajú NCFS000 I
 <catear>_la_laucha catear_la_laucha $1:VM I
 cayó_mierda cayó_mierda I I
 cayó_piedra cayó_piedra I I
-cazuela_de_tuercas cazuela_de_tuercas AQ0CN00 cazuela_de_tuercas NCCN000 I
+cazuela_de_tuercas cazuela_de_tuercas AQ0CN00 cazuela_de_tuercas NCCS000 I
 cédula_de_identidad cédula_de_identidad NCFS000 I
-centro_de_mesa centro_de_mesa AQ0CN00 centro_de_mesa NCCN000 I
+centro_de_mesa centro_de_mesa AQ0CN00 centro_de_mesa NCMS000 I
 <cepo>_de_campaña cepo_de_campaña $1:NC I
-cero_kilómetro cero_kilómetro AQ0CN00 cero_kilómetro NCCN000 I
+cero_kilómetro cero_kilómetro AQ0CN00 cero_kilómetro NCMS000 I
 cero_kilómetros cero_kilómetro AQ0CN00 I
 champaña_de_los_pobres champaña_de_los_pobres NCFS000 I
 chanchito_de_ahorro chanchito_de_ahorro NCMS000 I
@@ -414,11 +410,11 @@ chantada_de_moto chantada_de_moto NCFS000 I
 <chantar>_la_moto chantar_la_moto $1:VM I
 chao_pescado chao_pescado I I
 chao_pescao chao_pescao I I
-charango_lila charango_lila AQ0CN00 charango_lila NCCN000 I
+charango_lila charango_lila AQ0CN00 charango_lila NCCS000 I
 <cheque>_a_fecha cheque_a_fecha $1:NC I
 chicago_boy Chicago_boy NCMS000 I
 chicago_boys Chicago_boys NCMP000 I
-chicha_fresca chicha_fresca AQ0CN00 chicha_fresca NCCN000 I
+chicha_fresca chicha_fresca AQ0CN00 chicha_fresca NCCS000 I
 chicoteada_de_caracoles chicoteada_de_caracoles NCFS000 I
 <chicotear>_los_caracoles chicotear_los_caracoles $1:VM I
 chipe_libre chipe_libre NCMS000 I
@@ -429,7 +425,7 @@ chita_la_payasada chita_la_payasada I I
 chitas_la_payasá chita_la_payasada I I
 choro_maltón choro_maltón NCMS000 I
 <chorrear>_a_un_hombre_el_helado chorrear_a_un_hombre_el_helado $1:VM I
-chucha_de_su_madre chucha_de_su_madre AQ0CN00 chucha_de_su_madre NCCN000 I
+chucha_de_su_madre chucha_de_su_madre I chucha_de_su_madre NCCS000 chucha_de_su_madre AQ0CN00 A
 chucha_madre chucha_madre I I
 chuchunco_city Chuchunco_City NP00G00 I
 chuño_puti chuño_puti NCMS000 I
@@ -438,7 +434,7 @@ chupada_de_medias chupada_de_medias NCFS000 I
 <chupar>_las_medias chupar_las_medias $1:VM I
 <chupar>_los_mostachos chupar_los_mostachos $1:VM I
 <chupar>_medias chupar_medias $1:VM I
-chupete_de_fierro chupete_de_fierro AQ0CN00 chupete_de_fierro NCCN000 I
+chupete_de_fierro chupete_de_fierro AQ0CN00 chupete_de_fierro NCCS000 I
 chupilca_de_el_diablo chupilca_del_diablo NCFS000 I
 cierre_eclair cierre_eclair NCMS000 I
 cintura_de_gallina cintura_de_gallina NCFS000 I
@@ -446,17 +442,17 @@ cintura_de_huevo cintura_de_huevo AQ0CN00 cintura_de_huevo NCFS000 I
 <ciprés>_de_la_cordillera ciprés_de_la_cordillera $1:NC I
 club_de_tobi club_de_Tobi NCMS000 I
 <cobrar>_la_cuenta cobrar_la_cuenta $1:VM I
-cogote_de_almeja cogote_de_almeja AQ0CN00 cogote_de_almeja NCCN000 cogote_de_almeja NCMS000 I
+cogote_de_almeja cogote_de_almeja AQ0CN00 cogote_de_almeja NCCS000 cogote_de_almeja NCMS000 I
 cogote_de_pavo cogote_de_pavo NCMS000 I
 cola_de_caballo cola_de_caballo NCFS000 I
-cola_de_chancho cola_de_chancho AQ0CN00 cola_de_chancho NCCN000 I
+cola_de_chancho cola_de_chancho AQ0CN00 cola_de_chancho NCCS000 I
 cola_de_mono cola_de_mono NCMS000 I
 cola_fría cola_fría NCFS000 I
 colchón_de_la_novia colchón_de_la_novia NCMS000 I
 colchón_de_novia colchón_de_novia NCMS000 I
-collar_de_melones collar_de_melones AQ0CN00 collar_de_melones NCCN000 I
+collar_de_melones collar_de_melones AQ0CN00 collar_de_melones NCCS000 I
 collar_de_perro collar_de_perro NCMS000 I
-colo_colo colo_colo NCMS000 I
+colo_colo colo_colo NP00O00 I
 <comer>_atravesado comer_atravesado $1:VM I
 <comer>_la_color comer_la_color $1:VM I
 <comer>_las_manos comer_las_manos $1:VM I
@@ -482,10 +478,10 @@ como_diuca como_diuca RG I
 como_el_ajo como_el_ajo AQ0CN00 como_el_ajo RG I
 como_el_copi como_el_copi AQ0CN00 como_el_copi RG I
 como_el_forro como_el_forro AQ0CN00 como_el_forro RG I
-como_el_hoyo como_el_hoyo AQ0CN00 como_el_hoyo RG I
+como_el_hoyo como_el_hoyo AQ0CN00 como_el_hoyo RG A
 como_el_loly como_el_loly AQ0CN00 como_el_loly RG I
 como_el_orto como_el_orto AQ0CN00 como_el_orto RG I
-como_el_pico como_el_pico AQ0CN00 como_el_pico RG I
+como_el_pico como_el_pico AQ0CN00 como_el_pico RG A
 como_el_poto como_el_poto AQ0CN00 como_el_poto RG I
 como_el_queso como_el_queso RG I
 como_gato_de_espalda como_gato_de_espalda RG I
@@ -499,11 +495,11 @@ como_la_corneta como_la_corneta AQ0CN00 como_la_corneta RG I
 como_la_gente como_la_gente AQ0CN00 como_la_gente RG I
 como_la_mona como_la_mona AQ0CN00 como_la_mona RG I
 como_las_berenjenas como_las_berenjenas AQ0CN00 como_las_berenjenas RG I
-como_las_güifas como_las_güifas AQ0CN00 como_las_güifas RG I
+como_las_güifas como_las_huifas AQ0CN00 como_las_huifas RG A
 como_las_huevadas como_las_huevadas RG I
-como_las_huevas como_las_huevadas AQ0CN00 como_las_huevadas RG I
-como_las_weas como_las_huevadas AQ0CN00 como_las_huevadas RG I
-como_las_huifas como_las_huifas AQ0CN00 como_las_huifas RG I
+como_las_huevas como_las_huevas AQ0CN00 como_las_huevas RG A
+como_las_weas como_las_huevas AQ0CN00 como_las_huevas RG I
+como_las_huifas como_las_huifas AQ0CN00 como_las_huifas RG A
 como_las_pelotas como_las_pelotas AQ0CN00 como_las_pelotas RG I
 como_las_reverendas como_las_reverendas AQ0CN00 como_las_reverendas RG I
 como_loro_en_el_alambre como_loro_en_el_alambre RG I
@@ -534,24 +530,24 @@ comprada_de_terreno comprada_de_terreno NCFS000 I
 <comprar>_terreno comprar_terreno $1:VM I
 <comulgar>_con_ruedas_de_carreta comulgar_con_ruedas_de_carreta $1:VM I
 con_camas_y_petacas con_camas_y_petacas RG I
-concha_de_su_madre concha_de_su_madre AQ0CN00 concha_de_su_madre NCCN000 concha_de_su_madre I concha_de_su_madre NCCS000 I
-concha_de_su_maire concha_de_su_madre I concha_de_su_madre AQ0CN00 concha_de_su_madre NCCS000 I
-concha_de_su_mare concha_de_su_madre I concha_de_su_madre AQ0CN00 concha_de_su_madre NCCS000 I
-concha_de_tu_madre concha_de_tu_madre I concha_de_tu_madre AQ0CN00 concha_de_tu_madre NCCS000 I
-concha_de_tu_maire concha_de_tu_madre I concha_de_tu_madre AQ0CN00 concha_de_tu_madre NCCS000 I
-concha_de_tu_mare concha_de_tu_madre I concha_de_tu_madre AQ0CN00 concha_de_tu_madre NCCS000 I
-concha_de_vino concha_de_vino AQ0CN00 concha_de_vino NCCN000 I
-conchas_de_sus_madres concha_de_su_madre I concha_de_su_madre AQ0CN00 concha_de_su_madre NCCS000 A
-conchas_de_sus_maires concha_de_su_madre I concha_de_su_madre AQ0CN00 concha_de_su_madre NCCS000 I
-conchas_de_sus_mares concha_de_su_madre I concha_de_su_madre AQ0CN00 concha_de_su_madre NCCS000 I
-concha_vino concha_vino AQ0CN00 concha_vino NCCN000 I
-conche_su_madre concha_de_su_madre I concha_de_su_madre AQ0CN00 concha_de_su_madre NCCS000 A
-conche_su_maire concha_de_su_madre I concha_de_su_madre AQ0CN00 concha_de_su_madre NCCS000 A
-conche_su_mare concha_de_su_madre I concha_de_su_madre AQ0CN00 concha_de_su_madre NCCS000 A
-conche_tu_madre concha_de_tu_madre I concha_de_tu_madre AQ0CN00 concha_de_tu_madre NCCS000 A
-conche_tu_maire concha_de_tu_madre I concha_de_tu_madre AQ0CN00 concha_de_tu_madre NCCS000 I
-conche_tu_mare concha_de_tu_madre I concha_de_tu_madre AQ0CN00 concha_de_tu_madre NCCS000 A
-concho_de_vino concho_de_vino AQ0CN00 concho_de_vino NCCN000 I
+concha_de_su_madre concha_de_su_madre I concha_de_su_madre NCCS000 concha_de_su_madre AQ0CN00 A
+concha_de_su_maire concha_de_su_madre I concha_de_su_madre NCCS000 concha_de_su_madre AQ0CN00 A
+concha_de_su_mare concha_de_su_madre I concha_de_su_madre NCCS000 concha_de_su_madre AQ0CN00 A
+concha_de_tu_madre concha_de_tu_madre I concha_de_tu_madre NCCS000 concha_de_tu_madre AQ0CN00 A
+concha_de_tu_maire concha_de_tu_madre I concha_de_tu_madre NCCS000 concha_de_tu_madre AQ0CN00 A
+concha_de_tu_mare concha_de_tu_madre I concha_de_tu_madre NCCS000 concha_de_tu_madre AQ0CN00 A
+concha_de_vino concha_de_vino AQ0CN00 concha_de_vino NCCS000 I
+conchas_de_sus_madres concha_de_su_madre I concha_de_su_madre NCCP000 concha_de_su_madre AQ0CN00 A
+conchas_de_sus_maires concha_de_su_madre I concha_de_su_madre NCCP000 concha_de_su_madre AQ0CN00 A
+conchas_de_sus_mares concha_de_su_madre I concha_de_su_madre NCCP000 concha_de_su_madre AQ0CN00 A
+concha_vino concha_vino AQ0CN00 concha_vino NCCS000 I
+conche_su_madre concha_de_su_madre I concha_de_su_madre NCCS000 concha_de_su_madre AQ0CN00 A
+conche_su_maire concha_de_su_madre I concha_de_su_madre NCCS000 concha_de_su_madre AQ0CN00 A
+conche_su_mare concha_de_su_madre I concha_de_su_madre NCCS000 concha_de_su_madre AQ0CN00 A
+conche_tu_madre concha_de_tu_madre I concha_de_tu_madre NCCS000 concha_de_tu_madre AQ0CN00 A
+conche_tu_maire concha_de_tu_madre I concha_de_tu_madre NCCS000 concha_de_tu_madre AQ0CN00 A
+conche_tu_mare concha_de_tu_madre I concha_de_tu_madre NCCS000 concha_de_tu_madre AQ0CN00 A
+concho_de_vino concho_de_vino AQ0CN00 concho_de_vino NCCS000 I
 con_cuática con_cuática RG I
 con_cuello con_cuello RG I
 con_cueva con_cueva RG I
@@ -585,9 +581,8 @@ contados_con_la_mano contados_con_la_mano AQ0CN00 I
 con_tutti con_tutti RG I
 con_una_mano_en_el_corazón con_una_mano_en_el_corazón RG I
 copa_de_agua copa_de_agua NCFS000 I
-corazón_de_abuelita corazón_de_abuelita AQ0CN00 corazón_de_abuelita NCCN000 I
-corazón_de_alcachofa corazón_de_alcachofa AQ0CN00 corazón_de_alcachofa NCCN000 I
-corre_,_corre_la_guaraca corre,_corre_la_guaraca I I
+corazón_de_abuelita corazón_de_abuelita AQ0CN00 corazón_de_abuelita NCCS000 I
+corazón_de_alcachofa corazón_de_alcachofa AQ0CN00 corazón_de_alcachofa NCCS000 I
 <correr>_a_cristo correr_a_Cristo $1:VM I
 <correr>_la_paja correr_la_paja $1:VM I
 <correr>_las_tejas correr_las_tejas $1:VM I
@@ -621,8 +616,8 @@ cuenta_regresiva cuenta_regresiva NCFS000 I
 cuento_aparte cuento_aparte NCMS000 I
 cuento_corto cuento_corto RG I
 cuento_de_el_tío cuento_del_tío NCMS000 I
-cuero_de_chancho cuero_de_chancho AQ0CN00 cuero_de_chancho NCCN000 cuero_de_chancho NCMS000 I
-cuero_de_diablo cuero_de_diablo AQ0CN00 cuero_de_diablo NCCN000 I
+cuero_de_chancho cuero_de_chancho AQ0CN00 cuero_de_chancho NCCS000 cuero_de_chancho NCMS000 I
+cuero_de_diablo cuero_de_diablo AQ0CN00 cuero_de_diablo NCCS000 I
 cuervo_de_río cuervo_de_río NCMS000 I
 cumpleaños_de_mono cumpleaños_de_mono NCMS000 I
 dale_con_que_las_gallinas_mean dale_con_que_las_gallinas_mean I I
@@ -633,7 +628,6 @@ dale_con_que_las_gallinas_mean_por_el_poto dale_con_que_las_gallinas_mean_por_el
 <dar>_bola dar_bola $1:VM I
 <dar>_boleto dar_boleto $1:VM I
 <dar>_bote dar_bote $1:VM I
-<dar>_cancha_,_tiro_y_lado dar_cancha,_tiro_y_lado $1:VM I
 <dar>_capote dar_capote $1:VM I
 <dar>_color dar_color $1:VM I
 <dar>_como_bombo_en_fiesta dar_como_bombo_en_fiesta $1:VM I
@@ -678,7 +672,7 @@ dale_con_que_las_gallinas_mean_por_el_poto dale_con_que_las_gallinas_mean_por_el
 <dar>_un_baile dar_un_baile $1:VM I
 <dar>_vuelta dar_vuelta $1:VM I
 <dar>_vuelta_la_chaqueta dar_vuelta_la_chaqueta $1:VM I
-de_a_caballo de_a_caballo AQ0CN00 I
+de_a_caballo de_a_caballo AQ0CN00 de_a_caballo RG A
 de_adrede de_adrede RG I
 de_ahí de_ahí I de_ahí RG I
 de_a_peso de_a_peso AQ0CN00 I
@@ -722,7 +716,7 @@ de_paquete de_paquete AQ0CN00 I
 de_partir_con_la_uña de_partir_con_la_uña AQ0CN00 I
 de_pavo de_pavo RG I
 de_porquería de_porquería AQ0CN00 I
-de_pronto de_pronto I I
+de_pronto de_pronto RG A
 de_repente de_repente RG I
 <derretir>_a_un_hombre_el_helado derretir_a_un_hombre_el_helado $1:VM I
 de_rulo de_rulo AQ0CN00 I
@@ -794,7 +788,7 @@ echada_de_talla echada_de_talla NCFS000 I
 el_burro_por_delante el_burro_por_delante I I
 el_colchón_con_más_plumas el_colchón_con_más_plumas I I
 el_descoronte el_descoronte AQ0CN00 el_descoronte RG I
-el_descueve el_descueve AQ0CN00 el_descueve RG I
+el_descueve el_descueve AQ0CN00 el_descueve RG A
 el_día_de_el_copi el_día_del_copi RG I
 el_día_de_el_loly el_día_del_loly RG I
 el_día_de_el_níspero el_día_del_níspero RG I
@@ -805,7 +799,7 @@ embolinamiento_de_perdiz embolinamiento_de_perdiz NCMS000 I
 <embolinar>_la_perdiz embolinar_la_perdiz $1:VM I
 emborrachamiento_de_perdiz emborrachamiento_de_perdiz NCMS000 I
 <emborrachar>_la_perdiz emborrachar_la_perdiz $1:VM I
-empanada_de_pera empanada_de_pera AQ0CN00 empanada_de_pera NCCN000 I
+empanada_de_pera empanada_de_pera AQ0CN00 empanada_de_pera NCCS000 I
 en_acha en_acha RG I
 en_achas en_achas RG I
 en_andas en_andas RG I
@@ -813,10 +807,9 @@ en_base_a en_base_a SP A
 en_buena en_buena RG I
 en_carpeta en_carpeta RG I
 <enchapado>_a_la_antigua enchapado_a_la_antigua $1:AQ enchapado_a_la_antigua $1:NC I
-enchúfate_,_plancha_de_campo enchúfate,_plancha_de_campo I I
 en_dos_tiempos en_dos_tiempos RG I
 ene_tene_tú ene_tene_tú NCMS000 I
-<enfermo>_de_el_chape enfermo_de_el_chape $1:AQ enfermo_de_el_chape $1:NC I
+<enfermo>_de_el_chape enfermo_del_chape $1:AQ enfermo_del_chape $1:NC I
 <engañar>_el_diente engañar_el_diente $1:VM I
 en_la_buena en_la_buena RG I
 en_la_cuerera en_la_cuerera RG I
@@ -838,7 +831,7 @@ entre_nos entre_nos RG I
 en_tres_tiempos en_tres_tiempos RG I
 entre_tongoy_y_los_vilos entre_Tongoy_y_los_Vilos RG I
 en_una_de_esas en_una_de_esas I A
-en_volada en_volada I I
+en_volada en_volada RG A
 <escapar>_las_cabras_a_el_monte escapar_las_cabras_al_monte $1:VM I
 <escapar>_los_caballos escapar_los_caballos $1:VM I
 escondida_china escondida_china NCFS000 I
@@ -873,18 +866,18 @@ gallo_de_estacas gallo_de_estacas NCMS000 I
 <ganar>_el_puchero ganar_el_puchero $1:VM I
 <ganar>_el_quién_vive ganar_el_quién_vive $1:VM I
 <ganar>_los_porotos ganar_los_porotos $1:VM I
-garganta_de_lata garganta_de_lata AQ0CN00 garganta_de_lata NCCN000 garganta_de_lata NCFS000 I
+garganta_de_lata garganta_de_lata AQ0CN00 garganta_de_lata NCCS000 garganta_de_lata NCFS000 I
 <gastar>_parejo gastar_parejo $1:VM I
 <gastar>_pólvora_en_gallinazos gastar_pólvora_en_gallinazos $1:VM I
 gastos_comunes gastos_comunes NCMS000 I
-gatillo_loco gatillo_loco AQ0CN00 gatillo_loco NCCN000 I
+gatillo_loco gatillo_loco AQ0CN00 gatillo_loco NCCS000 I
 gato_de_campo gato_de_campo NCMS000 I
 <gato>_de_chalet gato_de_chalet $1:NC I
 gaviota_salteadora gaviota_salteadora NCFS000 I
 general_después_de_la_batalla general_después_de_la_batalla NCMS000 I
 gente_como_una gente_como_uno NCFS000 I
 gente_como_uno gente_como_uno NCFS000 I
-gil_de_el_monte gil_del_monte AQ0CN00 gil_del_monte NCCN000 I
+gil_de_el_monte gil_del_monte AQ0CN00 gil_del_monte NCCS000 A
 gimnasia_bancaria gimnasia_bancaria NCFS000 I
 gin_con_gin gin_con_gin NCMS000 I
 giro_sin_tornillos giro_sin_tornillos NCMS000 I
@@ -899,21 +892,21 @@ golpe_en_la_mesa golpe_en_la_mesa NCMS000 I
 golpe_vitamínico golpe_vitamínico NCMS000 I
 gorra_colorada gorra_colorada NCFS000 I
 <gotear>_el_techo gotear_el_techo $1:VM I
-grado_cuatro grado_cuatro AQ0CN00 grado_cuatro NCCN000 I
-grado_dos grado_dos AQ0CN00 grado_dos NCCN000 I
-grado_siete grado_siete AQ0CN00 grado_siete NCCN000 I
-grado_tres grado_tres AQ0CN00 grado_tres NCCN000 I
-grado_uno grado_uno AQ0CN00 grado_uno NCCN000 I
+grado_cuatro grado_cuatro NCMS000 grado_cuatro AQ0CN00 A
+grado_dos grado_dos NCMS000 grado_dos AQ0CN00 A
+grado_siete grado_siete NCMS000 grado_siete AQ0CN00 A
+grado_tres grado_tres NCMS000 grado_tres AQ0CN00 A
+grado_uno grado_uno NCMS000 grado_uno AQ0CN00 A
 <gritar>_viva_chile gritar_viva_Chile $1:VM I
 guante_tomaollas guante_tomaollas NCMS000 I
 guarda_abajo guarda_abajo RG I
 guata_amarilla guata_amarilla NCFS000 I
-guata_de_callo guata_de_callo AQ0CN00 guata_de_callo NCCN000 I
-guata_de_pan guata_de_pan AQ0CN00 guata_de_pan NCCN000 guata_de_pan NCFS000 I
+guata_de_callo guata_de_callo AQ0CN00 guata_de_callo NCCS000 I
+guata_de_pan guata_de_pan AQ0CN00 guata_de_pan NCCS000 guata_de_pan NCFS000 I
 <guatero>_con_uñas guatero_con_uñas $1:NC I
 <gustar>_a_un_hombre_las_patitas_de_chancho gustar_a_un_hombre_las_patitas_de_chancho $1:VM I
 <gustar>_a_un_hombre_las_tunas gustar_a_un_hombre_las_tunas $1:VM I
-gusto_a_leche gusto_a_leche AQ0CN00 gusto_a_leche NCCN000 gusto_a_leche NCMS000 I
+gusto_a_leche gusto_a_leche AQ0CN00 gusto_a_leche NCCS000 gusto_a_leche NCMS000 I
 gusto_a_nada gusto_a_nada AQ0CN00 gusto_a_nada NCMS000 I
 <hablar>_por_la_herida hablar_por_la_herida $1:VM I
 <hacer>_bailar_la_culebra hacer_bailar_la_culebra $1:VM I
@@ -1014,7 +1007,7 @@ hilo_curado hilo_curado NCMS000 I
 <hinchar>_las_huevas hinchar_las_huevas $1:VM I
 <hinchar>_las_pelotas hinchar_las_pelotas $1:VM I
 <hinchar>_los_cocos hinchar_los_cocos $1:VM I
-hocico_de_tarro hocico_de_tarro AQ0CN00 hocico_de_tarro NCCN000 I
+hocico_de_tarro hocico_de_tarro AQ0CN00 hocico_de_tarro NCCS000 I
 hora_de_los_quiubos hora_de_los_quiubos NCFS000 I
 hotel_parejero hotel_parejero NCMS000 I
 hoyito_patada hoyito_patada NCMS000 I
@@ -1027,7 +1020,6 @@ humita_en_olla humita_en_olla NCFS000 I
 hush_puppies hush_puppies NCMP000 I
 ida_de_lengua ida_de_lengua NCFS000 I
 ida_de_tarro ida_de_tarro NCFS000 I
-igual_,_pascual igual,_Pascual RG I
 indio_pícaro indio_pícaro NCMS000 I
 <inflar>_la_red inflar_la_red $1:VM I
 iñi_piñi iñi_piñi AQ0CN00 iñi_piñi RG I
@@ -1081,14 +1073,14 @@ jugador_número_doce jugador_número_doce NCMS000 I
 junta_de_gobierno junta_de_gobierno NCFS000 I
 junta_de_vigilancia junta_de_vigilancia NCMS000 I
 la_caballa la_caballa RG I
-la_cagada la_cagada AQ0CN00 la_cagada NCFS000 I
+la_cagada la_cagada NCFS000 A
 la_carne_de_burro_no_es_transparente la_carne_de_burro_no_es_transparente I I
 la_concha_de_la_lora la_concha_de_la_lora I I
 la_escurrida_es_gratis la_escurrida_es_gratis I I
 la_guinda_de_la_torta la_guinda_de_la_torta NCFS000 I
 la_mano_que_aprieta la_mano_que_aprieta NCFS000 I
 la_muerte_en_bote la_muerte_en_bote NCFS000 I
-la_muerte la_muerte AQ0CN00 la_muerte RG I
+la_muerte la_muerte NCFS000 la_muerte AQ0CN00 la_muerte RG A
 la_pata_de_la_guagua la_pata_de_la_guagua I I
 la_pe la_pe RG I
 lápiz_a_mina lápiz_mina NCMS000 I
@@ -1110,7 +1102,7 @@ la_última_chupada_de_el_mate la_última_chupada_del_mate NCFS000 I
 lavado_de_cabeza lavado_de_cabeza NCMS000 I
 <lavar>_la_ropa_sucia_en_casa lavar_la_ropa_sucia_en_casa $1:VM I
 lávate_la_boca_con_jabón lávate_la_boca_con_jabón I I
-la_zorra la_zorra AQ0CN00 la_zorra NCFS000 I
+la_zorra la_zorra AQ0CN00 la_zorra NCFS000 A
 leche_asada leche_asada NCFS000 I
 leche_de_tigre leche_de_tigre NCFS000 I
 leche_nevada leche_nevada NCFS000 I
@@ -1154,9 +1146,8 @@ los_tres_hoyitos los_tres_hoyitos NCMS000 I
 machucho_de_la_cueva machucho_de_la_cueva NCMS000 I
 maestro_chasquilla maestro_chasquilla NCMS000 I
 <maestro>_ciruela maestro_ciruela $1:NC I
-mala_cueva_,_dijo_el_conejo mala_cueva,_dijo_el_conejo I I
-mala_cueva mala_cueva I A
-mala_onda mala_onda AQ0CN00 mala_onda NCCN000 I
+mala_cueva mala_cueva NCFS000 mala_cueva I A
+mala_onda mala_onda AQ0CN00 mala_onda NCCS000 I
 mal_de_el_tordo mal_del_tordo NCMS000 I
 mal_de_la_lagartija mal_de_la_lagartija NCMS000 I
 <malo>_de_la_cabeza malo_de_la_cabeza $1:AQ I
@@ -1213,7 +1204,7 @@ manuela_palma_callosa manuela_palma_callosa NCFS000 I
 manuela_palma manuela_palma NCFS000 I
 manzana_de_adán manzana_de_Adán NCFS000 I
 máquina_de_coser máquina_de_coser NCFS000 I
-marca_chancho marca_chancho AQ0CN00 marca_chancho NCCN000 I
+marca_chancho marca_chancho AQ0CN00 marca_chancho NCCS000 I
 marcando_ocupado marcando_ocupado RG I
 <marcar>_tarjeta marcar_tarjeta $1:VM I
 marcha_blanca marcha_blanca NCFS000 I
@@ -1231,7 +1222,7 @@ más_contento_que_chancho_en_el_barro más_contento_que_chancho_en_el_barro RG I
 más_contento_que_perro_con_dos_colas más_contento_que_perro_con_dos_colas RG I
 más_desabrido_que_chupar_un_clavo más_desabrido_que_chupar_un_clavo RG I
 más_doblado_que_un_churro más_doblado_que_un_churro RG I
-más_encima más_encima I A
+más_encima más_encima CC I
 más_fácil_que_la_tabla_de_el_uno más_fácil_que_la_tabla_del_uno RG I
 más_fome_que_cumpleaños_de_mudo más_fome_que_cumpleaños_de_mudo AQ0CN00 I
 más_huevón_que_los_perros_nuevos más_huevón_que_los_perros_nuevos RG I
@@ -1253,14 +1244,13 @@ más_que_otro_poco más_que_otro_poco RG I
 más_sano_que_un_yogur más_sano_que_un_yogur RG I
 más_sano_que_un_yogurt más_sano_que_un_yogurt RG I
 más_tranquilo_que_una_foto más_tranquilo_que_una_foto RG I
-mata_de_arrayán_florido mata_de_arrayán_florido AQ0CN00 mata_de_arrayán_florido NCCN000 I
-mata_de_arrayán mata_de_arrayán AQ0CN00 mata_de_arrayán NCCN000 I
-mata_de_huevas mata_de_huevas AQ0CN00 mata_de_huevas NCCN000 I
+mata_de_arrayán_florido mata_de_arrayán_florido AQ0CN00 mata_de_arrayán_florido NCCS000 I
+mata_de_arrayán mata_de_arrayán AQ0CN00 mata_de_arrayán NCCS000 I
+mata_de_huevas mata_de_huevas AQ0CN00 mata_de_huevas NCCS000 I
 <matar>_cada_uno_su_toro matar_cada_uno_su_toro $1:VM I
 <matar>_el_chuncho matar_el_chuncho $1:VM I
 <matar>_la_gallina matar_la_gallina $1:VM I
 materia_dispuesta materia_dispuesta NCFS000 I
-matiné_,_vermut_y_noche matiné,_vermut_y_noche RG I
 meada_de_gato meado_de_gato AQ0FS00 I
 meada_de_perro meado_de_perro AQ0FS00 I
 meadas_de_gato meado_de_gato AQ0FP00 I
@@ -1276,13 +1266,12 @@ me_corto_las_huevas me_corto_las_huevas I I
 <médico>_legista médico_legista $1:NC I
 medio_pavo medio_pavo NCMS000 I
 medio_pollo medio_pollo NCMS000 I
-me_extraña_,_araña me_extraña,_araña I I
 menos_que_peo_en_un_canasto menos_que_peo_en_un_canasto RG I
 menos_que_un_candy menos_que_un_candy RG I
 menos_que_un_paquete_de_cabritas menos_que_un_paquete_de_cabritas RG I
 mercado_de_las_pulgas mercado_de_las_pulgas NCMS000 I
 mercado_persa mercado_persa NCMS000 I
-mermelada_de_huevas mermelada_de_huevas AQ0CN00 mermelada_de_huevas NCCN000 I
+mermelada_de_huevas mermelada_de_huevas AQ0CN00 mermelada_de_huevas NCCS000 I
 mesa_de_el_pellejo mesa_del_pellejo NCFS000 I
 mes_de_el_mar mes_del_mar NCMS000 I
 mes_de_la_patria mes_de_la_Patria NCMS000 I
@@ -1297,21 +1286,19 @@ meta_y_ponga meta_y_ponga RG I
 <meter>_fierro meter_fierro $1:VM I
 <meter>_la_barreta meter_la_barreta $1:VM I
 <meter>_la_cola meter_la_cola $1:VM I
-<meter>_la_mano_al/en_el_bolsillo meter_la_mano_al/en_el_bolsillo $1:VM I
 <meter>_la_mula meter_la_mula $1:VM I
 <meter>_por_la_raja meter_por_la_raja $1:VM I
 <meter>_un_ají_en_el_poto meter_un_ají_en_el_poto $1:VM I
 <metido>_a_gente metido_a_gente $1:AQ metido_a_gente $1:NC I
 metro_cuadrado metro_cuadrado NCMS000 I
-<mijito>_<rico> mijito_rico $1:NC I
-mijito_rico mijito_rico AQ0CN00 mijito_rico NCCN000 I
+<mijito>_<rico> mijito_rico $1:NC mijito_rico $2:AQ A
 <ministro>_de_fe ministro_de_fe $1:NC I
 <ministro>_de_fuero ministro_de_fuero $1:NC I
 <mirar>_a_huevo mirar_a_huevo $1:VM I
 <mirar>_en_menos mirar_en_menos $1:VM I
 <mirar>_para_el_techo mirar_para_el_techo $1:VM I
-miti_miti miti_miti AQ0CN00 miti_miti RG I
-miti_mota miti_mota AQ0CN00 miti_mota RG I
+miti_miti miti_miti RG miti_miti AQ0CN00 A
+miti_mota miti_mota AQ0CN00 miti_mota RG A
 moco_de_pavo moco_de_pavo NCMS000 I
 <mojar>_a_un_hombre_la_canoa mojar_a_un_hombre_la_canoa $1:VM I
 <mojar>_el_poto mojar_el_poto $1:VM I
@@ -1344,18 +1331,18 @@ mote_con_huesillos mote_con_huesillos NCMS000 I
 <mover>_el_piso mover_el_piso $1:VM I
 movida_de_piso movida_de_piso NCFS000 I
 mujer_alegre mujer_alegre NCFS000 I
-muro_a_muro muro_a_muro AQ0CN00 muro_a_muro NCCN000 I
+muro_a_muro muro_a_muro AQ0CN00 muro_a_muro NCMS000 I
 muro_verteolas muro_verteolas NCMS000 I
 naca_la_piriznaca naca_la_piriznaca RG I
 <nacer>_con_la_marraqueta_bajo_el_brazo nacer_con_la_marraqueta_bajo_el_brazo $1:VM I
 <nacer>_<parado> nacer_parado $1:VM I
-nada_que_ver nada_que_ver AQ0CN00 I
+nada_que_ver nada_que_ver AQ0CN00 nada_que_ver RG I
 ñaja_ñaja ñaja_ñaja I I
 na_ni_na na_ni_na RG I
 negrito_de_harvard negrito_de_Harvard NCMS000 I
 ni_a_balazos ni_a_balazos RG I
 ni_a_cañones ni_a_cañones RG I
-ni_cagando ni_cagando RG I
+ni_cagando ni_cagando RG ni_cagando I I
 ni_chicha_ni_limonada ni_chicha_ni_limonada AQ0CN00 I
 ni_chuz_ni_muz ni_chuz_ni_muz RG I
 ni_con_grúa ni_con_grúa RG I
@@ -1389,7 +1376,6 @@ no_<entrar>_balas no_entrar_balas $2:VM I
 no_<estar>_ni_ahí no_estar_ni_ahí $2:VM I
 no_<llevar>_ni_en_los_tacos no_llevar_ni_en_los_tacos $2:VM I
 no_más no_más RG I
-no_me_ayude_tanto_,_compadre no_me_ayude_tanto,_compadre I I
 no_pasa_nada no_pasa_nada I I
 no_<quebrar>_un_huevo no_quebrar_un_huevo $2:VM I
 no_<querer>_más_guerra no_querer_más_guerra $2:VM I
@@ -1400,24 +1386,21 @@ no_sabes_nada no_sabes_nada I I
 no_<salvar>_a_nadie no_salvar_a_nadie $2:VM I
 no_<ser>_de_los_trigos_más_limpios no_ser_de_los_trigos_más_limpios $2:VM I
 no_<ser>_de_trigos_limpios no_ser_de_trigos_limpios $2:VM I
-no_te_cleo_,_dijo_el_chino no_te_cleo_,_dijo_el_chino I I
-no_<tener>_ni_para_hacer_cantar_un_ciego no_tener_ni_para_hacer_cantar_un_ciego $2:VM I
+no_<tener>_ni_para_hacer_cantar_un_ciego no_tener_ni_para_hacer_cantar_a_un_ciego $2:VM I
 no_<ver>_ni_una no_ver_ni_una $2:VM I
 no_<ver>_una no_ver_una $2:VM I
 <novia>_de_la_cuadra novia_de_la_cuadra $1:VM I
 no_<volar>_ni_una_mosca no_volar_ni_una_mosca $2:VM I
-nuca_de_fierro nuca_de_fierro AQ0CN00 nuca_de_fierro NCCN000 I
+nuca_de_fierro nuca_de_fierro AQ0CN00 nuca_de_fierro NCCS000 I
 ojito_de_diuca ojito_de_diuca NCMS000 I
 ojito_de_gato ojito_de_gato NCMS000 I
 ojo_a_el_charqui ojo_al_charqui RG I
 ojo_de_gato ojo_de_gato NCMS000 I
 ojo_de_pollo ojo_de_pollo NCMS000 I
-ojo_,_pestaña_y_ceja ojo,_pestaña_y_ceja I I
 ojo_piojo ojo_piojo I I
 olivo_de_bohemia olivo_de_Bohemia NCMS000 I
 olla_común olla_común NCMS000 I
 oreja_de_paila oreja_de_paila NCFS000 I
-oreja_,_pestaña_y_ceja oreja,_pestaña_y_ceja I I
 orejas_de_paila orejas_de_paila AQ0CN00 orejas_de_paila NCCN000 I
 oro_blanco oro_blanco NCMS000 I
 oro_y_cielo oro_y_cielo AQ0CN00 oro_y_cielo NCMS000 I
@@ -1505,7 +1488,7 @@ para_mayo para_mayo RG I
 para_tirar_a_la_chuña para_tirar_a_la_chuña RG I
 parche_curita parche_curita NCMS000 I
 parque_de_entretenciones parque_de_entretenciones NCMS000 I
-particular_subvencionado particular_subvencionado AQ0CN00 particular_subvencionado NCCN000 I
+particular_subvencionado particular_subvencionado AQ0CN00 particular_subvencionado NCMS000 I
 partida_a_el_medio partido_al_medio AQ0FS00 I
 partida_de_caballo_inglés partida_de_caballo_inglés NCFS000 I
 partidas_a_el_medio partido_al_medio AQ0FP00 I
@@ -1536,15 +1519,15 @@ pasada_por_la_raja pasada_por_la_raja NCFS000 I
 pasión_de_multitudes pasión_de_multitudes NCFS000 I
 pastel_de_choclo pastel_de_choclo NCMS000 I
 pasto_chistoso pasto_chistoso NCMS000 I
-pata_de_cumbia pata_de_cumbia AQ0CN00 pata_de_cumbia NCCN000 pata_de_cumbia NCFS000 I
+pata_de_cumbia pata_de_cumbia AQ0CN00 pata_de_cumbia NCCS000 pata_de_cumbia NCFS000 I
 pata_de_fierro pata_de_fierro NCFS000 I
 pata_de_jaiba pata_de_jaiba NCFS000 I
-pata_de_vaca pata_de_vaca AQ0CN00 pata_de_vaca NCCN000 I
+pata_de_vaca pata_de_vaca AQ0CN00 pata_de_vaca NCCS000 I
 patas_negras patas_negras NCMS000 I
 pateada_de_perra pateada_de_perra NCFS000 I
 <patear>_la_perra patear_la_perra $1:VM I
 pateo_de_perra pateo_de_perra NCMS000 I
-pate_vaca pate_vaca AQ0CN00 pate_vaca NCCN000 I
+pate_vaca pate_vaca AQ0CN00 pate_vaca NCCS000 I
 <patinar>_el_embrague patinar_el_embrague $1:VM I
 patitas_para_qué_las_quiero patitas_para_qué_las_quiero I I
 <pato>_correntino pato_correntino $1:NC I
@@ -1552,10 +1535,9 @@ patitas_para_qué_las_quiero patitas_para_qué_las_quiero I I
 <pato>_lile pato_lile $1:NC I
 pato_malo pato_malo NCMS000 I
 pato_yáñez Pato_Yáñez NCMS000 I
-<patrón>_de_fundo patrón_de_fundo $1:AQ patrón_de_fundo $1:NC I
+<patrón>_de_fundo patrón_de_fundo $1:NC I
 pebre_cuchareado pebre_cuchareado NCMS000 I
 pecos_bill pecos_bill NCMS000 I
-pedro_,_juan_y_diego Pedro,_Juan_y_Diego NCMS000 I
 pegada_en_la_pera pegada_en_la_pera NCFS000 I
 <pegar>_con_moco pegar_con_moco $1:VM I
 <pegar>_con_una_piedra_en_el_pecho pegar_con_una_piedra_en_el_pecho $1:VM I
@@ -1645,8 +1627,6 @@ ponche_a_la_romana ponche_a_la_romana NCMS000 I
 <poner>_la_camiseta poner_la_camiseta $1:VM I
 <poner>_la_proa poner_la_proa $1:VM I
 <poner>_los_guantes poner_los_guantes $1:VM I
-<poner>_ojo_,_pestaña_y_ceja poner_ojo,_pestaña_y_ceja $1:VM I
-<poner>_oreja_,_pestaña_y_ceja poner_oreja,_pestaña_y_ceja $1:VM I
 <poner>_pesada_la_pista poner_pesada_la_pista $1:VM I
 <poner>_pino poner_pino $1:VM I
 <poner>_una_mano_en_el_corazón poner_una_mano_en_el_corazón $1:VM I
@@ -1689,10 +1669,10 @@ por_si_acaso por_si_acaso RG I
 por_si_las_moscas por_si_las_moscas RG I
 porta_confort porta_confort NCMS000 I
 poto_colorado poto_colorado NCMS000 I
-poto_de_botella poto_de_botella AQ0CN00 poto_de_botella NCCN000 I
-poto_de_guatero poto_de_guatero AQ0CN00 poto_de_guatero NCCN000 I
-poto_loco poto_loco AQ0CN00 poto_loco NCCN000 I
-potos_de_botella potos_de_botella AQ0CN00 potos_de_botella NCCN000 I
+poto_de_botella poto_de_botella AQ0CN00 poto_de_botella NCCS000 I
+poto_de_guatero poto_de_guatero AQ0CN00 poto_de_guatero NCCS000 I
+poto_loco poto_loco AQ0CN00 poto_loco NCCS000 I
+potos_de_botella potos_de_botella AQ0CN00 potos_de_botella NCCP000 I
 poto_sucio poto_sucio NCMS000 I
 pozo_séptico pozo_séptico NCMS000 I
 <prender>_la_ampolleta prender_la_ampolleta $1:VM I
@@ -1735,7 +1715,7 @@ quitada_de_piso quitada_de_piso NCFS000 I
 rallada_de_papa rallada_de_papa NCFS000 I
 ralladura_de_papa ralladura_de_papa NCFS000 I
 <rallar>_la_papa rallar_la_papa $1:VM I
-rapa_nui rapa_nui AQ0CN00 rapa_nui NCCN000 I
+rapa_nui rapa_nui NP00G00 rapa_nui AQ0CN00 rapa_nui NCCS000 I
 rápido_graf rápido_graf NCMS000 I
 raspada_de_cachos raspada_de_cachos NCFS000 I
 <raspar>_los_cachos raspar_los_cachos $1:VM I
@@ -1777,7 +1757,7 @@ rueda_de_chicago rueda_de_Chicago NCFS000 I
 <saber>_para_dónde_va_la_micro saber_para_dónde_va_la_micro $1:VM I
 <saber>_por_libro saber_por_libro $1:VM I
 sacada_de_chucha sacada_de_chucha NCFS000 I
-<sacador>_de_vuelta sacador_de_vuelta $1:AQ sacador_de_vuelta $1:NC I
+<sacador>_de_vuelta sacador_de_vuelta $1:NC I
 <sacar>_a_el_pizarrón sacar_al_pizarrón $1:VM I
 <sacar>_barata sacar_barata $1:VM I
 <sacar>_canas_verdes sacar_canas_verdes $1:VM I
@@ -1807,11 +1787,11 @@ sacada_de_chucha sacada_de_chucha NCFS000 I
 <sacar>_pechuga sacar_pechuga $1:VM I
 <sacar>_pica sacar_pica $1:VM I
 <sacar>_roncha sacar_roncha $1:VM I
-saco_de_cacha saco_de_cacha AQ0CN00 saco_de_cacha NCCN000 I
-saco_de_cachas saco_de_cachas AQ0CN00 saco_de_cachas NCCN000 I
-saco_de_huevas saco_de_huevas AQ0CN00 saco_de_huevas NCCN000 I
-saco_de_peras saco_de_peras AQ0CN00 saco_de_peras NCCN000 I
-saco_de_plomo saco_de_plomo AQ0CN00 saco_de_plomo NCCN000 I
+saco_de_cacha saco_de_cacha AQ0CN00 saco_de_cacha NCMS000 I
+saco_de_cachas saco_de_cachas AQ0CN00 saco_de_cachas NCMS000 I
+saco_de_huevas saco_de_huevas NCMS000 saco_de_huevas AQ0CN00 A
+saco_de_peras saco_de_peras AQ0CN00 saco_de_peras NCMS000 I
+saco_de_plomo saco_de_plomo AQ0CN00 saco_de_plomo NCMS000 I
 sale_para_allá sale_para_allá I I
 salida_de_cancha salida_de_cancha NCFS000 I
 <salir>_a_cazar_moscas salir_a_cazar_moscas $1:VM I
@@ -1846,7 +1826,7 @@ sepa_moya sepa_moya I I
 <ser>_un_plato ser_un_plato $1:VM I
 <servir>_todas_las_micros servir_todas_las_micros $1:VM I
 sin_querer_queriendo sin_querer_queriendo RG I
-sin_respeto sin_respeto AQ0CN00 sin_respeto NCCN000 I
+sin_respeto sin_respeto AQ0CN00 sin_respeto NCCS000 I
 sobre_azul sobre_azul NCMS000 I
 soltada_de_trenzas soltada_de_trenzas NCFS000 I
 <soltar>_la_lengua soltar_la_lengua $1:VM I
@@ -1873,15 +1853,14 @@ suspiro_de_monja suspiro_de_monja NCMS000 I
 tablero_chino tablero_chino NCMS000 I
 <taco>_aguja taco_aguja $1:NC I
 <taco>_alto taco_alto $1:NC I
-tal_por_cual tal_por_cual AQ0CN00 tal_por_cual NCCN000 I
+tal_por_cual tal_por_cual NCCS000 I
 tamboreando_en_un_cacho tamboreando_en_un_cacho RG I
 tamboreo_y_huifa tamboreo_y_huifa NCMS000 I
 tarro_duraznero tarro_duraznero NCMS000 I
 t_de_cobre t_de_cobre NCMS000 I
 tec_abierto tec_abierto NCMS000 I
 tec_cerrado tec_cerrado NCMS000 I
-te_conozco_,_mosco te_conozco,_mosco I I
-te_conozco_mosco te_conozco,_mosco I A
+te_conozco_mosco te_conozco_mosco I I
 tencas_muertas tencas_muertas NCFS000 I
 tencas_tencas tencas_tencas NCFS000 I
 <tener>_agarrado_de_las_bolas tener_agarrado_de_las_bolas $1:VM I
@@ -1917,7 +1896,7 @@ tencas_tencas tencas_tencas NCFS000 I
 <tener>_para_la_patada_y_el_combo tener_para_la_patada_y_el_combo $1:VM I
 <tener>_patas tener_patas $1:VM I
 <tener>_que_saber tener_que_saber $1:VM I
-tetera_de_campo tetera_de_campo AQ0CN00 tetera_de_campo NCCN000 I
+tetera_de_campo tetera_de_campo AQ0CN00 tetera_de_campo NCCS000 I
 <tieso>_de_mechas tieso_de_mechas $1:AQ tieso_de_mechas $1:NC I
 tip_top tip_top NCMS000 I
 tirada_de_las_mechas tirado_de_las_mechas AQ0FS00 I
@@ -1960,7 +1939,6 @@ toalla_nova toalla_nova NCFS000 I
 todo_el_rato todo_el_rato RG I
 todo_pasando todo_pasando RG I
 tole_tole tole_tole NCMS000 I
-toma_,_cachito_de_goma toma,_cachito_de_goma I I
 <tomar>_algo_con_andina tomar_algo_con_andina $1:VM I
 <tomar>_para_el_fideo tomar_para_el_fideo $1:VM I
 <tomar>_para_el_tandeo tomar_para_el_tandeo $1:VM I
@@ -1983,7 +1961,7 @@ tupido_y_parejo tupido_y_parejo RG I
 tuto_corto tuto_corto NCMS000 I
 tuto_largo tuto_largo NCMS000 I
 tutti_frutti tutti_frutti NCMS000 I
-una_hueva una_hueva RG I
+una_hueva una_huevada RG I
 una_raja una_raja RG I
 un_cinco un_cinco RG I
 un_coco un_coco RG I
@@ -2001,8 +1979,6 @@ upa_chalupa upa_chalupa I I
 <valer>_callampa valer_callampa $1:VM I
 <valer>_yuyo valer_yuyo $1:VM I
 <vale>_vista vale_vista $1:NC I
-vamos_arando_,_dijo_la_mosca vamos_arando,_dijo_la_mosca I I
-vendedor_de_pomada vendedor_de_pomada AQ0CN00 vendedor_de_pomada NCCN000 I
 <vender>_el_sofá_de_don_otto vender_el_sofá_de_don_Otto $1:VM I
 <vender>_la_mula vender_la_mula $1:VM I
 <vender>_la_pescada vender_la_pescada $1:VM I
@@ -2490,7 +2466,6 @@ a_muerte a_muerte AQ0CN00 a_muerte RG I
 a_muerte_o_vida a_muerte_o_vida RG I
 a_mujeriega a_mujeriega RG I
 a_nado a_nado RG I
-ángela_maría ángela_maría I I
 a_nombre_de a_nombre_de SP I
 a_no_ser_que a_no_ser_que CS I
 anteriormente_a anteriormente_a SP I
@@ -3425,7 +3400,6 @@ no_<decir>_chus_ni_mus no_decir_chus_ni_mus $2:VM I
 no_ha_lugar no_ha_lugar RG I
 no_obstante no_obstante CC I
 no_sea_que no_sea_que CS I
-no_<ser>_cosa_de no_ser_cosa_de $2:VS I
 no_sólo no_sólo CC I
 o_bien o_bien CC I
 off_line off_line RG I
@@ -3642,8 +3616,8 @@ autito_chocador autito_chocador NCMS000 I
 autitos_chocadores autito_chocador NCMP000 I
 lomo_de_burro lomo_de_burro NCMS000 I
 lomos_de_burro lomo_de_burro NCMP000 I
-play_off play_off NCMS000 I
-play_offs play_off NCMP000 I
+play_off playoff NCMS000 I
+play_offs playoff NCMP000 I
 touch_pad touch_pad NCMS000 I
 touch_pads touch_pad NCMP000 I
 vino_navegado vino_navegado NCMS000 I
@@ -3667,4 +3641,1454 @@ viveza_criolla viveza_criolla NCFS000 I
 <poner>_la_gorra ponerse_la_gorra $1:VM I
 <poner>_los_pantalones ponerse_los_pantalones $1:VM I
 <serruchar>_el_piso serruchar_el_piso $1:VM I
+como_que como_que CS A
+es_que es_que CS A:0.8
+sí_poh sí_poh RG sí_poh I I
+así_que así_que CS I
+a_veces a_veces RG I
+por_eso por_eso RG I
+de_que de_que CS I
+a_ver a_ver I A:0.7
+de_hecho de_hecho RG I
+cosas_así cosas_así I A
+más_que más_que CS I
+lo_mismo lo_mismo RG I
+a_el_final al_final RG A
+para_que para_que CS I
+en_realidad en_realidad RG I
+no_poh no_poh RG no_poh I I
+es_más es_más RG A
+o_no o_no I A
+algo_así algo_así I A
+la_verdad la_verdad RG A:0.9
+puede_ser puede_ser RG A:0.4
+una_vez una_vez RG I
+como_para como_para SP I
+más_que_nada más_que_nada RG I
+por_ahí por_ahí RG I
+en_verdad en_verdad RG I
+y_cosas_así y_cosas_así I I
+a_el_lado al_lado RG I
+igual_que igual_que CS A
+de_verdad de_verdad RG I
+a_lo_mejor a_lo_mejor RG I
+en_general en_general RG I
+está_bien está_bien I A
+ni_siquiera ni_siquiera RG I
+cómo_se_llama cómo_se_llama I A
+de_nuevo de_nuevo RG I
+en_cambio en_cambio RG I
+nada_más nada_más RG I
+ni_nada ni_nada I A
+por_lo_que por_lo_que CS A
+cerca_de cerca_de SP I
+sobre_todo sobre_todo RG I
+a_que a_que CS I
+lo_que_pasa_es_que lo_que_pasa_es_que CS I
+una_cosa_así una_cosa_así I A
+a_el_principio al_principio RG I
+la_verdad_es_que la_verdad_es_que RG I
+o_si_no o_si_no CC I
+a_el_menos al_menos RG I
+en_ese_sentido en_ese_sentido RG I
+más_allá más_allá RG I
+según_yo según_yo RG I
+<dar>_lo_mismo dar_lo_mismo $1:VM I
+estados_unidos estados_unidos NP00G00 I
+en_serio en_serio RG I
+y_esas_cosas y_esas_cosas I I
+o_cosas_así o_cosas_así I I
+en_el_fondo en_el_fondo RG A
+para_nada para_nada RG I
+desde_que desde_que CS I
+por_así_decirlo por_así_decirlo RG I
+lo_mismo_que lo_mismo_que CS I
+de_acuerdo de_acuerdo RG A
+eso_sí eso_sí RG I
+o_algo_así o_algo_así I I
+a_el_lado_de al_lado_de SP I
+con_todo con_todo RG A
+en_contra en_contra RG I
+esto_es esto_es RG A
+con_lo_que con_lo_que CS A
+a_poco a_poco RG I
+ponte_tú ponte_tú I I
+por_último por_último RG I
+después_que después_que CS I
+más_bien más_bien RG I
+san_pedro san_pedro NP00G00 I
+en_cuanto en_cuanto RG I
+por_parte_de por_parte_de SP I
+por_si por_si CS I
+puerto_montt puerto_montt NP00G00 I
+la_cosa_es_que la_cosa_es_que CS I
+de_lado de_lado RG I
+menos_mal menos_mal RG I
+a_dónde a_dónde RG I
+a_pesar_de_que a_pesar_de_que CS I
+siempre_que siempre_que CS I
+si_bien si_bien CS I
+no_solo no_solo RG I
+cada_vez_que cada_vez_que CS I
+a_saber a_saber RG I
+qué_sé_yo qué_sé_yo I I
+ya_sea ya_sea RG I
+en_cuenta en_cuenta RG I
+a_el_momento al_momento RG I
+cómo_no cómo_no I A
+a_el_final_de al_final_de SP I
+de_parte_de de_parte_de SP I
+nada_más_que nada_más_que CS I
+por_ahora por_ahora RG I
+a_el_revés al_revés RG I
+en_total en_total RG I
+los_andes los_andes NP00G00 I
+a_principio_de a_principio_de SP I
+a_el_mismo_tiempo al_mismo_tiempo RG I
+así_es_que así_es_que CS I
+san_sebastián san_sebastián NP00O00 I
+a_el_fin al_fin RG I
+por_un_lado por_un_lado RG A
+me_entendís me_entendís I A
+es_decir es_decir RG I
+por_esto por_esto RG A
+de_siempre de_siempre RG I
+en_especial en_especial RG I
+no_cierto no_cierto I I
+en_común en_común RG I
+de_moda de_moda RG I
+no_bien no_bien RG I
+los_ángeles los_ángeles NP00G00 I
+universidad_católica universidad_católica NP00O00 I
+sin_embargo sin_embargo CC I
+de_esa_manera de_esa_manera RG I
+a_punto a_punto RG I
+quiere_decir quiere_decir $1:VM I
+ahora_mismo ahora_mismo RG I
+a_la_larga a_la_larga RG I
+a_el_cabo al_cabo RG I
+buenos_aires buenos_aires NP00G00 I
+de_acuerdo_a de_acuerdo_a SP I
+de_ahí_que de_ahí_que CS I
+nueva_zelanda nueva_zelanda NP00G00 I
+san_francisco san_francisco NP00G00 I
+sí_po sí_poh RG sí_poh I I
+universidad_de_chile universidad_de_chile NP00O00 I
+menos_mal_que menos_mal_que CS I
+en_medio en_medio RG I
+a_pesar_que a_pesar_que CS I
+en_blanco en_blanco RG I
+en_fin en_fin RG I
+en_particular en_particular RG I
+fuerza_aérea fuerza_aérea NP00O00 I
+viña_de_el_mar viña_del_mar NP00G00 I
+por_una_parte por_una_parte RG I
+a_el_contrario al_contrario RG I
+me_entiendes me_entiendes I A
+puerto_rico puerto_rico NP00G00 I
+por_más_que por_más_que CS I
+en_la_práctica en_la_práctica RG I
+en_voz_alta en_voz_alta RG I
+a_el_respecto al_respecto RG I
+aun_así aun_así RG I
+en_caso_de_que en_caso_de_que CS I
+tan_solo tan_solo RG I
+no_po no_poh RG no_poh I I
+a_partir a_partir RG I
+de_servicio de_servicio RG I
+por_culpa_de por_culpa_de SP I
+a_medias a_medias RG I
+<guerra>_<mundial> guerra_mundial $1:NC I
+medio_ambiente medio_ambiente NCMS000 I
+por_fin por_fin RG I
+en_conjunto en_conjunto RG I
+fuerzas_armadas fuerzas_armadas NP00O00 I
+a_el_azar al_azar RG I
+en_comparación_con en_comparación_con SP I
+claro_que_sí claro_que_sí I I
+la_habana la_habana NP00G00 I
+a_pie a_pie RG I
+de_todas_formas de_todas_formas RG I
+de_alta de_alta RG I
+a_tiempo a_tiempo RG I
+de_cerca de_cerca RG I
+de_el_todo del_todo RG I
+mediados_de mediados_de SP I
+<plaza>_de_armas plaza_de_armas $1:NC I
+juan_carlos juan_carlos NP00SP0 I
+san_luis san_luis NP00G00 I
+a_el_parecer al_parecer RG I
+costa_rica costa_rica NP00G00 I
+de_la_misma_manera de_la_misma_manera RG I
+de_lejos de_lejos RG I
+en_el_caso_de_que en_el_caso_de_que CS I
+en_primer_lugar en_primer_lugar RG I
+mejor_dicho mejor_dicho RG I
+por_encima por_encima RG I
+a_fondo a_fondo RG I
+a_lo_largo_de a_lo_largo_de SP I
+de_una_vez de_una_vez RG I
+dios_mío dios_mío I I
+qué_rico qué_rico I A
+a_final_de a_final_de SP I
+a_el_aire_libre al_aire_libre RG I
+américa_latina américa_latina NP00G00 I
+de_la_misma_forma de_la_misma_forma RG I
+copa_américa copa_américa NP00V00 I
+en_público en_público RG I
+ministerio_de_educación ministerio_de_educación NP00O00 I
+más_y_más más_y_más RG I
+por_otra_parte por_otra_parte RG I
+pese_a_que pese_a_que CS I
+a_propósito a_propósito RG A
+a_ratos a_ratos RG I
+a_todo_esto a_todo_esto RG I
+por_falta_de por_falta_de SP I
+pucha_que pucha_que I A
+república_dominicana república_dominicana NP00G00 I
+de_baja de_baja RG I
+después_de_todo después_de_todo RG I
+en_tanto en_tanto RG I
+onda_que onda_que CS A
+puesto_que puesto_que CS I
+san_pablo san_pablo NP00G00 I
+a_largo_plazo a_largo_plazo RG I
+claro_que_no claro_que_no I I
+como_puede_ser como_puede_ser RG I
+en_silencio en_silencio RG I
+espíritu_santo espíritu_santo NP00SP0 I
+por_tanto por_tanto RG I
+segunda_guerra_mundial segunda_guerra_mundial NP00V00 I
+a_el_máximo al_máximo RG I
+de_paso de_paso RG I
+en_forma_de en_forma_de SP I
+quería_decir quería_decir $1:VM I
+de_acuerdo_en de_acuerdo_en SP I
+de_costumbre de_costumbre RG I
+de_momento de_momento RG I
+en_efecto en_efecto RG I
+en_principio en_principio RG I
+más_aún más_aún RG I
+san_carlos san_carlos NP00G00 I
+sin_duda sin_duda RG I
+a_gusto a_gusto RG I
+cara_a cara_a SP I
+en_alto en_alto RG I
+en_teoría en_teoría RG I
+qué_tal qué_tal RG I
+<toque>_de_queda toque_de_queda $1:NC I
+un_tanto un_tanto RG I
+a_finales_de a_finales_de SP I
+a_la_ligera a_la_ligera RG I
+de_esta_manera de_esta_manera RG I
+de_lleno de_lleno RG I
+en_relación_a en_relación_a SP I
+fuerza_armada fuerza_armada NP00O00 I
+san_jorge san_jorge NP00G00 I
+sino_también sino_también RG I
+a_la_par a_la_par RG I
+de_fondo de_fondo RG I
+de_pie de_pie RG I
+te_fijas te_fijas I A
+ciudad_de_méxico ciudad_de_méxico NP00G00 I
+claro_está claro_está RG I
+de_entrada de_entrada RG I
+de_otro_lado de_otro_lado RG I
+san_fernando san_fernando NP00G00 I
+semana_santa semana_santa NCFS000 I
+a_el_servicio_de al_servicio_de SP I
+en_una_palabra en_una_palabra RG I
+hoy_por_hoy hoy_por_hoy RG I
+las_vegas las_vegas NP00G00 I
+mientras_tanto mientras_tanto RG I
+por_casualidad por_casualidad RG I
+por_cierto por_cierto RG I
+por_completo por_completo RG I
+sri_lanka sri_lanka NP00G00 I
+a_corto_plazo a_corto_plazo RG I
+a_distancia a_distancia RG I
+a_prueba a_prueba RG I
+a_el_margen al_margen RG I
+de_esta_forma de_esta_forma RG I
+de_inmediato de_inmediato RG I
+de_una_parte de_una_parte RG I
+debido_a_que debido_a_que CS I
+el_salvador el_salvador NP00G00 I
+en_broma en_broma RG I
+en_vano en_vano RG I
+santa_lucía santa_lucía NP00G00 I
+a_lo_mejor_sí a_lo_mejor_sí RG A
+ante_todo ante_todo RG I
+de_golpe de_golpe RG I
+de_otra_parte de_otra_parte RG I
+don_quijote don_quijote NP00SP0 I
+en_definitiva en_definitiva RG I
+santa_rosa santa_rosa NP00G00 I
+en_absoluto en_absoluto RG I
+en_blanco_y_negro en_blanco_y_negro RG I
+en_la_medida_que en_la_medida_que CS I
+en_profundidad en_profundidad RG I
+guerra_fría guerra_fría NP00V00 I
+la_haya la_haya NP00G00 I
+los_angeles los_angeles NP00G00 I
+mucho_antes_que mucho_antes_que CS I
+por_debajo_de por_debajo_de SP I
+por_encima_de por_encima_de SP I
+sao_paulo sao_paulo NP00G00 I
+a_su_vez a_su_vez RG I
+de_seguro de_seguro RG I
+por_desgracia por_desgracia RG I
+por_ello por_ello RG I
+por_lo_cual por_lo_cual CS I
+río_de_janeiro río_de_janeiro NP00G00 I
+santa_fe santa_fe NP00G00 I
+a_menudo a_menudo RG I
+de_igual_manera de_igual_manera RG I
+donald_trump donald_trump NP00SP0 I
+en_cualquier_caso en_cualquier_caso RG I
+en_la_línea_de en_la_línea_de SP I
+michael_jackson michael_jackson NP00SP0 I
+primera_guerra_mundial primera_guerra_mundial NP00V00 I
+república_checa república_checa NP00G00 I
+san_ignacio san_ignacio NP00G00 I
+a_costa a_costa RG I
+a_domicilio a_domicilio RG I
+a_el_borde_de al_borde_de SP I
+a_el_instante al_instante RG I
+con_el_fin_de con_el_fin_de SP I
+de_forma_que de_forma_que CS I
+de_veras de_veras RG I
+deportes_concepción deportes_concepción NP00O00 I
+me_cachái me_cachái I A
+por_lo_demás por_lo_demás RG I
+rock_and_roll rock_and_roll NCMS000 I
+tan_sólo tan_solo RG I
+a_causa a_causa RG I
+a_primera_vista a_primera_vista RG I
+a_el_margen_de al_margen_de SP I
+a_el_mismo_tiempo_que al_mismo_tiempo_que CS I
+américa_de_el_sur américa_del_sur NP00G00 I
+cachái_o_no cachái_o_no I I
+cerro_colorado cerro_colorado NP00G00 I
+cámara_de_diputados cámara_de_diputados NP00O00 I
+de_plano de_plano RG I
+de_relleno de_relleno RG I
+de_un_momento_a_otro de_un_momento_a_otro RG I
+en_boga en_boga RG I
+en_efectivo en_efectivo RG I
+en_función_de en_función_de SP I
+en_otras_palabras en_otras_palabras RG I
+en_privado en_privado RG I
+en_segundo_lugar en_segundo_lugar RG I
+entre_tanto entre_tanto RG I
+instituto_nacional instituto_nacional NP00O00 I
+pese_a_todo pese_a_todo RG I
+real_madrid real_madrid NP00O00 I
+unión_española unión_española NP00O00 I
+virgen_maría virgen_maría NP00SP0 I
+a_comienzos_de a_comienzos_de SP I
+a_la_deriva a_la_deriva RG I
+a_el_contrario_de al_contrario_de SP I
+américa_central américa_central NP00G00 I
+corea_de_el_sur corea_del_sur NP00G00 I
+en_concreto en_concreto RG I
+en_desacuerdo_con en_desacuerdo_con SP I
+en_gran_parte en_gran_parte RG I
+en_resumen en_resumen RG I
+frente_a_frente frente_a_frente RG I
+garcía_márquez garcía_márquez NP00SP0 I
+juegos_olímpicos juegos_olímpicos NP00V00 I
+manuel_rojas manuel_rojas NP00SP0 I
+países_bajos países_bajos NP00G00 I
+poder_judicial poder_judicial NP00O00 I
+sagrada_familia sagrada_familia NP00V00 I
+sagrado_corazón sagrado_corazón NP00V00 I
+san_diego san_diego NP00G00 I
+san_vicente san_vicente NP00G00 I
+simón_bolívar simón_bolívar NP00SP0 I
+torres_gemelas torres_gemelas NP00G00 I
+a_falta_de a_falta_de SP I
+a_la_vista_de a_la_vista_de SP I
+a_partir_de_ahí a_partir_de_ahí RG I
+a_salvo a_salvo RG I
+administración_pública administración_pública NCFS000 I
+a_el_límite_de al_límite_de SP I
+a_el_respecto_de al_respecto_de SP I
+augusto_pinochet augusto_pinochet NP00SP0 I
+copa_de_el_mundo copa_del_mundo NP00V00 I
+eduardo_frei eduardo_frei NP00SP0 I
+en_directo en_directo RG I
+gran_bretaña gran_bretaña NP00G00 I
+maría_elena maría_elena NP00G00 maría_elena NP00SP0 I
+mel_gibson mel_gibson NP00SP0 I
+naciones_unidas naciones_unidas NP00O00 I
+otro_tanto otro_tanto RG I
+por_cuanto por_cuanto RG I
+por_lo_visto por_lo_visto RG I
+por_su_parte por_su_parte RG I
+príncipe_de_asturias príncipe_de_asturias NP00V00 I
+rio_de_janeiro río_de_janeiro NP00G00 I
+san_carlos_de_apoquindo san_carlos_de_apoquindo NP00G00 I
+sierra_nevada sierra_nevada NP00G00 I
+tribunal_constitucional tribunal_constitucional NP00O00 I
+visto_bueno visto_bueno NCMS000 I
+a_costa_de a_costa_de SP I
+a_la_corta a_la_corta RG I
+a_secas a_secas RG I
+a_el_contado al_contado RG I
+a_el_detalle al_detalle RG I
+a_el_paso al_paso RG I
+apenas_si apenas_si RG I
+aun_cuando aun_cuando CS I
+banco_central banco_central NP00O00 I
+con_el_objetivo_de con_el_objetivo_de SP I
+<consejo>_de_ancianos consejo_de_ancianos $1:NC I
+copa_libertadores copa_libertadores NP00V00 I
+cruz_roja cruz_roja NP00O00 I
+cuando_mucho cuando_mucho RG I
+cámara_alta cámara_alta NP00O00 I
+de_espaldas de_espaldas RG I
+de_manera_que de_manera_que CS I
+de_tal_forma_que de_tal_forma_que CS I
+de_una_vez_por_todas de_una_vez_por_todas RG I
+desde_entonces desde_entonces RG I
+en_búsqueda_de en_búsqueda_de SP I
+en_cabeza en_cabeza RG I
+en_cadena en_cadena RG I
+en_conclusión en_conclusión RG I
+en_masa en_masa RG I
+en_relación_con en_relación_con SP I
+en_tercer_lugar en_tercer_lugar RG I
+enrique_iglesias enrique_iglesias NP00SP0 I
+fernando_gonzález fernando_gonzález NP00SP0 I
+frank_sinatra frank_sinatra NP00SP0 I
+he_ahí he_ahí RG I
+inter_de_milán inter_de_milán NP00O00 I
+juan_pablo_ii juan_pablo_ii NP00SP0 I
+los_siete_magníficos los_siete_magníficos NP00V00 I
+más_aun más_aún RG I
+por_sorpresa por_sorpresa RG I
+porto_alegre porto_alegre NP00G00 I
+reino_unido reino_unido NP00G00 I
+rey_león rey_león NP00V00 I
+ricardo_lagos ricardo_lagos NP00SP0 I
+river_plate river_plate NP00O00 I
+santa_ana santa_ana NP00G00 I
+santa_bárbara santa_bárbara NP00G00 I
+sigmund_freud sigmund_freud NP00SP0 I
+silvio_rodríguez silvio_rodríguez NP00SP0 I
+sobre_la_marcha sobre_la_marcha RG I
+sudeste_asiático sudeste_asiático NP00G00 I
+trinidad_y_tobago trinidad_y_tobago NP00G00 I
+unión_soviética unión_soviética NP00G00 I
+will_smith will_smith NP00SP0 I
+a_continuación a_continuación RG I
+a_juicio_de a_juicio_de SP I
+a_la_redonda a_la_redonda RG I
+a_manos_de a_manos_de SP I
+a_el_descubierto al_descubierto RG I
+a_el_inicio_de al_inicio_de SP I
+audax_italiano audax_italiano NP00O00 I
+bahía_blanca bahía_blanca NP00G00 I
+baja_sajonia baja_sajonia NP00G00 I
+banco_mundial banco_mundial NP00O00 I
+bill_gates bill_gates NP00SP0 I
+bin_laden bin_laden NP00SP0 I
+bolsa_de_comercio bolsa_de_comercio NP00O00 I
+carolina_de_el_norte carolina_del_norte NP00G00 I
+cartagena_de_indias cartagena_de_indias NP00G00 I
+<comandante>_en_jefe comandante_en_jefe $1:NC I
+como_consecuencia como_consecuencia RG I
+con_el_propósito_de con_el_propósito_de SP I
+con_lo_cual con_lo_cual CS I
+coquimbo_unido coquimbo_unido NP00O00 I
+crónicas_marcianas crónicas_marcianas NP00V00 I
+cámara_baja cámara_baja NP00O00 I
+de_igual_forma de_igual_forma RG I
+de_maravilla de_maravilla RG I
+divina_providencia divina_providencia NP00V00 I
+el_cairo el_cairo NP00G00 I
+en_breve en_breve RG I
+en_evidencia en_evidencia RG I
+en_marcha en_marcha RG I
+en_nombre_de en_nombre_de SP I
+en_presencia_de en_presencia_de SP I
+en_regla en_regla RG I
+en_ridículo en_ridículo RG I
+en_secreto en_secreto RG I
+en_solitario en_solitario RG I
+en_suma en_suma RG I
+en_suspenso en_suspenso RG I
+en_último_lugar en_último_lugar RG I
+federación_nacional_de_cafeteros federación_nacional_de_cafeteros NP00O00 I
+federación_nacional_de_cafeteros_de_colombia federación_nacional_de_cafeteros_de_colombia NP00O00 I
+federico_garcía_lorca federico_garcía_lorca NP00SP0 I
+fernando_muñoz fernando_muñoz NP00SP0 I
+hasta_el_punto_que hasta_el_punto_que CS I
+hong_kong hong_kong NP00G00 I
+infantería_de_marina infantería_de_marina NP00O00 I
+javier_bardem javier_bardem NP00SP0 I
+johan_cruyff johan_cruyff NP00SP0 I
+josé_miguel_insulza josé_miguel_insulza NP00SP0 I
+juan_bautista juan_bautista NP00SP0 I
+juan_gelman juan_gelman NP00SP0 I
+juan_gómez juan_gómez NP00SP0 I
+manchester_united manchester_united NP00O00 I
+mano_a_mano mano_a_mano RG mano_a_mano NCMS000 A
+mar_rojo mar_rojo NP00G00 I
+marcha_atrás marcha_atrás RG I
+michael_moore michael_moore NP00SP0 I
+mike_powell mike_powell NP00SP0 I
+ministerio_de_agricultura ministerio_de_agricultura NP00O00 I
+ministerio_de_cultura ministerio_de_cultura NP00O00 I
+ministerio_de_defensa ministerio_de_defensa NP00O00 I
+ministerio_de_hacienda ministerio_de_hacienda NP00O00 I
+ministerio_de_el_interior ministerio_del_interior NP00O00 I
+mohamed_alí mohamed_alí NP00SP0 I
+nada_menos_que nada_menos_que CS I
+north_carolina carolina_del_norte NP00G00 I
+nueva_delhi nueva_delhi NP00G00 I
+nueva_orleans nueva_orleans NP00G00 I
+organización_mundial_de_la_salud organización_mundial_de_la_salud NP00O00 I
+otra_salida_que otra_salida_que CS I
+policía_federal policía_federal NP00O00 I
+premio_nobel premio_nobel NP00V00 I
+procuraduría_general_de_la_república procuraduría_general_de_la_república NP00O00 I
+punta_de_el_este punta_del_este NP00G00 I
+punto_de_partida punto_de_partida NCMS000 I
+querrá_decir querrá_decir $1:VM I
+república_de_italia república_de_italia NP00G00 I
+rey_arturo rey_arturo NP00SP0 I
+rienda_suelta rienda_suelta NCFS000 I
+rolling_stones rolling_stones NP00O00 I
+rumbo_a rumbo_a SP I
+sacro_imperio_romano sacro_imperio_romano NP00G00 I
+sala_constitucional sala_constitucional NP00O00 I
+sancho_panza sancho_panza NP00SP0 I
+santa_laura santa_laura NP00G00 I
+<secretario>_<general> secretario_general $1:NC I
+seguridad_social seguridad_social NCFS000 I
+sin_techo sin_techo RG I
+stan_smith stan_smith NP00SP0 I
+stephen_hawking stephen_hawking NP00SP0 I
+sticky_fingers sticky_fingers NP00V00 I
+tercer_mundo tercer_mundo NCMS000 I
+torre_de_babel torre_de_babel NP00G00 I
+de_este_modo de_este_modo RG I
+de_igual_modo de_igual_modo RG I
+de_el_mismo_modo del_mismo_modo RG I
+dicho_de_otra_manera dicho_de_otra_manera RG I
+dicho_de_otro_modo dicho_de_otro_modo RG I
+dicho_sea_de_paso dicho_sea_de_paso RG I
+en_último_término en_último_término RG I
+por_añadidura por_añadidura RG I
+por_si_fuera_poco por_si_fuera_poco RG I
+ya_lo_creo ya_lo_creo I I
+para_más_remate para_más_remate RG I
+carolina_de_el_sur carolina_del_sur NP00G00 I
+south_carolina carolina_del_sur NP00G00 I
+dakota_de_el_norte dakota_del_norte NP00G00 I
+north_dakota dakota_del_norte NP00G00 I
+dakota_de_el_sur dakota_del_sur NP00G00 I
+south_dakota dakota_del_sur NP00G00 I
+<vendedor>_de_pomada vendedor_de_pomada AQ0CN00 vendedor_de_pomada $1:NC I
+<hacer>_la_cimarra hacer_la_cimarra $1:VM I
+en_una_de_ésas en_una_de_esas I A
+de_maikel de_máiquel I I
+de_michael de_máiquel I I
+de_maykel de_máiquel I I
+de_máikel de_máiquel I I
+ku_klux_klan ku_klux_klan NP00O00 I
+kon_tiki kon_tiki NP00V00 I
+wi_fi wifi NCMS000 I
+wi_-_fi wifi NCMS000 I
+kolo_kolo colo_colo NP00O00 I
+fiskales_ad_hoc fiskales_ad_hoc NP00O00 I
+fiskales_ad_hok fiskales_ad_hoc NP00O00 I
+post_hoc post_hoc RG I
+ni_kagando ni_cagando RG ni_cagando I I
+para_qué para_qué PT0CS00 I
+what_the_fuck what_the_fuck I I
+what_the_fuk what_the_fuck I I
+what_the_fack what_the_fuck I I
+what_the_fak what_the_fuck I I
+what_the_fac what_the_fuck I I
+what_the_fuc what_the_fuck I I
+what_de_fuck what_the_fuck I I
+what_de_fuk what_the_fuck I I
+what_de_fack what_the_fuck I I
+what_de_fak what_the_fuck I I
+what_de_fac what_the_fuck I I
+what_de_fuc what_the_fuck I I
+what_da_fuck what_the_fuck I I
+what_da_fuk what_the_fuck I I
+what_da_fack what_the_fuck I I
+what_da_fak what_the_fuck I I
+what_da_fac what_the_fuck I I
+what_da_fuc what_the_fuck I I
+wat_the_fuck what_the_fuck I I
+wat_the_fuk what_the_fuck I I
+wat_the_fack what_the_fuck I I
+wat_the_fak what_the_fuck I I
+wat_the_fac what_the_fuck I I
+wat_the_fuc what_the_fuck I I
+wat_de_fuck what_the_fuck I I
+wat_de_fuk what_the_fuck I I
+wat_de_fack what_the_fuck I I
+wat_de_fak what_the_fuck I I
+wat_de_fac what_the_fuck I I
+wat_de_fuc what_the_fuck I I
+wat_da_fuck what_the_fuck I I
+wat_da_fuk what_the_fuck I I
+wat_da_fack what_the_fuck I I
+wat_da_fak what_the_fuck I I
+wat_da_fac what_the_fuck I I
+wat_da_fuc what_the_fuck I I
+chi_gua chihuá I I
+chi_guá chihuá I I
+chi_güa chihuá I I
+chi_güá chihuá I I
+chi_hua chihuá I I
+chi_huá chihuá I I
+qué_caracho caracho I I
+a_la_flauta a_la_flauta I I
+a_la_pucha a_la_pucha RG I
+a_lo_macho a_lo_macho RG I
+abran_la_cancha abran_la_cancha I I
+ándate_a_la_concha_de_la_lora ándate_a_la_concha_de_la_lora I I
+ándate_a_la_concha_de_su_madre ándate_a_la_concha_de_su_madre I I
+ándate_a_la_conchetumadre ándate_a_la_conchetumadre I I
+ándate_a_la_cresta ándate_a_la_cresta I I
+ándate_a_la_punta_de_el_cerro ándate_a_la_punta_del_cerro I I
+caca_niño caca_niño I I
+dale_nomás dale_nomás I I
+<dejar>_de_joder dejar_de_joder $1:VM I
+la_flauta la_flauta I I
+las_huinchas las_huinchas I I
+mi_alma mi_alma I I
+na_que_ver nada_que_ver AQ0CN00 nada_que_ver I I
+otra_cosa_es_con_guitarra otra_cosa_es_con_guitarra I I
+por_la_gran_flauta por_la_gran_flauta I I
+por_la_madre por_la_madre I I
+qué_lesera qué_lesera I I
+que_se_friegue que_se_friegue I I
+qué_tiene qué_tiene RG I
+sí_oh sí_oh I I
+váyase_a_el_diablo váyase_al_diablo I I
+pan_pan_vino_vino pan_pan_vino_vino RG I
+a_el_pan_pan_a_el_vino_vino al_pan_pan_al_vino_vino RG I
+cama_adentro cama_adentro AQ0CN00 I
+a_punta_y_codo a_punta_y_codo RG I
+de_punta_y_codo de_punta_y_codo RG I
+de_pocas_pulgas de_pocas_pulgas AQ0CN00 I
+<sangre>_<liviano> sangre_liviana $1:NC I
+de_sangre_liviana de_sangre_liviana AQ0CN00 I
+<sangre>_<pesado> sangre_pesada $1:NC I
+de_sangre_pesada de_sangre_pesada AQ0CN00 I
+<hacer>_perro_muerto hacer_perro_muerto $1:VM I
+sin_anestesia sin_anestesia AQ0CN00 sin_anestesia RG I
+<operar>_sin_anestesia operar_sin_anestesia $1:VM I
+ni_mandado_a_hacer ni_mandado_a_hacer RG I
+a_rompe_y_rasga de_rompe_y_rasga RG I
+a_rompe_y_raja de_rompe_y_rasga RG I
+de_rompe_y_raja de_rompe_y_rasga RG I
+a_boca_de_jarro a_boca_de_jarro RG I
+a_boca_de_bocajarro a_boca_de_bocajarro RG I
+a_boca_de_urna a_boca_de_urna RG I
+a_cada_nada a_cada_nada RG I
+a_cara_o_sello a_cara_o_sello RG I
+a_choro a_choro AQ0CN00 I
+a_colación a_colación RG I
+a_como_dé_lugar a_como_dé_lugar RG I
+a_costilla_de a_costillas_de RG I
+a_costillas_de a_costillas_de RG I
+a_culo_pelado a_culo_pelado RG I
+a_dobles_y_un_repique a_dobles_y_un_repique RG I
+a_estas_alturas a_estas_alturas RG I
+a_fardo_cerrado a_fardo_cerrado RG I
+a_final_de_cuentas a_fin_de_cuentas RG I
+a_firme a_firme RG I
+a_flor_de_labio a_flor_de_labio RG I
+a_flor_de_labios a_flor_de_labio RG I
+a_futuro a_futuro RG I
+a_garabato_limpio a_garabato_limpio RG I
+a_garabato_pelado a_garabato_pelado RG I
+a_garbanzal a_garbanzal RG I
+a_grito_partido a_grito_partido RG I
+a_grito_pelado a_grito_pelado RG I
+a_huevo a_huevo RG I
+a_imagen_y_semejanza a_imagen_y_semejanza RG I
+a_la_americana a_la_americana RG I
+a_la_brevedad a_la_brevedad RG I
+a_la_buena a_la_buena RG I
+a_la_buena_de_dios a_la_buena_de_Dios RG I
+a_la_carrera a_la_carrera RG I
+a_la_copa a_la_copa RG I
+a_la_de_dios a_la_de_Dios AQ0CN00 I
+a_la_diabla a_la_diabla RG I
+a_la_distancia a_la_distancia RG I
+a_la_final a_la_final RG I
+a_la_hora_de_la_hora a_la_hora_de_la_hora RG I
+a_la_hora_de_los_quiubos a_la_hora_de_los_quiubos RG I
+a_la_loca a_la_loca RG I
+a_la_mayor_brevedad a_la_mayor_brevedad RG I
+a_la_miseria a_la_miseria RG I
+a_la_negra a_la_negra RG I
+a_la_segura a_la_segura RG I
+a_la_vela a_la_vela RG I
+a_la_vuelta_de_la_esquina a_la_vuelta_de_la_esquina RG I
+a_lapa a_lapa RG I
+a_las_corridas a_las_corridas RG I
+a_las_finales a_las_finales RG I
+a_las_mil_quinientas a_las_mil_quinientas RG I
+a_las_mil_y_quinientas a_las_mil_y_quinientas RG I
+a_las_mil_y_una a_las_mil_y_una RG I
+a_las_nubes a_las_nubes RG I
+a_las_patadas a_las_patadas RG I
+a_las_quinientas a_las_quinientas RG I
+a_litros a_litros RG I
+a_lo_animal a_lo_animal RG I
+a_lo_bruto a_lo_bruto RG I
+a_lo_mero_macho a_lo_mero_macho RG I
+a_lo_pendejo a_lo_pendejo RG I
+a_los_apurones a_los_apurones RG I
+a_los_apuretes a_los_apuretes RG I
+a_mano_limpia a_mano_limpia RG I
+a_más_no_haber a_más_no_haber RG I
+a_media_agua a_media_agua RG I
+a_medias_aguas a_medias_aguas RG I
+a_<morir>_pichicho a_morir_pichicho $2:VM I
+a_ojo a_ojo RG I
+a_ojo_de_pájaro a_ojo_de_pájaro RG I
+a_ojos_cerrados a_ojos_cerrados RG I
+a_ojos a_ojos RG I
+a_pecho_limpio a_pecho_limpio RG I
+a_pedir_de_boca a_pedir_de_boca RG I
+a_pelo a_pelo RG I
+a_pie_juntillas a_pie_juntillas RG I
+a_pies_juntillas a_pies_juntillas RG I
+a_pies_juntos a_pies_juntos RG I
+a_precio_de_huevo a_precio_de_huevo RG I
+a_prueba_de_balas a_prueba_de_balas AQ0CN00 I
+a_puertas_cerradas a_puerta_cerrada RG I
+a_puertas_abiertas a_puertas_abiertas RG I
+a_pulmón a_pulmón RG I
+a_pulso a_pulso RG I
+a_punta_de a_punta_de RG I
+a_puro_pulmón a_puro_pulmón RG I
+a_todo_pulmón a_todo_pulmón RG I
+a_saltos_y_brincos a_saltos_y_brincos RG I
+a_su_regalado_gusto a_su_regalado_gusto RG I
+a_término a_término RG I
+a_toda_carrera a_toda_carrera RG I
+a_toda_pala a_toda_pala RG I
+a_toda_prueba a_toda_prueba AQ0CN00 I
+a_todo_carrete a_todo_carrete RG I
+a_todo_costo a_todo_costo RG I
+a_todo_dar a_todo_dar RG I
+a_todo_forro a_todo_forro RG I
+a_todo_full a_todo_full RG I
+a_todo_lo_que_da a_todo_lo_que_da RG I
+a_tres_cuartos_y_un_repique a_tres_dobles_y_un_repique RG I
+a_troche_y_moche a_troche_y_moche RG I
+a_vista_y_paciencia a_vista_y_paciencia RG I
+a_vuelo_de_pájaro a_vuelo_de_pájaro RG I
+<abandonar>_la_cancha abandonar_la_cancha $1:VM I
+<abeja>_<africano> abeja_africana $1:NC I
+<abocar>_a abocar_a $1:VM I
+<abrazo>_de_el_oso abrazo_del_oso $1:NC I
+<abrir>_el_fuego abrir_el_fuego $1:VM I
+<abrir>_los_fuegos abrir_los_fuegos $1:VM I
+<romper>_el_fuego romper_el_fuego $1:VM I
+<romper>_los_fuegos romper_los_fuegos $1:VM I
+<abrir>_puertas abrir_puertas $1:VM I
+<abrir>_sus_puertas abrir_sus_puertas $1:VM I
+<abrir>_brecha abrir_brecha $1:VM I
+<abrir>_camino abrir_camino $1:VM I
+abrir_de_par_en_par abrir_de_par_en_par RG I
+<abrir>_el_corazón abrir_el_corazón $1:VM I
+<abrir>_la_boca abrir_la_boca $1:VM I
+<abrir>_las_piernas abrir_las_piernas $1:VM I
+<abrir>_las_puertas abrir_las_puertas $1:VM I
+<abrir>_los_ojos abrir_los_ojos $1:VM I
+<abrir>_paso abrir_paso $1:VM I
+<abrir>_un_hoyo_para_tapar_otro abrir_un_hoyo_para_tapar_otro $1:VM I
+<abrir>_un_hueco_para_tapar_otro abrir_un_hueco_para_tapar_otro $1:VM I
+<abrir>_una_brecha abrir_una_brecha $1:VM I
+<abrir>_campo abrir_campo $1:VM I
+<abrir>_de_piernas abrir_de_piernas $1:VM I
+<acabar>_con acabar_con $1:VM I
+<acaparar>_la_conversación acaparar_la_conversación $1:VM I
+<aceitar>_la_maquinaria aceitar_la_maquinaria $1:VM I
+<afilar>_las_uñas afilar_las_uñas $1:VM I
+<afilar>_las_estacas afilar_las_estacas $1:VM I
+<afilar>_las_garras afilar_las_garras $1:VM I
+<afinar>_el_motor afinar_el_motor $1:VM I
+<aflojar>_las_riendas aflojar_las_riendas $1:VM I
+<soltar>_las_riendas soltar_las_riendas $1:VM I
+<aflojar>_la_lengua aflojar_la_lengua $1:VM I
+<aflojar>_las_patas aflojar_las_patas $1:VM I
+<agachar>_la_cabeza agachar_la_cabeza $1:VM I
+<bajar>_la_cabeza bajar_la_cabeza $1:VM I
+<agachar>_el_lomo agachar_el_lomo $1:VM I
+<agarrar>_de_bajada agarrar_de_bajada $1:VM I
+<agarrar>_la_onda agarrar_la_onda $1:VM I
+<agua>_perra agua_perra $1:NC I
+<agua>_de_perro agua_perra $1:NC I
+<agüita>_perra agüita_perra $1:NC I
+<agüita>_de_perro agüita_perra $1:NC I
+<aguja>_pasacintas aguja_pasacintas $1:NC I
+a_el_momento_de_los_quiubos al_momento_de_los_quiubos RG I
+anda_a_saber_tú anda_a_saber_tú I I
+aquí_te_las_traigo_pedro aquí_te_las_traigo_Pedro I I
+aquí_te_las_traigo_peter aquí_te_las_traigo_Peter I I
+<asado>_de_carnicero asado_carnicero $1:NC I
+avant_première avant_première NCFS000 I
+<azúcar>_flor azúcar_flor $1:NC I
+<bajar>_a_los_potreros bajar_a_los_potreros $1:VM I
+<bajar>_la_indiada bajar_la_indiada $1:VM I
+<beso>_<cuneteado> beso_cuneteado $1:NC I
+bien_<aspectado> bien_aspectado $2:AQ I
+<botella>_<envenenar> botella_envenenada $1:NC I
+buena_tela buena_tela AQ0CN00 I
+bueno_y_sano bueno_y_sano AQ0CN00 I
+<bus>_oruga bus_oruga $1:NC I
+<caballero>_<pobre> caballero_pobre $1:NC I
+cada_uno_mata_su_toro cada_uno_mata_su_toro I I
+<caer>_el_carné caer_el_carné $1:VM I
+<café>_<virtual> café_virtual NCMS000 I
+<caja>_<challero> caja_challera $1:NC I
+calabaza_calabaza calabaza_calabaza I I
+<califont>_<eléctrico> califont_eléctrico $1:NC I
+<callejón>_<oscuro> callejón_oscuro $1:NC I
+cama_caliente cama_caliente NCFS000 I
+camas_calientes camas_calientes NCFP000 I
+<cambiar>_el_switch cambiar_el_switch $1:VM I
+<camino>_<viejo> camino_viejo $1:NC I
+canas_verdes canas_verdes NCCP000 I
+<cazuela>_de_pava cazuela_de_pava $1:NC I
+chevé_chevé chevé_chevé I I
+<chino>_<tuerto> chino_tuerto $1:NC I
+cinco_peras_y_un_higo cinco_peras_y_un_higo I I
+<ciudadano>_de_a_pie ciudadano_de_a_pie $1:NC I
+<clavo>_<oxidar> clavo_oxidado $1:NC I
+<coco>_de_mono coco_de_mono $1:NC I
+como_tonto como_tonto AQ0CN00 como_tonto RG I
+con_goce_de_sueldo con_goce_de_sueldo RG I
+con_malicia con_malicia RG I
+corre_corre_la_guaraca corre_corre_la_guaraca I I
+cualquier_cantidad cualquier_cantidad AQ0CN00 cualquier_cantidad RG I
+cumpleaño_de_mono cumpleaños_de_mono NCMS000 I
+<dar>_cancha_tiro_y_lado dar_cancha_tiro_y_lado $1:VM I
+<dar>_la_chiripiolca dar_la_chiripiolca $1:VM I
+<dar>_la_indiada dar_la_indiada $1:VM I
+<dar>_la_paja dar_la_paja $1:VM I
+<dar>_la_pajenry dar_la_pajenry $1:VM I
+<decir>_chalupa decir_chalupa $1:VM I
+<decir>_upa decir_upa $1:VM I
+<dejar>_cagado dejar_cagado $1:VM I
+<dejar>_colgado dejar_colgado $1:VM I
+<dejar>_el_descoronte dejar_el_descoronte $1:VM I
+<dejar>_el_descueve dejar_el_descueve $1:VM I
+<dejar>_la_cagada dejar_la_cagada $1:VM I
+<dejar>_la_crema dejar_la_crema $1:VM I
+<dejar>_la_embarrada dejar_la_embarrada $1:VM I
+<dejar>_la_escoba dejar_la_escoba $1:VM I
+<dejar>_la_grande dejar_la_grande $1:VM I
+<dejar>_la_mansaca dejar_la_mansaca $1:VM I
+<dejar>_la_pelería dejar_la_pelería $1:VM I
+<dejar>_la_tendalada dejar_la_tendalada $1:VM I
+<dejar>_la_tole_tole dejar_la_tole_tole $1:VM I
+<dejar>_la_zorra dejar_la_zorra $1:VM I
+<dejar>_pegado dejar_pegado $1:VM I
+dele_que_suene dele_que_suene RG I
+<día>_de_el_copi día_del_copi $1:NC I
+<día>_de_el_loly día_del_loly $1:NC I
+<día>_de_el_níspero día_del_níspero $1:NC I
+<día>_de_el_pico día_del_pico $1:NC I
+<dueño>_de_casa dueño_de_casa $1:NC I
+<durazno>_<blanquillo> durazno_blanquillo $1:NC I
+<echar>_comisión echar_comisión $1:VM I
+educación_media educación_media NCFS000 I
+<empanada>_<caldúa> empanada_caldúa $1:NC I
+<empleada>_de_mano empleada_de_mano $1:NC I
+en_cana en_cana RG I
+en_pana en_pana RG I
+en_panne en_panne RG I
+enchúfate_plancha_de_campo enchúfate_plancha_de_campo I I
+<entrar>_corbata entrar_corbata $1:VM I
+ese_huevito_quiere_sal ese_huevito_quiere_sal I I
+<estar>_cagado estar_cagado $1:VM I
+<estar>_lona estar_lona $1:VM I
+<estar>_zeta estar_zeta $1:VM I
+<estirar>_el_somier estirar_el_somier $1:VM I
+<guachito>_<carnudo> huachito_carnudo $1:NC I
+<hacer>_vaca hacer_una_vaca $1:VM I
+<hacer>_borrón_y_cuenta_nueva hacer_borrón_y_cuenta_nueva $1:VM I
+<hacer>_bosta hacer_bosta $1:VM I
+<hacer>_buenas_migas hacer_buenas_migas $1:VM I
+<hacer>_bulto hacer_bulto $1:VM I
+<hacer>_caballito hacer_caballito $1:VM I
+<hacer>_caras hacer_caras $1:VM I
+<hacer>_caritas hacer_caritas $1:VM I
+<hacer>_chacota hacer_chacota $1:VM I
+<hacer>_charquicán hacer_charquicán $1:VM I
+<hacer>_chicarrón hacer_chicarrón $1:VM I
+<hacer>_ciudad hacer_ciudad $1:VM I
+<hacer>_claque hacer_claque $1:VM I
+<hacer>_clase hacer_clase $1:VM I
+<hacer>_clases hacer_clases $1:VM I
+<hacer>_clic hacer_clic $1:VM I
+<hacer>_cola hacer_cola $1:VM I
+<hacer>_cominillo_las_manos hacer_cominillo_las_manos $1:VM I
+<hacer>_conducta hacer_conducta $1:VM I
+<hacer>_copuchas hacer_copuchas $1:VM I
+<hacer>_cositas hacer_cositas $1:VM I
+<hacer>_cumbre hacer_cumbre $1:VM I
+<hacer>_de_las_suyas hacer_de_las_suyas $1:VM I
+<hacer>_de_orto hacer_de_orto $1:VM I
+<hacer>_de_tripas_corazón hacer_de_tripas_corazón $1:VM I
+<hacer>_de_el_uno hacer_del_uno $1:VM I
+<hacer>_el_cuatro hacer_el_cuatro $1:VM I
+<hacer>_el_deber hacer_el_deber $1:VM I
+<hacer>_el_día hacer_el_día $1:VM I
+<hacer>_el_nombre_de_dios hacer_el_nombre_de_Dios $1:VM I
+<hacer>_el_papel hacer_el_papel $1:VM I
+<hacer>_el_quite hacer_el_quite $1:VM I
+<hacer>_flecos hacer_flecos $1:VM I
+<hacer>_fuerza hacer_fuerza $1:VM I
+<hacer>_gárgaras hacer_gárgaras $1:VM I
+<hacer>_honores hacer_honores $1:VM I
+<hacer>_hora hacer_hora $1:VM I
+<hacer>_huichichío hacer_huichichío $1:VM I
+<hacer>_humear hacer_humear $1:VM I
+<hacer>_la_cancha hacer_la_cancha $1:VM I
+<hacer>_la_choca hacer_la_choca $1:VM I
+<hacer>_la_contra hacer_la_contra $1:VM I
+<hacer>_la_diferencia hacer_la_diferencia $1:VM I
+<hacer>_la_gamba hacer_la_gamba $1:VM I
+<hacer>_la_guardia hacer_la_guardia $1:VM I
+<hacer>_la_ley_de_el_hielo hacer_la_ley_del_hielo $1:VM I
+<hacer>_la_neumática hacer_la_neumática $1:VM I
+<hacer>_la_parada hacer_la_parada $1:VM I
+<hacer>_la_previa hacer_la_previa $1:VM I
+<hacer>_la_ronda hacer_la_ronda $1:VM I
+<hacer>_la_tapa hacer_la_tapa $1:VM I
+<hacer>_las_de_quico_y_caco hacer_las_de_quico_y_caco $1:VM I
+<hacer>_leña_de_el_árbol_caído hacer_leña_del_árbol_caído $1:VM I
+<hacer>_maromas hacer_maromas $1:VM I
+<hacer>_mondongo hacer_mondongo $1:VM I
+<hacer>_nanay hacer_nanay $1:VM I
+<hacer>_niño hacer_niño $1:VM I
+<hacer>_noticia hacer_noticia $1:VM I
+<hacer>_número hacer_número $1:VM I
+<hacer>_un_berrinche hacer_un_berrinche $1:VM I
+<tener>_un_berrinche tener_un_berrinche $1:VM I
+<hacer>_oídos_sordos hacer_oídos_sordos $1:VM I
+<hacer>_ojo_bonito hacer_ojo_bonito $1:VM I
+<hacer>_ojos_bonitos hacer_ojos_bonitos $1:VM I
+<hacer>_ola hacer_ola $1:VM I
+<hacer>_pato hacer_pato $1:VM I
+<hacer>_película hacer_película $1:VM I
+<hacer>_picadillo hacer_picadillo $1:VM I
+<hacer>_polvo hacer_polvo $1:VM I
+<hacer>_por_la_vida hacer_por_la_vida $1:VM I
+<hacer>_problema hacer_problema $1:VM I
+<hacer>_puré hacer_puré $1:VM I
+<hacer>_rodar_cabezas hacer_rodar_cabezas $1:VM I
+<hacer>_sapito hacer_sapito $1:VM I
+<hacer>_sencillo hacer_sencillo $1:VM I
+<hacer>_sonar hacer_sonar $1:VM I
+<hacer>_su_agosto hacer_su_agosto $1:VM I
+<hacer>_su_agosto_en_diciembre hacer_su_agosto_en_diciembre $1:VM I
+<hacer>_su_regalada_gana hacer_su_regalada_gana $1:VM I
+<hacer>_trapo hacer_trapo $1:VM I
+<hacer>_una_atajada hacer_una_atajada $1:VM I
+<hacer>_una_tapa hacer_una_tapa $1:VM I
+<hacer>_upa hacer_upa $1:VM I
+<hacer>_upaupa hacer_upaupa $1:VM I
+<hacer>_ver_estrellas hacer_ver_estrellas $1:VM I
+<hacer>_la_cama hacer_la_cama $1:VM I
+<hacer>_la_vida_de_cuadritos hacer_la_vida_de_cuadritos $1:VM I
+<hacer>_ojitos hacer_ojitos $1:VM I
+<hacer>_cortita hacer_corta $1:VM I
+<hacer>_larga hacer_larga $1:VM I
+<sacar>_el_quite sacar_el_quite $1:VM I
+<hacer>_a_los_dos_lados hacer_a_los_dos_lados $1:VM I
+<hacer>_a_el_cuento hacer_al_cuento $1:VM I
+<hacer>_pasar hacer_pasar $1:VM I
+<hacer>_tragar_sus_palabras hacer_tragar_sus_palabras $1:VM I
+<hacer>_una_pasada hacer_una_pasada $1:VM I
+<hacer>_los_bigotes hacer_los_bigotes $1:VM I
+<lamer>_los_bigotes lamer_los_bigotes $1:VM I
+<hacer>_agua_la_boca hacer_agua_la_boca $1:VM I
+<hacer>_la_paja hacer_la_paja $1:VM I
+<hacer>_chicharrón hacer_chicharrón $1:VM I
+<hacer>_la_vista_gorda hacer_la_vista_gorda $1:VM I
+<hacer>_el_de_la_vista_gorda hacer_la_vista_gorda $1:VM I
+<hacer>_el_fuerte hacer_el_fuerte $1:VM I
+<hacer>_el_tonto hacer_el_gil $1:VM I
+<hacer>_el_pendejo hacer_el_pendejo $1:VM I
+<hacer>_el_santo hacer_el_santo $1:VM I
+<hacer>_el_difícil hacer_el_difícil $1:VM I
+<hacer>_la_difícil hacer_la_difícil $1:VM I
+<hacer>_el_vivo hacer_el_vivo $1:VM I
+<hacer>_en_los_pantalones hacer_en_los_pantalones $1:VM I
+<hacer>_friegas_con_el_carné hacer_friegas_con_el_carné $1:VM I
+<hacer>_gente hacer_gente $1:VM I
+<hacer>_humo hacer_humo $1:VM I
+<hacer>_la_gran_cosa hacer_la_gran_cosa $1:VM I
+<hacer>_la_interesante hacer_la_interesante $1:VM I
+<hacer>_la_mosca_muerta hacer_la_mosca_muerta $1:VM I
+<hacer>_la_patilla hacer_la_patilla $1:VM I
+<hacer>_la_rata hacer_la_rata $1:VM I
+<hacer>_la_víctima hacer_la_víctima $1:VM I
+<hacer>_mala_sangre hacer_mala_sangre $1:VM I
+<hacer>_nudos hacer_nudos $1:VM I
+<hacer>_remedio hacer_remedio $1:VM I
+<hacer>_sus_pesitos hacer_sus_pesitos $1:VM I
+<hacer>_agua_los_helados hacer_agua_los_helados $1:VM I
+<hacer>_sal_y_agua hacer_sal_y_agua $1:VM I
+<hacer>_un_nudo_en_la_garganta hacer_un_nudo_en_la_garganta $1:VM I
+<harina>_de_otro_costal harina_de_otro_costal $1:NC I
+hasta_debajo_de_las_piedras hasta_debajo_de_las_piedras I I
+hasta_decir_basta hasta_decir_basta RG I
+hasta_el_codo hasta_el_codo RG I
+hasta_el_cogote hasta_el_cogote RG I
+hasta_el_concho hasta_el_concho RG I
+hasta_el_culo hasta_el_culo RG I
+hasta_el_fondo hasta_el_fondo RG I
+hasta_el_techo hasta_el_techo RG I
+hasta_las_masas hasta_las_masas RG I
+hasta_las_orejas hasta_las_orejas RG I
+hecho_huilas hecho_huilas AQ0CN00 I
+<hijo>_de_tigresa hijo_de_tigre $1:NC I
+<hijo>_de_tigre hijo_de_tigre $1:NC I
+igual_pascual igual_Pascual RG I
+<ir>_a_los_potreros ir_a_los_potreros $1:VM I
+<ir>_cagando ir_cagando $1:VM I
+<ir>_cascando ir_cascando $1:VM I
+la_dura la_dura NCFS000 I
+la_firme la_firme NCFS000 I
+la_gotita la_gotita NCFS000 I
+la_posta la_posta NCFS000 I
+la_pulenta la_pulenta NCFS000 I
+<lámpara>_araña lámpara_araña $1:NC I
+las_casitas las_casitas NCCS000 I
+<lengua>_de_gato lengua_de_gato $1:NC I
+<libreta>_de_comunicaciones libreta_de_comunicaciones $1:NC I
+<llevar>_pelada llevar_pelada $1:VM I
+<llevar>_peladas llevar_peladas $1:VM I
+mal_<aspectado> mal_aspectado $2:AQ I
+mala_cueva_dijo_el_conejo mala_cueva_dijo_el_conejo I I
+<mandar>_cambiar mandar_a_cambiar $1:VM I
+<mandar>_largar mandar_a_largar $1:VM I
+<mandar>_mudar mandar_a_mudar $1:VM I
+<manso>_<pescado> manso_pescado $2:NC I
+<manta>_de_castilla manta_de_castilla $1:NC I
+<máquina>_tragamonedas máquina_tragamonedas $1:NC I
+matiné_vermut_y_noche matiné_vermut_y_noche RG I
+me_extraña_araña me_extraña_araña I I
+memoria_de_pollo memoria_de_pollo NCFS000 I
+<mesa>_de_centro mesa_de_centro $1:NC I
+<mesa>_<ratón> mesa_ratona $1:NC I
+<meter>_en_la_colada meter_en_la_colada $1:VM I
+<meter>_la_mano_a_el_bolsillo meter_la_mano_al_bolsillo $1:VM I
+<meter>_la_mano_en_el_bolsillo meter_la_mano_en_el_bolsillo $1:VM I
+<meter>_en_un_queso meter_en_un_queso $1:VM I
+miel_de_ulmo miel_de_ulmo NCFS000 I
+montado_en_el_macho montado_en_el_macho AQ0CN00 I
+<mujer>_<gomero> mujer_gomero $1:NC I
+<negro>_<curiche> negro_curiche $1:NC I
+ni_uno ni_uno PI0MS00 I
+no_<dar>_más_luz_a_el_gas no_dar_más_luz_al_gas $2:VM I
+no_me_ayude_tanto_compadre no_me_ayude_tanto_compadre I I
+no_te_cleo_dijo_el_chino no_te_cleo_dijo_el_chino I I
+no_<tener>_ni_para_hacer_cantar_a_un_ciego no_tener_ni_para_hacer_cantar_a_un_ciego $2:VM I
+no_<volar>_una_mosca no_volar_ni_una_mosca $2:VM I
+nunca_más nunca_más RG nunca_más I A
+<oblea>_<chino> oblea_china $1:NC I
+ojo_pestaña_y_ceja ojo_pestaña_y_ceja I I
+oreja_pestaña_y_ceja oreja_pestaña_y_ceja I I
+paja_ratonera paja_ratonera NCFS000 I
+<palma>_<chileno> palma_chilena $1:NC I
+palta_reina palta_reina NCFS000 I
+pana_de_el_tonto pana_del_tonto NCFS000 I
+papa_<caliente> papa_caliente NCFS000 I
+papas_<caliente> papa_caliente NCFP000 I
+papa_<duque> papa_duquesa NCFS000 I
+papas_<duque> papa_duquesa NCFP000 I
+papas_mayo papas_mayo NCFP000 I
+<papel>_<mojar> papel_mojado $1:NC I
+para_el_lado_de_los_quesos para_el_lado_de_los_quesos NCCS000 I
+parada_de_carro parada_de_carros NCFS000 I
+<parcela>_de_agrado parcela_de_agrado $1:NC I
+<pasar>_corbata pasar_corbata $1:VM I
+<pasar>_piola pasar_piola $1:VM I
+<pasar>_chancho pasar_chancho $1:VM I
+pasta_base pasta_base NCFS000 I
+<pasta>_de_zapatos pasta_de_zapatos $1:NC I
+pata_pata pata_pata NCFS000 I
+patas_de_fierro pata_de_fierro NCFP000 I
+patas_de_hilo patas_de_hilo NCCP000 I
+<patinar> patinar $1:VM I
+<patinar>_el_embriague patinar_el_embrague $1:VM I
+pedro_juan_y_diego Pedro_Juan_y_Diego NCCS000 I
+<pegar>_la_ascurrida pegar_la_ascurrida $1:VM I
+<peo>_<alemán> peo_alemán $1:NC I
+<peo>_<chino> peo_chino $1:NC I
+peor_es_nada peor_es_nada NCCS000 I
+<perdiz>_<cordillerano> perdiz_cordillerana $1:NC I
+perro_choco perro_choco NCCS000 I
+<pesar>_las_pelotas pesar_las_pelotas $1:VM I
+peste_cristal peste_cristal NCFS000 I
+<pillar>_chanchito pillar_chanchito $1:VM I
+<pluma>_fuente pluma_fuente $1:NC I
+<población>_callampa población_callampa $1:NC I
+<pobre>_<huevón> pobre_huevón $2:NC I
+<poner>_ojo_pestaña_y_ceja poner_ojo_pestaña_y_ceja $1:VM I
+<poner>_oreja_pestaña_y_ceja poner_oreja_pestaña_y_ceja $1:VM I
+por_el_camino_viejo por_el_camino_viejo RG I
+porotos_con_riendas porotos_con_riendas NCMP000 I
+porotos_granados porotos_granados NCMP000 I
+<posición>_de_adelanto posición_de_adelanto $1:NC I
+posta_negra posta_negra NCFS000 I
+posta_rosada posta_rosada NCFS000 I
+<poto>_de_mar poto_de_mar $1:NC I
+puesto_varios puestos_varios NCMS000 I
+<quedar>_colgado quedar_colgado $1:VM I
+<quedar>_el_descoronte quedar_el_descoronte $1:VM I
+<quedar>_el_descueve quedar_el_descueve $1:VM I
+<quedar>_la_cagada quedar_la_cagada $1:VM I
+<quedar>_la_crema quedar_la_crema $1:VM I
+<quedar>_la_embarrada quedar_la_embarrada $1:VM I
+<quedar>_la_escoba quedar_la_escoba $1:VM I
+<quedar>_la_grande quedar_la_grande $1:VM I
+<quedar>_la_mansaca quedar_la_mansaca $1:VM I
+<quedar>_la_pelería quedar_la_pelería $1:VM I
+<quedar>_la_tendalada quedar_la_tendalada $1:VM I
+<quedar>_la_tole_tole quedar_la_tole_tole $1:VM I
+<quedar>_la_zorra quedar_la_zorra $1:VM I
+<quedar>_lona quedar_lona $1:VM I
+<quedar>_pegado quedar_pegado $1:VM I
+<quedar>_zeta quedar_zeta $1:VM I
+quitado_de_bulla quitado_de_bulla AQ0CN00 quitado_de_bulla NCCS000 I
+<radio>_tocacassette radio_tocacassette $1:NC I
+red_húmeda red_húmeda NCFS000 I
+red_seca red_seca NCFS000 I
+<reunión>_de_pauta reunión_de_pauta $1:NC I
+<revista>_de_fondeo revista_de_fondeo $1:NC I
+<revista>_<preparatorio> revista_preparatoria $1:NC I
+<ronda>_de_san_miguel ronda_de_San_Miguel $1:NC I
+sabanitas_cortas sabanitas_cortas NCCS000 I
+<sacar>_cagando sacar_cagando $1:VM I
+<sacar>_cascando sacar_cascando $1:VM I
+<sala>_cuna sala_cuna $1:NC I
+<salida>_de_mar salida_de_mar $1:NC I
+<salir>_cagando salir_cagando $1:VM I
+<salir>_cascando salir_cascando $1:VM I
+<salsa>_<americano> salsa_americana $1:NC I
+<sentar>_en_el_cajón_con_vidrios sentar_en_el_cajón_con_vidrio $1:VM I
+<ser>_chancho_que_no_da_manteca ser_chancho_que_no_da_manteca $1:VS I
+<ser>_la_biblia_en_verde ser_la_biblia_en_verde $1:VS I
+sin_goce_de_sueldo sin_goce_de_sueldo RG I
+<sonrisa>_pep sonrisa_pep $1:NC I
+<sopaipilla>_<pasado> sopaipilla_pasada $1:NC I
+sopas_tontas sopas_tontas NCFP000 I
+<tener>_gusto_a_leche tener_gusto_a_leche $1:VM I
+<tener>_winter_ya tener_winter_ya $1:VM I
+tía_rica tía_rica NCFS000 I
+<tierra>_de_color tierra_de_color $1:NC I
+tira_para_arriba tira_para_arriba AQ0CN00 I
+<toalla>_<femenino> toalla_femenina $1:NC I
+<toalla>_<higiénico> toalla_higiénica $1:NC I
+toma_cachito_de_goma toma_cachito_de_goma I I
+<tomar>_con_andina tomar_con_andina $1:VM I
+<tortilla>_de_rescoldo tortilla_de_rescoldo $1:NC I
+tremendo_pescado tremendo_pescado I I
+un_dos_tres_momia_es un_dos_tres_momia_es NCMS000 I
+vamos_arando_dijo_la_mosca vamos_arando_dijo_la_mosca I I
+viejos_tercios viejos_tercios NCMP000 I
+<vuelta>_de_carnero vuelta_de_carnero $1:NC I
+<vuelta>_de_el_perro vuelta_del_perro $1:NC I
+<yegua>_<loco> yegua_loca $1:NC I
+<yegua>_<suelto> yegua_suelta $1:NC I
+<zapato>_<chino> zapato_chino $1:NC I
+<zorro>_culpeo zorro_culpeo $1:NC I
+<zorro>_de_el_desierto zorro_del_desierto $1:NC I
+espanta_cuco espantacuco NCMS000 I
+espanta_cucos espantacuco NCMN000 I
+callampín_bombín callampín_bombín I I
+<apagar>_a_un_hombre_el_<califont> apagar_a_un_hombre_el_calefón $1:VM I
+<abocar>_me_a abocar_a $1:VM I
+<abocar>_te_a abocar_a $1:VM I
+<abocar>_se_a abocar_a $1:VM I
+<abocar>_nos_a abocar_a $1:VM I
+<abrir>_le_puertas abrir_puertas $1:VM I
+<abrir>_les_puertas abrir_puertas $1:VM I
+<abrir>_le_sus_puertas abrir_sus_puertas $1:VM I
+<abrir>_les_sus_puertas abrir_sus_puertas $1:VM I
+<abrir>_me_camino abrir_camino $1:VM I
+<abrir>_te_camino abrir_camino $1:VM I
+<abrir>_se_camino abrir_camino $1:VM I
+<abrir>_nos_camino abrir_camino $1:VM I
+<abrir>_le_las_puertas abrir_las_puertas $1:VM I
+<abrir>_les_las_puertas abrir_las_puertas $1:VM I
+<abrir>_le_los_ojos abrir_los_ojos $1:VM I
+<abrir>_les_los_ojos abrir_los_ojos $1:VM I
+<abrir>_me_paso abrir_paso $1:VM I
+<abrir>_te_paso abrir_paso $1:VM I
+<abrir>_se_paso abrir_paso $1:VM I
+<abrir>_nos_paso abrir_paso $1:VM I
+<abrir>_me_campo abrir_campo $1:VM I
+<abrir>_te_campo abrir_campo $1:VM I
+<abrir>_se_campo abrir_campo $1:VM I
+<abrir>_nos_campo abrir_campo $1:VM I
+<abrir>_me_de_piernas abrir_de_piernas $1:VM I
+<abrir>_te_de_piernas abrir_de_piernas $1:VM I
+<abrir>_se_de_piernas abrir_de_piernas $1:VM I
+<abrir>_nos_de_piernas abrir_de_piernas $1:VM I
+<afilar>_me_las_garras afilar_las_garras $1:VM I
+<afilar>_te_las_garras afilar_las_garras $1:VM I
+<afilar>_se_las_garras afilar_las_garras $1:VM I
+<afilar>_nos_las_garras afilar_las_garras $1:VM I
+<aflojar>_me_las_patas aflojar_las_patas $1:VM I
+<aflojar>_te_las_patas aflojar_las_patas $1:VM I
+<aflojar>_se_las_patas aflojar_las_patas $1:VM I
+<aflojar>_nos_las_patas aflojar_las_patas $1:VM I
+<bajar>_le_la_indiada bajar_la_indiada $1:VM I
+<bajar>_les_la_indiada bajar_la_indiada $1:VM I
+<dar>_le_la_chiripiolca dar_la_chiripiolca $1:VM I
+<dar>_les_la_chiripiolca dar_la_chiripiolca $1:VM I
+<dar>_le_la_indiada dar_la_indiada $1:VM I
+<dar>_les_la_indiada dar_la_indiada $1:VM I
+<dar>_me_la_paja dar_la_paja $1:VM I
+<dar>_te_la_paja dar_la_paja $1:VM I
+<dar>_se_la_paja dar_la_paja $1:VM I
+<dar>_nos_la_paja dar_la_paja $1:VM I
+<dar>_me_la_pajenry dar_la_pajenry $1:VM I
+<dar>_te_la_pajenry dar_la_pajenry $1:VM I
+<dar>_se_la_pajenry dar_la_pajenry $1:VM I
+<dar>_nos_la_pajenry dar_la_pajenry $1:VM I
+<estirar>_me_el_somier estirar_el_somier $1:VM I
+<estirar>_te_el_somier estirar_el_somier $1:VM I
+<estirar>_se_el_somier estirar_el_somier $1:VM I
+<estirar>_nos_el_somier estirar_el_somier $1:VM I
+<hacer>_le_el_quite hacer_el_quite $1:VM I
+<hacer>_les_el_quite hacer_el_quite $1:VM I
+<hacer>_le_la_cama hacer_la_cama $1:VM I
+<hacer>_les_la_cama hacer_la_cama $1:VM I
+<hacer>_le_la_vida_de_cuadritos hacer_la_vida_de_cuadritos $1:VM I
+<hacer>_les_la_vida_de_cuadritos hacer_la_vida_de_cuadritos $1:VM I
+<hacer>_le_ojitos hacer_ojitos $1:VM I
+<hacer>_les_ojitos hacer_ojitos $1:VM I
+<hacer>_la_cortita hacer_corta $1:VM I
+<hacer>_la_larga hacer_larga $1:VM I
+<sacar>_le_el_quite sacar_el_quite $1:VM I
+<sacar>_les_el_quite sacar_el_quite $1:VM I
+<hacer>_le_a_los_dos_lados hacer_a_los_dos_lados $1:VM I
+<hacer>_les_a_los_dos_lados hacer_a_los_dos_lados $1:VM I
+<hacer>_le_a_el_cuento hacer_al_cuento $1:VM I
+<hacer>_les_a_el_cuento hacer_al_cuento $1:VM I
+<hacer>_le_pasar hacer_pasar $1:VM I
+<hacer>_les_pasar hacer_pasar $1:VM I
+<hacer>_le_tragar_sus_palabras hacer_tragar_sus_palabras $1:VM I
+<hacer>_les_tragar_sus_palabras hacer_tragar_sus_palabras $1:VM I
+<hacer>_le_una_pasada hacer_una_pasada $1:VM I
+<hacer>_les_una_pasada hacer_una_pasada $1:VM I
+<hacer>_me_los_bigotes hacer_los_bigotes $1:VM I
+<hacer>_te_los_bigotes hacer_los_bigotes $1:VM I
+<hacer>_se_los_bigotes hacer_los_bigotes $1:VM I
+<hacer>_nos_los_bigotes hacer_los_bigotes $1:VM I
+<lamer>_me_los_bigotes lamer_los_bigotes $1:VM I
+<lamer>_te_los_bigotes lamer_los_bigotes $1:VM I
+<lamer>_se_los_bigotes lamer_los_bigotes $1:VM I
+<lamer>_nos_los_bigotes lamer_los_bigotes $1:VM I
+<hacer>_me_agua_la_boca hacer_agua_la_boca $1:VM I
+<hacer>_te_agua_la_boca hacer_agua_la_boca $1:VM I
+<hacer>_se_agua_la_boca hacer_agua_la_boca $1:VM I
+<hacer>_nos_agua_la_boca hacer_agua_la_boca $1:VM I
+<hacer>_me_la_paja hacer_la_paja $1:VM I
+<hacer>_te_la_paja hacer_la_paja $1:VM I
+<hacer>_se_la_paja hacer_la_paja $1:VM I
+<hacer>_nos_la_paja hacer_la_paja $1:VM I
+<hacer>_me_chicharrón hacer_chicharrón $1:VM I
+<hacer>_te_chicharrón hacer_chicharrón $1:VM I
+<hacer>_se_chicharrón hacer_chicharrón $1:VM I
+<hacer>_nos_chicharrón hacer_chicharrón $1:VM I
+<hacer>_me_la_vista_gorda hacer_la_vista_gorda $1:VM I
+<hacer>_te_la_vista_gorda hacer_la_vista_gorda $1:VM I
+<hacer>_se_la_vista_gorda hacer_la_vista_gorda $1:VM I
+<hacer>_nos_la_vista_gorda hacer_la_vista_gorda $1:VM I
+<hacer>_me_el_de_la_vista_gorda hacer_la_vista_gorda $1:VM I
+<hacer>_te_el_de_la_vista_gorda hacer_la_vista_gorda $1:VM I
+<hacer>_se_el_de_la_vista_gorda hacer_la_vista_gorda $1:VM I
+<hacer>_nos_el_de_la_vista_gorda hacer_la_vista_gorda $1:VM I
+<hacer>_me_el_fuerte hacer_el_fuerte $1:VM I
+<hacer>_te_el_fuerte hacer_el_fuerte $1:VM I
+<hacer>_se_el_fuerte hacer_el_fuerte $1:VM I
+<hacer>_nos_el_fuerte hacer_el_fuerte $1:VM I
+<hacer>_me_el_tonto hacer_el_gil $1:VM I
+<hacer>_te_el_tonto hacer_el_gil $1:VM I
+<hacer>_se_el_tonto hacer_el_gil $1:VM I
+<hacer>_nos_el_tonto hacer_el_gil $1:VM I
+<hacer>_me_el_pendejo hacer_el_pendejo $1:VM I
+<hacer>_te_el_pendejo hacer_el_pendejo $1:VM I
+<hacer>_se_el_pendejo hacer_el_pendejo $1:VM I
+<hacer>_nos_el_pendejo hacer_el_pendejo $1:VM I
+<hacer>_me_el_santo hacer_el_santo $1:VM I
+<hacer>_te_el_santo hacer_el_santo $1:VM I
+<hacer>_se_el_santo hacer_el_santo $1:VM I
+<hacer>_nos_el_santo hacer_el_santo $1:VM I
+<hacer>_me_el_difícil hacer_el_difícil $1:VM I
+<hacer>_te_el_difícil hacer_el_difícil $1:VM I
+<hacer>_se_el_difícil hacer_el_difícil $1:VM I
+<hacer>_nos_el_difícil hacer_el_difícil $1:VM I
+<hacer>_me_la_difícil hacer_la_difícil $1:VM I
+<hacer>_te_la_difícil hacer_la_difícil $1:VM I
+<hacer>_se_la_difícil hacer_la_difícil $1:VM I
+<hacer>_nos_la_difícil hacer_la_difícil $1:VM I
+<hacer>_me_el_vivo hacer_el_vivo $1:VM I
+<hacer>_te_el_vivo hacer_el_vivo $1:VM I
+<hacer>_se_el_vivo hacer_el_vivo $1:VM I
+<hacer>_nos_el_vivo hacer_el_vivo $1:VM I
+<hacer>_me_en_los_pantalones hacer_en_los_pantalones $1:VM I
+<hacer>_te_en_los_pantalones hacer_en_los_pantalones $1:VM I
+<hacer>_se_en_los_pantalones hacer_en_los_pantalones $1:VM I
+<hacer>_nos_en_los_pantalones hacer_en_los_pantalones $1:VM I
+<hacer>_me_friegas_con_el_carné hacer_friegas_con_el_carné $1:VM I
+<hacer>_te_friegas_con_el_carné hacer_friegas_con_el_carné $1:VM I
+<hacer>_se_friegas_con_el_carné hacer_friegas_con_el_carné $1:VM I
+<hacer>_nos_friegas_con_el_carné hacer_friegas_con_el_carné $1:VM I
+<hacer>_me_gente hacer_gente $1:VM I
+<hacer>_te_gente hacer_gente $1:VM I
+<hacer>_se_gente hacer_gente $1:VM I
+<hacer>_nos_gente hacer_gente $1:VM I
+<hacer>_me_humo hacer_humo $1:VM I
+<hacer>_te_humo hacer_humo $1:VM I
+<hacer>_se_humo hacer_humo $1:VM I
+<hacer>_nos_humo hacer_humo $1:VM I
+<hacer>_me_la_gran_cosa hacer_la_gran_cosa $1:VM I
+<hacer>_te_la_gran_cosa hacer_la_gran_cosa $1:VM I
+<hacer>_se_la_gran_cosa hacer_la_gran_cosa $1:VM I
+<hacer>_nos_la_gran_cosa hacer_la_gran_cosa $1:VM I
+<hacer>_me_la_interesante hacer_la_interesante $1:VM I
+<hacer>_te_la_interesante hacer_la_interesante $1:VM I
+<hacer>_se_la_interesante hacer_la_interesante $1:VM I
+<hacer>_nos_la_interesante hacer_la_interesante $1:VM I
+<hacer>_me_la_mosca_muerta hacer_la_mosca_muerta $1:VM I
+<hacer>_te_la_mosca_muerta hacer_la_mosca_muerta $1:VM I
+<hacer>_se_la_mosca_muerta hacer_la_mosca_muerta $1:VM I
+<hacer>_nos_la_mosca_muerta hacer_la_mosca_muerta $1:VM I
+<hacer>_me_la_patilla hacer_la_patilla $1:VM I
+<hacer>_te_la_patilla hacer_la_patilla $1:VM I
+<hacer>_se_la_patilla hacer_la_patilla $1:VM I
+<hacer>_nos_la_patilla hacer_la_patilla $1:VM I
+<hacer>_me_la_rata hacer_la_rata $1:VM I
+<hacer>_te_la_rata hacer_la_rata $1:VM I
+<hacer>_se_la_rata hacer_la_rata $1:VM I
+<hacer>_nos_la_rata hacer_la_rata $1:VM I
+<hacer>_me_la_víctima hacer_la_víctima $1:VM I
+<hacer>_te_la_víctima hacer_la_víctima $1:VM I
+<hacer>_se_la_víctima hacer_la_víctima $1:VM I
+<hacer>_nos_la_víctima hacer_la_víctima $1:VM I
+<hacer>_me_mala_sangre hacer_mala_sangre $1:VM I
+<hacer>_te_mala_sangre hacer_mala_sangre $1:VM I
+<hacer>_se_mala_sangre hacer_mala_sangre $1:VM I
+<hacer>_nos_mala_sangre hacer_mala_sangre $1:VM I
+<hacer>_me_nudos hacer_nudos $1:VM I
+<hacer>_te_nudos hacer_nudos $1:VM I
+<hacer>_se_nudos hacer_nudos $1:VM I
+<hacer>_nos_nudos hacer_nudos $1:VM I
+<hacer>_me_remedio hacer_remedio $1:VM I
+<hacer>_te_remedio hacer_remedio $1:VM I
+<hacer>_se_remedio hacer_remedio $1:VM I
+<hacer>_nos_remedio hacer_remedio $1:VM I
+<hacer>_me_sus_pesitos hacer_sus_pesitos $1:VM I
+<hacer>_te_sus_pesitos hacer_sus_pesitos $1:VM I
+<hacer>_se_sus_pesitos hacer_sus_pesitos $1:VM I
+<hacer>_nos_sus_pesitos hacer_sus_pesitos $1:VM I
+<ir>_me_a_los_potreros ir_a_los_potreros $1:VM I
+<ir>_te_a_los_potreros ir_a_los_potreros $1:VM I
+<ir>_se_a_los_potreros ir_a_los_potreros $1:VM I
+<ir>_nos_a_los_potreros ir_a_los_potreros $1:VM I
+<ir>_me_cagando ir_cagando $1:VM I
+<ir>_te_cagando ir_cagando $1:VM I
+<ir>_se_cagando ir_cagando $1:VM I
+<ir>_nos_cagando ir_cagando $1:VM I
+<ir>_me_cascando ir_cascando $1:VM I
+<ir>_te_cascando ir_cascando $1:VM I
+<ir>_se_cascando ir_cascando $1:VM I
+<ir>_nos_cascando ir_cascando $1:VM I
+<mandar>_me_cambiar mandar_a_cambiar $1:VM I
+<mandar>_te_cambiar mandar_a_cambiar $1:VM I
+<mandar>_se_cambiar mandar_a_cambiar $1:VM I
+<mandar>_nos_cambiar mandar_a_cambiar $1:VM I
+<mandar>_me_largar mandar_a_largar $1:VM I
+<mandar>_te_largar mandar_a_largar $1:VM I
+<mandar>_se_largar mandar_a_largar $1:VM I
+<mandar>_nos_largar mandar_a_largar $1:VM I
+<mandar>_me_mudar mandar_a_mudar $1:VM I
+<mandar>_te_mudar mandar_a_mudar $1:VM I
+<mandar>_se_mudar mandar_a_mudar $1:VM I
+<mandar>_nos_mudar mandar_a_mudar $1:VM I
+<meter>_me_en_un_queso meter_en_un_queso $1:VM I
+<meter>_te_en_un_queso meter_en_un_queso $1:VM I
+<meter>_se_en_un_queso meter_en_un_queso $1:VM I
+<meter>_nos_en_un_queso meter_en_un_queso $1:VM I
+no_<dar>_le_más_luz_a_el_gas no_dar_más_luz_al_gas $2:VM I
+no_<dar>_les_más_luz_a_el_gas no_dar_más_luz_al_gas $2:VM I
+<pasar>_la_chancho pasar_chancho $1:VM I
+<pasar>_lo_chancho pasar_chancho $1:VM I
+<patinar>_le patinar $1:VM I
+<patinar>_les patinar $1:VM I
+<patinar>_le_el_embriague patinar_el_embrague $1:VM I
+<patinar>_les_el_embriague patinar_el_embrague $1:VM I
+<pegar>_me_la_ascurrida pegar_la_ascurrida $1:VM I
+<pegar>_te_la_ascurrida pegar_la_ascurrida $1:VM I
+<pegar>_se_la_ascurrida pegar_la_ascurrida $1:VM I
+<pegar>_nos_la_ascurrida pegar_la_ascurrida $1:VM I
+<pesar>_le_las_pelotas pesar_las_pelotas $1:VM I
+<pesar>_les_las_pelotas pesar_las_pelotas $1:VM I
+<tomar>_me_con_andina tomar_con_andina $1:VM I
+<tomar>_te_con_andina tomar_con_andina $1:VM I
+<tomar>_se_con_andina tomar_con_andina $1:VM I
+<tomar>_nos_con_andina tomar_con_andina $1:VM I
+<hacer>_le_chupete hacer_chupete $1:VM I
+<hacer>_les_chupete hacer_chupete $1:VM I
+<hacer>_le_la_cruz hacer_la_cruz $1:VM I
+<hacer>_les_la_cruz hacer_la_cruz $1:VM I
+<mandar>_me_a_cambiar mandar_a_cambiar $1:VM I
+<mandar>_te_a_cambiar mandar_a_cambiar $1:VM I
+<mandar>_se_a_cambiar mandar_a_cambiar $1:VM I
+<mandar>_nos_a_cambiar mandar_a_cambiar $1:VM I
+<mandar>_me_a_largar mandar_a_largar $1:VM I
+<mandar>_te_a_largar mandar_a_largar $1:VM I
+<mandar>_se_a_largar mandar_a_largar $1:VM I
+<mandar>_nos_a_largar mandar_a_largar $1:VM I
+<mandar>_me_a_mudar mandar_a_mudar $1:VM I
+<mandar>_te_a_mudar mandar_a_mudar $1:VM I
+<mandar>_se_a_mudar mandar_a_mudar $1:VM I
+<mandar>_nos_a_mudar mandar_a_mudar $1:VM I
+<reír>_me_en_la_fila reír_en_la_fila $1:VM I
+<reír>_te_en_la_fila reír_en_la_fila $1:VM I
+<reír>_se_en_la_fila reír_en_la_fila $1:VM I
+<reír>_nos_en_la_fila reír_en_la_fila $1:VM I
+dale_con_que_va_a_llover dale_con_que_va_a_llover I I
+las_buenas_huevas las_buenas_huevas I I
+las_patitas las_patitas I I
+por_la_máquina por_la_máquina I I
+por_las_canillas_de_el_mono por_las_canillas_del_mono I I
+puchas_diego puchas_Diego I I
+qué_le_hace_el_agua_a_el_pescado qué_le_hace_el_agua_al_pescado I I
+saltó_lejos_el_maní saltó_lejos_el_maní I I
+a_propósito_de_escopeta a_propósito_de_escopeta I I
+anda_a_saber anda_a_saber I I
+corre_el_anillo corre_el_anillo I I
+corre_la_guaraca corre_la_guaraca I I
+espérate_sentadito espérate_sentadito I I
+la_cacha_de_la_espada la_cacha_de_la_espada I I
+más_claro_echarle_agua más_claro_echarle_agua I I
+raya_para_la_suma raya_para_la_suma I I
+uno_que_ha_tenido_camiones uno_que_ha_tenido_camiones I I
 </Multiwords>

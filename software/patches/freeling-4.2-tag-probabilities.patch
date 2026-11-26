@@ -1,0 +1,340 @@
+--- a/src/include/freeling/morfo/hmm_tagger.h
++++ b/src/include/freeling/morfo/hmm_tagger.h
+@@ -165,6 +165,13 @@
+     /// compute possible emission states for each word in sentence.
+     std::list<emission_states> FindStates(const sentence &) const;
+ 
++    /// tag one sentence (Viterbi); with the second argument, also store in each
++    /// word the probability of its selected tag in the sentence (forward-backward)
++    void tag_sentence(sentence &, bool) const;
++    /// for each word, the probability of each of its short tags given the whole
++    /// sentence, from the states FindStates gave (empty if it cannot be computed)
++    std::vector<std::map<std::wstring,double> > TagPosteriors(const sentence &, const std::list<emission_states> &) const;
++
+   public:
+     /// Constructor
+     hmm_tagger(const std::wstring &, bool, unsigned int, unsigned int kb=1);
+--- a/src/include/freeling/morfo/language.h
++++ b/src/include/freeling/morfo/language.h
+@@ -191,6 +191,9 @@
+     std::list<word> multiword;
+     /// whether the multiword presents segmentantion ambiguity (i.e. could not be a mw)
+     bool ambiguous_mw;
++    /// probability the tagger gives the selected tag in its sentence
++    /// (posterior of the HMM); -1 when no tagger computed it
++    double tag_prob;
+     /// alternative forms provided by orthographic or phonetic SED
+     std::list<alternative> alternatives;
+     /// token span
+@@ -256,6 +259,10 @@
+     int get_n_words_mw() const;
+     /// get word objects that compound the multiword
+     const std::list<word>& get_words_mw() const;
++    /// probability the tagger gives the selected tag in its sentence (-1: not computed)
++    double get_tag_prob() const;
++    /// set the probability the tagger gives the selected tag
++    void set_tag_prob(double);
+     /// get word form
+     const std::wstring& get_form() const;
+     /// Get word form, lowercased.
+--- a/src/include/freeling/output/conll_handler.h
++++ b/src/include/freeling/output/conll_handler.h
+@@ -65,6 +65,7 @@
+     protected:
+       typedef enum {ID, SPAN_BEGIN, SPAN_END, FORM, LEMMA, TAG, SHORT_TAG, MSD, 
+                     NEC, SENSE, ALL_SENSES, SYNTAX, DEPHEAD, DEPREL, COREF, SRL,
++                    LEX_PROB, TAG_PROB,
+                     NO_FIELD} ConllColumns;
+ 
+       // given a position, find out which field is stored there
+--- a/src/libfreeling/hmm_tagger.cc
++++ b/src/libfreeling/hmm_tagger.cc
+@@ -29,6 +29,8 @@
+ #include <fstream>
+ #include <sstream>
+ #include <math.h>
++#include <vector>
++#include <limits>
+ 
+ #include "freeling/morfo/configfile.h"
+ #include "freeling/morfo/hmm_tagger.h"
+@@ -628,7 +630,7 @@
+   ///  Disambiguate given sentences with provided options  
+   ///////////////////////////////////////////////////////////////  
+ 
+-  void hmm_tagger::annotate(sentence &se) const {
++  void hmm_tagger::tag_sentence(sentence &se, bool posteriors) const {
+     list<emission_states> lemm;
+     list<emission_states>::iterator emms,emmsant;
+     emission_states::iterator k,kant;
+@@ -647,6 +649,11 @@
+   
+     // Compute possible emission states for each word
+     lemm=FindStates(se);
++
++    // probability of each tag of each word given the whole sentence. Computed
++    // here, while every reading is still selected.
++    vector<map<wstring,double> > post;
++    if (posteriors) post=TagPosteriors(se,lemm);
+   
+     // initialitation (first observation in sequence)
+     w=se.begin();
+@@ -766,10 +773,130 @@
+       }
+     }
+ 
++    // store in each word the probability of the tag selected for it
++    if (posteriors) {
++      t=0;
++      for (w=se.begin(); w!=se.end(); w++,t++) {
++        w->set_tag_prob(-1);
++        if (t<(int)post.size() and w->selected_begin()!=w->selected_end()) {
++          map<wstring,double>::const_iterator pp=post[t].find(Tags->get_short_tag(w->get_tag()));
++          if (pp!=post[t].end()) w->set_tag_prob(pp->second);
++        }
++      }
++    }
++
+     TRACE(3,L"sentence analyzed"); 
+   }
+ 
+ 
++  ///////////////////////////////////////////////////////////////  
++  ///  Disambiguate given sentence, and store in each word the
++  ///  probability of the tag selected for it.
++  ///////////////////////////////////////////////////////////////  
++
++  void hmm_tagger::annotate(sentence &se) const {
++    tag_sentence(se,true);
++  }
++
++
++  ///////////////////////////////////////////////////////////////  
++  ///  log(exp(a)+exp(b)), with -infinity as log(0)
++  ///////////////////////////////////////////////////////////////  
++
++  static inline double log_add(double a, double b) {
++    if (a==-numeric_limits<double>::infinity()) return b;
++    if (b==-numeric_limits<double>::infinity()) return a;
++    return (a>b ? a+log1p(exp(b-a)) : b+log1p(exp(a-b)));
++  }
++
++
++  ///////////////////////////////////////////////////////////////  
++  ///  Forward-backward over the same states and probabilities the
++  ///  Viterbi search uses. Returns, for each word, the probability
++  ///  of each of its short tags given the whole sentence. Returns
++  ///  an empty vector if the sentence has no path with probability
++  ///  above zero.
++  ///////////////////////////////////////////////////////////////  
++
++  vector<map<wstring,double> > hmm_tagger::TagPosteriors(const sentence &se, const list<emission_states> &lemm) const {
++
++    const double NEG=-numeric_limits<double>::infinity();
++    size_t n=se.size();
++    vector<map<wstring,double> > post;
++    if (n==0 or lemm.size()!=n) return post;
++
++    // states and words by position
++    vector<vector<bigram> > st(n);
++    vector<sentence::const_iterator> wd(n);
++    size_t t=0;
++    sentence::const_iterator w=se.begin();
++    for (list<emission_states>::const_iterator e=lemm.begin(); e!=lemm.end(); e++,w++,t++) {
++      st[t].assign(e->begin(),e->end());
++      wd[t]=w;
++    }
++
++    // emission and transition (log) probabilities
++    vector<vector<double> > emm(n);
++    for (t=0; t<n; t++) {
++      emm[t].resize(st[t].size());
++      for (size_t k=0; k<st[t].size(); k++) emm[t][k]=ProbB_log(st[t][k],*wd[t]);
++    }
++    // tr[t][j][k]: from state j of word t-1 to state k of word t
++    vector<vector<vector<double> > > tr(n);
++    for (t=1; t<n; t++) {
++      tr[t].assign(st[t-1].size(), vector<double>(st[t].size(),NEG));
++      for (size_t j=0; j<st[t-1].size(); j++)
++        for (size_t k=0; k<st[t].size(); k++)
++          if (st[t-1][j].second==st[t][k].first)
++            tr[t][j][k]=ProbA_log(st[t-1][j],st[t][k],wd[t]);
++    }
++
++    // forward
++    vector<vector<double> > alpha(n), beta(n);
++    alpha[0].resize(st[0].size());
++    for (size_t k=0; k<st[0].size(); k++) alpha[0][k]=ProbPi_log(st[0][k])+emm[0][k];
++    for (t=1; t<n; t++) {
++      alpha[t].assign(st[t].size(),NEG);
++      for (size_t k=0; k<st[t].size(); k++) {
++        double s=NEG;
++        for (size_t j=0; j<st[t-1].size(); j++)
++          if (tr[t][j][k]!=NEG) s=log_add(s,alpha[t-1][j]+tr[t][j][k]);
++        alpha[t][k]=(s==NEG ? NEG : s+emm[t][k]);
++      }
++    }
++    double z=NEG;
++    for (size_t k=0; k<st[n-1].size(); k++) z=log_add(z,alpha[n-1][k]);
++    if (z==NEG or z!=z) return post;
++
++    // backward
++    beta[n-1].assign(st[n-1].size(),0.0);
++    for (t=n-1; t>0; t--) {
++      beta[t-1].assign(st[t-1].size(),NEG);
++      for (size_t j=0; j<st[t-1].size(); j++) {
++        double s=NEG;
++        for (size_t k=0; k<st[t].size(); k++)
++          if (tr[t][j][k]!=NEG) s=log_add(s,tr[t][j][k]+emm[t][k]+beta[t][k]);
++        beta[t-1][j]=s;
++      }
++    }
++
++    // probability of each short tag of each word
++    post.resize(n);
++    for (t=0; t<n; t++) {
++      for (size_t k=0; k<st[t].size(); k++) {
++        double lp=alpha[t][k]+beta[t][k]-z;
++        if (lp==NEG or lp!=lp) continue;
++        post[t][st[t][k].second]+=exp(lp);
++      }
++      for (map<wstring,double>::iterator p=post[t].begin(); p!=post[t].end(); p++) {
++        if (p->second>1.0) p->second=1.0;
++        if (p->second<0.0) p->second=0.0;
++      }
++    }
++    return post;
++  }
++
++
+   ///////////////////////////////////////////////////////////////  
+   ///  Obtain a list with the states that *may* have emmited 
+   ///  current observation (a sentence).
+--- a/src/libfreeling/language.cc
++++ b/src/libfreeling/language.cc
+@@ -192,6 +192,7 @@
+     locked_analysis=false; 
+     locked_multiwords=false; 
+     ambiguous_mw=false;
++    tag_prob=-1;
+     position=-1;
+     start=-1;
+     finish=-1;
+@@ -206,6 +207,7 @@
+     locked_analysis=false; 
+     locked_multiwords=false; 
+     ambiguous_mw=false;
++    tag_prob=-1;
+     position=-1;
+     start=-1;
+     finish=-1;
+@@ -222,6 +224,7 @@
+     locked_analysis=false; 
+     locked_multiwords=false; 
+     ambiguous_mw=false;
++    tag_prob=-1;
+     position=-1;
+   }
+   /// Create a new multiword, including given words, and with given analysis list.
+@@ -242,6 +245,7 @@
+     locked_analysis=false; 
+     locked_multiwords=false; 
+     ambiguous_mw=false;
++    tag_prob=-1;
+     position=-1;
+   }
+ 
+@@ -258,6 +262,7 @@
+     alternatives=w.alternatives;
+     copy_analysis(w);
+     ambiguous_mw=w.ambiguous_mw;
++    tag_prob=w.tag_prob;
+     position=w.position;
+   }
+ 
+@@ -402,6 +407,10 @@
+   int word::get_n_words_mw() const {return(multiword.size());}
+   /// Get list of words in compound.
+   const list<word>& word::get_words_mw() const {return(multiword);}
++  /// Get the probability the tagger gives the selected tag in its sentence.
++  double word::get_tag_prob() const {return(tag_prob);}
++  /// Set the probability the tagger gives the selected tag in its sentence.
++  void word::set_tag_prob(double p) {tag_prob=p;}
+   /// Get word form.
+   const wstring& word::get_form() const {return(form);}
+   /// Get word form, lowercased.
+--- a/src/libfreeling/output/conll_handler.cc
++++ b/src/libfreeling/output/conll_handler.cc
+@@ -160,7 +160,9 @@
+                                                               {L"DEPHEAD",DEPHEAD},
+                                                               {L"DEPREL",DEPREL},
+                                                               {L"COREF",COREF},
+-                                                              {L"SRL",SRL} };
++                                                              {L"SRL",SRL},
++                                                              {L"LEX_PROB",LEX_PROB},
++                                                              {L"TAG_PROB",TAG_PROB} };
+ 
+ ///----------------------------------------------------------
+ /// constructor (with default fields)
+--- a/src/libfreeling/output/input_conll.cc
++++ b/src/libfreeling/output/input_conll.cc
+@@ -463,6 +463,21 @@
+     break;
+   }
+ 
++  case LEX_PROB: {
++    if (w.empty()) {
++      analysis a;
++      w.add_analysis(a);
++      w.select_all_analysis();
++    }
++    w.begin()->set_prob(util::wstring2double(val));
++    break;
++  }
++
++  case TAG_PROB: {
++    w.set_tag_prob(util::wstring2double(val));
++    break;
++  }
++
+   case SENSE: {
+     // WSD parsing column present
+     list<pair<wstring, double> > sns;
+--- a/src/libfreeling/output/output_conll.cc
++++ b/src/libfreeling/output/output_conll.cc
+@@ -342,6 +342,25 @@
+     break;
+   } 
+ 
++  case LEX_PROB: {
++    // probability of the selected reading among the readings of the form,
++    // out of context (what the probabilities module assigned)
++    wstring lp=L"-";
++    if (not w.empty() and w.selected_begin(best)!=w.selected_end(best))
++      lp = util::double2wstring(w.selected_begin(best)->get_prob());
++    return lp;
++    break;
++  }
++
++  case TAG_PROB: {
++    // probability the tagger gives the selected tag in this sentence
++    // (posterior of the HMM); "-" when no tagger computed it
++    wstring tp=L"-";
++    if (w.get_tag_prob()>=0) tp = util::double2wstring(w.get_tag_prob());
++    return tp;
++    break;
++  }
++
+   case SYNTAX: {
+     // parse tree
+     wstring cst=L"-";
+--- a/src/libfreeling/tagger.cc
++++ b/src/libfreeling/tagger.cc
+@@ -122,6 +122,7 @@
+           i->set_span(p,f);
+           p = f;  
+           i->user=w->user;
++          i->set_tag_prob(w->get_tag_prob());
+         
+           TRACE(2,L"  Inserting "+i->get_form()+L". span=("+util::int2wstring(i->get_span_start())+L","+util::int2wstring(i->get_span_finish())+L")");
+           w=se.insert(w,*i); 

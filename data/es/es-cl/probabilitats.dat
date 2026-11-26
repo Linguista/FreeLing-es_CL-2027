@@ -7,6 +7,7 @@ aburrir aburrar
 vender vendar
 mío miar
 poder podar
+reír reir
 </LemmaPreferences>
 <PosPreferences>
 VMII3S0 VMII1S0
@@ -37091,7 +37092,6 @@ civil AQ-NC AQ 45 NC 0
 civiles AQ-NC AQ 14 NC 0
 clara AQ-NC AQ 18 NC 0
 claras AQ-NC AQ 10 NC 0
-claro AQ-I-NC-RG AQ 38 I 3 NC 0 RG 21
 clave AQ-NC-VMM-VMS AQ 0 NC 26 VMM 0 VMS 0
 clásico AQ-NC AQ 5 NC 1
 clásicos AQ-NC AQ 4 NC 1
@@ -37135,7 +37135,6 @@ comienza VMI-VMM VMI 16 VMM 0
 comienzo NC-VMI NC 13 VMI 0
 comisaría NC-VMI NC 7 VMI 0
 comisiones NC-VMS NC 13 VMS 0
-como CC-CS-PR-SP-VMI CC 5 CS 1425 PR 12 SP 31 VMI 0
 comparte NC-VMI-VMM NC 0 VMI 5 VMM 0
 compartimento NC-VMI NC 8 VMI 0
 competidores AQ-NC AQ 0 NC 4
@@ -37189,7 +37188,6 @@ conoce VMI-VMM VMI 15 VMM 0
 conocida NC-VMP NC 0 VMP 13
 conocidas NC-VMP NC 0 VMP 7
 conocido NC-VMP NC 0 VMP 23
-conocidos NC-VMP NC 1 VMP 10
 conozca VMM-VMS VMM 1 VMS 4
 conozcan VMM-VMS VMM 0 VMS 5
 conquista NC-VMI-VMM NC 5 VMI 0 VMM 0
@@ -37325,7 +37323,6 @@ custodia AQ-NC-VMI-VMM AQ 0 NC 5 VMI 1 VMM 0
 cuál DE-DT-PE-PT DE 0 DT 0 PE 0 PT 29
 cuáles DE-DT-PE-PT DE 0 DT 0 PE 0 PT 5
 cuándo PE-PT PE 0 PT 11
-cuánto DE-DT-PE-PT DE 0 DT 2 PE 0 PT 4
 cántabro AQ-NC AQ 4 NC 0
 cómoda AQ-NC AQ 4 NC 0
 cómplice AQ-NC AQ 0 NC 5
@@ -37564,7 +37561,6 @@ elige VMI-VMM VMI 4 VMM 0
 eliminatoria AQ-NC AQ 1 NC 15
 eliminatorias AQ-NC AQ 0 NC 12
 elogio NC-VMI NC 4 VMI 0
-embarazada NC-VMP NC 0 VMP 8
 embarazo NC-VMI NC 5 VMI 0
 embargo NC-VMI NC 21 VMI 0
 embarques NC-VMS NC 8 VMS 0
@@ -37604,7 +37600,6 @@ enmienda NC-VMI-VMM NC 4 VMI 0 VMM 0
 enmiendas NC-VMI NC 5 VMI 0
 ensayo NC-VMI NC 6 VMI 0
 entender NC-VMN NC 0 VMN 17
-entendido NC-VMP NC 0 VMP 4
 entero AQ-NC-VMI AQ 4 NC 0 VMI 1
 entiende VMI-VMM VMI 11 VMM 0
 entonces CS-I-RG CS 0 I 0 RG 111
@@ -37641,7 +37636,6 @@ escolar AQ-NC AQ 4 NC 0
 escolares AQ-NC AQ 1 NC 6
 escolta NC-VMI-VMM NC 9 VMI 0 VMM 0
 escribe VMI-VMM VMI 8 VMM 0
-escrito NC-VMP NC 14 VMP 16
 escuadra NC-VMI-VMM NC 4 VMI 0 VMM 0
 escucha NC-VMI-VMM NC 0 VMI 4 VMM 0
 escándalo NC-VMM NC 20 VMM 0
@@ -37825,7 +37819,6 @@ fiscales AQ-NC AQ 10 NC 2
 fiyiano AQ-NC AQ 3 NC 1
 flamenco AQ-NC AQ 3 NC 3
 flota NC-VMI-VMM NC 7 NP 1 VMI 1 VMM 0
-fluido NC-VMP NC 3 VMP 2
 forense AQ-NC AQ 5 NC 1
 forma NC-VMI-VMM NC 178 VMI 2 VMM 0
 formas NC-VMI NC 27 VMI 1
@@ -37877,7 +37870,6 @@ gallega AQ-NC AQ 5 NC 1
 gallego AQ-NC AQ 17 NC 4 NP 2
 gallegos AQ-NC AQ 4 NC 7
 gana NC-VMI-VMM NC 1 VMI 15 VMM 0
-ganado NC-VMP NC 13 VMP 40
 ganador AQ-NC AQ 4 NC 18
 ganadores AQ-NC AQ 2 NC 2
 ganas NC-VMI NC 17 VMI 0
@@ -37939,7 +37931,6 @@ habría VAI-VMI VAI 42 VMI 0
 habrían VAI-VMI VAI 8 VMI 0
 había VAI-VMI VAI 339 VMI 0
 habían VAI-VMI VAI 86 VMI 0
-haciendo VMG-VMI VMG 37 VMI 0
 haga VMM-VMS VMM 0 VMS 21
 hagamos VMM-VMS VMM 2 VMS 5
 hagan VMM-VMS VMM 0 VMS 14
@@ -37949,7 +37940,6 @@ hasta RG-SP RG 38 SP 455
 haya NC-VAS-VMS NC 0 VAS 90 VMS 1
 hayan VAS-VMS VAS 19 VMS 0
 he I-VAI-VMI I 0 VAI 82 VMI 3
-hecho NC-VMP NC 64 VMP 113
 hechos NC-VMP NC 34 VMP 6
 heladas NC-VMP NC 5 VMP 1
 hembra AQ-NC AQ 0 NC 6
@@ -38000,7 +37990,6 @@ ideal AQ-NC AQ 6 NC 4
 ideales AQ-NC-VMM AQ 2 NC 2 VMM 0
 ideas AQ-NC-VMI AQ 0 NC 22 VMI 0
 idéntica AQ-NC AQ 4 NC 0
-igual AQ-NC-RG AQ 22 NC 0 RG 15
 iguales AQ-NC-VMS AQ 7 NC 0 VMS 0
 ilusiones NC-VMS NC 6 VMS 0
 impacto NC-VMI NC 14 VMI 0
@@ -38314,7 +38303,6 @@ meses NC-VMS NC 177 VMS 0
 meta AQ-NC-VMM-VMS AQ 0 NC 19 VMM 0 VMS 1
 metales NC-VMM NC 19 VMM 0
 metas NC-VMS NC 4 VMS 0
-metido NC-VMP NC 0 VMP 4
 mexicana AQ-NC AQ 14 NC 1
 mexicanas AQ-NC AQ 5 NC 0
 mexicano AQ-NC AQ 18 NC 5
@@ -38377,7 +38365,6 @@ muchísimo DI-PI-RG DI 0 PI 1 RG 5
 muchísimos DI-PI DI 3 PI 1
 muere VMI-VMM VMI 4 VMM 0
 muerta NC-VMP NC 0 VMP 7
-muerto NC-VMP NC 4 VMP 21
 muertos NC-VMP NC 18 VMP 5
 muestra NC-VMI-VMM NC 18 VMI 27 VMM 0
 muestras NC-VMI NC 4 VMI 0
@@ -38565,7 +38552,6 @@ papeles NC-VMM NC 7 VMM 0
 par AQ-NC AQ 0 NC 10
 para SP-VMI-VMM-VMS SP 3004 VMI 0 VMM 0 VMS 0
 parada NC-VMP NC 4 VMP 0
-parado NC-VMP NC 1 VMP 4
 parados NC-VMP NC 13 VMP 1
 paraguayo AQ-NC AQ 4 NC 2
 paralelas AQ-NC AQ 5 NC 0
@@ -38575,7 +38561,6 @@ parcial AQ-NC AQ 19 NC 2 RG 1
 parciales AQ-NC AQ 4 NC 0
 parece VMI-VMM VMI 100 VMM 0
 parecer NC-VMN NC 1 VMN 8
-parecido AQ-NC-VMP AQ 0 NC 1 VMP 15
 pareja AQ-NC AQ 1 NC 18
 parientes AQ-NC AQ 0 NC 6
 parisiense AQ-NC AQ 4 NC 0
@@ -38600,7 +38585,6 @@ partidos NC-VMP NC 149 VMP 0
 parto NC-VMI NC 5 VMI 1
 pasa AQ-NC-VMI-VMM AQ 0 NC 0 VMI 36 VMM 0
 pasada NC-VMP NC 0 VMP 66
-pasado NC-VMP NC 28 VMP 364
 pasajero AQ-NC AQ 0 NC 4
 pasajeros AQ-NC AQ 1 NC 24
 pasaportes NC-VMS NC 5 VMS 0
@@ -38659,7 +38643,6 @@ perspectivas AQ-NC AQ 0 NC 10
 pertenece VMI-VMM VMI 11 VMM 0
 peruana AQ-NC AQ 9 NC 1
 peruano AQ-NC AQ 7 NC 0
-pesado AQ-NC-VMP AQ 4 NC 0 VMP 2
 pesca NC-VMI-VMM NC 7 VMI 0 VMM 0
 pescado NC-VMP NC 5 VMP 1
 pescadores AQ-NC AQ 0 NC 4
@@ -38753,7 +38736,6 @@ premisas AQ-NC AQ 0 NC 4
 prensa NC-VMI-VMM NC 117 NP 1 VMI 0 VMM 0
 preocupa VMI-VMM VMI 8 VMM 0
 prepara VMI-VMM VMI 13 VMM 0
-preparado NC-VMP NC 1 VMP 16
 presencia NC-VMI-VMM NC 62 VMI 0 VMM 0
 presenta VMI-VMM VMI 24 VMM 0
 presenten VMM-VMS VMM 0 VMS 5
@@ -38779,7 +38761,6 @@ primero AO-RG AO 44 RG 20
 principal AQ-NC AQ 70 NC 1
 principales AQ-NC AQ 57 NC 0
 principio NC-VMI NC 36 VMI 0
-privada AQ-VMP AQ 1 VMP 16
 privadas AQ-VMP AQ 0 VMP 6
 privado AQ-VMP AQ 0 VMP 23
 privados AQ-VMP AQ 0 VMP 6
@@ -38850,7 +38831,6 @@ puede VMI-VMM VMI 326 VMM 0
 puertorriqueño AQ-NC AQ 1 NC 4
 pues CS-RG CS 105 RG 0
 puesta NC-VMP NC 4 VMP 7
-puesto NC-VMP NC 48 VMP 32
 puestos NC-VMP NC 23 VMP 6
 pugna NC-VMI-VMM NC 7 VMI 0 VMM 0
 pulso NC-VMI NC 7 VMI 0
@@ -39278,7 +39258,6 @@ teórica AQ-NC AQ 4 NC 0
 tiendas NC-VMS NC 9 VMS 0
 tiende VMI-VMM VMI 6 VMM 0
 tinta AQ-NC-VMI-VMM AQ 1 NC 3 VMI 0 VMM 0
-tirado NC-VMP NC 0 VMP 4
 tiro NC-VMI NC 8 VMI 0
 titula VMI-VMM VMI 9 VMM 0
 titulada NC-VMP NC 0 VMP 4
@@ -39399,7 +39378,6 @@ verse VMM-VMN-VMS VMM 0 VMN 6 VMS 0
 versiones NC-VMS NC 7 VMS 0
 vespertino AQ-NC AQ 3 NC 2
 vestido NC-VMP NC 0 VMP 4
-vestidos NC-VMP NC 1 VMP 3
 veterano AQ-NC AQ 3 NC 5
 veteranos AQ-NC AQ 1 NC 13
 veto NC-VMI NC 9 VMI 0
@@ -39424,7 +39402,6 @@ visitantes AQ-NC AQ 1 NC 18
 visitas NC-VMI NC 4 VMI 0
 vista NC-VMM-VMP-VMS NC 34 RG 1 VMM 0 VMP 6 VMS 1
 vistas NC-VMP-VMS NC 1 VMP 3 VMS 0
-visto VMI-VMP VMI 0 VMP 63
 viuda AQ-NC AQ 0 NC 7
 vive VMI-VMM VMI 45 VMM 0
 vivir NC-VMN NC 0 VMN 29
@@ -39448,7 +39425,6 @@ víctima AQ-NC AQ 0 NC 29
 víctimas AQ-NC AQ 0 NC 47
 web AQ-NC AQ 3 NC 5
 y CC-NC CC 9327 NC 0 NP 1 SP 1
-ya CS-RG CS 0 RG 465
 yanquis AQ-NC AQ 0 NC 1 NP 8
 yugoslava AQ-NC AQ 4 NC 0
 yugoslavo AQ-NC AQ 11 NC 0
@@ -47101,110 +47077,235 @@ podais VMI-VMS VMI 1 VMS 1000
 podeis VMI-VMS VMI 1000 VMS 1
 podi VMI-VMS VMI 1000 VMS 1
 serrucharai VMI-VMS VMI 1 VMS 4
+kedara VMI-VMS VMI 1 VMS 4
+güitrearai VMI-VMS VMI 1 VMS 4
+abe NP-VMS NP 800 VMS 100
+abuelita I-NC I 50 NC 950
+ade NP-VMI-VMM NP 800 VMI 100 VMM 100
 adentro I-RG-VMI I 0 RG 10000 VMI 0
+ado NP-VMI NP 800 VMI 200
 afuera I-RG-VMI-VMM I 0 RG 10000 VMI 0 VMM 0
+ahí_no_más AQ-RG AQ 10 RG 990
+ale NC-NP NC 200 NP 800
 aleluya I-NC I 0 NC 10000
 allende NP-RG NP 429 RG 1000
+alzado AQ-NC-VMP AQ 890 NC 100 VMP 10
 amparo NC-VMI NC 7 VMI 0
 amén I-NC I 0 NC 10000
 andresiana AQ-NP AQ 1000 NP 429
 andresianas AQ-NP AQ 1000 NP 429
+angelito NC-NP NC 950 NP 50
+apretado AQ-NC-VMP AQ 960 NC 10 VMP 30
+apretados AQ-NC-VMP AQ 980 NC 10 VMP 10
 atención I-NC I 0 NC 10000
 atlántico AQ-NP AQ 1000 NP 4000
+atrevida AQ-NC-VMP AQ 770 NC 220 VMP 10
 atrás I-RG I 0 RG 10000
 augusto AQ-NP AQ 1000 NP 429
 autónoma AQ-NP AQ 1000 NP 429
+aveces RG-VMS RG 990 VMS 10
+baldo NP-VMI NP 800 VMI 200
 bernarda AQ-NP AQ 1000 NP 429
 bravo AQ-I AQ 10000 I 0
 bruno AQ-NP AQ 1000 NP 429
-bueno AQ-I AQ 10000 I 0
+bueno AQ-I AQ 260 I 740
 bálticas AQ-NP AQ 1000 NP 429
+cachá NC-VMI NC 20 VMI 980
 camila AQ-NP AQ 1000 NP 429
 camilo AQ-NP AQ 1000 NP 429
 carajo AQ-I-NC AQ 5162 I 0 NC 4839
 caramba I-NC I 0 NC 10000
+carlita NC-NP NC 200 NP 800
+cata NC-NP-VMI-VMM NC 317 NP 50 VMI 317 VMM 317
 catar NP-VMN NP 111 VMN 1000
+catita NC-NP NC 400 NP 200
 chabela I-NP I 0 NP 1000
 che AQ-I-NC AQ 5162 I 0 NC 4839
 checa AQ-NC AQ 3 NC 0 NP 1
+chicho NC-NP NC 950 NP 50
 chilena AQ-NC AQ 10 NC 0
+chucha_de_su_madre AQ-I-NC AQ 20 I 800 NC 180
 cielos I-NC I 0 NC 10000
+claro AQ-I-NC-RG AQ 20 I 1 NC 1 RG 980
 clemente AQ-NP AQ 1000 NP 429
 colegio NC-VMI NC 8 VMI 0
+comidas NC-VMP-VMS NC 495 VMP 10 VMS 1
+como CC-CS-PR-RG-SP-VMI CC 3 CS 170 PR 50 RG 770 SP 3 VMI 3
+concha_de_su_madre AQ-I-NC AQ 20 I 800 NC 180
+concha_de_su_maire AQ-I-NC AQ 20 I 800 NC 180
+concha_de_su_mare AQ-I-NC AQ 20 I 800 NC 180
+concha_de_tu_madre AQ-I-NC AQ 20 I 800 NC 180
+concha_de_tu_maire AQ-I-NC AQ 20 I 800 NC 180
+concha_de_tu_mare AQ-I-NC AQ 20 I 800 NC 180
+conchas_de_sus_madres AQ-I-NC AQ 20 I 800 NC 180
+conchas_de_sus_maires AQ-I-NC AQ 20 I 800 NC 180
+conchas_de_sus_mares AQ-I-NC AQ 20 I 800 NC 180
+conche_su_madre AQ-I-NC AQ 20 I 800 NC 180
+conche_su_maire AQ-I-NC AQ 20 I 800 NC 180
+conche_su_mare AQ-I-NC AQ 20 I 800 NC 180
+conche_tu_madre AQ-I-NC AQ 20 I 800 NC 180
+conche_tu_maire AQ-I-NC AQ 20 I 800 NC 180
+conche_tu_mare AQ-I-NC AQ 20 I 800 NC 180
+conocidos AQ-NC-VMP AQ 590 NC 400 VMP 10
 cuidado I-NC-VMP I 0 NC 7273 VMP 2728
+curado AQ-NC-VMP AQ 820 NC 80 VMP 100
+cuánto DE-DT-PE-PT-RG DE 10 DT 70 PE 10 PT 480 RG 430
 cómo I-NC-PE-PT I 0 NC 0 PE 0 PT 10000
 departamental AQ-NP AQ 1000 NP 4000
 despacio I-NC-RG I 0 NC 316 RG 9685
 dice VMI-VMM VMI 10000 VMM 0
 dios I-NC I 0 NC 10000
 donoso AQ-NP AQ 1000 NP 429
+dr NC-SP NC 950 SP 50
+echado AQ-NC-VMP AQ 120 NC 10 VMP 870
+embarazada AQ-NC-VMP AQ 980 NC 10 VMP 10
+empanadas NC-VMP NC 495 VMP 10
+enamorada AQ-NC-VMP AQ 830 NC 160 VMP 10
+enserio RG-VMI RG 990 VMI 10
+entendido AQ-NC-VMP AQ 710 NC 10 VMP 280
+entretenido AQ-NC-VMP AQ 960 NC 30 VMP 10
+escrito AQ-NC-VMP AQ 570 NC 240 VMP 190
 espinosa AQ-NP AQ 1000 NP 429
+estefanita NC-NP NC 200 NP 800
 estúpido AQ-I-NC AQ 5162 I 0 NC 4839
-exacto AQ-I AQ 10000 I 0
+facu NC-NP NC 200 NP 800
 facundo AQ-NP AQ 1000 NP 429
 fantástico AQ-I AQ 10000 I 0
 ferroviaria AQ-NC AQ 5 NC 0
 florida AQ-NP AQ 1000 NP 4000
+fluido AQ-NC-VMP AQ 980 NC 10 VMP 10
+fritas AQ-NC-VMP AQ 940 NC 50 VMP 10
 gallardo AQ-NP AQ 1000 NP 429
+ganado AQ-NC-VMP AQ 50 NC 140 VMP 810
 garrido AQ-NP AQ 1000 NP 429
 general AQ-NC AQ 143 NC 30
+gente AQ-NC AQ 50 NC 950
 guarda I-NC-VMI-VMM I 0 NC 1667 VMI 8334 VMM 0
+guille NP-VMM-VMS NP 800 VMM 100 VMS 50
 habana AQ-NP AQ 1000 NP 4000
 hace VMI-VMM VMI 10000 VMM 0
+haciendo VMG-VMI VMG 990 VMI 10
+harto AQ-RG-VMI AQ 180 RG 820 VMI 1
+hecho AQ-NC-VMP AQ 70 NC 340 VMP 590
+helado AQ-NC-VMP AQ 310 NC 530 VMP 160
 hopo I-NC I 0 NC 10000
+huevadas NC-VMP NC 990 VMP 10
+igual AQ-NC-RG AQ 5 NC 5 RG 990
 india AQ-NC AQ 1 NC 2 NP 3
 inicia VMI-VMM VMI 9 VMM 0
+internado AQ-NC-VMP AQ 130 NC 860 VMP 10
 irán NP-VMI NP 111 VMI 1000
+isi NC-NP NC 200 NP 800
+jaco NC-NP NC 200 NP 800
 jaque I-NC I 0 NC 10000
 joder I-VMN I 0 VMN 10000
 jopo I-NC I 0 NC 10000
-listo AQ-I-VMI AQ 9795 I 0 VMI 206
+kimberlita NC-NP NC 200 NP 800
+lis NC-NP NC 950 NP 50
 llevamos VMI-VMM VMI 5000 VMM 0
+lucho NP-VMI NP 400 VMI 600
+maca NC-NP-VMI-VMM NC 67 NP 800 VMI 67 VMM 67
 malasia AQ-NP AQ 1000 NP 4000
 malena AQ-NP-RG AQ 799 NP 429 RG 202
 mariano AQ-NP AQ 1000 NP 429
 marianos AQ-NP AQ 1000 NP 429
 mediterráneo AQ-NP AQ 1000 NP 4000
+melanita NC-NP NC 200 NP 800
+metida AQ-NC-VMP AQ 970 NC 20 VMP 10
+metido AQ-NC-VMP AQ 750 NC 10 VMP 240
 milagro I-NC I 0 NC 10000
 milena AQ-NP AQ 1000 NP 429
 mm I-NC I 0 NC 10000
 montana AQ-NP AQ 1000 NP 429
+movida AQ-NC-VMP AQ 640 NC 117 VMP 10
+movido AQ-NC-VMP AQ 730 NC 10 VMP 260
+muerto AQ-NC-VMP AQ 530 NC 70 VMP 400
+más_o_menos AQ-RG AQ 10 RG 990
 médico AQ-NC AQ 14 NC 6
+nada_que_ver AQ-RG AQ 990 RG 10
 nano AQ-NP AQ 1000 NP 429
+nao NC-NP NC 200 NP 800
+ni_cagando I-RG I 200 RG 800
+ni_kagando I-RG I 200 RG 800
+nica I-RG I 200 RG 800
+nicagando I-RG I 200 RG 800
+nika I-RG I 200 RG 800
+nikagando I-RG I 200 RG 800
+no_po I-RG I 280 RG 720
+no_poh I-RG I 280 RG 720
 noruega AQ-NC AQ 4 NC 0 NP 5
-ok AQ-I AQ 10000 I 0
-okay I-RG I 0 RG 10000
-okey I-RG I 0 RG 10000
+nublado AQ-NC-VMP AQ 910 NC 80 VMP 10
+nunca_más I-RG I 100 RG 900
+octa NC-NP NC 200 NP 800
+ocupado AQ-RG-VMP AQ 730 RG 1 VMP 270
+ok AQ-I-RG AQ 10 I 990 RG 1
+okay AQ-I-RG AQ 10 I 990 RG 1
+okey AQ-I-RG AQ 10 I 990 RG 1
 onofre I-NP I 0 NP 1000
 osuna AQ-NP AQ 1000 NP 429
 paciencia I-NC I 0 NC 10000
 pacífico AQ-NP AQ 1000 NP 4000
+palomita NC-NP NC 475 NP 50
+pancho AQ-NC-NP AQ 100 NC 100 NP 800
 papudo AQ-NP AQ 1000 NP 4000
+parado AQ-NC-VMP AQ 790 NC 40 VMP 170
+parecido AQ-NC-VMP AQ 900 NC 70 VMP 30
 parva AQ-NP AQ 1000 NP 4000
+pasado AQ-NC-VMP AQ 590 NC 20 VMP 390
 pascual AQ-NP AQ 1000 NP 429
+pato NC-NP-RG NC 200 NP 600 RG 200
+pegado AQ-NC-VMP AQ 600 NC 20 VMP 380
+pepe AQ-NC-NP AQ 100 NC 100 NP 800
+pesada AQ-NC-VMP AQ 980 NC 10 VMP 10
+pesado AQ-NC-RG-VMP AQ 980 NC 10 RG 1 VMP 10
+pesados AQ-NC-VMP AQ 980 NC 10 VMP 10
 pinto NP-VMI NP 429 VMI 1000
 poblete AQ-NP AQ 1000 NP 429
 pobre AQ-I-NC AQ 9091 I 0 NC 910
 pone VMI-VMM VMI 10000 VMM 0
+porfi RG-VMS RG 400 VMS 600
+porfis RG-VMS RG 400 VMS 600
+preparado AQ-NC-VMP AQ 880 NC 10 VMP 110
 presente AQ-I-NC-VMM-VMS AQ 5284 I 0 NC 2453 VMM 0 VMS 1133
+privada AQ-VMP AQ 990 VMP 10
+puesto AQ-NC-VMP AQ 120 NC 430 VMP 450
 puf I-NC I 0 NC 10000
 puff I-NC I 0 NC 10000
+quebrada AQ-NC-VMP AQ 290 NC 350 VMP 10
 quito AQ-NP-VMI AQ 47040 NP 112 VMI 1008
 rayos I-NC I 0 NC 10000
 recoleta AQ-NP AQ 1000 NP 4000
 roma AQ-NP AQ 1000 NP 4000
 sagradas AQ-NP AQ 1000 NP 429
 señor AQ-I-NC AQ 0 I 0 NC 10000
+silvanita NC-NP NC 200 NP 800
 simón AQ-NP AQ 1000 NP 429
 socorro I-NC-VMI I 0 NC 10000 VMI 0
 suiza AQ-NC AQ 2 NC 3 NP 25
+super AQ-RG AQ 10 RG 990
+sí_po I-RG I 490 RG 510
+sí_poh I-RG I 490 RG 510
+t NC-P0-PP NC 980 P0 10 PP 10
+tar NC-VAN-VMN NC 10 VAN 490 VMN 500
+tas NC-VAI-VMI NC 10 VAI 490 VMI 500
+tirado AQ-NC-VMP AQ 730 NC 10 VMP 260
+tito NC-NP NC 200 NP 800
 tomé NP-VMI NP 111 VMI 1000
+toy NC-VAI-VMI NC 800 VAI 100 VMI 100
+toña NC-NP NC 200 NP 800
 universal AQ-NC AQ 9 NC 0
+val NC-NP NC 200 NP 800
 valentina AQ-NP AQ 1000 NP 429
-vamos I-VMI-VMM I 0 VMI 10000 VMM 0
+vamos I-VMI-VMM I 1 VMI 33 VMM 0
+van NC-VMI NC 10 VMI 980
 venga I-VMI-VMM-VMS I 0 VMI 0 VMM 1000 VMS 4000
+vestidos AQ-NC-VMP AQ 460 NC 530 VMP 10
 vial AQ-NC AQ 3 NC 3
 victoria I-NC I 0 NC 98
+visto AQ-VMI-VMP AQ 60 VMI 20 VMP 920
 viva AQ-I-VMM-VMS AQ 4167 I 0 VMM 834 VMS 2500
+volada AQ-NC-VMP AQ 260 NC 243 VMP 10
+volado AQ-NC-VMP AQ 940 NC 10 VMP 50
+ya CS-I-RG CS 1 I 350 RG 650
 ánimo I-NC I 0 NC 10000
 </FormTagFreq>

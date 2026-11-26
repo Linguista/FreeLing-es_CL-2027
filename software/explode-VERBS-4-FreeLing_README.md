@@ -4,8 +4,8 @@ Documents `explode-VERBS-4-FreeLing.pl` 1.2.
 
 Real files (identical copies):
 
-- `/home/user/MyScripts/linguistics/explode-VERBS-4-FreeLing.pl`
-- `/home/user/ProgData/System-Install-Script/linguistics/explode-VERBS-4-FreeLing.pl`
+- `/path/to/explode-scripts/explode-VERBS-4-FreeLing.pl`
+- `/path/to/explode-scripts/explode-VERBS-4-FreeLing.pl`
 
 ## Purpose
 
@@ -22,7 +22,7 @@ the Chilean FreeLing data (FreeLing es-CL 2027).
 ## Usage
 
 ```bash
-perl /home/user/MyScripts/linguistics/explode-VERBS-4-FreeLing.pl /path/to/verbs.txt
+perl /path/to/explode-scripts/explode-VERBS-4-FreeLing.pl /path/to/verbs.txt
 ```
 
 The input must be UTF-8, one infinitive per line. The output is written next to the input as

@@ -79,6 +79,9 @@ american_canyon
 americana
 amiens
 américa
+américa_central
+américa_del_sur
+américa_latina
 américo
 anaheim
 anaheim_hills
@@ -205,10 +208,12 @@ bagdad
 bage
 baghdad
 bahia_blanca
+bahía_blanca
 baicheng
 baihua
 baise
 baiyin
+baja_sajonia
 baker
 bakersfield
 baku
@@ -514,9 +519,12 @@ carlsbad
 carmel
 carmichael
 carnelian_bay
+carolina_del_norte
+carolina_del_sur
 carpinteria
 carson
 cartagena
+cartagena_de_indias
 caruaru
 caruthers
 carén
@@ -565,6 +573,7 @@ century_city
 ceres
 cerrillos
 cerritos
+cerro_colorado
 cerro_navia
 ch'eng-tu
 chacabuco
@@ -681,6 +690,7 @@ cincinnati
 cipolletti
 cisnes
 citrus_heights
+ciudad_de_méxico
 claremont
 clarksburg
 clayton
@@ -783,6 +793,7 @@ corcoran
 cordillera
 cordillerilla
 cordoba
+corea_del_sur
 corning
 corona
 corona_del_mar
@@ -798,6 +809,7 @@ corte_madera
 corvaliz
 corvi
 costa_mesa
+costa_rica
 cotati
 cotia
 coto_de_caza
@@ -865,6 +877,8 @@ cölln
 da_'an
 da_an
 daggett
+dakota_del_norte
+dakota_del_sur
 dalcahue
 dali
 dalian
@@ -972,6 +986,7 @@ edwards_afb
 egipto
 el_alto
 el_bosque
+el_cairo
 el_cajon
 el_carmen
 el_centro
@@ -987,6 +1002,7 @@ el_paso
 el_portal
 el_pulpo
 el_quisco
+el_salvador
 el_segundo
 el_sobrante
 el_tabo
@@ -1021,6 +1037,7 @@ esparto
 españa
 essex
 estación_central
+estados_unidos
 estocolmo
 etiopía
 etiwanda
@@ -1183,6 +1200,7 @@ gorman
 goshen
 governador_valadares
 graeagle
+gran_bretaña
 granada_hills
 grand_prairie
 grand_rapids
@@ -1551,6 +1569,7 @@ kaili
 kaiyuan
 kalikata
 kandahar
+kansas
 kansas_city
 karamay
 kashi
@@ -1603,7 +1622,9 @@ la_estrella
 la_florida
 la_grange
 la_granja
+la_habana
 la_habra
+la_haya
 la_higuera
 la_honda
 la_jolla
@@ -1920,6 +1941,7 @@ maoming
 mapocho
 maquehue
 mar_del_plata
+mar_rojo
 mar_vista
 maraba
 maracaibo
@@ -2222,7 +2244,10 @@ nova_friburgo
 nova_iguacu
 novatonubieber
 novo_hamburgo
+nueva_delhi
 nueva_imperial
+nueva_orleans
+nueva_zelanda
 nuevo
 nui
 nut_tree
@@ -2375,12 +2400,14 @@ patton
 paulista
 pauma_valley
 paynes_creek
+países_bajos
 pearblossom
 pebble_beach
 pedro_aguirre_cerda
 pehuenco
 pei-ching
 peking
+pekín
 pelarco
 pelchuquín
 peleco
@@ -2514,6 +2541,7 @@ porterville
 portezuelo
 portland
 porto-novo
+porto_alegre
 portola
 portola_valley
 portsmouth
@@ -2554,6 +2582,7 @@ pueblo
 puente_alto
 puerto_montt
 puerto_octay
+puerto_rico
 puerto_varas
 pulga
 pumahue
@@ -2565,6 +2594,7 @@ puninque
 puninqui
 punitaqui
 punta_arenas
+punta_del_este
 puntra
 punucapa
 puqi
@@ -2659,6 +2689,7 @@ randibú
 rangpur
 ranquen
 ranqui
+rapa_nui
 rapel
 rauco
 raume
@@ -2698,12 +2729,16 @@ región_del_maule
 región_metropolitana
 región_metropolitana_de_santiago
 reigolil
+reino_unido
 remehue
 renaico
 renca
 rengo
 reno
 repudauken
+república_checa
+república_de_italia
+república_dominicana
 requínoa
 resistencia
 retiro
@@ -2737,6 +2772,7 @@ rudecindo
 ránquil
 río_bueno
 río_claro
+río_de_janeiro
 río_hurtado
 río_ibáñez
 río_negro
@@ -2744,6 +2780,7 @@ río_verde
 róterdam
 saavedra
 sacramento
+sacro_imperio_romano
 sacsayhuamán
 sagrada_familia
 sagüelgüe
@@ -2778,6 +2815,7 @@ san_bernardino
 san_bernardo
 san_bruno
 san_carlos
+san_carlos_de_apoquindo
 san_clemente
 san_diego
 san_diego_mcrd
@@ -2797,6 +2835,7 @@ san_jacinto
 san_javier
 san_joaquin
 san_joaquín
+san_jorge
 san_jose
 san_josé_de_maipo
 san_juan
@@ -2806,6 +2845,7 @@ san_juan_de_la_costa
 san_leandro
 san_lorenzo
 san_lucas
+san_luis
 san_luis_obispo
 san_luis_rey
 san_marcos
@@ -2850,6 +2890,8 @@ santa_cruz_do_sul
 santa_fe
 santa_fé
 santa_juana
+santa_laura
+santa_lucía
 santa_luzia
 santa_margarita
 santa_maria
@@ -2967,6 +3009,7 @@ siena
 sierra_city
 sierra_gorda
 sierra_madre
+sierra_nevada
 sierraville
 sifen
 signal_hill
@@ -3026,6 +3069,7 @@ springs
 springville
 spíritus
 squaw_valley
+sri_lanka
 st_augustine
 st_catharines
 st_helier
@@ -3058,6 +3102,7 @@ sucayma
 sucre
 sudamérica
 sudbury
+sudeste_asiático
 sudáfrica
 sugarloaf
 suihua
@@ -3191,7 +3236,9 @@ topeka
 topáter
 toronto
 torrance
+torre_de_babel
 torres_del_paine
+torres_gemelas
 tortel
 totoralillo
 townsville
@@ -3212,6 +3259,7 @@ treguaco
 trenque
 trequina
 trileo
+trinidad_y_tobago
 trocadero
 trois-rivières
 trovolhue
@@ -3237,6 +3285,7 @@ uberlandia
 ulaanbaatar
 ulan_hot
 umuarama
+unión_soviética
 urbana
 uruguaiana
 uruguay

@@ -244,7 +244,7 @@ vino ...):
 "Pinto y dibujo" reads like "Pinto y Molina" up to its last word. FreeLing
 es-CL 2027 uses 30%, the middle of the shares that tested best, in written
 texts (`np.dat`). In transcribed speech (`np-speech.dat`) its line is
-`pinto NP00SP0`, the surname alone: a COSCACH line starts with a
+`pinto NP00SP0`, the surname alone: a speech corpus line starts with a
 lower-case letter unless its first word is a name, so a speaker's pinto is
 written in lower case and stays the verb (decided 261110g). The two files
 may give a word different readings; the share in `probabilitats.dat` is
@@ -396,7 +396,7 @@ FreeLing's build folder holds the compiled objects only while they are
 kept; if it was emptied (only `CMakeCache.txt` and `install_manifest.txt`
 left, no `src/` folder), the library is built from scratch, which needs the
 same configuration as the first build. Here the source tree is
-`/home/user/build/FreeLing-4.2` (the tag 4.2, with the fixes it needs to
+`/path/to/build/FreeLing-4.2` (the tag 4.2, with the fixes it needs to
 compile with GCC 16 already made, among them `CMAKE_CXX_STANDARD 17` in
 `CMakeLists.txt` and the missing `#include <cmath>` in four files; each
 changed file has its `.orig` beside it), installed in `/usr/local`.
@@ -405,8 +405,8 @@ Apply the change (or copy `np.cc`, `np.h` and `nec.cc` over the originals,
 after checking the originals' sha256 above):
 
 ```bash
-patch -d /home/user/build/FreeLing-4.2 -p1 --dry-run < /home/user/csld/software/10-Infrastructure/freeling/patches/freeling-4.2-np-classes.patch
-patch -d /home/user/build/FreeLing-4.2 -p1 < /home/user/csld/software/10-Infrastructure/freeling/patches/freeling-4.2-np-classes.patch
+patch -d /path/to/build/FreeLing-4.2 -p1 --dry-run < /path/to/project/derived-software/FreeLing_es-CL_2027/third-party/patches/freeling-4.2-np-classes.patch
+patch -d /path/to/build/FreeLing-4.2 -p1 < /path/to/project/derived-software/FreeLing_es-CL_2027/third-party/patches/freeling-4.2-np-classes.patch
 ```
 
 Configure the build folder (the old cache, if any, moved aside first, so
@@ -414,10 +414,10 @@ that nothing of a removed build is reused), with the options of the first
 build:
 
 ```bash
-mkdir -p /home/user/build/FreeLing-4.2/build/deprecated
-mv -n /home/user/build/FreeLing-4.2/build/CMakeCache.txt /home/user/build/FreeLing-4.2/build/deprecated/CMakeCache.DEPRECATED-261110.txt
-cmake -S /home/user/build/FreeLing-4.2 -B /home/user/build/FreeLing-4.2/build -DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_CXX_FLAGS="-Wno-template-body" -DCMAKE_C_FLAGS="-std=gnu17" >| /home/user/build/fl-np-classes-cmake.log 2>&1; echo "exit $?"
-tail -3 /home/user/build/fl-np-classes-cmake.log
+mkdir -p /path/to/build/FreeLing-4.2/build/deprecated
+mv -n /path/to/build/FreeLing-4.2/build/CMakeCache.txt /path/to/build/FreeLing-4.2/build/deprecated/CMakeCache.DEPRECATED-261110.txt
+cmake -S /path/to/build/FreeLing-4.2 -B /path/to/build/FreeLing-4.2/build -DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_CXX_FLAGS="-Wno-template-body" -DCMAKE_C_FLAGS="-std=gnu17" >| /path/to/build/fl-np-classes-cmake.log 2>&1; echo "exit $?"
+tail -3 /path/to/build/fl-np-classes-cmake.log
 ```
 
 | Option | Why |
@@ -432,17 +432,17 @@ libraries it links to, foma, treeler, dynet and crfsuite, which are not
 installed again):
 
 ```bash
-make -C /home/user/build/FreeLing-4.2/build -j16 freeling >| /home/user/build/fl-np-classes-make.log 2>&1; echo "exit $?"
-grep -c "error:" /home/user/build/fl-np-classes-make.log
+make -C /path/to/build/FreeLing-4.2/build -j16 freeling >| /path/to/build/fl-np-classes-make.log 2>&1; echo "exit $?"
+grep -c "error:" /path/to/build/fl-np-classes-make.log
 ```
 
 Install the library and the header (copy the installed ones aside first,
 if they are to be kept):
 
 ```bash
-sudo cmake -P /home/user/build/FreeLing-4.2/build/src/libfreeling/cmake_install.cmake
+sudo cmake -P /path/to/build/FreeLing-4.2/build/src/libfreeling/cmake_install.cmake
 sudo chmod 755 /usr/local/lib/libfreeling.so
-sudo install -m 644 /home/user/build/FreeLing-4.2/src/include/freeling/morfo/np.h /usr/local/include/freeling/morfo/np.h
+sudo install -m 644 /path/to/build/FreeLing-4.2/src/include/freeling/morfo/np.h /usr/local/include/freeling/morfo/np.h
 sudo ldconfig
 ```
 
@@ -479,12 +479,12 @@ strings -e L /usr/local/lib/libfreeling.so | grep -c -x -E "DictionaryClasses|Fi
 | 0 | is FreeLing 4.2 without the change |
 
 `freeling_escl_deploy.py` (system target) and `freeling_tag_corpus.py`
-(COSCACH and CODICACH) make the same check and refuse anything but 6.
+(the speech corpus and the written corpus) make the same check and refuse anything but 6.
 
 ## 9. Examples
 
-With the configs of FreeLing es-CL 2027: CODICACH (written texts, `np.dat`,
-`<ClassesAtSentenceStart>` no) and COSCACH (transcribed speech,
+With the configs of FreeLing es-CL 2027: the written corpus (written texts, `np.dat`,
+`<ClassesAtSentenceStart>` no) and the speech corpus (transcribed speech,
 `np-speech.dat`, yes). Before: FreeLing 4.2 without the change, with the
 same data (the four sections are skipped) and FreeLing's own classifier
 file.
@@ -521,13 +521,13 @@ file.
 
 In transcribed speech a capitalized word at the start of a line is taken
 for a name, so the verbs there (Tomé un café) become places and Pinto the
-surname; in COSCACH such lines are rare, and nearly every capital at the
+surname; in the speech corpus such lines are rare, and nearly every capital at the
 start of a line is a name (section 10): a speaker's verb is written in
 lower case (pinto la casa).
 
 ## 10. Measured effect
 
-On 21,366 lines of COSCACH (Chilean Spanish, transcribed speech) holding a
+On 21,366 lines of the speech corpus (Chilean Spanish, transcribed speech) holding a
 place name of the Chilean data: 24,408 occurrences of a place name, 22,422
 of them a token of exactly the name (the others are part of a longer name,
 such as Hospital de Puerto Montt). The class each exact token got:
@@ -553,7 +553,7 @@ Molina once a person (Enrique Molina, a school named after a person;
 section 11). In written mode also Castro 14 times the common noun at the
 start of a line (section 3.3). Before the rulings of 261110g (molina on
 FreeLing's list of whole person names, Pinto also the verb at the start of
-a COSCACH line) speech mode gave 22,289 places (99.5%) and 31 persons,
+a speech corpus line) speech mode gave 22,289 places (99.5%) and 31 persons,
 written mode 22,287 (99.4%) and 31.
 
 Of the 2,306 other names in the same lines (not place names of the Chilean

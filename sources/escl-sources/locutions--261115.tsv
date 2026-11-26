@@ -1,0 +1,736 @@
+form	lemma	tag	flag	notes
+como_que	como_que	CS	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+es_que	es_que	CS	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+sí_poh	sí_poh	I	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+así_que	así_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+y_todo	y_todo	I	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as ambiguous (A)
+a_veces	a_veces	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+por_eso	por_eso	RG	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as ambiguous (A)
+de_que	de_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_ver	a_ver	I	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as ambiguous (A)
+de_hecho	de_hecho	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+cosas_así	cosas_así	I	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as ambiguous (A)
+más_que	más_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+lo_mismo	lo_mismo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_el_final	al_final	RG	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as ambiguous (A)
+para_que	para_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_realidad	en_realidad	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+no_poh	no_poh	I	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+es_más	es_más	RG	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+o_no	o_no	I	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+y_todo_eso	y_todo_eso	I	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+algo_así	algo_así	I	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as ambiguous (A)
+la_verdad	la_verdad	RG	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+puede_ser	puede_ser	I	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as ambiguous (A)
+una_vez	una_vez	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+como_para	como_para	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+más_que_nada	más_que_nada	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+por_ahí	por_ahí	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_verdad	en_verdad	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+y_cosas_así	y_cosas_así	I	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_el_lado	al_lado	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+igual_que	igual_que	CS	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as ambiguous (A)
+de_verdad	de_verdad	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_lo_mejor	a_lo_mejor	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_general	en_general	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+está_bien	está_bien	I	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as ambiguous (A)
+ni_siquiera	ni_siquiera	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+cómo_se_llama	cómo_se_llama	I	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as ambiguous (A)
+de_nuevo	de_nuevo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_cambio	en_cambio	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+nada_más	nada_más	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed; corrected 261114
+ni_nada	ni_nada	I	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as ambiguous (A)
+por_lo_que	por_lo_que	CS	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as ambiguous (A)
+cerca_de	cerca_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+sobre_todo	sobre_todo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_que	a_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+lo_que_pasa_es_que	lo_que_pasa_es_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+una_cosa_así	una_cosa_así	I	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as ambiguous (A)
+a_el_principio	al_principio	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+la_verdad_es_que	la_verdad_es_que	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+o_si_no	o_si_no	CC	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_el_menos	al_menos	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_ese_sentido	en_ese_sentido	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+más_allá	más_allá	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+según_yo	según_yo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+<dar>_lo_mismo	dar_lo_mismo	$1:VM	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+estados_unidos	estados_unidos	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+en_serio	en_serio	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+y_esas_cosas	y_esas_cosas	I	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+o_cosas_así	o_cosas_así	I	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_el_fondo	en_el_fondo	RG	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as ambiguous (A)
+para_nada	para_nada	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+o_sea_que	o_sea_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+desde_que	desde_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+por_así_decirlo	por_así_decirlo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+lo_mismo_que	lo_mismo_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_acuerdo	de_acuerdo	RG	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as ambiguous (A)
+eso_sí	eso_sí	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+o_algo_así	o_algo_así	I	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_el_lado_de	al_lado_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+con_todo	con_todo	RG	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as ambiguous (A)
+en_contra	en_contra	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed; corrected 261114
+esto_es	esto_es	RG	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as ambiguous (A)
+con_lo_que	con_lo_que	CS	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as ambiguous (A)
+a_poco	a_poco	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+ponte_tú	ponte_tú	I	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+por_último	por_último	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+después_que	después_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+más_bien	más_bien	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+san_pedro	san_pedro	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+en_cuanto	en_cuanto	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+por_parte_de	por_parte_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+por_si	por_si	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed; corrected 261114
+puerto_montt	puerto_montt	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+la_cosa_es_que	la_cosa_es_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_lado	de_lado	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+menos_mal	menos_mal	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_dónde	a_dónde	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_pesar_de_que	a_pesar_de_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+siempre_que	siempre_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+si_bien	si_bien	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+no_solo	no_solo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+cada_vez_que	cada_vez_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_saber	a_saber	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+qué_sé_yo	qué_sé_yo	I	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+ya_sea	ya_sea	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_cuenta	en_cuenta	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_el_momento	al_momento	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+cómo_no	cómo_no	I	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as ambiguous (A)
+a_el_final_de	al_final_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_parte_de	de_parte_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+nada_más_que	nada_más_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+por_ahora	por_ahora	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_el_revés	al_revés	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_total	en_total	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+los_andes	los_andes	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+a_principio_de	a_principio_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_el_mismo_tiempo	al_mismo_tiempo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+así_es_que	así_es_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+san_sebastián	san_sebastián	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Use my tag
+a_el_fin	al_fin	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+por_un_lado	por_un_lado	RG	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as ambiguous (A)
+me_entendís	me_entendís	I	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as ambiguous (A)
+es_decir	es_decir	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+por_esto	por_esto	RG	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as ambiguous (A)
+de_siempre	de_siempre	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_especial	en_especial	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+no_cierto	no_cierto	I	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_común	en_común	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_moda	de_moda	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+no_bien	no_bien	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+los_ángeles	los_ángeles	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+universidad_católica	universidad_católica	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+sin_embargo	sin_embargo	CC	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed; corrected 261114
+de_esa_manera	de_esa_manera	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_punto	a_punto	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+quiere_decir	quiere_decir	$1:VM	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+ahora_mismo	ahora_mismo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_la_larga	a_la_larga	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_el_cabo	al_cabo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+buenos_aires	buenos_aires	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+de_acuerdo_a	de_acuerdo_a	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_ahí_que	de_ahí_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+nueva_zelanda	nueva_zelanda	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+san_francisco	san_francisco	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+sí_po	sí_poh	I	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed; corrected 261114
+universidad_de_chile	universidad_de_chile	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+menos_mal_que	menos_mal_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_medio	en_medio	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_pesar_que	a_pesar_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_blanco	en_blanco	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_fin	en_fin	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_particular	en_particular	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+fuerza_aérea	fuerza_aérea	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+viña_de_el_mar	viña_del_mar	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+por_una_parte	por_una_parte	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_el_contrario	al_contrario	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+me_entiendes	me_entiendes	I	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as ambiguous (A)
+puerto_rico	puerto_rico	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+por_más_que	por_más_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_la_práctica	en_la_práctica	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_voz_alta	en_voz_alta	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_el_respecto	al_respecto	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+aun_así	aun_así	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_caso_de_que	en_caso_de_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+tan_solo	tan_solo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+no_po	no_poh	I	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed; corrected 261114
+a_partir	a_partir	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_servicio	de_servicio	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+por_culpa_de	por_culpa_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_medias	a_medias	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+<guerra>_<mundial>	guerra_mundial	$1:NC	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept with my tag/flag/lemma; slots agreed 261114
+medio_ambiente	medio_ambiente	NCMS000	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept with my tag/flag/lemma; corrected 261114
+por_fin	por_fin	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_conjunto	en_conjunto	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+fuerzas_armadas	fuerzas_armadas	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+a_el_azar	al_azar	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_comparación_con	en_comparación_con	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+claro_que_sí	claro_que_sí	I	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+la_habana	la_habana	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+a_pie	a_pie	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_todas_formas	de_todas_formas	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_alta	de_alta	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_tiempo	a_tiempo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_cerca	de_cerca	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_el_todo	del_todo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+mediados_de	mediados_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed; corrected 261114
+<plaza>_de_armas	plaza_de_armas	$1:NC	I	speech-corpus-multiword-verify--261114b.xlsx Questions: NCFS000 only
+juan_carlos	juan_carlos	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+san_luis	san_luis	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+a_el_parecer	al_parecer	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+costa_rica	costa_rica	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+de_la_misma_manera	de_la_misma_manera	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_lejos	de_lejos	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_el_caso_de_que	en_el_caso_de_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_primer_lugar	en_primer_lugar	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+mejor_dicho	mejor_dicho	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+por_encima	por_encima	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_fondo	a_fondo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_lo_largo_de	a_lo_largo_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_una_vez	de_una_vez	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+dios_mío	dios_mío	I	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept with my tag/flag/lemma; corrected 261114
+qué_rico	qué_rico	I	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as ambiguous (A)
+a_final_de	a_final_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_el_aire_libre	al_aire_libre	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+américa_latina	américa_latina	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+de_la_misma_forma	de_la_misma_forma	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+copa_américa	copa_américa	NP00V00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+en_público	en_público	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+ministerio_de_educación	ministerio_de_educación	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+más_y_más	más_y_más	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+por_otra_parte	por_otra_parte	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+pese_a_que	pese_a_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_propósito	a_propósito	RG	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as ambiguous (A)
+a_ratos	a_ratos	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_todo_esto	a_todo_esto	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+por_falta_de	por_falta_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+pucha_que	pucha_que	I	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as ambiguous (A)
+república_dominicana	república_dominicana	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+de_baja	de_baja	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+después_de_todo	después_de_todo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_tanto	en_tanto	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+onda_que	onda_que	CS	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as ambiguous (A)
+puesto_que	puesto_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+san_pablo	san_pablo	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+a_largo_plazo	a_largo_plazo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+claro_que_no	claro_que_no	I	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+como_puede_ser	como_puede_ser	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_silencio	en_silencio	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+espíritu_santo	espíritu_santo	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+por_tanto	por_tanto	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+segunda_guerra_mundial	segunda_guerra_mundial	NP00V00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+a_el_máximo	al_máximo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_paso	de_paso	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_forma_de	en_forma_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+quería_decir	quería_decir	$1:VM	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_acuerdo_en	de_acuerdo_en	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_costumbre	de_costumbre	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_momento	de_momento	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_efecto	en_efecto	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_principio	en_principio	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+más_aún	más_aún	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+san_carlos	san_carlos	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+sin_duda	sin_duda	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_gusto	a_gusto	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+cara_a	cara_a	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_alto	en_alto	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_teoría	en_teoría	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+qué_tal	qué_tal	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+<toque>_de_queda	toque_de_queda	$1:NC	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+un_tanto	un_tanto	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_finales_de	a_finales_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_la_ligera	a_la_ligera	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_esta_manera	de_esta_manera	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_lleno	de_lleno	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_relación_a	en_relación_a	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+fuerza_armada	fuerza_armada	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+san_jorge	san_jorge	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+sino_también	sino_también	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_la_par	a_la_par	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_fondo	de_fondo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_pie	de_pie	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+te_fijas	te_fijas	I	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as ambiguous (A)
+ciudad_de_méxico	ciudad_de_méxico	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+claro_está	claro_está	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_entrada	de_entrada	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_otro_lado	de_otro_lado	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+san_fernando	san_fernando	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+semana_santa	semana_santa	NCFS000	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept with my tag/flag/lemma; corrected 261114
+a_el_servicio_de	al_servicio_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_una_palabra	en_una_palabra	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+hoy_por_hoy	hoy_por_hoy	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed; corrected 261114
+las_vegas	las_vegas	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+mientras_tanto	mientras_tanto	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+por_casualidad	por_casualidad	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+por_cierto	por_cierto	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+por_completo	por_completo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+sri_lanka	sri_lanka	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+a_corto_plazo	a_corto_plazo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_distancia	a_distancia	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_prueba	a_prueba	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_el_margen	al_margen	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_esta_forma	de_esta_forma	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_inmediato	de_inmediato	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_una_parte	de_una_parte	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+debido_a_que	debido_a_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed; corrected 261114
+el_salvador	el_salvador	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+en_broma	en_broma	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_vano	en_vano	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+santa_lucía	santa_lucía	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+a_lo_mejor_sí	a_lo_mejor_sí	RG	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as ambiguous (A)
+ante_todo	ante_todo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_golpe	de_golpe	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_otra_parte	de_otra_parte	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+don_quijote	don_quijote	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+en_definitiva	en_definitiva	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+santa_rosa	santa_rosa	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+en_absoluto	en_absoluto	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_blanco_y_negro	en_blanco_y_negro	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_la_medida_que	en_la_medida_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_profundidad	en_profundidad	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+guerra_fría	guerra_fría	NP00V00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+la_haya	la_haya	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+los_angeles	los_angeles	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+mucho_antes_que	mucho_antes_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+por_debajo_de	por_debajo_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+por_encima_de	por_encima_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+sao_paulo	sao_paulo	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+a_su_vez	a_su_vez	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_seguro	de_seguro	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+por_desgracia	por_desgracia	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+por_ello	por_ello	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+por_lo_cual	por_lo_cual	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+río_de_janeiro	río_de_janeiro	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+santa_fe	santa_fe	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+a_menudo	a_menudo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_igual_manera	de_igual_manera	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+donald_trump	donald_trump	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+en_cualquier_caso	en_cualquier_caso	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_la_línea_de	en_la_línea_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+michael_jackson	michael_jackson	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+primera_guerra_mundial	primera_guerra_mundial	NP00V00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+república_checa	república_checa	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+san_ignacio	san_ignacio	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+a_costa	a_costa	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_domicilio	a_domicilio	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_el_borde_de	al_borde_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_el_instante	al_instante	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+con_el_fin_de	con_el_fin_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_forma_que	de_forma_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_veras	de_veras	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+deportes_concepción	deportes_concepción	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+me_cachái	me_cachái	I	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as ambiguous (A)
+por_lo_demás	por_lo_demás	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+rock_and_roll	rock_and_roll	NCMS000	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept with my tag/flag/lemma; corrected 261114
+tan_sólo	tan_solo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed; corrected 261114
+a_causa	a_causa	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_primera_vista	a_primera_vista	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_el_margen_de	al_margen_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_el_mismo_tiempo_que	al_mismo_tiempo_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+américa_de_el_sur	américa_del_sur	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+cachái_o_no	cachái_o_no	I	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+cerro_colorado	cerro_colorado	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+cámara_de_diputados	cámara_de_diputados	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+de_plano	de_plano	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_relleno	de_relleno	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_un_momento_a_otro	de_un_momento_a_otro	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_boga	en_boga	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_efectivo	en_efectivo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_función_de	en_función_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_otras_palabras	en_otras_palabras	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_privado	en_privado	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_segundo_lugar	en_segundo_lugar	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+entre_tanto	entre_tanto	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+instituto_nacional	instituto_nacional	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+pese_a_todo	pese_a_todo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+real_madrid	real_madrid	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+unión_española	unión_española	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+virgen_maría	virgen_maría	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+a_comienzos_de	a_comienzos_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_la_deriva	a_la_deriva	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_el_contrario_de	al_contrario_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+américa_central	américa_central	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+corea_de_el_sur	corea_del_sur	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+en_concreto	en_concreto	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_desacuerdo_con	en_desacuerdo_con	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_gran_parte	en_gran_parte	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_resumen	en_resumen	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+frente_a_frente	frente_a_frente	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed; corrected 261114
+garcía_márquez	garcía_márquez	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+juegos_olímpicos	juegos_olímpicos	NP00V00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+manuel_rojas	manuel_rojas	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+países_bajos	países_bajos	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+poder_judicial	poder_judicial	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+sagrada_familia	sagrada_familia	NP00V00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+sagrado_corazón	sagrado_corazón	NP00V00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+san_diego	san_diego	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+san_vicente	san_vicente	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+simón_bolívar	simón_bolívar	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+torres_gemelas	torres_gemelas	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+a_falta_de	a_falta_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_la_vista_de	a_la_vista_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_partir_de_ahí	a_partir_de_ahí	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_salvo	a_salvo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+administración_pública	administración_pública	NCFS000	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+a_el_límite_de	al_límite_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_el_respecto_de	al_respecto_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+augusto_pinochet	augusto_pinochet	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+copa_de_el_mundo	copa_del_mundo	NP00V00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+eduardo_frei	eduardo_frei	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+en_directo	en_directo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+gran_bretaña	gran_bretaña	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+maría_elena	maría_elena	NP00G00 NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+mel_gibson	mel_gibson	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+naciones_unidas	naciones_unidas	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+otro_tanto	otro_tanto	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+por_cuanto	por_cuanto	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+por_lo_visto	por_lo_visto	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+por_su_parte	por_su_parte	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+príncipe_de_asturias	príncipe_de_asturias	NP00V00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+rio_de_janeiro	río_de_janeiro	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+san_carlos_de_apoquindo	san_carlos_de_apoquindo	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+sierra_nevada	sierra_nevada	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+tribunal_constitucional	tribunal_constitucional	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+visto_bueno	visto_bueno	NCMS000	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+a_costa_de	a_costa_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_la_corta	a_la_corta	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_secas	a_secas	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_el_contado	al_contado	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_el_detalle	al_detalle	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_el_paso	al_paso	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+apenas_si	apenas_si	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+aun_cuando	aun_cuando	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+banco_central	banco_central	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+con_el_objetivo_de	con_el_objetivo_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+<consejo>_de_ancianos	consejo_de_ancianos	$1:NC	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+copa_libertadores	copa_libertadores	NP00V00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+cruz_roja	cruz_roja	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+cuando_mucho	cuando_mucho	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+cámara_alta	cámara_alta	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+de_espaldas	de_espaldas	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_manera_que	de_manera_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_tal_forma_que	de_tal_forma_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_una_vez_por_todas	de_una_vez_por_todas	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+desde_entonces	desde_entonces	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_búsqueda_de	en_búsqueda_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_cabeza	en_cabeza	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_cadena	en_cadena	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_conclusión	en_conclusión	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_masa	en_masa	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_relación_con	en_relación_con	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_tercer_lugar	en_tercer_lugar	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+enrique_iglesias	enrique_iglesias	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+fernando_gonzález	fernando_gonzález	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+frank_sinatra	frank_sinatra	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+he_ahí	he_ahí	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+inter_de_milán	inter_de_milán	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+juan_pablo_ii	juan_pablo_ii	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+los_siete_magníficos	los_siete_magníficos	NP00V00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+más_aun	más_aún	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed; corrected 261114
+por_sorpresa	por_sorpresa	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+porto_alegre	porto_alegre	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+reino_unido	reino_unido	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+rey_león	rey_león	NP00V00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+ricardo_lagos	ricardo_lagos	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+river_plate	river_plate	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+santa_ana	santa_ana	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+santa_bárbara	santa_bárbara	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+sigmund_freud	sigmund_freud	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+silvio_rodríguez	silvio_rodríguez	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+sobre_la_marcha	sobre_la_marcha	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+sudeste_asiático	sudeste_asiático	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+trinidad_y_tobago	trinidad_y_tobago	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+unión_soviética	unión_soviética	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+will_smith	will_smith	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+a_continuación	a_continuación	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_juicio_de	a_juicio_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_la_redonda	a_la_redonda	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_manos_de	a_manos_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_el_descubierto	al_descubierto	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+a_el_inicio_de	al_inicio_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+audax_italiano	audax_italiano	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+bahía_blanca	bahía_blanca	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+baja_sajonia	baja_sajonia	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+banco_mundial	banco_mundial	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+bill_gates	bill_gates	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+bin_laden	bin_laden	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+bolsa_de_comercio	bolsa_de_comercio	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+carolina_de_el_norte	carolina_del_norte	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+cartagena_de_indias	cartagena_de_indias	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+<comandante>_en_jefe	comandante_en_jefe	$1:NC	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+como_consecuencia	como_consecuencia	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+con_el_propósito_de	con_el_propósito_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+con_lo_cual	con_lo_cual	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+coquimbo_unido	coquimbo_unido	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+crónicas_marcianas	crónicas_marcianas	NP00V00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+cámara_baja	cámara_baja	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+de_igual_forma	de_igual_forma	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_maravilla	de_maravilla	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+divina_providencia	divina_providencia	NP00V00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+el_cairo	el_cairo	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+en_breve	en_breve	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_evidencia	en_evidencia	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_marcha	en_marcha	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_nombre_de	en_nombre_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_presencia_de	en_presencia_de	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_regla	en_regla	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_ridículo	en_ridículo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_secreto	en_secreto	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_solitario	en_solitario	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_suma	en_suma	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_suspenso	en_suspenso	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_último_lugar	en_último_lugar	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+federación_nacional_de_cafeteros	federación_nacional_de_cafeteros	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+federación_nacional_de_cafeteros_de_colombia	federación_nacional_de_cafeteros_de_colombia	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+federico_garcía_lorca	federico_garcía_lorca	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+fernando_muñoz	fernando_muñoz	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+hasta_el_punto_que	hasta_el_punto_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+hong_kong	hong_kong	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+infantería_de_marina	infantería_de_marina	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+javier_bardem	javier_bardem	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+johan_cruyff	johan_cruyff	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+josé_miguel_insulza	josé_miguel_insulza	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+juan_bautista	juan_bautista	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+juan_gelman	juan_gelman	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+juan_gómez	juan_gómez	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+manchester_united	manchester_united	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+mano_a_mano	mano_a_mano	RG NCMS000	A	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed; corrected 261114
+mar_rojo	mar_rojo	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+marcha_atrás	marcha_atrás	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+michael_moore	michael_moore	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+mike_powell	mike_powell	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+ministerio_de_agricultura	ministerio_de_agricultura	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+ministerio_de_cultura	ministerio_de_cultura	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+ministerio_de_defensa	ministerio_de_defensa	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+ministerio_de_hacienda	ministerio_de_hacienda	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+ministerio_de_el_interior	ministerio_del_interior	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+mohamed_alí	mohamed_alí	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+nada_menos_que	nada_menos_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+north_carolina	carolina_del_norte	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+nueva_delhi	nueva_delhi	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+nueva_orleans	nueva_orleans	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+organización_mundial_de_la_salud	organización_mundial_de_la_salud	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+otra_salida_que	otra_salida_que	CS	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+policía_federal	policía_federal	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+premio_nobel	premio_nobel	NP00V00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+procuraduría_general_de_la_república	procuraduría_general_de_la_república	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+punta_de_el_este	punta_del_este	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+punto_de_partida	punto_de_partida	NCMS000	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+querrá_decir	querrá_decir	$1:VM	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+república_de_italia	república_de_italia	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+rey_arturo	rey_arturo	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+rienda_suelta	rienda_suelta	NCFS000	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed; corrected 261114
+rolling_stones	rolling_stones	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+rumbo_a	rumbo_a	SP	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+sacro_imperio_romano	sacro_imperio_romano	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+sala_constitucional	sala_constitucional	NP00O00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+sancho_panza	sancho_panza	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+santa_laura	santa_laura	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+<secretario>_<general>	secretario_general	$1:NC	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+seguridad_social	seguridad_social	NCFS000	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+sin_techo	sin_techo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+stan_smith	stan_smith	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+stephen_hawking	stephen_hawking	NP00SP0	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+sticky_fingers	sticky_fingers	NP00V00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+tercer_mundo	tercer_mundo	NCMS000	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+torre_de_babel	torre_de_babel	NP00G00	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+de_este_modo	de_este_modo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_igual_modo	de_igual_modo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+de_el_mismo_modo	del_mismo_modo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+dicho_de_otra_manera	dicho_de_otra_manera	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+dicho_de_otro_modo	dicho_de_otro_modo	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+dicho_sea_de_paso	dicho_sea_de_paso	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+en_último_término	en_último_término	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+por_añadidura	por_añadidura	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+por_si_fuera_poco	por_si_fuera_poco	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+ya_lo_creo	ya_lo_creo	I	I	speech-corpus-multiword-comparison--261113c.xlsx: Accept as proposed
+para_más_remate	para_más_remate	RG	I	speech-corpus-multiword-comparison--261113c.xlsx: added by the user
+carolina_del_sur	carolina_del_sur	NP00G00	I	added 261114: added, as you asked
+south_carolina	carolina_del_sur	NP00G00	I	added 261114: added, as you asked
+dakota_del_norte	dakota_del_norte	NP00G00	I	added 261114: added, as you asked
+north_dakota	dakota_del_norte	NP00G00	I	added 261114: added, as you asked
+dakota_del_sur	dakota_del_sur	NP00G00	I	added 261114: added, as you asked
+south_dakota	dakota_del_sur	NP00G00	I	added 261114: added, as you asked
+más_o_menos	más_o_menos	AQ0CN00 RG	I	speech-corpus-multiword-verify--261114b.xlsx Resolved: the user's tags; the same as now
+ahí_no_más	ahí_no_más	AQ0CN00 RG	I	speech-corpus-multiword-verify--261114b.xlsx Resolved: the user's tags; the same as now
+nada_que_ver	nada_que_ver	AQ0CN00 RG	I	speech-corpus-multiword-verify--261114b.xlsx Resolved: the user's tags; now AQ0CN00 only
+la_muerte	la_muerte	NCFS000 AQ0CN00 RG	A	speech-corpus-multiword-verify--261114b.xlsx Questions
+la_cagada	la_cagada	NCFS000	A	speech-corpus-multiword-verify--261114b.xlsx Questions
+a_el_lote	al_lote	AQ0CN00 RG	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: the user's tags (the same as now); flag I to A
+a_la_chucha	a_la_chucha	RG I	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: the user's tags (the same as now); flag I to A
+tal_por_cual	tal_por_cual	NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Questions
+como_el_pico	como_el_pico	AQ0CN00 RG	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: the user's tags (the same as now); flag I to A
+concha_de_tu_madre	concha_de_tu_madre	I NCCS000 AQ0CN00	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: the concha family as you ruled: interjection, noun of common gender, adjective; probabilities I 80, NC 18, AQ 2 (form-level, in probabilitats.dat)
+concha_de_tu_maire	concha_de_tu_madre	I NCCS000 AQ0CN00	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: the concha family as you ruled: interjection, noun of common gender, adjective; probabilities I 80, NC 18, AQ 2 (form-level, in probabilitats.dat)
+concha_de_tu_mare	concha_de_tu_madre	I NCCS000 AQ0CN00	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: the concha family as you ruled: interjection, noun of common gender, adjective; probabilities I 80, NC 18, AQ 2 (form-level, in probabilitats.dat)
+concha_de_su_madre	concha_de_su_madre	I NCCS000 AQ0CN00	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: the concha family as you ruled: interjection, noun of common gender, adjective; probabilities I 80, NC 18, AQ 2 (form-level, in probabilitats.dat); NOW it has NCCN000 and NCCS000 both, a duplicate
+concha_de_su_maire	concha_de_su_madre	I NCCS000 AQ0CN00	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: the concha family as you ruled: interjection, noun of common gender, adjective; probabilities I 80, NC 18, AQ 2 (form-level, in probabilitats.dat)
+concha_de_su_mare	concha_de_su_madre	I NCCS000 AQ0CN00	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: the concha family as you ruled: interjection, noun of common gender, adjective; probabilities I 80, NC 18, AQ 2 (form-level, in probabilitats.dat)
+conche_su_madre	concha_de_su_madre	I NCCS000 AQ0CN00	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: the concha family as you ruled: interjection, noun of common gender, adjective; probabilities I 80, NC 18, AQ 2 (form-level, in probabilitats.dat)
+conche_su_maire	concha_de_su_madre	I NCCS000 AQ0CN00	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: the concha family as you ruled: interjection, noun of common gender, adjective; probabilities I 80, NC 18, AQ 2 (form-level, in probabilitats.dat)
+conche_su_mare	concha_de_su_madre	I NCCS000 AQ0CN00	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: the concha family as you ruled: interjection, noun of common gender, adjective; probabilities I 80, NC 18, AQ 2 (form-level, in probabilitats.dat)
+conche_tu_madre	concha_de_tu_madre	I NCCS000 AQ0CN00	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: the concha family as you ruled: interjection, noun of common gender, adjective; probabilities I 80, NC 18, AQ 2 (form-level, in probabilitats.dat)
+conche_tu_maire	concha_de_tu_madre	I NCCS000 AQ0CN00	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: the concha family as you ruled: interjection, noun of common gender, adjective; probabilities I 80, NC 18, AQ 2 (form-level, in probabilitats.dat)
+conche_tu_mare	concha_de_tu_madre	I NCCS000 AQ0CN00	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: the concha family as you ruled: interjection, noun of common gender, adjective; probabilities I 80, NC 18, AQ 2 (form-level, in probabilitats.dat)
+conchas_de_sus_madres	concha_de_su_madre	I NCCP000 AQ0CN00	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: the concha family as you ruled: interjection, noun of common gender, adjective; probabilities I 80, NC 18, AQ 2 (form-level, in probabilitats.dat); plural
+conchas_de_sus_maires	concha_de_su_madre	I NCCP000 AQ0CN00	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: the concha family as you ruled: interjection, noun of common gender, adjective; probabilities I 80, NC 18, AQ 2 (form-level, in probabilitats.dat); plural
+conchas_de_sus_mares	concha_de_su_madre	I NCCP000 AQ0CN00	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: the concha family as you ruled: interjection, noun of common gender, adjective; probabilities I 80, NC 18, AQ 2 (form-level, in probabilitats.dat); plural
+chucha_de_su_madre	chucha_de_su_madre	I NCCS000 AQ0CN00	A	speech-corpus-multiword-verify--261114b.xlsx Questions: like the concha family
+a_el_peo	al_peo	AQ0CN00 RG	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: the user's tags (the same as now); flag I to A
+como_el_hoyo	como_el_hoyo	AQ0CN00 RG	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: the user's tags (the same as now); flag I to A
+como_las_huevas	como_las_huevas	AQ0CN00 RG	A	speech-corpus-multiword-verify--261114b.xlsx Questions
+mala_cueva	mala_cueva	NCFS000 I	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: the user's tags; now I only
+miti_miti	miti_miti	RG AQ0CN00	A	speech-corpus-multiword-verify--261114b.xlsx Questions
+miti_mota	miti_mota	AQ0CN00 RG	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: the user's tags (the same as now); flag I to A
+de_a_caballo	de_a_caballo	AQ0CN00 RG	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: the user's tags; now AQ0CN00 only
+el_descueve	el_descueve	AQ0CN00 RG	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: the user's tags (the same as now); flag I to A
+grado_uno	grado_uno	NCMS000 AQ0CN00	A	speech-corpus-multiword-verify--261114b.xlsx Questions
+grado_dos	grado_dos	NCMS000 AQ0CN00	A	speech-corpus-multiword-verify--261114b.xlsx Questions
+grado_tres	grado_tres	NCMS000 AQ0CN00	A	speech-corpus-multiword-verify--261114b.xlsx Questions
+grado_cuatro	grado_cuatro	NCMS000 AQ0CN00	A	speech-corpus-multiword-verify--261114b.xlsx Questions
+grado_siete	grado_siete	NCMS000 AQ0CN00	A	speech-corpus-multiword-verify--261114b.xlsx Questions
+<patrón>_de_fundo	patrón_de_fundo	$1:NC	I	speech-corpus-multiword-verify--261114b.xlsx Resolved: agreed: $1:NC; the hidden $1:AQ goes
+<sacador>_de_vuelta	sacador_de_vuelta	$1:NC	I	speech-corpus-multiword-verify--261114b.xlsx Resolved: agreed: $1:NC; the hidden $1:AQ goes
+<aserruchador>_de_piso	aserruchador_de_piso	$1:NC	I	speech-corpus-multiword-verify--261114b.xlsx Resolved: agreed: $1:NC; the hidden $1:AQ goes
+a_toda_raja	a_toda_raja	AQ0CN00 RG	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: the user's tags (the same as now); flag I to A
+a_toda_orquesta	a_toda_orquesta	AQ0CN00 RG	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: the user's tags (the same as now); flag I to A
+a_todo_cachete	a_todo_cachete	AQ0CN00 RG	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: the user's tags (the same as now); flag I to A
+como_las_huifas	como_las_huifas	AQ0CN00 RG	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: the user's tags (the same as now); flag I to A
+como_las_güifas	como_las_huifas	AQ0CN00 RG	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: lemma como_las_huifas by the user's huifa ruling; flag A as for como_las_huifas
+a_el_cuete	al_cuete	AQ0CN00 RG	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: the user's tags (the same as now); flag I to A
+la_zorra	la_zorra	AQ0CN00 NCFS000	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: the user's tags (the same as now), lemma la_zorra; flag I to A
+saco_de_huevas	saco_de_huevas	NCMS000 AQ0CN00	A	speech-corpus-multiword-verify--261114b.xlsx Questions
+gil_de_el_monte	gil_del_monte	AQ0CN00 NCCS000	A	speech-corpus-multiword-verify--261114b.xlsx Questions
+rapa_nui	rapa_nui	NP00G00 AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114.xlsx Names: Correct
+<mijito>_<rico>	mijito_rico	$1:NC $2:AQ	A	speech-corpus-multiword-verify--261114b.xlsx Resolved: covers mijito rico, mijita rica, mijitos ricos, mijitas ricas: $1:NC copies the noun's tag, $2:AQ the adjective's; flag A as you set
+buena_onda	buena_onda	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Questions: Person: NCCS000
+mala_onda	mala_onda	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Questions: Person: NCCS000
+chicha_fresca	chicha_fresca	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Questions: Person: NCCS000
+<enfermo>_de_el_chape	enfermo_del_chape	$1:AQ $1:NC	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+atado_de_huevas	atado_de_huevadas	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Huevas and huevadas; chat of 261115
+atento_a_el_lupo	atento_al_lupo	AQ0CN00 RG	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+azul_paquete_de_vela	azul_paquete_de_vela	AQ0CN00 NCMS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+boca_de_tarro	boca_de_tarro	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+buen_chato	buen_chato	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+buen_gallo	buen_gallo	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+cabeza_caliente	cabeza_caliente	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+cabeza_de_ajo	cabeza_de_ajo	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+cabeza_de_cobre	cabeza_de_cobre	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+cabeza_de_incendio	cabeza_de_incendio	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+cabeza_de_músculo	cabeza_de_músculo	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+cabeza_de_pichí	cabeza_de_pichí	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+cabeza_de_pollo	cabeza_de_pollo	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+cabeza_de_rodilla	cabeza_de_rodilla	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+cabeza_de_tuna	cabeza_de_tuna	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+cacho_de_paragua	cacho_de_paragua	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+caldo_de_chancho	caldo_de_chancho	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+calienta_sopa	calienta_sopa	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+cara_de_palo	cara_de_palo	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+cara_de_raja	cara_de_raja	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+cazuela_de_tuercas	cazuela_de_tuercas	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+centro_de_mesa	centro_de_mesa	AQ0CN00 NCMS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+cero_kilómetro	cero_kilómetro	AQ0CN00 NCMS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+charango_lila	charango_lila	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+chupete_de_fierro	chupete_de_fierro	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+cogote_de_almeja	cogote_de_almeja	AQ0CN00 NCCS000 NCMS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+cola_de_chancho	cola_de_chancho	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+collar_de_melones	collar_de_melones	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+concha_de_vino	concha_de_vino	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+concha_vino	concha_vino	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+concho_de_vino	concho_de_vino	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+corazón_de_abuelita	corazón_de_abuelita	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+corazón_de_alcachofa	corazón_de_alcachofa	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+cuero_de_chancho	cuero_de_chancho	AQ0CN00 NCCS000 NCMS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+cuero_de_diablo	cuero_de_diablo	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+empanada_de_pera	empanada_de_pera	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+garganta_de_lata	garganta_de_lata	AQ0CN00 NCCS000 NCFS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+gatillo_loco	gatillo_loco	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+guata_de_callo	guata_de_callo	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+guata_de_pan	guata_de_pan	AQ0CN00 NCCS000 NCFS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+gusto_a_leche	gusto_a_leche	AQ0CN00 NCCS000 NCMS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+hocico_de_tarro	hocico_de_tarro	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+marca_chancho	marca_chancho	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+mata_de_arrayán	mata_de_arrayán	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+mata_de_arrayán_florido	mata_de_arrayán_florido	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+mata_de_huevas	mata_de_huevas	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+mermelada_de_huevas	mermelada_de_huevas	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Huevas and huevadas; chat of 261115
+muro_a_muro	muro_a_muro	AQ0CN00 NCMS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+nuca_de_fierro	nuca_de_fierro	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+particular_subvencionado	particular_subvencionado	AQ0CN00 NCMS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+pata_de_cumbia	pata_de_cumbia	AQ0CN00 NCCS000 NCFS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+pata_de_vaca	pata_de_vaca	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+pate_vaca	pate_vaca	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+poto_de_botella	poto_de_botella	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+poto_de_guatero	poto_de_guatero	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+poto_loco	poto_loco	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+potos_de_botella	potos_de_botella	AQ0CN00 NCCP000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+saco_de_cacha	saco_de_cacha	AQ0CN00 NCMS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+saco_de_cachas	saco_de_cachas	AQ0CN00 NCMS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+saco_de_peras	saco_de_peras	AQ0CN00 NCMS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+saco_de_plomo	saco_de_plomo	AQ0CN00 NCMS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+sin_respeto	sin_respeto	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+tetera_de_campo	tetera_de_campo	AQ0CN00 NCCS000	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+<vendedor>_de_pomada	vendedor_de_pomada	AQ0CN00 $1:NC	I	speech-corpus-multiword-verify--261114b.xlsx Resolved
+<hacer>_la_cimarra	hacer_la_cimarra	$1:VM	I	speech-corpus-multiword-comparison--261113c.xlsx: added by the user
+<sacar>_la_vuelta	sacar_la_vuelta	$1:VM	I	speech-corpus-multiword-comparison--261113c.xlsx: added by the user
+más_encima	más_encima	CC	I	speech-corpus-multiword-comparison--261113c.xlsx: Change
+de_pronto	de_pronto	RG	A	speech-corpus-multiword-comparison--261113c.xlsx: Change
+en_volada	en_volada	RG	A	speech-corpus-multiword-comparison--261113c.xlsx: Change
+en_una_de_ésas	en_una_de_esas	I	A	speech-corpus-multiword-comparison--261113c.xlsx: the user's note, a second form
+de_maikel	de_máiquel	I	I	speech-corpus-multiword-comparison--261113c.xlsx: the user's note
+de_michael	de_máiquel	I	I	speech-corpus-multiword-comparison--261113c.xlsx: the user's note
+de_maykel	de_máiquel	I	I	speech-corpus-multiword-comparison--261113c.xlsx: the user's note
+de_máikel	de_máiquel	I	I	speech-corpus-multiword-comparison--261113c.xlsx: the user's note
+como_las_weas	como_las_huevas	AQ0CN00 RG	I	speech-corpus-multiword-verify--261114b.xlsx Huevas and huevadas; chat of 261115
+una_hueva	una_huevada	RG	I	speech-corpus-multiword-verify--261114b.xlsx Huevas and huevadas; chat of 261115
+ku_klux_klan	ku_klux_klan	NP00O00	I	chat-forms--261113.xlsx: ku, klan
+kon_tiki	kon_tiki	NP00V00	I	chat-forms--261113.xlsx: tiki
+wi_fi	wifi	NCMS000	I	chat-forms--261113.xlsx: wi
+wi_-_fi	wifi	NCMS000	I	chat-forms--261113.xlsx: wi (wi-fi, split at the hyphen)
+colo_colo	colo_colo	NP00O00	I	chat rulings: colocolo; chat-forms--261113.xlsx: kolo
+kolo_kolo	colo_colo	NP00O00	I	chat-forms--261113.xlsx: kolo
+fiskales_ad_hoc	fiskales_ad_hoc	NP00O00	I	chat rulings
+fiskales_ad_hok	fiskales_ad_hoc	NP00O00	I	chat-forms--261113.xlsx: hok
+post_hoc	post_hoc	RG	I	chat rulings
+play_off	playoff	NCMS000	I	chat rulings: playoff (replaces play_off)
+play_offs	playoff	NCMP000	I	chat rulings: playoff
+ni_cagando	ni_cagando	RG I	I	ruling of 261115: adverb or interjection, the adverb at 80%
+ni_kagando	ni_cagando	RG I	I	chat rulings: ni kagando; ruling of 261115
+para_qué	para_qué	PT0CS00	I	chat-forms--261113.xlsx: pake
+what_the_fuck	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+what_the_fuk	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+what_the_fack	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+what_the_fak	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+what_the_fac	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+what_the_fuc	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+what_de_fuck	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+what_de_fuk	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+what_de_fack	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+what_de_fak	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+what_de_fac	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+what_de_fuc	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+what_da_fuck	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+what_da_fuk	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+what_da_fack	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+what_da_fak	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+what_da_fac	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+what_da_fuc	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+wat_the_fuck	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+wat_the_fuk	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+wat_the_fack	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+wat_the_fak	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+wat_the_fac	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+wat_the_fuc	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+wat_de_fuck	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+wat_de_fuk	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+wat_de_fack	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+wat_de_fak	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+wat_de_fac	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+wat_de_fuc	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+wat_da_fuck	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+wat_da_fuk	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+wat_da_fack	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+wat_da_fak	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+wat_da_fac	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings
+wat_da_fuc	what_the_fuck	I	I	ruling of 261115: what the fuck and its spellings

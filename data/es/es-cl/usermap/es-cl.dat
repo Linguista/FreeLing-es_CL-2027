@@ -1,0 +1,8 @@
+^xxxredactedxxx$ xxxredactedxxx Fz
+^xxxunintelligiblexxx$ xxxunintelligiblexxx Fla
+^xxxnonspeechxxx$ xxxnonspeechxxx Flt
+^xxxurlxxx$ xxxurlxxx Fz
+^xxxemailaddrxxx$ xxxemailaddrxxx Fz
+^(novela|NOVELA)$ novela NCFS000
+^(vela|VELA)$ vela NCFS000
+^(velo|VELO)$ velo NCMS000

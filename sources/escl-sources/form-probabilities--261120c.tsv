@@ -1,0 +1,5 @@
+form	tag	share	why
+haciendo	VMIP1S0	1	user, 261120: "Give the verb hacendar a probability of 1%"; in the probe tagging of the speech corpus haciendo was the present of hacendar in 51 of 97 tokens, in place of the gerund of hacer
+van	NCMS000	1	user, 261120: the noun reading of van gets 1%; in the probe tagging of the speech corpus van was a noun in 28 of 225 tokens, in place of the verb form of ir
+van	NCMP000	1	user, 261120: the noun reading of van gets 1%; in the probe tagging of the speech corpus van was a noun in 28 of 225 tokens, in place of the verb form of ir
+gente	AQ0CS00	1	user, 261120: "Gente is rarely an adjective"; in the probe tagging of the speech corpus it was an adjective in 93 of 643 tokens

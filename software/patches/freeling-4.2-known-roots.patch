@@ -1,0 +1,185 @@
+FreeLing 4.2: a known root is not taken apart (affix analysis)
+Part of FreeLing es-CL 2027 (261116). License: GNU AGPL v3 or later, as
+FreeLing itself.
+
+FreeLing's affix analysis (src/libfreeling/suffixes.cc) reads a word the
+dictionary does not have, and the clitic forms of every verb, in three
+ways: as root + suffix, as prefix + root, and as prefix + root + suffix.
+It keeps every reading the three give. So a clitic form whose root is a
+dictionary word was also read as a prefix (afixos.dat: a, an, des, in, re
+...) plus another word, with the lemma prefix + that word's lemma:
+
+  reírme       reir+me        re + ír + me         beside reír+me
+  acompañarlo  aacompañar+lo  a + compañar + lo    beside acompañar+lo
+  ablandese    ablandir+se    a + blande + se      beside ablandar+se
+  aborreguelo  aborrego       a + borrego + uelo   beside aborregar+lo
+
+Both readings share the tag and so the probability; FreeLing orders such
+readings alphabetically, and the tagger cannot split a word that keeps two
+readings, so the token came out whole, with the wrong lemma and a joined
+tag (VMN0000+PP1CS00).
+
+The change, in two parts:
+
+1. When the word is read as a dictionary root and a suffix, no prefix +
+   root + suffix reading is tried. A known root is not taken apart, as
+   FreeLing already never takes a known word apart into a prefix and
+   another word. The other two ways are as before, and a word with no
+   dictionary root (reagendarlo: re + agendar + lo) is read as before.
+
+2. Split, such a word takes its root's form from the root FreeLing found
+   first, and FreeLing searched the roots in alphabetical order: reir
+   before reír, both found when the dictionary also reads the spelling
+   without the accent. A root written with the accent of a hiatus (an
+   accented i or u next to a, e or o: reír, oír, ríe, actúa, rehúsa) is
+   now searched first, so the split keeps its form: reír + me, oír + lo,
+   rehúsa + lo (FreeLing 4.2 gave reir, oir, rehusa). Any other root keeps
+   FreeLing's order: dámelo is still da + me + lo.
+
+Files: src/include/freeling/morfo/suffixes.h, src/libfreeling/suffixes.cc.
+Apply from the top of the FreeLing 4.2 source tree: patch -p1 < this file.
+
+diff -ru a/src/include/freeling/morfo/suffixes.h b/src/include/freeling/morfo/suffixes.h
+--- a/src/include/freeling/morfo/suffixes.h
++++ b/src/include/freeling/morfo/suffixes.h
+@@ -67,13 +67,13 @@
+     unsigned int Longest[2];
+ 
+     /// find all applicable affix rules for a word
+-    void look_for_affixes_in_list (int, const std::multimap<std::wstring,sufrule> &, word &) const;
++    void look_for_affixes_in_list (int, const std::multimap<std::wstring,sufrule> &, word &, std::set<std::wstring> * = NULL) const;
+     /// find all applicable prefix+sufix rules combination for a word
+-    void look_for_combined_affixes(const std::multimap<std::wstring,sufrule> &, const std::multimap<std::wstring,sufrule> &, word &) const;
++    void look_for_combined_affixes(const std::multimap<std::wstring,sufrule> &, const std::multimap<std::wstring,sufrule> &, word &, const std::set<std::wstring> &) const;
+     /// generate roots according to rules.
+     std::set<std::wstring> GenerateRoots(int, const sufrule &, const std::wstring &) const;
+     /// find roots in dictionary and apply matching rules
+-    void SearchRootsList(std::set<std::wstring> &, const std::wstring &, const sufrule &, word &) const;
++    void SearchRootsList(std::set<std::wstring> &, const std::wstring &, const sufrule &, word &, const std::wstring & = L"") const;
+     /// actually apply a affix rule
+     void ApplyRule(const std::wstring &, const std::list<analysis> &, const std::wstring &, const sufrule &, word &) const;
+ 
+diff -ru a/src/libfreeling/suffixes.cc b/src/libfreeling/suffixes.cc
+--- a/src/libfreeling/suffixes.cc
++++ b/src/libfreeling/suffixes.cc
+@@ -113,26 +113,51 @@
+ 
+   void affixes::look_for_affixes(word &w) const {
+ 
++    // FreeLing es-CL 2027: the suffixes with which the word's root is a
++    // dictionary word. If there is one, no prefix+suffix decomposition is
++    // tried: a known root is not taken apart, as a known word is not.
++    set<wstring> found_suf;
++
+     if (w.get_n_analysis()>0) {
+       // word with analysys already. Check only "always-checkable" affixes
+       TRACE(2,L"=== Known word '"+w.get_form()+L"', with "+util::int2wstring(w.get_n_analysis())+L" analysis. Looking only for 'always' affixes");
+       TRACE(3,L" --- Cheking SUF ---");
+-      look_for_affixes_in_list(SUF,affix_always[SUF],w);
++      look_for_affixes_in_list(SUF,affix_always[SUF],w,&found_suf);
+       TRACE(3,L" --- Cheking PREF ---");
+       look_for_affixes_in_list(PREF,affix_always[PREF],w);
+       TRACE(3,L" --- Cheking PREF+SUF ---");
+-      look_for_combined_affixes(affix_always[SUF],affix_always[PREF],w);
++      look_for_combined_affixes(affix_always[SUF],affix_always[PREF],w,found_suf);
+     }
+     else {
+       // word not in dictionary. Check all affixes
+       TRACE(2,L"===Unknown word '"+w.get_form()+L"'. Looking for any affix");
+       TRACE(3,L" --- Cheking SUF ---");
+-      look_for_affixes_in_list(SUF,affix[SUF],w);
++      look_for_affixes_in_list(SUF,affix[SUF],w,&found_suf);
+       TRACE(3,L" --- Cheking PREF ---");
+       look_for_affixes_in_list(PREF,affix[PREF],w);
+       TRACE(3,L" --- Cheking PREF+SUF ---");
+-      look_for_combined_affixes(affix[SUF],affix[PREF],w);
++      look_for_combined_affixes(affix[SUF],affix[PREF],w,found_suf);
++    }
++  }
++
++
++  //////////////////////////////////////////////////////////////////////////////////////////
++  // FreeLing es-CL 2027: whether a lowercase form has an accented i or u
++  // next to a, e or o (an h between them does not count), the written
++  // accent of a hiatus, which a form keeps whatever suffix follows it.
++  //////////////////////////////////////////////////////////////////////////////////////////
++
++  static bool hiatus_accent(const wstring &s) {
++    const wstring strong=L"aeo\u00e1\u00e9\u00f3";
++    for (size_t k=0; k<s.length(); k++) {
++      if (s[k]!=L'\u00ed' and s[k]!=L'\u00fa') continue;
++      size_t b=k, a=k;
++      if (b>0 and s[b-1]==L'h') b--;
++      if (a+1<s.length() and s[a+1]==L'h') a++;
++      if (b>0 and strong.find(s[b-1])!=wstring::npos) return true;
++      if (a+1<s.length() and strong.find(s[a+1])!=wstring::npos) return true;
+     }
++    return false;
+   }
+ 
+ 
+@@ -141,7 +166,7 @@
+   // The word is annotated with new analysis, if any.
+   //////////////////////////////////////////////////////////////////////////////////////////
+ 
+-  void affixes::look_for_affixes_in_list(int kind, const std::multimap<std::wstring,sufrule> &suff, word &w) const {
++  void affixes::look_for_affixes_in_list(int kind, const std::multimap<std::wstring,sufrule> &suff, word &w, set<wstring> *found) const {
+     typedef multimap<wstring,sufrule>::const_iterator T1;
+     T1 sufit;
+     pair<T1,T1> rules;
+@@ -182,7 +207,17 @@
+             // fix accentuation patterns of obtained roots
+             accen.fix_accentuation(candidates, sufit->second);
+             // enrich word analysis list with dictionary entries for valid roots
+-            SearchRootsList(candidates, form_term, sufit->second, w);
++            int before = w.get_n_analysis();
++            // FreeLing es-CL 2027: a root written with the accent of a
++            // hiatus (reír, oír, ríe, actúa) is searched first, so that a
++            // reading it shares with the same root without the accent keeps
++            // the written form when the word is split (reír + me, not
++            // reir + me); any other root keeps FreeLing's order (dá + melo
++            // is da + me + lo)
++            SearchRootsList(candidates, form_term, sufit->second, w,
++                            ((kind==SUF and hiatus_accent(form_root)) ? form_root : L""));
++            // FreeLing es-CL 2027: record a suffix whose root was found
++            if (found!=NULL and w.get_n_analysis()>before) found->insert(form_term);
+           }
+         }
+       }
+@@ -195,8 +230,15 @@
+   // The word is annotated with new analysis, if any.
+   //////////////////////////////////////////////////////////////////////////////////////////
+ 
+-  void affixes::look_for_combined_affixes(const std::multimap<std::wstring,sufrule> &suff, const std::multimap<std::wstring,sufrule> &pref, word &w) const
++  void affixes::look_for_combined_affixes(const std::multimap<std::wstring,sufrule> &suff, const std::multimap<std::wstring,sufrule> &pref, word &w, const set<wstring> &found_suf) const
+   {
++    // FreeLing es-CL 2027: a word read as a dictionary root and a suffix is
++    // not taken apart into a prefix, another root and a suffix.
++    if (not found_suf.empty()) {
++      TRACE(3,L"Root found with a suffix: no prefix+suffix decomposition");
++      return;
++    }
++
+     typedef multimap<wstring,sufrule>::const_iterator T1;
+     T1 sufit,prefit;
+     pair<T1,T1> rules_S,rules_P;
+@@ -339,7 +381,7 @@
+   /// and annotating the valid ones.
+   //////////////////////////////////////////////////////////////////////////////////////////
+ 
+-  void affixes::SearchRootsList(set<wstring> &roots, const wstring &aff, const sufrule &suf, word &wd) const
++  void affixes::SearchRootsList(set<wstring> &roots, const wstring &aff, const sufrule &suf, word &wd, const wstring &first) const
+   {
+     set<wstring> remain;
+     set<wstring>::iterator r;
+@@ -354,7 +396,9 @@
+ 
+     while (not remain.empty()) {
+ 
+-      r=remain.begin();
++      // FreeLing es-CL 2027: the given root first, if it is a candidate
++      r=remain.find(first);
++      if (first.empty() or r==remain.end()) r=remain.begin();
+ 
+       // look into the dictionary for that root
+       la.clear();

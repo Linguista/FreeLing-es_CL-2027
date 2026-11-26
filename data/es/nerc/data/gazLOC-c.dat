@@ -147,6 +147,7 @@ amurrio
 américa
 américa_central
 américa_de_el_sur
+américa_del_sur
 américa_latina
 américas
 américo
@@ -782,6 +783,8 @@ carmichael
 carnelian_bay
 carolina_de_el_norte
 carolina_de_el_sur
+carolina_del_norte
+carolina_del_sur
 carpinteria
 carretera_de_andalucía
 carson
@@ -881,6 +884,7 @@ century_city
 ceres
 cerrillos
 cerritos
+cerro_colorado
 cerro_navia
 cervera_de_río_alhama
 cervere
@@ -1176,6 +1180,7 @@ cordillera
 cordillerilla
 cordoba
 corea_de_el_sur
+corea_del_sur
 coreto_de_el_pilar_de_zaragoza
 cornellá_de_llobregat
 corning
@@ -1283,6 +1288,8 @@ d'alt_vila
 da_'an
 da_an
 daggett
+dakota_del_norte
+dakota_del_sur
 dalcahue
 dali
 dalian
@@ -2229,6 +2236,7 @@ kalikata
 kalisz
 kampala
 kandahar
+kansas
 kansas_city
 kapitán_andréevo
 karakorum
@@ -3413,6 +3421,7 @@ pauma_valley
 pavía
 paynes_creek
 país_vasco
+países_bajos
 pearblossom
 pebble_beach
 pedro_aguirre_cerda
@@ -3593,6 +3602,7 @@ porterville
 portezuelo
 portland
 porto-novo
+porto_alegre
 portola
 portola_valley
 portonovo
@@ -3669,6 +3679,7 @@ puninqui
 punitaqui
 punta_arenas
 punta_de_el_este
+punta_del_este
 puntra
 punucapa
 puqi
@@ -3780,6 +3791,7 @@ randibú
 rangpur
 ranquen
 ranqui
+rapa_nui
 rapel
 rauco
 raume
@@ -3838,6 +3850,7 @@ rengo
 repudauken
 república_centroafricana
 república_checa
+república_de_italia
 república_de_montenegro
 república_dominicana
 república_federal_alemana
@@ -3924,6 +3937,7 @@ saavedra
 sabadell
 sabbiadoro
 sacramento
+sacro_imperio_romano
 sacsayhuamán
 sagrada_familia
 sagunto
@@ -3992,6 +4006,7 @@ san_jacinto
 san_javier
 san_joaquin
 san_joaquín
+san_jorge
 san_jose
 san_josé
 san_josé_de_maipo
@@ -4073,6 +4088,7 @@ santa_fe
 santa_fé
 santa_juana
 santa_laura
+santa_lucía
 santa_luzia
 santa_macrina
 santa_margarita
@@ -4333,6 +4349,7 @@ sucayma
 sucre
 sudamérica
 sudbury
+sudeste_asiático
 sudeste_de_asia
 sudáfrica
 sudán
@@ -4514,12 +4531,14 @@ topáter
 tordesillas
 toronto
 torrance
+torre_de_babel
 torrejón_de_ardoz
 torrelavega
 torremolinos
 torrent
 torres
 torres_del_paine
+torres_gemelas
 tortel
 tortosa
 tossa_de_mar

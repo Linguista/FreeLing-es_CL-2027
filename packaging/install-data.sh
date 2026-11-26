@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
-# VERSION 1.1.0
+# VERSION 1.4.0
 #
 # install-data.sh -- puts FreeLing es-CL 2027's data into an installed
-# FreeLing 4.2: the 17 Chilean files over FreeLing's own, FreeLing's
+# FreeLing 4.2: the 27 Chilean files over FreeLing's own (es/afixos.dat,
+# FreeLing's affix rules with the clitic rules restricted, the informal and
+# 19th-century dictionaries, the four configs, one per kind of text, with
+# their user maps and CoNLL columns file, and the stand-in tokens, among
+# them),
+# FreeLing's
 # Chilean city list
 # removed (the Chilean cities.dat merges it), and es/locucions.dat, the
 # multiword file FreeLing Old reads, made a link to es-cl/locucions.dat.
@@ -20,12 +25,15 @@ repo="$(dirname "$here")"
 share="${1:?the installed FreeLing data folder, e.g. /usr/local/share/freeling}"
 [ -d "$share/es/es-cl" ] && [ -d "$share/config" ] || { echo "install-data.sh: $share is not FreeLing's data folder" >&2; exit 1; }
 
-files="es/es-cl/dicc.src es/es-cl/historical/dicc.src es/es-cl/historical/probabilitats.dat
-es/es-cl/historical/locucions.dat es/es-cl/probabilitats.dat
+files="es/es-cl/dicc.src es/es-cl/informal/dicc.src es/es-cl/19th-century/dicc.src es/es-cl/19th-century/probabilitats.dat
+es/es-cl/19th-century/locucions.dat es/es-cl/probabilitats.dat
 es/es-cl/locucions.dat es/es-cl/tagset.dat es/es-cl/np.dat es/es-cl/np-speech.dat
-es/es-cl/quantities.dat common/nec/cities.dat es/nerc/data/gazLOC-c.dat
+es/es-cl/quantities.dat es/es-cl/stand-ins.tsv common/nec/cities.dat es/nerc/data/gazLOC-c.dat
 es/nerc/data/gazPER-c.dat es/nerc/data/gazPER-p.dat es/nerc/nec/nec-ab-poor1.dat
-config/es-cl.cfg config/es-cl-19th-century.cfg"
+es/afixos.dat es/es-cl/usermap/es-cl.dat es/es-cl/usermap/es-cl-informal.dat
+es/es-cl/usermap/es-cl-speech.dat es/es-cl/usermap/es-cl-19th-century.dat
+config/es-cl.cfg config/es-cl-informal.cfg config/es-cl-speech.cfg config/es-cl-19th-century.cfg
+config/es-cl-conll-columns.cfg"
 n=0
 for f in $files; do
     mkdir -p "$(dirname "$share/$f")"

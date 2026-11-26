@@ -5,5 +5,5 @@ catar	place	verbs	10	written	user, 261110: at the start of a written sentence th
 irán	place	verbs	10	written	user, 261110: at the start of a written sentence the verb, with a 10% chance of being the place
 tomé	place	verbs	10	written	user, 261110: at the start of a written sentence the verb, with a 10% chance of being the place
 quito	place	verbs	10	written	user, 261110: Quito gets the rule of Tomé: at the start of a written sentence the verb, with a 10% chance of being the place (its rare adjective reading is not kept there)
-asunción	name	no		speech	a capitalised word at the start of a COSCACH line is a name; its class is decided with the shares of name-class-shares (user, 261110)
-sucre	name	no		speech	a capitalised word at the start of a COSCACH line is a name; its class is decided with the shares of name-class-shares (user, 261110)
+asunción	name	no		speech	a capitalised word at the start of a speech corpus line is a name; its class is decided with the shares of name-class-shares (user, 261110)
+sucre	name	no		speech	a capitalised word at the start of a speech corpus line is a name; its class is decided with the shares of name-class-shares (user, 261110)

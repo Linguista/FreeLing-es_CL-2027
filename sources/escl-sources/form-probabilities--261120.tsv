@@ -1,0 +1,30 @@
+form	tag	share	why
+bueno	I	74	judged sample of the speech corpus, 261120: interjection 74.1%, adjective 25.8% (500 judged)
+igual	RG	99	judged sample of the speech corpus, 261120: adverb 99.1%, adjective 0.9% (500 judged)
+ya	RG	65	judged sample of the speech corpus, 261120: adverb 64.7%, interjection 35.3% (500 judged)
+ya	I	35	judged sample of the speech corpus, 261120: adverb 64.7%, interjection 35.3% (500 judged)
+como	RG	77	judged sample of the speech corpus, 261120: adverb 77.0%, conjunction 16.8%, relative 5.6%, verb 0.5% (500 judged)
+como	CS	17	judged sample of the speech corpus, 261120: adverb 77.0%, conjunction 16.8%, relative 5.6%, verb 0.5% (500 judged)
+como	PR00000	5	judged sample of the speech corpus, 261120: adverb 77.0%, conjunction 16.8%, relative 5.6%, verb 0.5% (500 judged)
+claro	RG	98	judged sample of the speech corpus, 261120: adverb 98.2%, adjective 1.8% (500 judged); user, 261120: claro as a discourse marker is an adverb
+claro	AQ0MS00	2	judged sample of the speech corpus, 261120: adverb 98.2%, adjective 1.8% (500 judged); user, 261120: claro as a discourse marker is an adverb
+harto	RG	82	judged sample of the speech corpus, 261120: adverb 82.2%, determiner 17.8% (500 judged); harto has no determiner reading, the adjective reading stands for it
+harto	AQ0MS00	18	judged sample of the speech corpus, 261120: adverb 82.2%, determiner 17.8% (500 judged); harto has no determiner reading, the adjective reading stands for it
+super	RG	99	judged sample of the speech corpus, 261120: adverb 99.8% (500 judged)
+ok	I	99	user, 261120, on the judged sample of the speech corpus: ok and okey are an interjection 98.7% and an adjective 1.3% of the time (150 and 2 of 152, names left out); the adverb reading is kept with no share of its own
+ok	AQ0CN00	1	user, 261120, on the judged sample of the speech corpus: ok and okey are an interjection 98.7% and an adjective 1.3% of the time (150 and 2 of 152, names left out); the adverb reading is kept with no share of its own
+okey	I	99	user, 261120, on the judged sample of the speech corpus: ok and okey are an interjection 98.7% and an adjective 1.3% of the time (150 and 2 of 152, names left out); the adverb reading is kept with no share of its own
+okey	AQ0CN00	1	user, 261120, on the judged sample of the speech corpus: ok and okey are an interjection 98.7% and an adjective 1.3% of the time (150 and 2 of 152, names left out); the adverb reading is kept with no share of its own
+okay	I	99	user, 261120: okay takes the shares of ok and okey for now (it was not in the judged sample)
+okay	AQ0CN00	1	user, 261120: okay takes the shares of ok and okey for now (it was not in the judged sample)
+sí_poh	RG	51	judged sample of the speech corpus, 261120: adverb 254, interjection 246 of 500; user, 261120: an interjection at the end of an utterance or as its only content, otherwise an adverb
+sí_poh	I	49	judged sample of the speech corpus, 261120: adverb 254, interjection 246 of 500; user, 261120: an interjection at the end of an utterance or as its only content, otherwise an adverb
+no_poh	RG	72	judged sample of the speech corpus, 261120: adverb 359, interjection 141 of 500; user, 261120: an interjection at the end of an utterance or as its only content, otherwise an adverb
+no_poh	I	28	judged sample of the speech corpus, 261120: adverb 359, interjection 141 of 500; user, 261120: an interjection at the end of an utterance or as its only content, otherwise an adverb
+más_o_menos	RG	99	judged sample of the speech corpus, 261120: adverb 500 of 500
+ahí_no_más	RG	99	judged sample of the speech corpus, 261120: adverb in all 278 tokens that are the multiword
+nada_que_ver	AQ0CN00	99	judged sample of the speech corpus, 261120: adjective in all 315 tokens that are the multiword
+sí_po	RG	51	the shares of sí_poh, of which it is a spelling
+sí_po	I	49	the shares of sí_poh, of which it is a spelling
+no_po	RG	72	the shares of no_poh, of which it is a spelling
+no_po	I	28	the shares of no_poh, of which it is a spelling

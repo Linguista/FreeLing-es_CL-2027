@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# VERSION 1.2.0
+# VERSION 1.5.0
 #
 # patch-freeling.sh -- applies to an unpacked FreeLing 4.2 source tree the
 # changes FreeLing es-CL 2027 is built with:
@@ -48,14 +48,33 @@
 #            lemma, kept its capital.
 #        Two more Windows fixes are build options, in the Windows job of
 #        .github/workflows/packages.yml: Boost linked dynamically, and every
-#        symbol of each DLL exported.
+#        symbol of each DLL exported;
+#  10    the known-roots change of the affix analysis
+#        (software/patches/freeling-4.2-known-roots.patch, decided 261116):
+#        a word read as a dictionary root and a suffix is not also taken
+#        apart into a prefix, another root and a suffix, and a root with the
+#        accent of a hiatus keeps it when the word is split;
+#  11    the probability columns of the CoNLL output
+#        (software/patches/freeling-4.2-tag-probabilities.patch, decided
+#        261119): LEX_PROB, the probability of the selected reading among
+#        the readings of the word, and TAG_PROB, the probability the tagger
+#        gives the selected tag in its sentence;
+#  12    multiwords marked ambiguous (A) are decided by the tagger
+#        (software/patches/freeling-4.2-ambiguous-multiwords.patch, decided
+#        261119): FreeLing 4.2 reads the A flag of its multiword file and
+#        then never uses it, so every multiword is always joined. Applied
+#        after 11, which it builds on.
 # Every change must apply exactly as expected, or the script stops.
 #
-# Usage: patch-freeling.sh FREELING_SOURCE_DIR NP_CLASSES_PATCH
+# Usage: patch-freeling.sh FREELING_SOURCE_DIR NP_CLASSES_PATCH KNOWN_ROOTS_PATCH \
+#            TAG_PROBABILITIES_PATCH AMBIGUOUS_MULTIWORDS_PATCH
 
 set -euo pipefail
 src="${1:?the FreeLing 4.2 source folder}"
-np_patch="${2:?the name-class patch}"
+np_patch="$(realpath "${2:?the name-class patch}")"
+kr_patch="$(realpath "${3:?the known-roots patch}")"
+tp_patch="$(realpath "${4:?the tag-probabilities patch}")"
+am_patch="$(realpath "${5:?the ambiguous-multiwords patch}")"
 cd "$src"
 
 fail() { echo "patch-freeling.sh: $*" >&2; exit 1; }
@@ -65,6 +84,27 @@ sha256sum -c --quiet - <<'EOF' || fail "not FreeLing 4.2's np.cc, np.h and nec.c
 2934779917d1041111f9750effb78500a8bfbba9057bfbf43c1cc22cac51a622  src/libfreeling/np.cc
 f09274b49e0c72f99ced11ff386c0473dec8a692bed1c29c41e3dd5832550f7b  src/include/freeling/morfo/np.h
 1e04d9fafb3423d41803030b3b29a5e14cf80e0f2dc18f1b50d458ba07525a5f  src/libfreeling/nec.cc
+EOF
+# The two files the known-roots patch changes must be FreeLing 4.2's.
+sha256sum -c --quiet - <<'EOF' || fail "not FreeLing 4.2's suffixes.cc and suffixes.h"
+2955d3d544c942772ed71707a4496f66bc9168cd8d2ee17c4c397cc4173f88ac  src/libfreeling/suffixes.cc
+7895af5c58a98252466736283c30c9a3ebc005cac0bf3507553d9bfa5fa93d33  src/include/freeling/morfo/suffixes.h
+EOF
+# The twelve files the tag-probabilities and the ambiguous-multiwords patches
+# change must be FreeLing 4.2's.
+sha256sum -c --quiet - <<'EOF' || fail "not FreeLing 4.2's tagger, word, multiword and CoNLL files"
+3e920ac0cf914aaf0a763c6ad6e9c18efa27c6a22ba9e0c582f1f087f8560695  src/include/freeling/morfo/hmm_tagger.h
+a98bc53ffcfa5cef0f332ecf600567adb12296c90e78d7aed149326887e7e3c2  src/include/freeling/morfo/language.h
+e436437c78d493f24069adb1a657e253150a721468cb8ff36d1266cc3cab196c  src/include/freeling/morfo/locutions.h
+1adca7e4a5a70328d9d96b14ae99f137d584701bb69cefbba3b9a7f16551ab12  src/include/freeling/output/conll_handler.h
+c44940523019c65f76c6e031f127ea2d77ce8e92840860935f9bfc522265ccff  src/libfreeling/hmm_tagger.cc
+0df9c9db2152627cc3acf1bbdbfbd9d8e1a36799ee0597a663520fd6afe5310f  src/libfreeling/language.cc
+3fff73d9a5d9fcf1c3cedea563bad0fda60eab0a8ab11321d535d4f0bffbd40f  src/libfreeling/locutions.cc
+fa599770eda1a36b56edbb995985fe6c4717725c36e6d54322d7840cd15b71bf  src/libfreeling/output/conll_handler.cc
+4bbe7ee6c0a81f03cad338c461ae3164d468e5f46fe634ea49316c859df79680  src/libfreeling/output/input_conll.cc
+06e654f6d7c8582e7a3603bc378f9db8a11c9c03d46e9d0ad785d8a4a9395002  src/libfreeling/output/output_conll.cc
+7923f95f77ee956ec7f9866d96bbde83bbebf6ece4b018e273446fbe0a9bce92  src/libfreeling/probabilities.cc
+659ac7e2ac65e43ce4763d314726e6dcfdaffa74fb425a98f4156c0f3b7d6d44  src/libfreeling/tagger.cc
 EOF
 
 # 4: C++17 (ICU 77's headers need it; a plain set() overrides the cache).
@@ -113,6 +153,10 @@ left="$(LC_ALL=C ls data | tr '\n' ' ')"
 [ "$left" = "common config es " ] || fail "data/ holds more than common, config and es: $left"
 left="$(LC_ALL=C ls data/config | tr '\n' ' ')"
 [ "$left" = "es-cl.cfg es-old.cfg es.cfg ident.cfg " ] || fail "data/config holds other configs: $left"
+# FreeLing Old is installed as FreeLing ships it; its compound analysis is
+# off as shipped (compound analysis is off in every config, decided 261118).
+grep -q '^CompoundAnalysis=no$' data/config/es-old.cfg \
+    || fail "data/config/es-old.cfg: compound analysis is not off as FreeLing ships it"
 
 # 7: reserve() leaves size() at 0; the vectors are then indexed.
 grep -q 'edges\.reserve(rels\.size());' src/libfreeling/csr_kb.cc || fail "csr_kb.cc: edges.reserve not found"
@@ -164,5 +208,30 @@ for c in src/libfreeling/util.cc src/libfreeling/dictionary.cc; do
     sed -i 's/^namespace freeling {$/#if defined __MINGW32__\n#include <unicode\/uchar.h>\nstatic inline wint_t freeling_towlower(wint_t c) { return (wint_t) u_tolower((UChar32) c); }\nstatic inline wint_t freeling_towupper(wint_t c) { return (wint_t) u_toupper((UChar32) c); }\n#define towlower freeling_towlower\n#define towupper freeling_towupper\n#endif\n\nnamespace freeling {/' "$c"
     [ "$(grep -c 'freeling_towupper' "$c")" -eq 2 ] || fail "$c: the ICU case change did not apply"
 done
+
+# 10: a known root is not taken apart (the affix analysis).
+patch -p1 --forward --batch < "$kr_patch"
+sha256sum -c --quiet - <<'EOF' || fail "suffixes.cc and suffixes.h are not as the known-roots patch makes them"
+f867ccfd8d00e8abfd2d003b4c3af4456059ca8d47879a20a0476ab1e1d5f99e  src/libfreeling/suffixes.cc
+f003ed4307458ffd7f9ea8f9fa7bff02facdb9466c9c406ebd8866152ab02b32  src/include/freeling/morfo/suffixes.h
+EOF
+
+# 11 and 12: the probability columns, then the ambiguous multiwords.
+patch -p1 --forward --batch < "$tp_patch"
+patch -p1 --forward --batch < "$am_patch"
+sha256sum -c --quiet - <<'EOF' || fail "the tagger, word, multiword and CoNLL files are not as the two patches make them"
+223b224c5f20bd9b9387a6d1b165ab386bc41a7da806deacd030892a8bdb75e2  src/include/freeling/morfo/hmm_tagger.h
+c4f4233b9eb74c59772108829906b90c7934e710604243ce86f19aae460cb269  src/include/freeling/morfo/language.h
+547da73c035100344842967cfef639f909b10c8f145c733558a14bad7ca5e339  src/include/freeling/morfo/locutions.h
+2714c1e553274b7c967c12f538450aa413f20a2c467821d6b7fda38ef65a7d6a  src/include/freeling/output/conll_handler.h
+784e9b9106c77fa53841ac004b22f8e8ddefd14cf04891ab37f85ba1c7f45c03  src/libfreeling/hmm_tagger.cc
+8733ac79e99a0042b5c6e263a06d631b9bcb6a9b54f4d227c7c1177e20667d4b  src/libfreeling/language.cc
+0ffa8faefbf5ce14f9a0f63b72780015f25dc2851bfc581ec9901d9f8137a5f1  src/libfreeling/locutions.cc
+9333892e4868c55b984452f9f745b9b58c06fcb8174e47eeaab31057d8aec32e  src/libfreeling/output/conll_handler.cc
+2065b9dcf2285944e3770bad1daf2e9b477c1a7678ce5e7050ef3e5eb38f7bed  src/libfreeling/output/input_conll.cc
+985a429a175ef470e1eae87055452aa45c8a2f6f137eb7f6f06ef5084d2a5e37  src/libfreeling/output/output_conll.cc
+aa0ebeb97a329cf9dd7ad9b26a698cff287f51144fc65ce7f720b98edb5177ab  src/libfreeling/probabilities.cc
+ce27745a27d280f2c6995397f7d308963d45c11e9b1ae1a28675d343747e753d  src/libfreeling/tagger.cc
+EOF
 
 echo "patch-freeling.sh: every change applied"

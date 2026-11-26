@@ -1,0 +1,2 @@
+form	lemma	tag	why
+vas	vas	NCMS000	user, 261120: there is no noun vas; FreeLing's Spanish dictionary has it beside the verb form (ir), and with no line of its own in probabilitats.dat the noun was the likelier reading (69%): in transcribed speech "lo primero que vas a hacer" was tagged as a noun

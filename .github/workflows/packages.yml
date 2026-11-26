@@ -271,7 +271,7 @@ jobs:
           tar -xzf "$RUNNER_TEMP/FreeLing-src-4.2.tar.gz" -C "$RUNNER_TEMP"
 
       - name: The changes of FreeLing es-CL 2027
-        run: packaging/patch-freeling.sh "$RUNNER_TEMP/FreeLing-4.2" "$GITHUB_WORKSPACE/software/patches/freeling-4.2-np-classes.patch"
+        run: packaging/patch-freeling.sh "$RUNNER_TEMP/FreeLing-4.2" "$GITHUB_WORKSPACE/software/patches/freeling-4.2-np-classes.patch" "$GITHUB_WORKSPACE/software/patches/freeling-4.2-known-roots.patch" "$GITHUB_WORKSPACE/software/patches/freeling-4.2-tag-probabilities.patch" "$GITHUB_WORKSPACE/software/patches/freeling-4.2-ambiguous-multiwords.patch"
 
       - name: Build and install FreeLing 4.2
         run: |
@@ -361,7 +361,7 @@ jobs:
           tar -xzf FreeLing-src-4.2.tar.gz -C src
 
       - name: The changes of FreeLing es-CL 2027
-        run: packaging/patch-freeling.sh "$PWD/src/FreeLing-4.2" "$PWD/software/patches/freeling-4.2-np-classes.patch"
+        run: packaging/patch-freeling.sh "$PWD/src/FreeLing-4.2" "$PWD/software/patches/freeling-4.2-np-classes.patch" "$PWD/software/patches/freeling-4.2-known-roots.patch" "$PWD/software/patches/freeling-4.2-tag-probabilities.patch" "$PWD/software/patches/freeling-4.2-ambiguous-multiwords.patch"
 
       - name: Build and install FreeLing 4.2
         run: |

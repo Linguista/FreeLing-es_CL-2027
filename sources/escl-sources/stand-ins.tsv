@@ -1,0 +1,21 @@
+# Stand-in tokens: words that stand for something removed from or not
+# written in a text. One line per stand-in: form, tag, meaning.
+#
+# A form is XXX, a name in capital letters A-Z, and XXX. The tagger sends
+# every such form to FreeLing in lowercase (FreeLing's name recognizer would
+# join a capitalised stand-in with the words around it, XXXURLXXX_poh) and
+# writes the original back into the FORM column; the user map of every
+# config tags the lowercase form, with the lowercase form as its lemma,
+# before any other module runs. A text that holds a form not listed here is
+# refused, with the form named.
+#
+# To add a stand-in, add a line here, rebuild and redeploy (or regenerate the
+# configs with freeling_escl_configs.py). Tags are FreeLing's: Fz is
+# "other symbol", Fla and Flt are the tags of { and }, which plain text
+# does not otherwise contain.
+form	tag	meaning
+XXXREDACTEDXXX	Fz	a redacted identifier: a name, a number, an address
+XXXUNINTELLIGIBLEXXX	Fla	speech that could not be made out
+XXXNONSPEECHXXX	Flt	a non-speech event: laughter, a cough, a noise
+XXXURLXXX	Fz	a web address, removed
+XXXEMAILADDRXXX	Fz	an e-mail address, removed

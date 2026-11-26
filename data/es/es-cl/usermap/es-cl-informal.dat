@@ -1,0 +1,52 @@
+^xxxredactedxxx$ xxxredactedxxx Fz
+^xxxunintelligiblexxx$ xxxunintelligiblexxx Fla
+^xxxnonspeechxxx$ xxxnonspeechxxx Flt
+^xxxurlxxx$ xxxurlxxx Fz
+^xxxemailaddrxxx$ xxxemailaddrxxx Fz
+^(novela|NOVELA)$ novela NCFS000
+^(vela|VELA)$ vela NCFS000
+^(velo|VELO)$ velo NCMS000
+^[aA][vV][eE][rR]$ a_ver I
+^[aA][xX][iI][lL][lL][aA]$ axila NCFS000
+^[bB][kK][nN]$ bacán AQ0MS00 bacán RG
+^[dD]$ d NCFS000 de SP
+^[dD][eE][sS][pP]$ después RG
+^[dD][rR][aA]$ doctor NCFS000 doctorar VMIP3S0 doctorar VMM02S0
+^[eE][nN][tT][oO][nN][sS]$ entonces CS entonces RG
+^[fF][iI][sS][kK][aA][lL][eE][sS]$ fiscal AQ0CP00 fiscal NCCP000
+^[kK]$ k NCFS000 que CS que PR0CN00
+^[kK][aA][lL][mM][aA][oO]$ calmar VMP00SM
+^[kK][aA][uU][rR][oO][sS]$ cabro NCMP000
+^[kK][eE][dD][oO]$ quedar VMIS3S0 quedar VMIP1S0
+^[kK][eE][oO]$ quedar VMIS3S0 quedar VMIP1S0
+^[kK][oO][kK][aA]$ koka NPFSSP0 coca NCFS000 cocar VMIP3S0 cocar VMM02S0 coco NCFS000
+^[kK][oO][oO][lL]$ cool AQ0CN00
+^[mM][bB]$ megabyte NCMS000 muy_bien RG
+^[nN][iI][kK][aA]$ ni_cagando RG ni_cagando I
+^[nN][oO][sS][eE]$ no_sé I
+^[oO][kK][aA][sS]$ okay I
+^[pP][oO][rR][qQ]$ porque CS
+^[qQ]$ q NCFN000 q NCFS000 que CS que PR0CN00
+^[sS][aA][kK][oO]$ sacar VMIP1S0 sacar VMIS3S0
+^[sS][aA][lL][uU]2$ saludo NCMP000
+^[sS][nN]$ son NCMS000 ser VSIP3P0 san AQ0CS00 santo NCMS000
+^[tT]$ t NCFS000 te P02CS00 te PP2CS00
+^[tT][aA][bB][aA]$ taba NCFS000 estar VAII1S0 estar VAII3S0 estar VMII1S0 estar VMII3S0
+^[tT][aA][mM][bB]$ también RG
+^[tT][aA][mM][oO][sS]$ tamo NCMP000 estar VAIP1P0 estar VMIP1P0
+^[tT][aA][rR]$ estar VAN0000 estar VMN0000
+^[tT][aA][sS]$ estar VAIP2S0 estar VMIP2S0
+^[tT][hH][xX]$ gracias I
+^[tT][oO][nN][sS]$ entonces CS entonces RG
+^[tT][oO][yY]$ toy NCMS000 estar VAIP1S0 estar VMIP1S0
+^[wW][aA]$ huevada NCFS000
+^[wW][eE][aA][iI]$ huevear VMIP2SV
+^[wW][eE][aA][rR]$ huevear VMN0000
+^[wW][eE][bB][oO][nN]$ huevón AQ0MS00 huevón NCMS000
+^[wW][eE][iI][sS]$ huevear VMSP2SV
+^[wW][eE][oO]$ huevón NCMS000 huevón AQ0MS00
+^[wW][oO]$ huevón NCMS000 huevón AQ0MS00
+^[wW][sS]$ huevada NCFP000
+^[wW][uU][eE][oO][nN]$ huevón AQ0MS00 huevón NCMS000
+^[xX]$ x NCFS000 por SP
+^[xX][uU]$ chucha I

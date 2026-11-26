@@ -7,7 +7,7 @@ indicative, present, 2nd person, singular), and vos is tagged like te and
 ti (pronoun, personal, 2nd person, common gender, singular, no voseo
 value). Voseo and tuteo are then told apart only by their spelling.
 
-It is not used by the CSLD. It exists for anyone who needs FreeLing's
+It is not used by the release's own configs. It exists for anyone who needs FreeLing's
 Spanish tags unchanged, for example a tool that rejects the voseo value.
 
 To use it:

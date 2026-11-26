@@ -1,0 +1,288 @@
+--- a/src/include/freeling/morfo/hmm_tagger.h
++++ b/src/include/freeling/morfo/hmm_tagger.h
+@@ -171,6 +171,13 @@
+     /// for each word, the probability of each of its short tags given the whole
+     /// sentence, from the states FindStates gave (empty if it cannot be computed)
+     std::vector<std::map<std::wstring,double> > TagPosteriors(const sentence &, const std::list<emission_states> &) const;
++    /// how well the best tag sequence fits the sentence, leaving out the
++    /// probabilities of the words themselves, so that two ways of dividing
++    /// the same text into words can be compared
++    double SegmentationScore_log(const sentence &) const;
++    /// decide, for each multiword marked ambiguous (A), whether it stays one
++    /// word or is taken apart into the words it was made from
++    void resolve_ambiguous_mw(sentence &) const;
+ 
+   public:
+     /// Constructor
+--- a/src/include/freeling/morfo/language.h
++++ b/src/include/freeling/morfo/language.h
+@@ -191,6 +191,9 @@
+     std::list<word> multiword;
+     /// whether the multiword presents segmentantion ambiguity (i.e. could not be a mw)
+     bool ambiguous_mw;
++    /// for a multiword marked ambiguous, the weight given to its being one
++    /// word when the tagger decides (0.5: no preference)
++    double mw_prob;
+     /// probability the tagger gives the selected tag in its sentence
+     /// (posterior of the HMM); -1 when no tagger computed it
+     double tag_prob;
+@@ -259,6 +262,12 @@
+     int get_n_words_mw() const;
+     /// get word objects that compound the multiword
+     const std::list<word>& get_words_mw() const;
++    /// weight given to an ambiguous multiword being one word
++    double get_mw_prob() const;
++    /// set the weight given to an ambiguous multiword being one word
++    void set_mw_prob(double);
++    /// get word objects that compound the multiword (to annotate them)
++    std::list<word>& get_words_mw();
+     /// probability the tagger gives the selected tag in its sentence (-1: not computed)
+     double get_tag_prob() const;
+     /// set the probability the tagger gives the selected tag
+--- a/src/include/freeling/morfo/locutions.h
++++ b/src/include/freeling/morfo/locutions.h
+@@ -55,6 +55,8 @@
+     std::list<analysis> mw_analysis;
+     /// segmentantion ambiguity status of the multiword
+     bool mw_ambiguous;
++    /// for an ambiguous multiword, the weight given to its being one word
++    double mw_prob;
+   };
+ 
+   ////////////////////////////////////////////////////////////////
+--- a/src/libfreeling/hmm_tagger.cc
++++ b/src/libfreeling/hmm_tagger.cc
+@@ -790,11 +790,12 @@
+ 
+ 
+   ///////////////////////////////////////////////////////////////  
+-  ///  Disambiguate given sentence, and store in each word the
+-  ///  probability of the tag selected for it.
++  ///  Disambiguate given sentence: first decide which ambiguous
++  ///  multiwords stay one word, then tag.
+   ///////////////////////////////////////////////////////////////  
+ 
+   void hmm_tagger::annotate(sentence &se) const {
++    resolve_ambiguous_mw(se);
+     tag_sentence(se,true);
+   }
+ 
+@@ -897,6 +898,103 @@
+   }
+ 
+ 
++  ///////////////////////////////////////////////////////////////  
++  ///  Given an *annotated* sentence, the (log) probability of its
++  ///  best tag sequence without the probabilities of the words
++  ///  themselves: transitions, and P(tag|word)/P(tag) for each
++  ///  word. P(word) is left out because it is a constant when the
++  ///  words are given, and would otherwise decide by itself between
++  ///  one multiword and the words it is made from.
++  ///////////////////////////////////////////////////////////////  
++
++  double hmm_tagger::SegmentationScore_log(const sentence &se) const {
++    double p=SequenceProb_log(se,0);
++    map<wstring,double>::const_iterator k;
++    for (sentence::const_iterator w=se.begin(); w!=se.end(); w++) {
++      k=PWord.find(w->get_lc_form());
++      p -= (k==PWord.end() ? probUnobserved : k->second);
++    }
++    return p;
++  }
++
++
++  ///////////////////////////////////////////////////////////////  
++  ///  Multiwords marked ambiguous (A) in the multiword file may be
++  ///  one word or the words they are made from ("o sea" the
++  ///  reformulator, or "o" and "sea"). For each one, left to right,
++  ///  the sentence is tagged both ways and the way whose best tag
++  ///  sequence fits better is kept. A multiword is only taken apart
++  ///  if every word it was made from has readings.
++  ///////////////////////////////////////////////////////////////  
++
++  void hmm_tagger::resolve_ambiguous_mw(sentence &se) const {
++
++    const double NEG=-numeric_limits<double>::infinity();
++    bool changes=false;
++    size_t pos=0;
++    sentence::iterator w=se.begin();
++    while (w!=se.end()) {
++
++      bool cand = w->is_multiword() and w->is_ambiguous_mw();
++      if (cand) {
++        const list<word> &cw=w->get_words_mw();
++        for (list<word>::const_iterator c=cw.begin(); c!=cw.end() and cand; c++)
++          cand = (c->get_n_analysis()>0);
++      }
++      if (not cand) { w++; pos++; continue; }
++
++      TRACE(3,L"Ambiguous multiword: "+w->get_form());
++
++      // the sentence with the multiword as one word
++      sentence sj(se);
++      tag_sentence(sj,false);
++      double pj=SegmentationScore_log(sj);
++
++      // the sentence with the multiword taken apart
++      sentence ss;
++      size_t i=0;
++      for (sentence::const_iterator x=se.begin(); x!=se.end(); x++,i++) {
++        if (i==pos) {
++          const list<word> &cw=x->get_words_mw();
++          for (list<word>::const_iterator c=cw.begin(); c!=cw.end(); c++) ss.push_back(*c);
++        }
++        else ss.push_back(*x);
++      }
++      ss.rebuild_word_index();
++      tag_sentence(ss,false);
++      double ps=SegmentationScore_log(ss);
++
++      TRACE(3,L"   as one word: "+util::double2wstring(pj)+L"; taken apart: "+util::double2wstring(ps));
++
++      // the weight the multiword file gives to its being one word
++      double pr=w->get_mw_prob();
++      if (pr<=0.0 or pr>=1.0) pr=0.5;
++      pj += log(pr);
++      ps += log(1.0-pr);
++
++      if (ps>pj and ps!=NEG and ps==ps) {
++        // take it apart in the sentence itself
++        list<word> cw=w->get_words_mw();
++        size_t nc=cw.size();
++        for (list<word>::iterator c=cw.begin(); c!=cw.end(); c++) {
++          c->user=w->user;
++          w=se.insert(w,*c);
++          w++;
++        }
++        w=se.erase(w);
++        pos+=nc;
++        changes=true;
++      }
++      else {
++        // it stays one word
++        w++; pos++;
++      }
++    }
++
++    if (changes) se.rebuild_word_index();
++  }
++
++
+   ///////////////////////////////////////////////////////////////  
+   ///  Obtain a list with the states that *may* have emmited 
+   ///  current observation (a sentence).
+--- a/src/libfreeling/language.cc
++++ b/src/libfreeling/language.cc
+@@ -193,6 +193,7 @@
+     locked_multiwords=false; 
+     ambiguous_mw=false;
+     tag_prob=-1;
++    mw_prob=0.5;
+     position=-1;
+     start=-1;
+     finish=-1;
+@@ -208,6 +209,7 @@
+     locked_multiwords=false; 
+     ambiguous_mw=false;
+     tag_prob=-1;
++    mw_prob=0.5;
+     position=-1;
+     start=-1;
+     finish=-1;
+@@ -225,6 +227,7 @@
+     locked_multiwords=false; 
+     ambiguous_mw=false;
+     tag_prob=-1;
++    mw_prob=0.5;
+     position=-1;
+   }
+   /// Create a new multiword, including given words, and with given analysis list.
+@@ -246,6 +249,7 @@
+     locked_multiwords=false; 
+     ambiguous_mw=false;
+     tag_prob=-1;
++    mw_prob=0.5;
+     position=-1;
+   }
+ 
+@@ -263,6 +267,7 @@
+     copy_analysis(w);
+     ambiguous_mw=w.ambiguous_mw;
+     tag_prob=w.tag_prob;
++    mw_prob=w.mw_prob;
+     position=w.position;
+   }
+ 
+@@ -407,6 +412,12 @@
+   int word::get_n_words_mw() const {return(multiword.size());}
+   /// Get list of words in compound.
+   const list<word>& word::get_words_mw() const {return(multiword);}
++  /// Get the weight given to an ambiguous multiword being one word.
++  double word::get_mw_prob() const {return(mw_prob);}
++  /// Set the weight given to an ambiguous multiword being one word.
++  void word::set_mw_prob(double p) {mw_prob=p;}
++  /// Get list of words in compound (to annotate them).
++  list<word>& word::get_words_mw() {return(multiword);}
+   /// Get the probability the tagger gives the selected tag in its sentence.
+   double word::get_tag_prob() const {return(tag_prob);}
+   /// Set the probability the tagger gives the selected tag in its sentence.
+--- a/src/libfreeling/locutions.cc
++++ b/src/libfreeling/locutions.cc
+@@ -354,6 +354,7 @@
+     list<analysis> la;
+     bool valid=false;
+     bool ambiguous=false;
++    double mwprob=0.5;
+ 
+     // Setting the analysis for the multiword
+   
+@@ -376,7 +377,15 @@
+         wstring tags=mw_data->second.substr(0,p);
+         list<wstring> ldata = util::wstring2list(tags,L"#");
+         wstring amb=mw_data->second.substr(p+1);
+-        ambiguous = ambiguous or (amb==L"A");
++        // "A": ambiguous, the tagger decides. "A:0.9": ambiguous, and the
++        // multiword reading is given that weight (0.5, no preference, if absent)
++        if (amb==L"A" or amb.find(L"A:")==0) {
++          double pr=0.5;
++          if (amb.size()>2) pr=util::wstring2double(amb.substr(2));
++          if (pr<=0.0 or pr>=1.0) ERROR_CRASH(L"Invalid weight in ambiguous locution entry (must be above 0 and below 1): "+form+L" "+amb);
++          if (not ambiguous or pr>mwprob) mwprob=pr;
++          ambiguous=true;
++        }
+ 
+         TRACE(4,L"   found entry  ("+tags+L")");
+       
+@@ -450,6 +459,7 @@
+ 
+     st->mw_analysis = la;
+     st->mw_ambiguous = ambiguous;
++    st->mw_prob = mwprob;
+     return(valid);
+   }
+ 
+@@ -463,6 +473,7 @@
+ 
+     i->set_analysis(st->mw_analysis);
+     i->set_ambiguous_mw(st->mw_ambiguous);
++    i->set_mw_prob(st->mw_prob);
+     TRACE(3,L"Analysis set to: ("+i->get_lemma()+L","+i->get_tag()+L") "+(st->mw_ambiguous?L"[A]":L"[I]"));
+ 
+     // record this word was analyzed by this module
+--- a/src/libfreeling/probabilities.cc
++++ b/src/libfreeling/probabilities.cc
+@@ -263,6 +263,14 @@
+         annotate_word(*k);
+     }
+ 
++    // if the word is a multiword marked ambiguous, the tagger may take it
++    // apart: assign probabilities to the words it was made from as well.
++    if (w.is_multiword() and w.is_ambiguous_mw()) {
++      list<word> & cw=w.get_words_mw();
++      for (list<word>::iterator k=cw.begin(); k!=cw.end(); k++) 
++        annotate_word(*k);
++    }
++
+     // record this word was analyzed by this module
+     w.set_analyzed_by(word::PROBABILITIES);    
+   }

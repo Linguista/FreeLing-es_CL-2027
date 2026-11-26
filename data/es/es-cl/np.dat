@@ -123,15 +123,15 @@ no
 ## Read only by FreeLing 4.2 with the name-class change
 ## (software/patches/freeling-4.2-np-classes.patch); FreeLing without it
 ## skips these sections.
-## This file: written texts (CODICACH): the fixed and dictionary classes
-## apply inside a sentence; at its start a word that is also a common
-## noun or an adjective is left to FreeLing.
+## This file: written texts: the fixed and dictionary classes apply
+## inside a sentence; at its start a word that is also a common noun or
+## an adjective is left to FreeLing.
 ##
 ## DictionaryClasses: a one-word name whose dictionary entry has one of
 ## these proper-noun tags keeps it, in this order, with the dictionary's
 ## lemma; the classifier is not asked.
 <DictionaryClasses>
-NP00G00 NP00SP0 NP00O00 NP00V00
+NP00G00 NP00SP0 NPMSSP0 NPFSSP0 NP00O00 NPMSO00 NPFSO00 NP00V00 NPMS000 NPMP000
 </DictionaryClasses>
 ## ClassesAtSentenceStart: yes, the classes also apply at the start of a
 ## sentence (a line of transcribed speech); no, a word there that is also
