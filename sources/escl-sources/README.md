@@ -16,14 +16,14 @@ was decided about it.
 
 | Kind | Columns | A row means |
 |---|---|---|
-| `dictionary-additions` | form, lemma, category, sheet, count | a word to add, with its lemma and category, as decided in that round (sheet: the review sheet it came from; count: its tokens in the speech corpus) |
+| `dictionary-additions` | form, lemma, category, sheet, count | a word to add, with its lemma and category, as decided in that round (sheet: the review sheet it came from; count: its tokens in a speech corpus) |
 | `dictionary-additions-all-rounds-standardized` | form, lemma, category, round, lemma as entered | every round's additions merged, with the standard lemma; the build reads only the newest of these, which must be at least as new as the newest round of additions |
 | `dictionary-addition-removals` | form, lemma, category, round removed, why | an addition withdrawn |
 | `dictionary-variants` | form, standard form, sheet, count | a form kept in the text that gets the readings of its standard form (haiga with haya) |
 | `text-corrections` | form, correction, how, sheet, count | a misspelling corrected in the text: replace, split (the correction has a space), or join with the word before |
 | `text-correction-removals` | form, correction, round removed, why | a correction withdrawn |
 | `correction-lemmas` | form, correction, lemma, category, sheet, count | the lemma and category of a corrected form, so that the misspelling is read as its correction |
-| `all-corpora-replacements` | form, replacement, how, corpora, the speech corpus 040 tokens | a replacement made in every the corpus project corpus |
+| `all-corpora-replacements` | form, replacement, how, corpora, a speech corpus 040 tokens | a replacement made in every one of your corpora |
 | `lemma-standardization` | lemma, standard lemma, sheet, group | the one lemma used for the spellings of a word |
 | `interjections` | form, lemma, probability, multiword, interjection in FreeLing es-CL 2027 now, sheet | an interjection or discourse marker, with its lemma; RARE ones are seldom chosen (a later round with `normal` makes the word an ordinary interjection again); multiword ones go to the multiword list |
 | `interjection-removals` | form, why | an interjection reading removed |
@@ -48,7 +48,7 @@ The full meaning of each column, and what the build does with every row,
 are in `freeling_escl_build_README.md` (in `software/` of the release) and
 in the release's `DECISIONS.tsv`, which has one row per decision row read.
 
-The person names among the additions are the names that occur in the speech corpus,
+The person names among the additions are the names that occur in a speech corpus,
 as written by its transcribers; the names of speakers and of anyone they
 mentioned in a way that could identify them were redacted from the corpus
 before review.

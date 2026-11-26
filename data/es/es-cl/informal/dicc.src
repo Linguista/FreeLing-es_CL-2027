@@ -77490,7 +77490,6 @@ anduviéremos andar VMSF1P0
 anduviésemos andar VMSI1P0
 anduvo andar VMIS3S0
 andy andy NP00SP0
-andá andar VMM02SV
 andábamos andar VMII1P0
 andái andar VMIP2SV
 andáis andar VMIP2P0
@@ -172947,7 +172946,7 @@ cachurió cachurear VMIS3S0
 cachurí cachurear VMSP2SV
 cachuríh cachurear VMSP2SV
 cachurís cachurear VMSP2SV
-cachá cachada NCCS000 cachada NCFS000 cachar VMIP2SV cachar VMP00SF
+cachá cachada NCCS000 cachada NCFS000 cachar VMP00SF
 cachábamos cachar VMII1P0
 cachái cachar VMIP2SV cachái I
 cacháis cachar VMIP2P0
@@ -178818,7 +178817,6 @@ caminis caminar VMSP2SV
 camino caminar VMIP1S0 camino NCMS000
 caminos camino NCMP000
 camins camins NP00SP0
-caminá caminar VMM02SV
 caminábamos caminar VMII1P0
 caminái caminar VMIP2SV
 camináis caminar VMIP2P0
@@ -182066,7 +182064,6 @@ canturrís canturriar VMSP2SV
 canturía canturía NCFS000
 canturías canturía NCFP000
 cantus cantus NCMN000
-cantá cantar VMM02SV
 cantábamos cantar VMII1P0
 cantábrica cantábrico AQ0FS00
 cantábricas cantábrico AQ0FP00
@@ -674197,7 +674194,6 @@ mirtídanos mirtídano NCMP000
 miruna miruna NP00SP0
 mirza mirza NCMS000
 mirzas mirza NCMP000
-mirá mirar VMM02SV
 mirábamos mirar VMII1P0
 mirái mirar VMIP2SV
 miráis mirar VMIP2P0
@@ -757396,7 +757392,6 @@ ponzoñosa ponzoñoso AQ0FS00
 ponzoñosas ponzoñoso AQ0FP00
 ponzoñoso ponzoñoso AQ0MS00
 ponzoñosos ponzoñoso AQ0MP00
-poné poner VMM02SV
 ponéis poner VMIP2P0
 poní poner VMIP2SV
 ponía poner VMII1S0 poner VMII3S0

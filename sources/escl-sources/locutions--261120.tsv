@@ -3,9 +3,9 @@ sí_poh	sí_poh	RG I	I	user, 261120: an adverb when it means yes, an interjectio
 sí_po	sí_poh	RG I	I	the same as sí_poh, of which it is a spelling
 no_poh	no_poh	RG I	I	user, 261120: an adverb when it means no, an interjection at the end of an utterance or as its only content; always one unit (500 of 500)
 no_po	no_poh	RG I	I	the same as no_poh, of which it is a spelling
-por_eso	por_eso	RG	I	judged sample of the speech corpus, 261120: one unit in 500 of 500; was A
-la_verdad	la_verdad	RG	A:0.9	judged sample of the speech corpus, 261120: one unit in 91% of tokens (455 of 500 judged); was A
-ahí_no_más	ahí_no_más	AQ0CN00 RG	A:0.8	judged sample of the speech corpus, 261120: one unit in 84% of tokens (278 of 329 judged); was I
-es_que	es_que	CS	A:0.8	user, 261120: es que may be one unit, ambiguous, decided by context; judged sample of the speech corpus, 261120: one unit in 83% of tokens (414 of 500 judged)
-a_ver	a_ver	I	A:0.7	judged sample of the speech corpus, 261120: one unit in 68% of tokens (338 of 500 judged); was A
-puede_ser	puede_ser	RG	A:0.4	user, 261120: puede ser is an epistemic hedge, like quizás (an adverb, no longer an interjection); judged sample of the speech corpus, 261120: one unit in 39% of tokens (197 of 500 judged)
+por_eso	por_eso	RG	I	judged sample of a speech corpus, 261120: one unit in 500 of 500; was A
+la_verdad	la_verdad	RG	A:0.9	judged sample of a speech corpus, 261120: one unit in 91% of tokens (455 of 500 judged); was A
+ahí_no_más	ahí_no_más	AQ0CN00 RG	A:0.8	judged sample of a speech corpus, 261120: one unit in 84% of tokens (278 of 329 judged); was I
+es_que	es_que	CS	A:0.8	user, 261120: es que may be one unit, ambiguous, decided by context; judged sample of a speech corpus, 261120: one unit in 83% of tokens (414 of 500 judged)
+a_ver	a_ver	I	A:0.7	judged sample of a speech corpus, 261120: one unit in 68% of tokens (338 of 500 judged); was A
+puede_ser	puede_ser	RG	A:0.4	user, 261120: puede ser is an epistemic hedge, like quizás (an adverb, no longer an interjection); judged sample of a speech corpus, 261120: one unit in 39% of tokens (197 of 500 judged)

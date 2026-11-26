@@ -479,12 +479,12 @@ strings -e L /usr/local/lib/libfreeling.so | grep -c -x -E "DictionaryClasses|Fi
 | 0 | is FreeLing 4.2 without the change |
 
 `freeling_escl_deploy.py` (system target) and `freeling_tag_corpus.py`
-(the speech corpus and the written corpus) make the same check and refuse anything but 6.
+(a speech corpus and a written corpus) make the same check and refuse anything but 6.
 
 ## 9. Examples
 
-With the configs of FreeLing es-CL 2027: the written corpus (written texts, `np.dat`,
-`<ClassesAtSentenceStart>` no) and the speech corpus (transcribed speech,
+With the configs of FreeLing es-CL 2027: a written corpus (written texts, `np.dat`,
+`<ClassesAtSentenceStart>` no) and a speech corpus (transcribed speech,
 `np-speech.dat`, yes). Before: FreeLing 4.2 without the change, with the
 same data (the four sections are skipped) and FreeLing's own classifier
 file.
@@ -521,13 +521,13 @@ file.
 
 In transcribed speech a capitalized word at the start of a line is taken
 for a name, so the verbs there (Tomé un café) become places and Pinto the
-surname; in the speech corpus such lines are rare, and nearly every capital at the
+surname; in a speech corpus such lines are rare, and nearly every capital at the
 start of a line is a name (section 10): a speaker's verb is written in
 lower case (pinto la casa).
 
 ## 10. Measured effect
 
-On 21,366 lines of the speech corpus (Chilean Spanish, transcribed speech) holding a
+On 21,366 lines of a speech corpus (Chilean Spanish, transcribed speech) holding a
 place name of the Chilean data: 24,408 occurrences of a place name, 22,422
 of them a token of exactly the name (the others are part of a longer name,
 such as Hospital de Puerto Montt). The class each exact token got:

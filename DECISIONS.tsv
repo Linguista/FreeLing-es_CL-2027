@@ -18135,6 +18135,18 @@ reading-removals--261126.tsv	réclama	réclame NCFS000	removed	reading taken out
 reading-removals--261126.tsv	meno	meno NCMS000	removed	reading taken out of every dictionary
 reading-removals--261126.tsv	menos	meno NCMP000	removed	reading taken out of every dictionary
 reading-removals--261126.tsv	ménos	meno NCMP000	removed	reading taken out of every dictionary
+reading-removals--261126b.tsv	andá	andar VMM02SV	removed	reading taken out of every dictionary
+reading-removals--261126b.tsv	caminá	caminar VMM02SV	removed	reading taken out of every dictionary
+reading-removals--261126b.tsv	cantá	cantar VMM02SV	removed	reading taken out of every dictionary
+reading-removals--261126b.tsv	mirá	mirar VMM02SV	removed	reading taken out of every dictionary
+reading-removals--261126b.tsv	poné	poner VMM02SV	removed	reading taken out of every dictionary
+reading-removals--261126b.tsv	kaminá	caminar VMM02SV	removed	reading taken out of every dictionary
+reading-removals--261126b.tsv	qaminá	caminar VMM02SV	removed	reading taken out of every dictionary
+reading-removals--261126b.tsv	kantá	cantar VMM02SV	removed	reading taken out of every dictionary
+reading-removals--261126b.tsv	qantá	cantar VMM02SV	removed	reading taken out of every dictionary
+reading-removals--261126b.tsv	cachá	cachar VMIP2SV	removed	reading taken out of every dictionary
+reading-removals--261126b.tsv	kachá	cachar VMIP2SV	removed	reading taken out of every dictionary
+reading-removals--261126b.tsv	qachá	cachar VMIP2SV	removed	reading taken out of every dictionary
 contemporary-reading-removals--261126.tsv	carácteres	carácter NCMP000	removed	reading taken out of the default and informal dictionaries, kept in the 19th-century one
 contemporary-reading-removals--261126.tsv	cánon	cánon NCMS000	removed	reading taken out of the default and informal dictionaries, kept in the 19th-century one
 interjection-removals	abur	interjection removed	no reading left	it was only an interjection: FreeLing now treats it as an unknown word
@@ -18273,7 +18285,7 @@ form-probabilities--261115.tsv	tar	NCMS000 1%, VAN0000 49%, VMN0000 50%	probabil
 form-probabilities--261115.tsv	tas	NCMN000 1%, VAIP2S0 49%, VMIP2S0 50%	probabilities	tas NC-VAI-VMI NC 10 VAI 490 VMI 500
 form-probabilities--261115.tsv	t	NCFS000 98%, P02CS00 1%, PP2CS00 1%	probabilities	t NC-P0-PP NC 980 P0 10 PP 10
 form-probabilities--261115.tsv	toy	NCMS000 80%, VAIP1S0 10%, VMIP1S0 10%	probabilities	toy NC-VAI-VMI NC 800 VAI 100 VMI 100
-form-probabilities--261116.tsv	cachá	VMIP2SV 98%, NCFS000 2%	probabilities	cachá NC-VMI NC 20 VMI 980
+form-probabilities--261126.tsv	cachá	NCFS000 100%	probabilities	cachá NC NC 1000
 form-probabilities--261117.tsv	nunca_más	RG 90%, I 10%	probabilities	nunca_más I-RG I 100 RG 900
 form-probabilities--261117.tsv	abuelita	I 5%	probabilities	abuelita I-NC I 50 NC 950
 form-probabilities--261120.tsv	bueno	probabilities	replaces a line of the build	no longer a RARE interjection: FreeLing's own line (decided 261119)

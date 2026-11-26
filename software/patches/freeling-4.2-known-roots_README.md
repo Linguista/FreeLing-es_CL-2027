@@ -43,7 +43,7 @@ It keeps every reading the three give, and the lemma of a prefixed reading is th
 | ablandese | ablandir+se | a + blande + se | ablandar+se |
 | aborreguelo | aborrego | a + borrego + uelo | aborregar+lo |
 
-The two readings mostly share the tag, and so the probability. FreeLing then orders them alphabetically (`probabilities::less`), so the wrong lemma came first whenever it sorted first (aacompañar before acompañar, reir before reír). And the tagger splits a clitic form only when a single reading is left (`POS_tagger::retokenize`), so the token came out whole, with the wrong lemma and a joined tag: `acompañarlo aacompañar+lo VMN0000+PP3MSA0`. In the speech corpus, tagged before this change, this gave reir (60 tokens), aacompañar and aadelantar (38), inverter and reverter (7).
+The two readings mostly share the tag, and so the probability. FreeLing then orders them alphabetically (`probabilities::less`), so the wrong lemma came first whenever it sorted first (aacompañar before acompañar, reir before reír). And the tagger splits a clitic form only when a single reading is left (`POS_tagger::retokenize`), so the token came out whole, with the wrong lemma and a joined tag: `acompañarlo aacompañar+lo VMN0000+PP3MSA0`. In a speech corpus, tagged before this change, this gave reir (60 tokens), aacompañar and aadelantar (38), inverter and reverter (7).
 
 A second fault showed once such words were split. The split takes the root's form from the root FreeLing found first, and FreeLing searches the candidate roots in alphabetical order. When the dictionary also reads the spelling without the accent (the es-CL dictionary reads every accented word written without its accents, decided 261112), both reír and reir are found, reir first, and the split was reir + me. FreeLing 4.2 already gave oir + lo, freir + lo, sonreir + le and rehusa + lo this way.
 
@@ -72,7 +72,7 @@ From the top of an unpacked `FreeLing-src-4.2.tar.gz`:
 patch -p1 --forward --batch < freeling-4.2-known-roots.patch
 ```
 
-The release's `packaging/patch-freeling.sh` (1.3.0) applies it with the name-class change and FreeLing es-CL 2027's other changes, after checking by sha256 that the two files are FreeLing 4.2's, and checks the result by sha256. `packaging/build-freeling.sh` (1.2.0) builds and installs FreeLing with both changes, and the GitHub workflow `packages.yml` does the same for every package. On a machine whose FreeLing was built from source with the name-class change, the corpus project's `freeling_known_roots_install.py` applies this change to that source tree, builds the library alone, installs it and tests it.
+The release's `packaging/patch-freeling.sh` (1.3.0) applies it with the name-class change and FreeLing es-CL 2027's other changes, after checking by sha256 that the two files are FreeLing 4.2's, and checks the result by sha256. `packaging/build-freeling.sh` (1.2.0) builds and installs FreeLing with both changes, and the GitHub workflow `packages.yml` does the same for every package. On a machine whose FreeLing was built from source with the name-class change, your corpus's `freeling_known_roots_install.py` applies this change to that source tree, builds the library alone, installs it and tests it.
 
 The two changes touch different files (`np.cc`, `np.h`, `nec.cc`; `suffixes.cc`, `suffixes.h`) and apply in either order. Only `libfreeling` is rebuilt by them; the programs (`analyzer` and the others) are unchanged.
 
@@ -82,7 +82,7 @@ The two changes touch different files (`np.cc`, `np.h`, `nec.cc`; `suffixes.cc`,
 echo "Me dio risa reírme." | analyze -f es-cl.cfg --outlv tagged --nonec --sense none
 ```
 
-With the change: `reír reír VMN0000` and `me me PP1CS00`. Without it, with FreeLing es-CL 2027's lemma preference `reír reir` (since `freeling_escl_build.py` 2.10.0): `reir reír VMN0000` and `me`, the form without its accent (with the corpus project's the speech corpus config, which has `TaggerForceSelect=retok`, one token, `reírme reír+me VMN0000+PP1CS00`). `packaging/test-freeling.sh` (1.3.0) checks for `reír reír VMN0000` and `me me PP1CS00`.
+With the change: `reír reír VMN0000` and `me me PP1CS00`. Without it, with FreeLing es-CL 2027's lemma preference `reír reir` (since `freeling_escl_build.py` 2.10.0): `reir reír VMN0000` and `me`, the form without its accent (with a speech corpus config, which has `TaggerForceSelect=retok`, one token, `reírme reír+me VMN0000+PP1CS00`). `packaging/test-freeling.sh` (1.3.0) checks for `reír reír VMN0000` and `me me PP1CS00`.
 
 ## 6. Measured effect
 
@@ -100,7 +100,7 @@ Of the 17 left, 12 are forms Spanish does not have, which the list of words made
 
 A first measurement of 261116 attached lo and se without writing the accent (cometelo, a misspelling), and its figures (253 and 58 before, 0 and 50 after, of 119,954 words) are replaced by these.
 
-**760,859 tokens of written Chilean Spanish** (the written corpus texts, tagged with a speech config like the speech corpus's and FreeLing es-CL 2027 of 261115): 47 tokens changed.
+**760,859 tokens of written Chilean Spanish** (a written corpus texts, tagged with a speech config like a speech corpus's and FreeLing es-CL 2027 of 261115): 47 tokens changed.
 
 | Word | Tokens | FreeLing 4.2 | With the change |
 |---|---|---|---|

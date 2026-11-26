@@ -135877,7 +135877,6 @@ anduviéremos andar VMSF1P0
 anduviésemos andar VMSI1P0
 anduvo andar VMIS3S0
 andy andy NP00SP0
-andá andar VMM02SV
 andábamos andar VMII1P0
 andái andar VMIP2SV
 andáis andar VMIP2P0
@@ -331241,7 +331240,7 @@ cachurió cachurear VMIS3S0
 cachurí cachurear VMSP2SV
 cachuríh cachurear VMSP2SV
 cachurís cachurear VMSP2SV
-cachá cachada NCFS000 cachar VMIP2SV
+cachá cachada NCFS000
 cachábamos cachar VMII1P0
 cachái cachar VMIP2SV cachái I
 cacháis cachar VMIP2P0
@@ -338616,7 +338615,6 @@ caminis caminar VMSP2SV
 camino caminar VMIP1S0 camino NCMS000
 caminos camino NCMP000
 camins camins NP00SP0
-caminá caminar VMM02SV
 caminábamos caminar VMII1P0
 caminái caminar VMIP2SV
 camináis caminar VMIP2P0
@@ -342311,7 +342309,6 @@ canturrís canturriar VMSP2SV
 canturía canturía NCFS000
 canturías canturía NCFP000
 cantus cantus NCMN000
-cantá cantar VMM02SV
 cantábamos cantar VMII1P0
 cantábrica cantábrico AQ0FS00
 cantábricas cantábrico AQ0FP00
@@ -1164091,7 +1164088,7 @@ kachurió cachurear VMIS3S0
 kachurí cachurear VMSP2SV
 kachuríh cachurear VMSP2SV
 kachurís cachurear VMSP2SV
-kachá cachada NCFS000 cachar VMIP2SV
+kachá cachada NCFS000
 kachábamos cachar VMII1P0
 kachái cachar VMIP2SV cachái I
 kacháis cachar VMIP2P0
@@ -1170635,7 +1170632,6 @@ kaminih caminar VMSP2SV
 kaminis caminar VMSP2SV
 kamino caminar VMIP1S0 camino NCMS000
 kaminos camino NCMP000
-kaminá caminar VMM02SV
 kaminábamos caminar VMII1P0
 kaminái caminar VMIP2SV
 kamináis caminar VMIP2P0
@@ -1173837,7 +1173833,6 @@ kanturrís canturriar VMSP2SV
 kanturía canturía NCFS000
 kanturías canturía NCFP000
 kantus cantus NCMN000
-kantá cantar VMM02SV
 kantábamos cantar VMII1P0
 kantábrika cantábrico AQ0FS00
 kantábrikas cantábrico AQ0FP00
@@ -1360554,7 +1360549,6 @@ mirtídanos mirtídano NCMP000
 miruna miruna NP00SP0
 mirza mirza NCMS000
 mirzas mirza NCMP000
-mirá mirar VMM02SV
 mirábamos mirar VMII1P0
 mirái mirar VMIP2SV
 miráis mirar VMIP2P0
@@ -1508887,7 +1508881,6 @@ ponzí poncí AQ0CS00 poncí NCMS000
 ponzíes poncí AQ0CP00 poncí NCMP000
 ponzíh poncear VMSP2SV
 ponzís poncear VMSP2SV poncí AQ0CP00
-poné poner VMM02SV
 ponéis poner VMIP2P0
 poní poner VMIP2SV
 ponía poner VMII1S0 poner VMII3S0
@@ -1562149,7 +1562142,7 @@ qachurió cachurear VMIS3S0
 qachurí cachurear VMSP2SV
 qachuríh cachurear VMSP2SV
 qachurís cachurear VMSP2SV
-qachá cachada NCFS000 cachar VMIP2SV
+qachá cachada NCFS000
 qachábamos cachar VMII1P0
 qachái cachar VMIP2SV cachái I
 qacháis cachar VMIP2P0
@@ -1568340,7 +1568333,6 @@ qaminih caminar VMSP2SV
 qaminis caminar VMSP2SV
 qamino caminar VMIP1S0 camino NCMS000
 qaminos camino NCMP000
-qaminá caminar VMM02SV
 qaminábamos caminar VMII1P0
 qaminái caminar VMIP2SV
 qamináis caminar VMIP2P0
@@ -1571509,7 +1571501,6 @@ qanturrís canturriar VMSP2SV
 qanturía canturía NCFS000
 qanturías canturía NCFP000
 qantus cantus NCMN000
-qantá cantar VMM02SV
 qantábamos cantar VMII1P0
 qantábriqa cantábrico AQ0FS00
 qantábriqas cantábrico AQ0FP00

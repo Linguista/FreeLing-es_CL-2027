@@ -267,7 +267,7 @@ DECISIONS_REL = PRODUCT_REL / "data" / "escl-sources"
 # (decided 261112: one copy of each file, in the FreeLing tree). Checked only
 # when it exists.
 LINKED_DECISIONS = Path("/path/to/corpora/"
-                        "050-Spelling-normalized/the speech corpus/_processing-records/"
+                        "050-Spelling-normalized/a speech corpus/_processing-records/"
                         "spelling-review/decisions")
 # The kinds of decision file the build reads (the part of the name before
 # "--"). freeling_escl_sources_move.py moves exactly these.

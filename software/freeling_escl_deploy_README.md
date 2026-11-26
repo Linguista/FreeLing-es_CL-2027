@@ -128,11 +128,11 @@ refuses to run with sudo.
 - 2.5.0 (261116): the system target also installs `es/es-cl/informal/dicc.src`, the informal dictionary (`freeling_escl_build.py` 2.14.0, decided 261116); a release without it or without `data/config/es-cl-informal.cfg` is refused, as made by an older build; the user target retires the build tree's `dictionary/entries/CL.reduced-forms`.
 - 2.4.0 (261116): the system target also installs `es/afixos.dat`, FreeLing's affix rules with the clitic rules restricted (`freeling_escl_build.py` 2.11.0, decided 261116); a release without it is refused, as made by an older build.
 
-- 2.3.0 (261115): the system target also installs `es/es-cl/usermap-informal.dat`, the readings for informal writing only (`freeling_escl_build.py` 2.9.0), which `the former config writer` 1.3.0 puts into the user map of the written corpus's informal config; a release without it is refused, as made by an older build.
+- 2.3.0 (261115): the system target also installs `es/es-cl/usermap-informal.dat`, the readings for informal writing only (`freeling_escl_build.py` 2.9.0), which `the former config writer` 1.3.0 puts into the user map of a written corpus's informal config; a release without it is refused, as made by an older build.
 
 - 2.2.2 (261113): the user target's messages and this README name no account: "your own user" (the release is public, and the account name is private).
 
-- 2.2.1 (261113): the system target no longer installs `config/es-cl.cfg` and `config/es-cl-19th-century.cfg`, and retires both from `/usr/local/share/freeling/config/` (compressed, mode 000): the corpus project tags only with `the former base config` and the configs written from it (decided 261113). The release's two configs stay in its `data/config/` and in the packages.
+- 2.2.1 (261113): the system target no longer installs `config/es-cl.cfg` and `config/es-cl-19th-century.cfg`, and retires both from `/usr/local/share/freeling/config/` (compressed, mode 000): your corpus tags only with `the former base config` and the configs written from it (decided 261113). The release's two configs stay in its `data/config/` and in the packages.
 
 - 2.2.0 (261113): the system target also installs the 19th-century dictionary's `historical/probabilitats.dat` and `historical/locucions.dat` and the configs `config/es-cl.cfg` and `config/es-cl-19th-century.cfg`, and makes `es/locucions.dat` (FreeLing Old's multiword file) a link to `es-cl/locucions.dat`, retiring FreeLing's file; the user target retires `dictionary/entries/CL.misspellings`, now `CL.common-misspellings`; `.cfg` is a known extension for deprecated names; refuses a release without the 19th-century files.
 

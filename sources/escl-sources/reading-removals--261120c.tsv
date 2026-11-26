@@ -1,3 +1,3 @@
 form	lemma	tag	why
-mamá	mamá	AQ0CS00	user, 261120: the adjective reading of mamá is removed; in the probe tagging of the speech corpus it was chosen in 11 of 572 tokens
-sí	sí	NCMS000	user, 261120: sí is a noun only after el or un (el sí, un sí). FreeLing cannot tie a reading to the word before it, and with the noun reading in the dictionary the tagger chose it where sí is the adverb (9 of 28 judged tokens in the probe tagging of the speech corpus); the reading is removed here, and the noun after el or un is a rule of the correction layer
+mamá	mamá	AQ0CS00	user, 261120: the adjective reading of mamá is removed; in the probe tagging of a speech corpus it was chosen in 11 of 572 tokens
+sí	sí	NCMS000	user, 261120: sí is a noun only after el or un (el sí, un sí). FreeLing cannot tie a reading to the word before it, and with the noun reading in the dictionary the tagger chose it where sí is the adverb (9 of 28 judged tokens in the probe tagging of a speech corpus); the reading is removed here, and the noun after el or un is a rule of the correction layer

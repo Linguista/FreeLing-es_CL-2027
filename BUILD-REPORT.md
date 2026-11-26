@@ -12,7 +12,7 @@ Built by freeling_escl_build.py 2.21.1 on 261126.
 | cities not added | 988 |
 | common-misspellings changed | 5 |
 | contemporary removed | 498 |
-| dicc removed | 100 |
+| dicc removed | 112 |
 | gazLOC-c added | 3119 |
 | gazPER-c removed | 7 |
 | interjections removed | 160 |
@@ -30,7 +30,7 @@ Built by freeling_escl_build.py 2.21.1 on 261126.
 | orgnames not added | 4 |
 | peoplenames not added | 1163 |
 | place-only removed | 8 |
-| probabilitats changed | 1 |
+| probabilitats changed | 2 |
 | quantities added | 7 |
 | quantities changed | 5 |
 | quantities removed | 57 |
@@ -75,7 +75,7 @@ Built by freeling_escl_build.py 2.21.1 on 261126.
 | decisions: person-name-removals, applied | 7 |
 | decisions: place-only-forms, applied | 4 |
 | decisions: reading-removals, not present | 36 |
-| decisions: reading-removals, removed | 98 |
+| decisions: reading-removals, removed | 110 |
 | decisions: reduced-forms, added | 1 |
 | decisions: sentence-start-classes, applied | 9 |
 | decisions: text-corrections, added | 6548 |
@@ -89,11 +89,11 @@ Built by freeling_escl_build.py 2.21.1 on 261126.
 | decided names weighted | 41 |
 | lemma preferences added | 0 |
 | FormTagFreq lines added | 0 |
-| FormTagFreq lines replaced | 1 |
+| FormTagFreq lines replaced | 2 |
 | FormTagFreq lines removed | 0 |
-| default dicc.src forms | 939601 |
-| 19th-century dicc.src forms | 2148412 |
-| informal dicc.src forms | 976549 |
+| default dicc.src forms | 939596 |
+| 19th-century dicc.src forms | 2148403 |
+| informal dicc.src forms | 976544 |
 | common misspellings added (unaccented forms) | 140951 |
 | left out: from several accented forms | 530 |
 | CL.common-misspellings lines | 164609 |
@@ -129,13 +129,13 @@ Built by freeling_escl_build.py 2.21.1 on 261126.
 - `CL.verb`: 122292 lines
 - `CL.variants`: 98093 lines
 - `CL.names`: 21551 lines
-- `CL.additions`: 23453 lines
+- `CL.additions`: 23447 lines
 - `CL.nonstandard`: 189 lines
 - `CL.common-misspellings`: 164609 lines
 - `CL.old-accents`: 14 lines
 - `CL.standard-lemmas`: 10 lines
 - `19th-century/dictionary/entries/CL.19th-century`: 9 lines
-- `19th-century/dictionary/entries/CL.19th-century-spellings`: 1417099 lines
+- `19th-century/dictionary/entries/CL.19th-century-spellings`: 1417093 lines
 - `19th-century/dictionary/entries/CL.19th-century-attested`: 8172 lines
 - forms left with no reading (Spanish interjections only): 66
 
@@ -225,6 +225,7 @@ Built by freeling_escl_build.py 2.21.1 on 261126.
 - `/path/to/project/derived-software/FreeLing_es-CL_2027/data/escl-sources/reading-removals--261120b.tsv` 7cb68d2bda17c671669e6f070cb0943ec83a707a736195bfe762709896b5003e
 - `/path/to/project/derived-software/FreeLing_es-CL_2027/data/escl-sources/reading-removals--261120c.tsv` fac7d46755d40829fd23de142fb0b2af94316e5005d9badec5340132668ae451
 - `/path/to/project/derived-software/FreeLing_es-CL_2027/data/escl-sources/reading-removals--261126.tsv` 84c69240334322ec44e84d8cc8e29784362e0f79257ce8a8665606f0132722fc
+- `/path/to/project/derived-software/FreeLing_es-CL_2027/data/escl-sources/reading-removals--261126b.tsv` 5884d57cd5bb05500e14853d57fe371801051c00ace13622527c19d1219cbf64
 - `/path/to/project/derived-software/FreeLing_es-CL_2027/data/escl-sources/contemporary-reading-removals--261126.tsv` 8397babf7f3b9f2a1b8f2e2221519fdee228ff7bfb46bedf8303756f08bca187
 - `/path/to/project/derived-software/FreeLing_es-CL_2027/data/escl-sources/form-probabilities--261115.tsv` 92aab97d14e5d72f38742220e2303b4e029c4850414c21b7b16387971396f1fd
 - `/path/to/project/derived-software/FreeLing_es-CL_2027/data/escl-sources/form-probabilities--261116.tsv` 1501866f92606e85164c9b68248aaa716b720d6894408de801c6cdb2028b8184
@@ -235,6 +236,7 @@ Built by freeling_escl_build.py 2.21.1 on 261126.
 - `/path/to/project/derived-software/FreeLing_es-CL_2027/data/escl-sources/form-probabilities--261120d.tsv` 3f742aad27f36bb4b65876e55eed86113def9d4c75c36505ac168ad9d0421413
 - `/path/to/project/derived-software/FreeLing_es-CL_2027/data/escl-sources/form-probabilities--261120e.tsv` c96d2502b91d2fc5abe872fa25a138b99ebaaa9ff5790dc1c271409abd298fb9
 - `/path/to/project/derived-software/FreeLing_es-CL_2027/data/escl-sources/form-probabilities--261122.tsv` c7a0af4d7f8c7b76bea5ee828fa14a8b4213cca3535213e9e324ece2dc697849
+- `/path/to/project/derived-software/FreeLing_es-CL_2027/data/escl-sources/form-probabilities--261126.tsv` a692f07ee4dfa9de091dfc30cfcf46faf1e7b149e291b0aa66f1ebf6e244bdf4
 - `/path/to/project/derived-software/FreeLing_es-CL_2027/data/escl-sources/informal-readings--261115.tsv` deed4b380b65c5867158b9d1bcbab8c5c9873b884c7705c22d28790723f67bb5
 - `/path/to/project/derived-software/FreeLing_es-CL_2027/data/escl-sources/informal-reading-removals--261119.tsv` 98e072d1d9876c124e816aafa0c415368982aba372fcf470737270c515708b88
 - `/path/to/project/derived-software/FreeLing_es-CL_2027/data/escl-sources/dictionary-variants--261103.tsv` b77deda0f3f94207bacadb2d537e917e722d2cb06b844149300de93b642b9d66

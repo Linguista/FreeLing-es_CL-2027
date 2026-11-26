@@ -145593,8 +145593,21 @@ dicc	removed	reading removed as decided (reading-removals--261126.tsv)	réclama	
 dicc	removed	reading removed as decided (reading-removals--261126.tsv)	meno	meno	NCMS000	noun, common, masculine, singular	
 dicc	removed	reading removed as decided (reading-removals--261126.tsv)	menos	meno	NCMP000	noun, common, masculine, plural	
 dicc	removed	reading removed as decided (reading-removals--261126.tsv)	ménos	meno	NCMP000	noun, common, masculine, plural	
+dicc	removed	reading removed as decided (reading-removals--261126b.tsv)	andá	andar	VMM02SV	verb, main, imperative, 2nd person, singular, voseo	
+dicc	removed	reading removed as decided (reading-removals--261126b.tsv)	caminá	caminar	VMM02SV	verb, main, imperative, 2nd person, singular, voseo	
+dicc	removed	reading removed as decided (reading-removals--261126b.tsv)	cantá	cantar	VMM02SV	verb, main, imperative, 2nd person, singular, voseo	
+dicc	removed	reading removed as decided (reading-removals--261126b.tsv)	mirá	mirar	VMM02SV	verb, main, imperative, 2nd person, singular, voseo	
+dicc	removed	reading removed as decided (reading-removals--261126b.tsv)	poné	poner	VMM02SV	verb, main, imperative, 2nd person, singular, voseo	
+dicc	removed	reading removed as decided (reading-removals--261126b.tsv)	kaminá	caminar	VMM02SV	verb, main, imperative, 2nd person, singular, voseo	
+dicc	removed	reading removed as decided (reading-removals--261126b.tsv)	qaminá	caminar	VMM02SV	verb, main, imperative, 2nd person, singular, voseo	
+dicc	removed	reading removed as decided (reading-removals--261126b.tsv)	kantá	cantar	VMM02SV	verb, main, imperative, 2nd person, singular, voseo	
+dicc	removed	reading removed as decided (reading-removals--261126b.tsv)	qantá	cantar	VMM02SV	verb, main, imperative, 2nd person, singular, voseo	
+dicc	removed	reading removed as decided (reading-removals--261126b.tsv)	cachá	cachar	VMIP2SV	verb, main, indicative, present, 2nd person, singular, voseo	
+dicc	removed	reading removed as decided (reading-removals--261126b.tsv)	kachá	cachar	VMIP2SV	verb, main, indicative, present, 2nd person, singular, voseo	
+dicc	removed	reading removed as decided (reading-removals--261126b.tsv)	qachá	cachar	VMIP2SV	verb, main, indicative, present, 2nd person, singular, voseo	
 dicc	removed	reading removed from the default dictionary as decided (contemporary-reading-removals--261126.tsv)	carácteres	carácter	NCMP000	noun, common, masculine, plural	
 dicc	removed	reading removed from the default dictionary as decided (contemporary-reading-removals--261126.tsv)	cánon	cánon	NCMS000	noun, common, masculine, singular	
+probabilitats	changed	as decided (form-probabilities--261126.tsv)	cachá				cachá NC-VMI NC 20 VMI 980  ->  cachá NC NC 1000
 probabilitats	changed	as decided (form-probabilities--261122.tsv)	cuánto				cuánto DE-DT-PE-PT DE 0 DT 2 PE 0 PT 4  ->  cuánto DE-DT-PE-PT-RG DE 10 DT 70 PE 10 PT 480 RG 430
 locucions	not added	FreeLing's general multiword: the Chilean entry wins	a_muerte				a_muerte a_muerte AQ0CN00 I
 locucions	not added	FreeLing's general multiword: the Chilean entry wins	a_muerte				a_muerte a_muerte RG I
