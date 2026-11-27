@@ -409,7 +409,7 @@ FreeLing reads and writes UTF-8: the two first lines make PowerShell send and sh
 | Config | For | Dictionary | Name recognizer | What its user map adds |
 |---|---|---|---|---|
 | `es-cl.cfg` | contemporary writing | 2027 | `es/es-cl/np.dat`, for written texts (section 8.4) | the stand-in tokens (below) |
-| `es-cl-speech.cfg` | transcribed speech, one utterance per line | 2027 | `es/es-cl/np-speech.dat`: a capital at the start of a line is a name (section 8.4) | the stand-in tokens; "nn" and "nnn" as hesitations |
+| `es-cl-speech.cfg` | transcribed speech, one utterance per line | 2027 | `es/es-cl/np-speech.dat`: a capital at the start of a line is a name (section 8.4) | the stand-in tokens; a large number of backchannels and similar ("mm", "nnn", "mmhm", "umhm", etc.) |
 | `es-cl-informal.cfg` | informal writing: chat, forums, social media, email | informal: 2027 with the spoken "-ao", "-á" and "-ío" forms (section 6.8) | `es/es-cl/np.dat` | the stand-in tokens; the chat readings: "q" as "que", "x" as "por", "tas" as "estás" ... (section 6.7) |
 | `es-cl-19th-century.cfg` | 19th-century texts | 19th century, with its own probabilities and multiwords (section 2.1) | FreeLing's statistical recognizer | the stand-in tokens |
 | `es-old.cfg` | medieval and Golden Age texts | FreeLing Old (section 2.2) | none, as FreeLing ships it | none |
